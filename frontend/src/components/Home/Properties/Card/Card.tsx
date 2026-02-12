@@ -2,11 +2,18 @@ import { PropertyHomes } from '@/types/properyHomes'
 import { Icon } from '@iconify/react'
 import Image from 'next/image'
 import Link from 'next/link'
+import { urlFor } from '@/lib/sanity.image'
 
 const PropertyCard: React.FC<{ item: PropertyHomes }> = ({ item }) => {
   const { name, location, rate, beds, baths, area, slug, images } = item
 
-  const mainImage = images[0]?.src;
+  const mainImageSource = images[0];
+  const mainImage = mainImageSource
+    ? 'src' in mainImageSource
+      ? mainImageSource.src
+      : urlFor(mainImageSource).width(880).height(600).fit('crop').url()
+    : null;
+  const rateLabel = rate !== undefined ? String(rate) : '';
 
   return (
     <div>
@@ -20,7 +27,6 @@ const PropertyCard: React.FC<{ item: PropertyHomes }> = ({ item }) => {
                 width={440}
                 height={300}
                 className='w-full rounded-t-2xl group-hover:brightness-50 group-hover:scale-125 transition duration-300 delay-75'
-                unoptimized={true}
               />
             )}
           </Link>
@@ -46,9 +52,11 @@ const PropertyCard: React.FC<{ item: PropertyHomes }> = ({ item }) => {
               </p>
             </div>
             <div>
-              <button className='text-base font-normal text-primary px-5 py-2 rounded-full bg-primary/10'>
-                ${rate}
-              </button>
+              {rateLabel ? (
+                <button className='text-base font-normal text-primary px-5 py-2 rounded-full bg-primary/10'>
+                  ${rateLabel}
+                </button>
+              ) : null}
             </div>
           </div>
           <div className='flex'>

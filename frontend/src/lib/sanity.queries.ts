@@ -52,3 +52,62 @@ export const blogPostBySlugQuery = groq`
     content
   }
 `;
+
+export const servicesSectionQuery = groq`
+  *[_type == "servicesSection"][0] {
+    badge,
+    title,
+    subtitle,
+    ctaText,
+    ctaLink,
+    backgroundLight,
+    backgroundDark
+  }
+`;
+
+export const servicesQuery = groq`
+  *[_type == "service"] | order(order asc, title asc) {
+    _id,
+    title,
+    description,
+    "slug": slug.current,
+    image,
+    category,
+    badge,
+    order
+  }
+`;
+
+export const servicesSlugsQuery = groq`
+  *[_type == "service" && defined(slug.current)]{
+    "slug": slug.current
+  }
+`;
+
+export const serviceBySlugQuery = groq`
+  *[_type == "service" && slug.current == $slug][0] {
+    _id,
+    title,
+    description,
+    "slug": slug.current,
+    image,
+    category,
+    badge,
+    order
+  }
+`;
+
+export const propertiesByCategoryQuery = groq`
+  *[_type == "property" && category == $category] | order(_createdAt desc) {
+    _id,
+    name,
+    "slug": slug.current,
+    location,
+    rate,
+    beds,
+    baths,
+    area,
+    images,
+    category
+  }
+`;
