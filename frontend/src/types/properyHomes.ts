@@ -28,3 +28,12 @@ export type PropertyHomes = {
   amenities?: PropertyAmenity[];
   mapUrl?: string;
 };
+
+export type PropertiesSection = {
+  badge?: string;
+  title?: string;
+  subtitle?: string;
+  mode?: "all" | "selected";
+  limit?: number;
+  selectedProperties?: PropertyHomes[];
+};

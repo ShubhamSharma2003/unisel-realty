@@ -7,7 +7,7 @@ import { urlFor } from '@/lib/sanity.image'
 const PropertyCard: React.FC<{ item: PropertyHomes }> = ({ item }) => {
   const { name, location, rate, beds, baths, area, slug, images } = item
 
-  const mainImageSource = images[0];
+  const mainImageSource = images?.[0];
   const mainImage = mainImageSource
     ? 'src' in mainImageSource
       ? mainImageSource.src

@@ -112,6 +112,21 @@ export const propertiesByCategoryQuery = groq`
   }
 `;
 
+export const propertiesForHomeQuery = groq`
+  *[_type == "property"] | order(_createdAt desc)[0...$limit] {
+    _id,
+    name,
+    "slug": slug.current,
+    location,
+    rate,
+    beds,
+    baths,
+    area,
+    images,
+    category
+  }
+`;
+
 export const propertiesQuery = groq`
   *[_type == "property"] | order(_createdAt desc) {
     _id,
@@ -124,6 +139,28 @@ export const propertiesQuery = groq`
     area,
     images,
     category
+  }
+`;
+
+export const propertiesSectionQuery = groq`
+  *[_type == "propertiesSection"][0] {
+    badge,
+    title,
+    subtitle,
+    mode,
+    limit,
+    "selectedProperties": selectedProperties[]-> {
+      _id,
+      name,
+      "slug": slug.current,
+      location,
+      rate,
+      beds,
+      baths,
+      area,
+      images,
+      category
+    }
   }
 `;
 
