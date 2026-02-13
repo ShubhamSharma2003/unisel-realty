@@ -214,3 +214,35 @@ export const testimonialsQuery = groq`
     order
   }
 `;
+
+export const heroSectionQuery = groq`
+  *[_type == "heroSection"][0] {
+    gradientStart,
+    gradientMiddle,
+    gradientMiddleDark,
+    gradientEnd,
+    gradientEndDark
+  }
+`;
+
+export const heroBannersQuery = groq`
+  *[_type == "heroBanner"] | order(order asc, _createdAt desc) {
+    _id,
+    location,
+    title,
+    bannerImage,
+    background,
+    backgroundImage,
+    backgroundImageMobile,
+    bedrooms,
+    bathrooms,
+    features,
+    price,
+    priceLabel,
+    ctaText,
+    ctaLink,
+    viewDetailsUrl,
+    order
+  }
+`;
+

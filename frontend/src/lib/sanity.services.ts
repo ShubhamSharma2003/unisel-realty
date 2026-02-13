@@ -6,10 +6,13 @@ import {
   servicesSectionQuery,
   testimonialSectionQuery,
   testimonialsQuery,
+  heroSectionQuery,
+  heroBannersQuery,
 } from "./sanity.queries";
 import type { Service, ServicesSection } from "@/types/service";
 import type { PropertyHomes } from "@/types/properyHomes";
 import type { Testimonial, TestimonialSection } from "@/types/testimonial";
+import type { HeroBanner, HeroSection } from "@/types/hero";
 
 export const getServicesSection = async () =>
   sanityClient.fetch<ServicesSection | null>(servicesSectionQuery);
@@ -28,3 +31,9 @@ export const getTestimonialSection = async () =>
 
 export const getTestimonials = async () =>
   sanityClient.fetch<Testimonial[]>(testimonialsQuery);
+
+export const getHeroSection = async () =>
+  sanityClient.fetch<HeroSection | null>(heroSectionQuery);
+
+export const getHeroBanners = async () =>
+  sanityClient.fetch<HeroBanner[]>(heroBannersQuery);
