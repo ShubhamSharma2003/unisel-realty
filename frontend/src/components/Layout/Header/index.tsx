@@ -45,7 +45,7 @@ const Header: React.FC = () => {
           <div>
             <Link href='/'>
               <Image
-                src={'/images/header/unisel-logo.png'}
+                src={'/images/header/unisel-logo-dark.png'}
                 alt='logo'
                 width={150}
                 height={68}

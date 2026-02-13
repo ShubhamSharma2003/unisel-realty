@@ -111,3 +111,50 @@ export const propertiesByCategoryQuery = groq`
     category
   }
 `;
+
+export const propertiesQuery = groq`
+  *[_type == "property"] | order(_createdAt desc) {
+    _id,
+    name,
+    "slug": slug.current,
+    location,
+    rate,
+    beds,
+    baths,
+    area,
+    images,
+    category
+  }
+`;
+
+export const propertySlugsQuery = groq`
+  *[_type == "property" && defined(slug.current)]{
+    "slug": slug.current
+  }
+`;
+
+export const propertyBySlugQuery = groq`
+  *[_type == "property" && slug.current == $slug][0] {
+    _id,
+    name,
+    "slug": slug.current,
+    location,
+    rate,
+    beds,
+    baths,
+    area,
+    images,
+    category,
+    description,
+    features[] {
+      icon,
+      title,
+      description
+    },
+    amenities[] {
+      icon,
+      label
+    },
+    mapUrl
+  }
+`;
