@@ -24,7 +24,7 @@ export default function RootLayout({
   return (
     <html lang='en'>
       <body className={`${font.className} bg-white dark:bg-black antialiased`}>
-        <NextTopLoader color="#07be8a" />
+        <NextTopLoader color="#2596be" />
         <SessionProviderComp session={session}>
           <ThemeProvider
             attribute='class'

@@ -1,4 +1,4 @@
-import type { SanityImageSource } from "@sanity/image-url/lib/types";
+import type { SanityImageSource } from "@sanity/image-url/lib/types/types";
 
 export type Blog = {
   _id?: string;
