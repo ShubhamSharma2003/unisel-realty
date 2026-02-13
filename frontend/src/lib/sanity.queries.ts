@@ -195,3 +195,22 @@ export const propertyBySlugQuery = groq`
     mapUrl
   }
 `;
+
+export const testimonialSectionQuery = groq`
+  *[_type == "testimonialSection"][0] {
+    badge,
+    title,
+    subtitle
+  }
+`;
+
+export const testimonialsQuery = groq`
+  *[_type == "testimonial"] | order(order asc, _createdAt desc) {
+    _id,
+    review,
+    name,
+    position,
+    image,
+    order
+  }
+`;
