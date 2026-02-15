@@ -10,10 +10,11 @@ export async function generateStaticParams() {
   return properties.map((property) => ({ slug: property.slug }));
 }
 
-export default function PropertyDetailPage({
+export default async function PropertyDetailPage({
   params,
 }: {
   params: { slug: string };
 }) {
-  return <PropertyDetailContent slug={params.slug} />;
+  const awaitedParams = await params;
+  return <PropertyDetailContent slug={awaitedParams?.slug} />;
 }

@@ -17,5 +17,6 @@ export default async function ServicePage({
 }: {
   params: { service: string };
 }) {
-  return <ServicePageContent slug={params.service} />;
+  const awaitedParams = await params;
+  return <ServicePageContent slug={awaitedParams.service} />;
 }

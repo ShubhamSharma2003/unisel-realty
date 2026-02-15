@@ -58,18 +58,18 @@ const Footer = ({ footerMenus }: FooterProps) => {
                 <div>
                   <h5 className="text-white text-lg font-semibold mb-4">Our Office</h5>
                   <p className="text-white/60 text-sm leading-6">
-                    1234 Innovation Blvd, Suite 100<br />
-                    San Francisco, CA 94103
+                    408, 4th floor, Adani Miracle Mile<br />
+                    Sector 60, Gurgaon
                   </p>
                 </div>
                 <div>
                   <h5 className="text-white text-lg font-semibold mb-4">Contact Info</h5>
                   <div className="flex flex-col gap-2">
-                    <Link href="tel:+18001234567" className="text-white/60 text-sm hover:text-white duration-300 flex items-center gap-2">
-                      <Icon icon="ph:phone" width={18} /> +1 (800) 123-4567
+                    <Link href="tel:+918010303303" className="text-white/60 text-sm hover:text-white duration-300 flex items-center gap-2">
+                      <Icon icon="ph:phone" width={18} /> +91 8010 303 303
                     </Link>
-                    <Link href="mailto:support@homely.com" className="text-white/60 text-sm hover:text-white duration-300 flex items-center gap-2">
-                      <Icon icon="ph:envelope" width={18} /> support@homely.com
+                    <Link href="mailto:info@uniselrealty.com" className="text-white/60 text-sm hover:text-white duration-300 flex items-center gap-2">
+                      <Icon icon="ph:envelope" width={18} /> info@uniselrealty.com
                     </Link>
                   </div>
                 </div>
@@ -107,7 +107,7 @@ const Footer = ({ footerMenus }: FooterProps) => {
         {/* Bottom Section: Copyright */}
         <div className="flex justify-between md:flex-nowrap flex-wrap items-center py-6 gap-6">
           <p className="text-white/40 text-sm text-center md:text-left">
-            ©2025 Homely - Design & Developed by <Link href="https://getnextjstemplates.com/" className="hover:text-primary" target="_blank">GetNextJs Templates</Link>
+            ©2026 Unisel Realty- All rights reserved
           </p>
           <div className="flex gap-8 items-center justify-center w-full md:w-auto">
             <Link href="#" className="text-white/40 hover:text-primary text-sm">

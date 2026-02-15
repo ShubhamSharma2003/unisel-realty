@@ -164,10 +164,10 @@ const Header: React.FC<{ navLinks: NavLinks[] }> = ({ navLinks }) => {
               Contact
             </p>
             <Link href="#" className='text-base sm:text-xm font-medium text-inherit hover:text-primary'>
-              hello@homely.com
+              info@uniselrealty.com
             </Link>
             <Link href="#" className='text-base sm:text-xm font-medium text-inherit hover:text-primary'>
-              +1-212-456-7890{' '}
+              +91 8010 303 303{' '}
             </Link>
           </div>
         </div>
