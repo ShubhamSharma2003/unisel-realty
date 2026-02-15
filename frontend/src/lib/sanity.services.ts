@@ -16,6 +16,9 @@ import type { Testimonial, TestimonialSection } from "@/types/testimonial";
 import type { HeroBanner, HeroSection } from "@/types/hero";
 import type { NavLinks } from "@/types/navlink";
 
+import type { FooterMenu } from "@/types/footerMenu";
+import { footerMenusQuery } from "./sanity.queries";
+
 export const getServicesSection = async () =>
   sanityClient.fetch<ServicesSection | null>(servicesSectionQuery);
 
@@ -42,3 +45,6 @@ export const getHeroBanners = async () =>
 
 export const getNavLinks = async () =>
   sanityClient.fetch<NavLinks[]>(navLinksQuery);
+
+export const getFooterMenus = async () =>
+  sanityClient.fetch<FooterMenu[]>(footerMenusQuery);

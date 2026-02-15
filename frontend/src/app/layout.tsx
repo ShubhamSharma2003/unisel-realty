@@ -3,6 +3,7 @@ import { Bricolage_Grotesque } from 'next/font/google'
 import './globals.css'
 import Header from '@/components/Layout/Header'
 import Footer from '@/components/Layout/Footer'
+import { getFooterMenus } from '@/lib/sanity.services'
 import { ThemeProvider } from 'next-themes'
 import NextTopLoader from 'nextjs-toploader';
 import SessionProviderComp from '@/components/nextauth/SessionProvider'
@@ -23,6 +24,7 @@ export default async function RootLayout({
   session: any
 }>) {
   const navLinks = await getNavLinks()
+  const footerMenus = await getFooterMenus()
 
   return (
     <html lang='en'>
@@ -35,7 +37,7 @@ export default async function RootLayout({
             defaultTheme='light'>
             <Header navLinks={navLinks} />
             {children}
-            <Footer />
+            <Footer footerMenus={footerMenus} />
           </ThemeProvider>
         </SessionProviderComp>
       </body>

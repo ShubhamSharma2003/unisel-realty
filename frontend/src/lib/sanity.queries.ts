@@ -1,5 +1,17 @@
 import { groq } from "next-sanity";
 
+export const footerMenusQuery = groq`
+  *[_type == "footerMenu"] | order(order asc, _createdAt asc) {
+    _id,
+    title,
+    order,
+    items[] {
+      label,
+      href
+    }
+  }
+`;
+
 export const blogSectionQuery = groq`
   *[_type == "blogSection"][0] {
     badge,
