@@ -65,6 +65,15 @@ export const servicesSectionQuery = groq`
   }
 `;
 
+export const navLinksQuery = groq`
+  *[_type == "navLink"] | order(order asc, _createdAt asc) {
+    _id,
+    label,
+    href,
+    order
+  }
+`;
+
 export const servicesQuery = groq`
   *[_type == "service"] | order(order asc, title asc) {
     _id,

@@ -1,5 +1,4 @@
 'use client'
-import { navLinks } from '@/app/api/navlink'
 import { Icon } from '@iconify/react'
 import Link from 'next/link'
 import { useEffect, useRef, useState, useCallback } from 'react'
@@ -7,8 +6,9 @@ import NavLink from './Navigation/NavLink'
 import { useTheme } from 'next-themes'
 import { usePathname } from 'next/navigation'
 import Image from 'next/image'
+import type { NavLinks } from '@/types/navlink'
 
-const Header: React.FC = () => {
+const Header: React.FC<{ navLinks: NavLinks[] }> = ({ navLinks }) => {
   const [sticky, setSticky] = useState(false)
   const [navbarOpen, setNavbarOpen] = useState(false)
   const { theme, setTheme } = useTheme()

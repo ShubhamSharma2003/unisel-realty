@@ -46,7 +46,7 @@ const PropertyDetailContent = async ({ slug }: PropertyDetailContentProps) => {
     notFound();
   }
 
-  const mainImageSource = property.images?.[0];
+  const mainImageSource = property?.images?.[0];
   const mainImage = mainImageSource
     ? "src" in mainImageSource
       ? mainImageSource.src
@@ -64,7 +64,7 @@ const PropertyDetailContent = async ({ slug }: PropertyDetailContentProps) => {
           .url();
   };
 
-  const rateLabel = property.rate !== undefined ? String(property.rate) : "";
+  const rateLabel = property?.rate !== undefined ? String(property?.rate) : "";
 
   return (
     <section className="!pt-44 pb-20 relative">
@@ -72,7 +72,7 @@ const PropertyDetailContent = async ({ slug }: PropertyDetailContentProps) => {
         <div className="grid grid-cols-12 items-end gap-6">
           <div className="lg:col-span-8 col-span-12">
             <h1 className="lg:text-52 text-40 font-semibold text-dark dark:text-white">
-              {property.name}
+              {property?.name}
             </h1>
             <div className="flex gap-2.5">
               <Icon
@@ -82,7 +82,7 @@ const PropertyDetailContent = async ({ slug }: PropertyDetailContentProps) => {
                 className="text-dark/50 dark:text-white/50"
               />
               <p className="text-dark/50 dark:text-white/50 text-xm">
-                {property.location}
+                {property?.location}
               </p>
             </div>
           </div>
@@ -91,13 +91,13 @@ const PropertyDetailContent = async ({ slug }: PropertyDetailContentProps) => {
               <div className="flex flex-col gap-2 border-e border-black/10 dark:border-white/20 pr-2 xs:pr-4 mobile:pr-8">
                 <Icon icon={"solar:bed-linear"} width={20} height={20} />
                 <p className="text-sm mobile:text-base font-normal text-black dark:text-white">
-                  {property.beds} Bedrooms
+                  {property?.beds} Bedrooms
                 </p>
               </div>
               <div className="flex flex-col gap-2 border-e border-black/10 dark:border-white/20 px-2 xs:px-4 mobile:px-8">
                 <Icon icon={"solar:bath-linear"} width={20} height={20} />
                 <p className="text-sm mobile:text-base font-normal text-black dark:text-white">
-                  {property.baths} Bathrooms
+                  {property?.baths} Bathrooms
                 </p>
               </div>
               <div className="flex flex-col gap-2 pl-2 xs:pl-4 mobile:pl-8">
@@ -107,7 +107,7 @@ const PropertyDetailContent = async ({ slug }: PropertyDetailContentProps) => {
                   height={20}
                 />
                 <p className="text-sm mobile:text-base font-normal text-black dark:text-white">
-                  {property.area}m<sup>2</sup>
+                  {property?.area}m<sup>2</sup>
                 </p>
               </div>
             </div>
@@ -119,7 +119,7 @@ const PropertyDetailContent = async ({ slug }: PropertyDetailContentProps) => {
               <div className="">
                 <Image
                   src={mainImage}
-                  alt={property.name}
+                  alt={property?.name}
                   width={1600}
                   height={1080}
                   className="rounded-2xl w-full h-540 object-cover"
@@ -127,10 +127,10 @@ const PropertyDetailContent = async ({ slug }: PropertyDetailContentProps) => {
               </div>
             ) : null}
           </div>
-          {property.images[1] ? (
+          {property?.images[1] ? (
             <div className="lg:col-span-4 lg:block hidden">
               <Image
-                src={getImageUrl(property.images[1], 1) || ""}
+                src={getImageUrl(property?.images[1], 1) || ""}
                 alt="Property Image 2"
                 width={640}
                 height={800}
@@ -138,10 +138,10 @@ const PropertyDetailContent = async ({ slug }: PropertyDetailContentProps) => {
               />
             </div>
           ) : null}
-          {property.images[2] ? (
+          {property?.images[2] ? (
             <div className="lg:col-span-2 col-span-6">
               <Image
-                src={getImageUrl(property.images[2], 2) || ""}
+                src={getImageUrl(property?.images[2], 2) || ""}
                 alt="Property Image 3"
                 width={320}
                 height={400}
@@ -149,10 +149,10 @@ const PropertyDetailContent = async ({ slug }: PropertyDetailContentProps) => {
               />
             </div>
           ) : null}
-          {property.images[3] ? (
+          {property?.images[3] ? (
             <div className="lg:col-span-2 col-span-6">
               <Image
-                src={getImageUrl(property.images[3], 3) || ""}
+                src={getImageUrl(property?.images[3], 3) || ""}
                 alt="Property Image 4"
                 width={320}
                 height={400}
@@ -164,9 +164,9 @@ const PropertyDetailContent = async ({ slug }: PropertyDetailContentProps) => {
         <div className="grid grid-cols-12 gap-8 mt-10">
           <div className="lg:col-span-8 col-span-12">
             <h3 className="text-xl font-medium">Property details</h3>
-            {property.features && property.features.length > 0 ? (
+            {property?.features && property?.features.length > 0 ? (
               <div className="py-8 my-8 border-y border-dark/10 dark:border-white/20 flex flex-col gap-8">
-                {property.features.map((feature, index) => (
+                {property?.features.map((feature, index) => (
                   <div key={index} className="flex items-center gap-6">
                     {feature.icon ? (
                       <div className="flex-shrink-0">
@@ -195,21 +195,21 @@ const PropertyDetailContent = async ({ slug }: PropertyDetailContentProps) => {
                 ))}
               </div>
             ) : null}
-            {property.description && property.description.length > 0 ? (
+            {property?.description && property?.description.length > 0 ? (
               <div className="flex flex-col gap-5 property-description">
                 <PortableText
-                  value={property.description}
+                  value={property?.description}
                   components={portableTextComponents}
                 />
               </div>
             ) : null}
-            {property.amenities && property.amenities.length > 0 ? (
+            {property?.amenities && property?.amenities.length > 0 ? (
               <div className="py-8 mt-8 border-t border-dark/5 dark:border-white/15">
                 <h3 className="text-xl font-medium">
                   What this property offers
                 </h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mt-5 gap-6">
-                  {property.amenities.map((amenity, index) => (
+                  {property?.amenities.map((amenity, index) => (
                     <div key={index} className="flex items-center gap-2.5">
                       {amenity.icon ? (
                         <Image
@@ -230,9 +230,9 @@ const PropertyDetailContent = async ({ slug }: PropertyDetailContentProps) => {
                 </div>
               </div>
             ) : null}
-            {property.mapUrl ? (
+            {property?.mapUrl ? (
               <iframe
-                src={property.mapUrl}
+                src={property?.mapUrl}
                 width="1114"
                 height="400"
                 loading="lazy"
