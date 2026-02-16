@@ -23,43 +23,43 @@ import type { FooterMenu } from "@/types/footerMenu";
 import { footerMenusQuery } from "./sanity.queries";
 
 export const getServicesSection = async () =>
-  sanityClient.fetch<ServicesSection | null>(servicesSectionQuery);
+  sanityClient.fetch<ServicesSection | null>(servicesSectionQuery, {}, { next: { tags: ['service-pages'] } });
 
 export const getServices = async () =>
-  sanityClient.fetch<Service[]>(servicesQuery);
+  sanityClient.fetch<Service[]>(servicesQuery, {}, { next: { tags: ['service-pages'] } });
 
 export const getServiceBySlug = async (slug: string) =>
-  sanityClient.fetch<Service | null>(serviceBySlugQuery, { slug });
+  sanityClient.fetch<Service | null>(serviceBySlugQuery, { slug }, { next: { tags: ['service-pages'] } });
 
 export const getPropertiesByCategory = async (category: string) =>
-  sanityClient.fetch<PropertyHomes[]>(propertiesByCategoryQuery, { category });
+  sanityClient.fetch<PropertyHomes[]>(propertiesByCategoryQuery, { category }, { next: { tags: ['properties'] } });
 
 export const getProperties = async () =>
-  sanityClient.fetch<PropertyHomes[]>(propertiesQuery);
+  sanityClient.fetch<PropertyHomes[]>(propertiesQuery, {}, { next: { tags: ['properties'] } });
 
 export const getPropertyBySlug = async (slug: string) =>
-  sanityClient.fetch<PropertyHomes | null>(propertyBySlugQuery, { slug });
+  sanityClient.fetch<PropertyHomes | null>(propertyBySlugQuery, { slug }, { next: { tags: ['properties'] } });
 
 export const getTestimonialSection = async () =>
-  sanityClient.fetch<TestimonialSection | null>(testimonialSectionQuery);
+  sanityClient.fetch<TestimonialSection | null>(testimonialSectionQuery, {}, { next: { tags: ['testimonials'] } });
 
 export const getTestimonials = async () =>
-  sanityClient.fetch<Testimonial[]>(testimonialsQuery);
+  sanityClient.fetch<Testimonial[]>(testimonialsQuery, {}, { next: { tags: ['testimonials'] } });
 
 export const getHeroSection = async () =>
-  sanityClient.fetch<HeroSection | null>(heroSectionQuery);
+  sanityClient.fetch<HeroSection | null>(heroSectionQuery, {}, { next: { tags: ['home'] } });
 
 export const getHeroBanners = async () =>
-  sanityClient.fetch<HeroBanner[]>(heroBannersQuery);
+  sanityClient.fetch<HeroBanner[]>(heroBannersQuery, {}, { next: { tags: ['home'] } });
 
 export const getNavLinks = async () =>
-  sanityClient.fetch<NavLinks[]>(navLinksQuery);
+  sanityClient.fetch<NavLinks[]>(navLinksQuery, {}, { next: { tags: ['navlinks'] } });
 
 export const getFooterMenus = async () =>
-  sanityClient.fetch<FooterMenu[]>(footerMenusQuery);
+  sanityClient.fetch<FooterMenu[]>(footerMenusQuery, {}, { next: { tags: ['footermenus'] } });
 
 export const getBlogCount = async () =>
-  sanityClient.fetch<number>(`count(*[_type == "post"])`);
+  sanityClient.fetch<number>(`count(*[_type == "post"])`, {}, { next: { tags: ['blogs'] } });
 
 export const getPropertiesCount = async () =>
-  sanityClient.fetch<number>(`count(*[_type == "property"])`);
+  sanityClient.fetch<number>(`count(*[_type == "property"])`, {}, { next: { tags: ['properties'] } });
