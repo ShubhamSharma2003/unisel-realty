@@ -8,7 +8,7 @@ export const sanityConfig = {
   projectId,
   dataset,
   apiVersion,
-  useCdn: true,
+  useCdn: false,
   deployment: {
     appId: 'imfp610gzynr4gee1s5k2jfb',
   },
