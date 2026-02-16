@@ -39,7 +39,7 @@ export async function generateMetadata({ params }: any) {
     const data = await params;
     const post = await sanityClient.fetch(blogPostBySlugQuery, { slug: data.slug });
 
-    const siteName = process.env.SITE_NAME || "Your Site Name";
+    const siteName = "Unisel Realty";
     const authorName = process.env.AUTHOR_NAME || "Your Author Name";
 
     if (post) {

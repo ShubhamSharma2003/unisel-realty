@@ -3,7 +3,31 @@ import { Metadata } from "next";
 import { Icon } from "@iconify/react/dist/iconify.js"
 
 export const metadata: Metadata = {
-  title: "404 Page | Property ",
+  title: "404 - Page Not Found | Homely",
+  description: "The page you're looking for doesn't exist. Return to Homely's homepage to explore our real estate listings.",
+  robots: { index: false, follow: false },
+  openGraph: {
+    title: "Page Not Found | Homely",
+    description: "The page you're looking for doesn't exist. Return to Homely's homepage to explore our real estate listings.",
+    url: "/404",
+    siteName: "Homely",
+    images: [
+      {
+        url: "/images/404-og.jpg",
+        width: 1200,
+        height: 630,
+        alt: "404 page not found",
+      },
+    ],
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Page Not Found | Homely",
+    description: "The page you're looking for doesn't exist. Return to Homely's homepage to explore our real estate listings.",
+    images: ["/images/404-og.jpg"],
+  },
 };
 
 const ErrorPage = () => {

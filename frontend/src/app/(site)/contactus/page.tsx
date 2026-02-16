@@ -4,6 +4,30 @@ import Link from 'next/link'
 import { Metadata } from "next";
 export const metadata: Metadata = {
     title: "Contact Us | Homely",
+    description: "Get in touch with Homely for all your real estate needs. Contact our team for property inquiries, consultations, and expert advice.",
+    keywords: ["contact", "real estate", "homely", "property inquiry", "consultation"],
+    openGraph: {
+        title: "Contact Homely | Real Estate Experts",
+        description: "Get in touch with Homely for all your real estate needs. Contact our team for property inquiries, consultations, and expert advice.",
+        url: "/contactus",
+        siteName: "Homely",
+        images: [
+            {
+                url: "/images/contactUs/og-image.jpg",
+                width: 1200,
+                height: 630,
+                alt: "Contact Homely real estate",
+            },
+        ],
+        locale: "en_US",
+        type: "website",
+    },
+    twitter: {
+        card: "summary_large_image",
+        title: "Contact Homely | Real Estate Experts",
+        description: "Get in touch with Homely for all your real estate needs. Contact our team for property inquiries, consultations, and expert advice.",
+        images: ["/images/contactUs/og-image.jpg"],
+    },
 };
 
 export default function ContactUs() {

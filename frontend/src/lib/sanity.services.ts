@@ -9,6 +9,7 @@ import {
   heroSectionQuery,
   heroBannersQuery,
   navLinksQuery,
+  blogListQuery,
 } from "./sanity.queries";
 import type { Service, ServicesSection } from "@/types/service";
 import type { PropertyHomes } from "@/types/properyHomes";
@@ -31,6 +32,9 @@ export const getServiceBySlug = async (slug: string) =>
 export const getPropertiesByCategory = async (category: string) =>
   sanityClient.fetch<PropertyHomes[]>(propertiesByCategoryQuery, { category });
 
+export const getPropertyBySlug = async (slug: string) =>
+  sanityClient.fetch<PropertyHomes | null>(propertyBySlugQuery, { slug });
+
 export const getTestimonialSection = async () =>
   sanityClient.fetch<TestimonialSection | null>(testimonialSectionQuery);
 
@@ -48,3 +52,9 @@ export const getNavLinks = async () =>
 
 export const getFooterMenus = async () =>
   sanityClient.fetch<FooterMenu[]>(footerMenusQuery);
+
+export const getBlogCount = async () =>
+  sanityClient.fetch<number>(`count(*[_type == "post"])`);
+
+export const getPropertiesCount = async () =>
+  sanityClient.fetch<number>(`count(*[_type == "property"])`);
