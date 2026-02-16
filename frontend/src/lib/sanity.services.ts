@@ -1,6 +1,8 @@
 import { sanityClient } from "./sanity.client";
 import {
   propertiesByCategoryQuery,
+  propertiesQuery,
+  propertyBySlugQuery,
   serviceBySlugQuery,
   servicesQuery,
   servicesSectionQuery,
@@ -31,6 +33,9 @@ export const getServiceBySlug = async (slug: string) =>
 
 export const getPropertiesByCategory = async (category: string) =>
   sanityClient.fetch<PropertyHomes[]>(propertiesByCategoryQuery, { category });
+
+export const getProperties = async () =>
+  sanityClient.fetch<PropertyHomes[]>(propertiesQuery);
 
 export const getPropertyBySlug = async (slug: string) =>
   sanityClient.fetch<PropertyHomes | null>(propertyBySlugQuery, { slug });

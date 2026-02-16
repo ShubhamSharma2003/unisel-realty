@@ -2,6 +2,7 @@ import { PropertyHomes } from '@/types/properyHomes'
 
 export const propertyHomes: PropertyHomes[] = [
   {
+    _id: 'property-1',
     name: 'Serenity height villas',
     slug: 'serenity-height-villas',
     location: '15 s aurora ave, miami',
@@ -25,6 +26,7 @@ export const propertyHomes: PropertyHomes[] = [
     ]
   },
   {
+    _id: 'property-2',
     name: 'Mountain retreat villa',
     slug: 'mountain-retreat-villa',
     location: '18 s aurora ave, miami',
@@ -48,6 +50,7 @@ export const propertyHomes: PropertyHomes[] = [
     ]
   },
   {
+    _id: 'property-3',
     name: 'Modern luxe villa',
     slug: 'modern-luxe-villa',
     location: '20 s aurora ave, miami',
@@ -71,6 +74,7 @@ export const propertyHomes: PropertyHomes[] = [
     ]
   },
   {
+    _id: 'property-4',
     name: 'Royal orchid villas',
     slug: 'royal-orchid-villas',
     location: '12 emerald heights, los angeles',
@@ -94,6 +98,7 @@ export const propertyHomes: PropertyHomes[] = [
     ]
   },
   {
+    _id: 'property-5',
     name: 'Grand vista villas',
     slug: 'grand-cista-villas',
     location: '25 skyline boulevard, san diego',
@@ -117,6 +122,7 @@ export const propertyHomes: PropertyHomes[] = [
     ]
   },
   {
+    _id: 'property-6',
     name: 'Imperial pearl villas',
     slug: 'imperial-pearn-villas',
     location: '18 sapphire bay road, naples',
@@ -140,6 +146,7 @@ export const propertyHomes: PropertyHomes[] = [
     ]
   },
   {
+    _id: 'property-7',
     name: 'Opulent haven villas',
     slug: 'opulent-heven-villas',
     location: '22 ocean breeze drive, malibu',
@@ -163,6 +170,7 @@ export const propertyHomes: PropertyHomes[] = [
     ]
   },
   {
+    _id: 'property-8',
     name: 'Elite crest villas',
     slug: 'elite-crest-villas',
     location: '10 palm view lane, beverly hills',
@@ -186,6 +194,7 @@ export const propertyHomes: PropertyHomes[] = [
     ]
   },
   {
+    _id: 'property-9',
     name: 'Majestic bay villas',
     slug: 'majestic-bay-villas',
     location: '8 sunset cove, miami beach',

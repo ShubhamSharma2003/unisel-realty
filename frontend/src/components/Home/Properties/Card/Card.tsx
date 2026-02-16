@@ -9,7 +9,7 @@ const PropertyCard: React.FC<{ item: PropertyHomes }> = ({ item }) => {
 
   const mainImageSource = images?.[0];
   const mainImage = mainImageSource
-    ? 'src' in mainImageSource
+    ? typeof mainImageSource === 'object' && 'src' in mainImageSource
       ? mainImageSource.src
       : urlFor(mainImageSource).width(880).height(600).fit('crop').url()
     : null;

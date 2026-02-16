@@ -48,14 +48,14 @@ const PropertyDetailContent = async ({ slug }: PropertyDetailContentProps) => {
 
   const mainImageSource = property?.images?.[0];
   const mainImage = mainImageSource
-    ? "src" in mainImageSource
+    ? typeof mainImageSource === 'object' && "src" in mainImageSource
       ? mainImageSource.src
       : urlFor(mainImageSource).width(1600).height(1080).fit("crop").url()
     : null;
 
   const getImageUrl = (img: any, index: number) => {
     if (!img) return null;
-    return "src" in img
+    return typeof img === 'object' && "src" in img
       ? img.src
       : urlFor(img)
           .width(index === 1 ? 640 : 320)
@@ -127,10 +127,10 @@ const PropertyDetailContent = async ({ slug }: PropertyDetailContentProps) => {
               </div>
             ) : null}
           </div>
-          {property?.images[1] ? (
+          {property?.images?.[1] ? (
             <div className="lg:col-span-4 lg:block hidden">
               <Image
-                src={getImageUrl(property?.images[1], 1) || ""}
+                src={getImageUrl(property?.images?.[1], 1) || ""}
                 alt="Property Image 2"
                 width={640}
                 height={800}
@@ -138,10 +138,10 @@ const PropertyDetailContent = async ({ slug }: PropertyDetailContentProps) => {
               />
             </div>
           ) : null}
-          {property?.images[2] ? (
+          {property?.images?.[2] ? (
             <div className="lg:col-span-2 col-span-6">
               <Image
-                src={getImageUrl(property?.images[2], 2) || ""}
+                src={getImageUrl(property?.images?.[2], 2) || ""}
                 alt="Property Image 3"
                 width={320}
                 height={400}
@@ -149,10 +149,10 @@ const PropertyDetailContent = async ({ slug }: PropertyDetailContentProps) => {
               />
             </div>
           ) : null}
-          {property?.images[3] ? (
+          {property?.images?.[3] ? (
             <div className="lg:col-span-2 col-span-6">
               <Image
-                src={getImageUrl(property?.images[3], 3) || ""}
+                src={getImageUrl(property?.images?.[3], 3) || ""}
                 alt="Property Image 4"
                 width={320}
                 height={400}
@@ -280,14 +280,16 @@ const PropertyDetailContent = async ({ slug }: PropertyDetailContentProps) => {
                   {item.review}
                 </p>
                 <div className="flex items-center gap-6">
-                  <Image
-                    src={item.image}
-                    alt={item.name}
-                    width={80}
-                    height={80}
-                    className="w-20 h-20 rounded-2xl"
-                    unoptimized={true}
-                  />
+                  {item.image && (
+                    <Image
+                      src={typeof item.image === 'string' ? item.image : urlFor(item.image).width(80).height(80).fit("crop").url()}
+                      alt={item.name}
+                      width={80}
+                      height={80}
+                      className="w-20 h-20 rounded-2xl"
+                      unoptimized={true}
+                    />
+                  )}
                   <div className="">
                     <h3 className="text-xm text-dark dark:text-white">
                       {item.name}

@@ -13,7 +13,7 @@ export async function generateStaticParams() {
 export default async function PropertyDetailPage({
   params,
 }: {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }) {
   const awaitedParams = await params;
   return <PropertyDetailContent slug={awaitedParams?.slug} />;

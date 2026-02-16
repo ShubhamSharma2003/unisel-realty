@@ -14,8 +14,9 @@ export async function generateStaticParams() {
   return services.map((service) => ({ service: service.slug }));
 }
 
-export async function generateMetadata({ params }: { params: { service: string } }) {
-  const slug = params.service;
+export async function generateMetadata({ params }: { params: Promise<{ service: string }> }) {
+  const awaitedParams = await params;
+  const slug = awaitedParams.service;
   const service = await getServiceBySlug(slug);
 
   const siteUrl = 'https://uniselrealty.com';
@@ -63,7 +64,7 @@ export async function generateMetadata({ params }: { params: { service: string }
 export default async function ServicePage({
   params,
 }: {
-  params: { service: string };
+  params: Promise<{ service: string }>;
 }) {
   const awaitedParams = await params;
   return <ServicePageContent slug={awaitedParams.service} />;

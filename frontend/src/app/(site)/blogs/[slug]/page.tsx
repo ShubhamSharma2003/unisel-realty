@@ -35,7 +35,7 @@ const portableTextComponents = {
     },
 };
 
-export async function generateMetadata({ params }: any) {
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
     const data = await params;
     const post = await sanityClient.fetch(blogPostBySlugQuery, { slug: data.slug });
 
@@ -82,7 +82,7 @@ export async function generateMetadata({ params }: any) {
     }
 }
 
-export default async function Post({ params }: any) {
+export default async function Post({ params }: { params: Promise<{ slug: string }> }) {
     const data = await params;
     const post = await sanityClient.fetch(blogPostBySlugQuery, { slug: data.slug });
     if (!post) {

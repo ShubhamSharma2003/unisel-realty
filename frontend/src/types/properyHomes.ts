@@ -14,6 +14,7 @@ export type PropertyAmenity = {
 };
 
 export type PropertyHomes = {
+  _id: string;
   name: string;
   slug: string;
   location: string;
