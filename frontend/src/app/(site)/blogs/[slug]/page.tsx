@@ -8,10 +8,6 @@ import { sanityClient } from "@/lib/sanity.client";
 import { blogPostBySlugQuery } from "@/lib/sanity.queries";
 import { urlFor } from "@/lib/sanity.image";
 
-type Props = {
-    params: { slug: string };
-};
-
 const portableTextComponents = {
     types: {
         image: ({ value }: { value: { asset?: { _ref?: string }; alt?: string } }) => {

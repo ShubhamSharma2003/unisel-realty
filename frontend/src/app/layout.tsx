@@ -8,6 +8,7 @@ import { ThemeProvider } from 'next-themes'
 import NextTopLoader from 'nextjs-toploader';
 import SessionProviderComp from '@/components/nextauth/SessionProvider'
 import { getNavLinks } from '@/lib/sanity.services'
+import type { Session } from 'next-auth'
 
 const font = Bricolage_Grotesque({ subsets: ["latin"] });
 
@@ -58,10 +59,6 @@ export const metadata: Metadata = {
     shortcut: '/favicon.ico',
     apple: '/favicon.ico',
   },
-  themeColor: [
-    { media: '(prefers-color-scheme: light)', color: '#ffffff' },
-    { media: '(prefers-color-scheme: dark)', color: '#000000' },
-  ],
   robots: {
     index: true,
     follow: true,
@@ -73,8 +70,17 @@ export const metadata: Metadata = {
       'max-video-preview': -1,
     },
   },
-  viewport: 'width=device-width, initial-scale=1',
 }
+
+export const viewport = {
+  width: 'device-width',
+  initialScale: 1,
+}
+
+export const themeColor = [
+  { media: '(prefers-color-scheme: light)', color: '#ffffff' },
+  { media: '(prefers-color-scheme: dark)', color: '#000000' },
+]
 
 const schema = {
   "@context": "https://schema.org",
@@ -150,7 +156,7 @@ export default async function RootLayout({
   session,
 }: Readonly<{
   children: React.ReactNode
-  session: any
+  session: Session | null
 }>) {
   const navLinks = await getNavLinks()
   const footerMenus = await getFooterMenus()

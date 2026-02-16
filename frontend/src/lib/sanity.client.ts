@@ -10,6 +10,9 @@ export const sanityConfig = {
   dataset,
   apiVersion,
   useCdn: true,
+  deployment: {
+    appId: 'imfp610gzynr4gee1s5k2jfb',
+  },
 };
 
 export const sanityClient = createClient(sanityConfig);
