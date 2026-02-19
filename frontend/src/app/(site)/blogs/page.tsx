@@ -14,7 +14,7 @@ export async function generateMetadata(): Promise<Metadata> {
     return {
         title,
         description,
-        keywords: ["real estate", "blog", "property insights", "market updates", "homely"],
+        keywords: ["real estate", "blog", "property insights", "market updates", "unisel realty"],
         openGraph: {
             title: `Real Estate Insights | ${siteName} Blog`,
             description,
@@ -25,7 +25,7 @@ export async function generateMetadata(): Promise<Metadata> {
                     url: "/images/blog/og-image.jpg",
                     width: 1200,
                     height: 630,
-                    alt: "Homely real estate blog",
+                    alt: "Unisel Realty real estate blog",
                 },
             ],
             locale: "en_US",

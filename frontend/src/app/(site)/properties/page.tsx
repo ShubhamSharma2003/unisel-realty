@@ -26,7 +26,7 @@ export async function generateMetadata(): Promise<Metadata> {
                     url: "/images/properties/og-image.jpg",
                     width: 1200,
                     height: 630,
-                    alt: "Homely luxury properties",
+                    alt: "Unisel Realty luxury properties",
                 },
             ],
             locale: "en_US",

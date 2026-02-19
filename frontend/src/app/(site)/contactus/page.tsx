@@ -3,20 +3,20 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { Metadata } from "next";
 export const metadata: Metadata = {
-    title: "Contact Us | Homely",
-    description: "Get in touch with Homely for all your real estate needs. Contact our team for property inquiries, consultations, and expert advice.",
-    keywords: ["contact", "real estate", "homely", "property inquiry", "consultation"],
+    title: "Contact Us | Unisel Realty",
+    description: "Get in touch with Unisel Realty for all your real estate needs. Contact our team for property inquiries, consultations, and expert advice.",
+    keywords: ["contact", "real estate", "unisel realty", "property inquiry", "consultation"],
     openGraph: {
-        title: "Contact Homely | Real Estate Experts",
-        description: "Get in touch with Homely for all your real estate needs. Contact our team for property inquiries, consultations, and expert advice.",
+        title: "Contact Unisel Realty | Real Estate Experts",
+        description: "Get in touch with Unisel Realty for all your real estate needs. Contact our team for property inquiries, consultations, and expert advice.",
         url: "/contactus",
-        siteName: "Homely",
+        siteName: "Unisel Realty",
         images: [
             {
                 url: "/images/contactUs/og-image.jpg",
                 width: 1200,
                 height: 630,
-                alt: "Contact Homely real estate",
+                alt: "Contact Unisel Realty real estate",
             },
         ],
         locale: "en_US",
@@ -24,8 +24,8 @@ export const metadata: Metadata = {
     },
     twitter: {
         card: "summary_large_image",
-        title: "Contact Homely | Real Estate Experts",
-        description: "Get in touch with Homely for all your real estate needs. Contact our team for property inquiries, consultations, and expert advice.",
+        title: "Contact Unisel Realty | Real Estate Experts",
+        description: "Get in touch with Unisel Realty for all your real estate needs. Contact our team for property inquiries, consultations, and expert advice.",
         images: ["/images/contactUs/og-image.jpg"],
     },
 };
