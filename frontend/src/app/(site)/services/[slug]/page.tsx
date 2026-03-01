@@ -1,38 +1,33 @@
 import { sanityClient } from "@/lib/sanity.client";
-import {
-  servicesSlugsQuery,
-} from "@/lib/sanity.queries";
+import { servicesSlugsQuery } from "@/lib/sanity.queries";
 import ServicePageContent from "@/components/Properties/ServicePageContent";
 import { getServiceBySlug } from '@/lib/sanity.services';
 import { urlFor } from '@/lib/sanity.image';
 
 export async function generateStaticParams() {
-  const services = await sanityClient.fetch<{ slug: string }[]>(
-    servicesSlugsQuery
-  );
-
-  return services.map((service) => ({ service: service.slug }));
+  const services = await sanityClient.fetch<{ slug: string }[]>(servicesSlugsQuery);
+  return services.map((service) => ({ slug: service.slug }));
 }
 
-export async function generateMetadata({ params }: { params: Promise<{ service: string }> }) {
-  const awaitedParams = await params;
-  const slug = awaitedParams.service;
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
   const service = await getServiceBySlug(slug);
-
   const siteUrl = 'https://uniselrealty.com';
   const siteName = 'Unisel Realty';
 
   if (!service) {
     return {
       title: 'Not Found',
-      description: `Service ${slug} not found on ${siteName}`,
+      description: `Service not found on ${siteName}`,
       robots: { index: false, follow: false },
     };
   }
 
   const title = `${service.title} | ${siteName}`;
   const description = service.description ?? '';
-  const imageUrl = service.image ? urlFor(service.image).width(1200).height(630).url() : `${siteUrl}/images/hero/og-image.jpg`;
+  const imageUrl = service.image
+    ? urlFor(service.image).width(1200).height(630).url()
+    : `${siteUrl}/images/hero/og-image.jpg`;
 
   return {
     title,
@@ -42,14 +37,7 @@ export async function generateMetadata({ params }: { params: Promise<{ service: 
       description,
       url: `${siteUrl}/services/${slug}`,
       siteName,
-      images: [
-        {
-          url: imageUrl,
-          alt: service.title,
-          width: 1200,
-          height: 630,
-        },
-      ],
+      images: [{ url: imageUrl, alt: service.title, width: 1200, height: 630 }],
       type: 'article',
     },
     twitter: {
@@ -64,8 +52,8 @@ export async function generateMetadata({ params }: { params: Promise<{ service: 
 export default async function ServicePage({
   params,
 }: {
-  params: Promise<{ service: string }>;
+  params: Promise<{ slug: string }>;
 }) {
-  const awaitedParams = await params;
-  return <ServicePageContent slug={awaitedParams.service} />;
+  const { slug } = await params;
+  return <ServicePageContent slug={slug} />;
 }

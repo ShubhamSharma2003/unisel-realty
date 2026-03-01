@@ -7,40 +7,31 @@ export async function generateMetadata(): Promise<Metadata> {
     const blogCount = await getBlogCount();
     const siteUrl = 'https://uniselrealty.com';
     const siteName = 'Unisel Realty';
-
-    const title = `Blog Grids | ${siteName}`;
     const description = `Stay ahead in the property market with expert advice and updates. Read our ${blogCount} insightful blog posts.`;
 
     return {
-        title,
+        title: `Real Estate Blog | ${siteName}`,
         description,
-        keywords: ["real estate", "blog", "property insights", "market updates", "unisel realty"],
+        keywords: ["real estate blog", "property insights gurgaon", "market updates", "unisel realty blog"],
         openGraph: {
-            title: `Real Estate Insights | ${siteName} Blog`,
+            title: `Real Estate Blog | ${siteName}`,
             description,
-            url: `${siteUrl}/blogs`,
+            url: `${siteUrl}/blog`,
             siteName,
-            images: [
-                {
-                    url: "/images/blog/og-image.jpg",
-                    width: 1200,
-                    height: 630,
-                    alt: "Unisel Realty real estate blog",
-                },
-            ],
+            images: [{ url: "/images/blog/og-image.jpg", width: 1200, height: 630, alt: "Unisel Realty real estate blog" }],
             locale: "en_US",
             type: "website",
         },
         twitter: {
             card: "summary_large_image",
-            title: `Real Estate Insights | ${siteName} Blog`,
+            title: `Real Estate Blog | ${siteName}`,
             description,
             images: ["/images/blog/og-image.jpg"],
         },
     };
 }
 
-const Blog = () => {
+const BlogPage = () => {
     return (
         <>
             <HeroSub
@@ -53,4 +44,4 @@ const Blog = () => {
     );
 };
 
-export default Blog;
+export default BlogPage;

@@ -129,7 +129,24 @@ export const propertiesByCategoryQuery = groq`
     baths,
     area,
     images,
-    category
+    category,
+    status
+  }
+`;
+
+export const propertiesByCategoryAndStatusQuery = groq`
+  *[_type == "property" && category == $category && status == $status] | order(_createdAt desc) {
+    _id,
+    name,
+    "slug": slug.current,
+    location,
+    rate,
+    beds,
+    baths,
+    area,
+    images,
+    category,
+    status
   }
 `;
 
@@ -144,7 +161,8 @@ export const propertiesForHomeQuery = groq`
     baths,
     area,
     images,
-    category
+    category,
+    status
   }
 `;
 
@@ -159,7 +177,8 @@ export const propertiesQuery = groq`
     baths,
     area,
     images,
-    category
+    category,
+    status
   }
 `;
 

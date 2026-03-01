@@ -1,8 +1,19 @@
 import PropertyCard from '@/components/Home/Properties/Card/Card'
-import { getProperties } from '@/lib/sanity.services'
+import { getProperties, getPropertiesByCategory, getPropertiesByCategoryAndStatus } from '@/lib/sanity.services'
 
-const PropertiesListing: React.FC = async () => {
-  const properties = await getProperties();
+interface PropertiesListingProps {
+  category?: string;
+  status?: string;
+}
+
+const PropertiesListing: React.FC<PropertiesListingProps> = async ({ category, status }) => {
+  const properties = await (
+    category && status
+      ? getPropertiesByCategoryAndStatus(category, status)
+      : category
+        ? getPropertiesByCategory(category)
+        : getProperties()
+  );
 
   return (
     <section className='pt-0!'>

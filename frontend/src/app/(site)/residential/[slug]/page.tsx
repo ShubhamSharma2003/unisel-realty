@@ -6,7 +6,6 @@ export async function generateStaticParams() {
   const properties = await sanityClient.fetch<{ slug: string }[]>(
     propertySlugsQuery
   );
-
   return properties.map((property) => ({ slug: property.slug }));
 }
 
