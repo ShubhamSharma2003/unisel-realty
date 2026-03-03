@@ -64,7 +64,7 @@ const HeroContent = ({ section, banners }: HeroContentProps) => {
   }
 
   return (
-    <section className="!py-0">
+    <section className="!py-0 overflow-hidden">
       <Carousel
         setApi={setApi}
         opts={{

@@ -7,11 +7,13 @@ import BlogSmall from '@/components/shared/Blog'
 import GetInTouch from '@/components/Home/GetInTouch'
 import FAQ from '@/components/Home/FAQs'
 import GoogleReviews from '@/components/Home/GoogleReviews'
+import TrustBar from '@/components/shared/TrustBar'
 
 export default function Home() {
   return (
     <main>
       <Hero />
+      <TrustBar />
       <Services />
       <Properties />
       <FeaturedProperty />
