@@ -8,6 +8,7 @@ import GetInTouch from '@/components/Home/GetInTouch'
 import FAQ from '@/components/Home/FAQs'
 import GoogleReviews from '@/components/Home/GoogleReviews'
 import TrustBar from '@/components/shared/TrustBar'
+import ServicesOffered from '@/components/Home/ServicesOffered'
 
 export default function Home() {
   return (
@@ -16,6 +17,7 @@ export default function Home() {
       <TrustBar />
       <Services />
       <Properties />
+      <ServicesOffered />
       <FeaturedProperty />
       <Testimonial />
       <GoogleReviews appId="81d9b80f-1860-4f42-b491-1f73506a22d0" />
