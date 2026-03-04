@@ -1,4 +1,9 @@
 @import 'tailwindcss';
+
+@keyframes marquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
 @plugin 'tailwindcss-animate';
 
 @custom-variant dark (&:where(.dark, .dark *));

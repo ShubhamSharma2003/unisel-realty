@@ -12,6 +12,7 @@ import {
   heroSectionQuery,
   heroBannersQuery,
   navLinksQuery,
+  builderPartnersQuery,
 } from "./sanity.queries";
 import type { Service, ServicesSection } from "@/types/service";
 import type { PropertyHomes } from "@/types/properyHomes";
@@ -66,3 +67,13 @@ export const getBlogCount = async () =>
 
 export const getPropertiesCount = async () =>
   sanityClient.fetch<number>(`count(*[_type == "property"])`, {}, { next: { tags: ['properties'] } });
+
+export type BuilderPartner = {
+  _id: string;
+  name: string;
+  logo: { asset: { _ref: string } };
+  order?: number;
+};
+
+export const getBuilderPartners = async () =>
+  sanityClient.fetch<BuilderPartner[]>(builderPartnersQuery, {}, { next: { tags: ['builder-partners'] } });
