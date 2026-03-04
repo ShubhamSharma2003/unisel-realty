@@ -130,7 +130,8 @@ export const propertiesByCategoryQuery = groq`
     area,
     images,
     category,
-    status
+    status,
+    reraApproved
   }
 `;
 
@@ -146,7 +147,8 @@ export const propertiesByCategoryAndStatusQuery = groq`
     area,
     images,
     category,
-    status
+    status,
+    reraApproved
   }
 `;
 
@@ -162,7 +164,8 @@ export const propertiesForHomeQuery = groq`
     area,
     images,
     category,
-    status
+    status,
+    reraApproved
   }
 `;
 
@@ -178,7 +181,8 @@ export const propertiesQuery = groq`
     area,
     images,
     category,
-    status
+    status,
+    reraApproved
   }
 `;
 
@@ -232,7 +236,9 @@ export const propertyBySlugQuery = groq`
       icon,
       label
     },
-    mapUrl
+    mapUrl,
+    reraNumber,
+    reraApproved
   }
 `;
 

@@ -15,11 +15,16 @@ const PropertiesListing: React.FC<PropertiesListingProps> = async ({ category, s
         : getProperties()
   );
 
+  // New-launch properties must be RERA-approved before they can be advertised (RERA Act 2016)
+  const displayProperties = status === "new-launch"
+    ? properties.filter((p) => p.reraApproved === true)
+    : properties;
+
   return (
     <section className='pt-0!'>
       <div className='container max-w-8xl mx-auto px-5 2xl:px-0'>
         <div className='grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-10'>
-          {properties.map((item, index) => (
+          {displayProperties.map((item, index) => (
             <div key={item._id || index} className=''>
               <PropertyCard item={item} />
             </div>

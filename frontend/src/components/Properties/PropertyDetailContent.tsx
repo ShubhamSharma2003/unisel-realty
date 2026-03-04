@@ -86,6 +86,17 @@ const PropertyDetailContent = async ({ slug, property: propertyProp }: PropertyD
                 {property?.location}
               </p>
             </div>
+            {property?.reraNumber && (
+              <a
+                href="https://hrera.org.in"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-1.5 w-fit mt-2 text-sm text-primary/80 hover:text-primary duration-300"
+              >
+                <Icon icon="ph:certificate" width={16} height={16} />
+                RERA Reg. No: {property.reraNumber}
+              </a>
+            )}
           </div>
           <div className="lg:col-span-4 col-span-12">
             <div className="flex">

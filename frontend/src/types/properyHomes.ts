@@ -28,6 +28,8 @@ export type PropertyHomes = {
   features?: PropertyFeature[];
   amenities?: PropertyAmenity[];
   mapUrl?: string;
+  reraNumber?: string;
+  reraApproved?: boolean;
 };
 
 export type PropertiesSection = {

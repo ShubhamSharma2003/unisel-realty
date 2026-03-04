@@ -104,6 +104,21 @@ const Footer = ({ footerMenus }: FooterProps) => {
           </div>
         </div>
 
+        {/* RERA Disclaimer */}
+        <div className="border-t border-white/10 py-4 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
+          <p className="text-white/40 text-xs">
+            Prices and details are subject to change. Please verify all property details with RERA before making any purchase decision.
+          </p>
+          <a
+            href="https://hrera.org.in"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-white/40 text-xs hover:text-primary duration-300 whitespace-nowrap flex-shrink-0"
+          >
+            Verify on RERA Haryana →
+          </a>
+        </div>
+
         {/* Bottom Section: Copyright */}
         <div className="flex justify-between md:flex-nowrap flex-wrap items-center py-6 gap-6">
           <p className="text-white/40 text-sm text-center md:text-left">
