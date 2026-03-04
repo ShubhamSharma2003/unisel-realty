@@ -1,6 +1,7 @@
 import HeroSub from "@/components/shared/HeroSub";
 import PropertiesListing from "@/components/Properties/PropertyList";
 import { Metadata } from "next";
+import { propertyCollectionSchema } from "@/lib/jsonld";
 
 export const metadata: Metadata = {
     title: "Commercial Properties in Gurgaon | Unisel Realty",
@@ -24,8 +25,18 @@ export const metadata: Metadata = {
 };
 
 const CommercialPage = () => {
+    const schema = propertyCollectionSchema({
+        name: "Commercial Properties in Gurgaon | Unisel Realty",
+        description: "Explore premium commercial properties in Gurgaon — office spaces, retail shops, and pre-leased investments.",
+        url: "https://uniselrealty.com/commercial",
+    });
+
     return (
         <>
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+            />
             <HeroSub
                 title="Commercial Properties in Gurgaon."
                 description="Office spaces, retail shops, and pre-leased investments for your business."

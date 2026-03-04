@@ -2,6 +2,7 @@ import { Icon } from '@iconify/react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { Metadata } from "next";
+import { contactPageSchema } from "@/lib/jsonld";
 
 export const metadata: Metadata = {
     title: "Contact Us | Unisel Realty",
@@ -25,8 +26,14 @@ export const metadata: Metadata = {
 };
 
 export default function ContactPage() {
+    const schema = contactPageSchema();
+
     return (
         <div className='container max-w-8xl mx-auto px-5 2xl:px-0 pt-32 md:pt-44 pb-14 md:pb-28'>
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+            />
             <div className='mb-16'>
                 <div className='flex gap-2.5 items-center justify-center mb-3'>
                     <span>

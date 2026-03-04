@@ -1,5 +1,6 @@
 import { Metadata } from "next";
 import HeroSub from "@/components/shared/HeroSub";
+import { aboutPageSchema } from "@/lib/jsonld";
 
 export const metadata: Metadata = {
     title: "About Us | Unisel Realty — Gurgaon Real Estate Experts",
@@ -23,8 +24,14 @@ export const metadata: Metadata = {
 };
 
 const AboutPage = () => {
+    const schema = aboutPageSchema();
+
     return (
         <>
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+            />
             <HeroSub
                 title="About Unisel Realty."
                 description="Gurgaon's trusted real estate consultants — helping buyers, sellers, and investors since day one."

@@ -7,6 +7,7 @@ import { PortableText } from "@portabletext/react";
 import { sanityClient } from "@/lib/sanity.client";
 import { blogPostBySlugQuery } from "@/lib/sanity.queries";
 import { urlFor } from "@/lib/sanity.image";
+import { blogArticleSchema } from "@/lib/jsonld";
 
 const portableTextComponents = {
     types: {
@@ -66,8 +67,22 @@ export default async function Post({ params }: { params: Promise<{ slug: string 
         ? urlFor(post.authorImage).width(96).height(96).fit("crop").url()
         : null;
 
+    const schema = blogArticleSchema({
+        title: post.title ?? "",
+        slug: post.slug ?? slug,
+        excerpt: post.excerpt,
+        date: post.date,
+        author: post.author,
+        coverImageUrl,
+        tag: post.tag,
+    });
+
     return (
         <>
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+            />
             <section className="relative !pt-44 pb-0!">
                 <div className="container max-w-8xl mx-auto md:px-0 px-4">
                     <div>

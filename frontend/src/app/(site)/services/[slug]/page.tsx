@@ -3,6 +3,8 @@ import { servicesSlugsQuery } from "@/lib/sanity.queries";
 import ServicePageContent from "@/components/Properties/ServicePageContent";
 import { getServiceBySlug } from '@/lib/sanity.services';
 import { urlFor } from '@/lib/sanity.image';
+import { servicePageSchema } from '@/lib/jsonld';
+import { notFound } from 'next/navigation';
 
 export async function generateStaticParams() {
   const services = await sanityClient.fetch<{ slug: string }[]>(servicesSlugsQuery);
@@ -55,5 +57,29 @@ export default async function ServicePage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  return <ServicePageContent slug={slug} />;
+  const service = await getServiceBySlug(slug);
+
+  if (!service) notFound();
+
+  const imageUrl = service.image
+    ? urlFor(service.image).width(1200).height(630).url()
+    : null;
+
+  const schema = servicePageSchema({
+    title: service.title,
+    slug: service.slug,
+    description: service.description,
+    imageUrl,
+    category: service.category,
+  });
+
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+      />
+      <ServicePageContent slug={slug} />
+    </>
+  );
 }

@@ -11,6 +11,7 @@ import { testimonials } from "@/app/api/testimonial";
 
 type PropertyDetailContentProps = {
   slug: string;
+  property?: PropertyHomes | null;
 };
 
 const portableTextComponents = {
@@ -36,8 +37,8 @@ const portableTextComponents = {
   },
 };
 
-const PropertyDetailContent = async ({ slug }: PropertyDetailContentProps) => {
-  const property = await sanityClient.fetch<PropertyHomes | null>(
+const PropertyDetailContent = async ({ slug, property: propertyProp }: PropertyDetailContentProps) => {
+  const property = propertyProp ?? await sanityClient.fetch<PropertyHomes | null>(
     propertyBySlugQuery,
     { slug }
   );

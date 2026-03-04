@@ -4,6 +4,7 @@ import './globals.css'
 import Header from '@/components/Layout/Header'
 import Footer from '@/components/Layout/Footer'
 import { getFooterMenus } from '@/lib/sanity.services'
+import { organizationSchema } from '@/lib/jsonld'
 import { ThemeProvider } from 'next-themes'
 import NextTopLoader from 'nextjs-toploader';
 import SessionProviderComp from '@/components/nextauth/SessionProvider'
@@ -39,7 +40,7 @@ export const metadata: Metadata = {
     siteName: 'Unisel Realty',
     images: [
       {
-        url: 'https://uniselrealty.com/wp-content/uploads/2024/05/unisel_logo-removebg-preview.png',
+        url: 'https://uniselrealty.com/images/header/unisel-logo.png',
         width: 500,
         height: 500,
         alt: 'Unisel Realty logo',
@@ -52,7 +53,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Home - Unisel Realty',
     description: 'Unisel Realty Pvt. Ltd. is based in Gurgaon at the key location of Golf Course Extension Road, with over 15 years of rich experience in real estate.',
-    images: ['https://uniselrealty.com/wp-content/uploads/2024/05/unisel_logo-removebg-preview.png'],
+    images: ['https://uniselrealty.com/images/header/unisel-logo.png'],
   },
   icons: {
     icon: '/favicon.ico',
@@ -82,74 +83,7 @@ export const themeColor = [
   { media: '(prefers-color-scheme: dark)', color: '#000000' },
 ]
 
-const schema = {
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "WebPage",
-      "@id": "https://uniselrealty.com/",
-      "url": "https://uniselrealty.com/",
-      "name": "Home - Unisel Realty",
-      "isPartOf": { "@id": "https://uniselrealty.com/#website" },
-      "about": { "@id": "https://uniselrealty.com/#organization" },
-      "primaryImageOfPage": { "@id": "https://uniselrealty.com/#primaryimage" },
-      "image": { "@id": "https://uniselrealty.com/#primaryimage" },
-      "thumbnailUrl": "https://i0.wp.com/uniselrealty.com/wp-content/uploads/2024/05/unisel_logo-removebg-preview.png?fit=500%2C500&ssl=1",
-      "datePublished": "2016-02-15T23:00:39+00:00",
-      "dateModified": "2025-05-25T08:19:00+00:00",
-      "description": "Unisel Realty Pvt. Ltd. is based in Gurgaon at the key location of Golf Course Extension Road, with over 15 years of rich experience in real estate. With a specialised team of 20+ professionals in new booking, leasing, resale, etc., we deal with residential as well as commercial projects. Our strength is our team of progressive and dynamic leaders, who have been felicitated by numerous developers and clients for their transparency and reliability.",
-      "breadcrumb": { "@id": "https://uniselrealty.com/#breadcrumb" },
-      "inLanguage": "en-US",
-      "potentialAction": [{ "@type": "ReadAction", "target": ["https://uniselrealty.com/"] }]
-    },
-    {
-      "@type": "ImageObject",
-      "inLanguage": "en-US",
-      "@id": "https://uniselrealty.com/#primaryimage",
-      "url": "https://i0.wp.com/uniselrealty.com/wp-content/uploads/2024/05/unisel_logo-removebg-preview.png?fit=500%2C500&ssl=1",
-      "contentUrl": "https://i0.wp.com/uniselrealty.com/wp-content/uploads/2024/05/unisel_logo-removebg-preview.png?fit=500%2C500&ssl=1",
-      "width": 500,
-      "height": 500
-    },
-    {
-      "@type": "BreadcrumbList",
-      "@id": "https://uniselrealty.com/#breadcrumb",
-      "itemListElement": [{ "@type": "ListItem", "position": 1, "name": "Home" }]
-    },
-    {
-      "@type": "WebSite",
-      "@id": "https://uniselrealty.com/#website",
-      "url": "https://uniselrealty.com/",
-      "name": "Unisel Realty",
-      "description": "Unisel Realty",
-      "publisher": { "@id": "https://uniselrealty.com/#organization" },
-      "potentialAction": [{
-        "@type": "SearchAction",
-        "target": { "@type": "EntryPoint", "urlTemplate": "https://uniselrealty.com/?s={search_term_string}" },
-        "query-input": { "@type": "PropertyValueSpecification", "valueRequired": true, "valueName": "search_term_string" }
-      }],
-      "inLanguage": "en-US"
-    },
-    {
-      "@type": "Organization",
-      "@id": "https://uniselrealty.com/#organization",
-      "name": "Unisel Realty",
-      "url": "https://uniselrealty.com/",
-      "logo": {
-        "@type": "ImageObject",
-        "inLanguage": "en-US",
-        "@id": "https://uniselrealty.com/#/schema/logo/image/",
-        "url": "https://i0.wp.com/uniselrealty.com/wp-content/uploads/2024/05/unisel_logo-removebg-preview.png?fit=500%2C500&ssl=1",
-        "contentUrl": "https://i0.wp.com/uniselrealty.com/wp-content/uploads/2024/05/unisel_logo-removebg-preview.png?fit=500%2C500&ssl=1",
-        "width": 500,
-        "height": 500,
-        "caption": "Unisel Realty"
-      },
-      "image": { "@id": "https://uniselrealty.com/#/schema/logo/image/" },
-      "sameAs": ["https://www.facebook.com/uniselrealty"]
-    }
-  ]
-};
+const schema = organizationSchema();
 
 export default async function RootLayout({
   children,

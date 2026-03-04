@@ -7,6 +7,21 @@ import {
     AccordionTrigger,
 } from "@/components/ui/accordion"
 
+export const FAQ_ITEMS = [
+    {
+        question: "Can I personalize my Unisel Realty home?",
+        answer: "Discover a diverse range of premium properties, from luxurious apartments to spacious villas, tailored to your needs.",
+    },
+    {
+        question: "Where can I find Unisel Realty homes?",
+        answer: "Discover a diverse range of premium properties, from luxurious apartments to spacious villas, tailored to your needs.",
+    },
+    {
+        question: "What steps to buy from Unisel Realty?",
+        answer: "Discover a diverse range of premium properties, from luxurious apartments to spacious villas, tailored to your needs.",
+    },
+];
+
 const FAQ: React.FC = () => {
     return (
         <section id='faqs'>

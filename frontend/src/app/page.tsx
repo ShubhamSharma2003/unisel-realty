@@ -11,10 +11,18 @@ import TrustBar from '@/components/shared/TrustBar'
 import ServicesOffered from '@/components/Home/ServicesOffered'
 import WhyUs from '@/components/Home/WhyUs'
 import BuilderPartners from '@/components/Home/BuilderPartners'
+import { FAQ_ITEMS } from '@/components/Home/FAQs'
+import { homepageSchema } from '@/lib/jsonld'
 
 export default function Home() {
+  const schema = homepageSchema(FAQ_ITEMS)
+
   return (
     <main>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+      />
       <Hero />
       <TrustBar />
       <Services />

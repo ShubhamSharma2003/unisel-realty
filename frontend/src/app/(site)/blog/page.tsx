@@ -2,6 +2,7 @@ import BlogList from "@/components/Blog";
 import HeroSub from "@/components/shared/HeroSub";
 import { Metadata } from "next";
 import { getBlogCount } from "@/lib/sanity.services";
+import { blogListingSchema } from "@/lib/jsonld";
 
 export async function generateMetadata(): Promise<Metadata> {
     const blogCount = await getBlogCount();
@@ -31,9 +32,16 @@ export async function generateMetadata(): Promise<Metadata> {
     };
 }
 
-const BlogPage = () => {
+const BlogPage = async () => {
+    const blogCount = await getBlogCount();
+    const schema = blogListingSchema(blogCount);
+
     return (
         <>
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+            />
             <HeroSub
                 title="Real estate insights."
                 description="Stay ahead in the property market with expert advice and updates."

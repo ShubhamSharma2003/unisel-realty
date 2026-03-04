@@ -3,7 +3,8 @@
     "allow": [
       "Bash(ls -la \"c:/Users/Shubham/Desktop/UniselRealtyNew/frontend/src/app/\\(site\\)/\")",
       "Bash(find \"c:/Users/Shubham/Desktop/UniselRealtyNew/frontend/src/app/\\(site\\)\" -type f)",
-      "Bash(find \"c:/Users/Shubham/Desktop/UniselRealtyNew/frontend/src/app/\\(site\\)/services\" -name \"page.tsx\")"
+      "Bash(find \"c:/Users/Shubham/Desktop/UniselRealtyNew/frontend/src/app/\\(site\\)/services\" -name \"page.tsx\")",
+      "Bash(npm run build)"
     ]
   }
 }

@@ -3,6 +3,7 @@ import PropertiesListing from "@/components/Properties/PropertyList";
 import React from "react";
 import { Metadata } from "next";
 import { getPropertiesCount } from "@/lib/sanity.services";
+import { propertyCollectionSchema } from "@/lib/jsonld";
 
 export async function generateMetadata(): Promise<Metadata> {
     const totalProperties = await getPropertiesCount();
@@ -34,9 +35,20 @@ export async function generateMetadata(): Promise<Metadata> {
     };
 }
 
-const ResidentialPage = () => {
+const ResidentialPage = async () => {
+    const totalProperties = await getPropertiesCount();
+    const schema = propertyCollectionSchema({
+        name: "Residential Properties in Gurgaon | Unisel Realty",
+        description: `Explore ${totalProperties} residential properties in Gurgaon. Premium apartments, villas, and homes by top developers.`,
+        url: "https://uniselrealty.com/residential",
+    });
+
     return (
         <>
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+            />
             <HeroSub
                 title="Residential Properties in Gurgaon."
                 description="Explore premium apartments, villas, and homes by top developers."
