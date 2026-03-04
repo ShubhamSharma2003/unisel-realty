@@ -24,6 +24,7 @@ export type PropertyHomes = {
   area: number;
   images?: PropertyImage[] | null;
   category?: string;
+  status?: string;
   description?: any[];
   features?: PropertyFeature[];
   amenities?: PropertyAmenity[];
