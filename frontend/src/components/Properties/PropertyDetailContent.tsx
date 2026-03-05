@@ -7,6 +7,7 @@ import { sanityClient } from "@/lib/sanity.client";
 import { propertyBySlugQuery } from "@/lib/sanity.queries";
 import { urlFor } from "@/lib/sanity.image";
 import type { PropertyHomes } from "@/types/properyHomes";
+import EMICalculator from "@/components/Properties/EMICalculator";
 
 
 type PropertyDetailContentProps = {
@@ -249,7 +250,7 @@ const PropertyDetailContent = async ({ slug, property: propertyProp }: PropertyD
               ></iframe>
             ) : null}
           </div>
-          <div className="lg:col-span-4 col-span-12">
+          <div className="lg:col-span-4 col-span-12 self-start sticky top-32">
             <div className="bg-primary/10 p-8 rounded-2xl relative z-10 overflow-hidden">
               <h4 className="text-dark text-3xl font-medium dark:text-white">
                 ${rateLabel}
@@ -258,7 +259,7 @@ const PropertyDetailContent = async ({ slug, property: propertyProp }: PropertyD
                 Discounted Price
               </p>
               <Link
-                href="#"
+                href="/contact"
                 className="py-4 px-8 bg-primary text-white rounded-full w-full block text-center hover:bg-dark duration-300 text-base mt-8 hover:cursor-pointer"
               >
                 Get in touch
@@ -316,6 +317,7 @@ const PropertyDetailContent = async ({ slug, property: propertyProp }: PropertyD
             </div>
           </div>
         </div>
+        <EMICalculator propertyRate={property?.rate} />
       </div>
     </section>
   );
