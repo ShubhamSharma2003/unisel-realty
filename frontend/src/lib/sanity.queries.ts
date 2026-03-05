@@ -212,6 +212,22 @@ export const propertiesSectionQuery = groq`
   }
 `;
 
+export const similarPropertiesQuery = groq`
+  *[_type == "property" && category == $category && slug.current != $slug] | order(_createdAt desc)[0...3] {
+    _id,
+    name,
+    "slug": slug.current,
+    location,
+    rate,
+    beds,
+    baths,
+    area,
+    images,
+    category,
+    status
+  }
+`;
+
 export const propertySlugsQuery = groq`
   *[_type == "property" && defined(slug.current)]{
     "slug": slug.current

@@ -4,7 +4,7 @@ import Link from "next/link";
 import { Icon } from "@iconify/react";
 import { PortableText } from "@portabletext/react";
 import { sanityClient } from "@/lib/sanity.client";
-import { propertyBySlugQuery } from "@/lib/sanity.queries";
+import { propertyBySlugQuery, similarPropertiesQuery } from "@/lib/sanity.queries";
 import { urlFor } from "@/lib/sanity.image";
 import type { PropertyHomes } from "@/types/properyHomes";
 import EMICalculator from "@/components/Properties/EMICalculator";
@@ -44,6 +44,11 @@ const PropertyDetailContent = async ({ slug, property: propertyProp }: PropertyD
   if (!property) {
     notFound();
   }
+
+  const similarProperties = await sanityClient.fetch<PropertyHomes[]>(
+    similarPropertiesQuery,
+    { category: property.category ?? "residential", slug }
+  );
 
   const mainImageSource = property?.images?.[0];
   const mainImage = mainImageSource
@@ -341,6 +346,61 @@ const PropertyDetailContent = async ({ slug, property: propertyProp }: PropertyD
           </div>
         </div>
         <EMICalculator propertyRate={property?.rate} />
+
+        {similarProperties && similarProperties.length > 0 && (
+          <div className="mt-16 border-t border-dark/10 dark:border-white/10 pt-12">
+            <h2 className="text-2xl font-semibold text-dark dark:text-white mb-8">Similar Properties</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {similarProperties.map((p) => {
+                const catSlug = p.category === "commercial" ? "commercial" : "residential";
+                const thumb = p.images?.[0]
+                  ? typeof p.images[0] === "object" && "src" in p.images[0]
+                    ? (p.images[0] as { src: string }).src
+                    : urlFor(p.images[0]).width(880).height(600).fit("crop").url()
+                  : null;
+                return (
+                  <Link
+                    key={p._id}
+                    href={`/${catSlug}/${p.slug}`}
+                    className="group relative rounded-2xl border border-dark/10 dark:border-white/10 hover:shadow-3xl duration-300 dark:hover:shadow-white/20 overflow-hidden block"
+                  >
+                    {thumb && (
+                      <div className="overflow-hidden h-52">
+                        <Image
+                          src={thumb}
+                          alt={p.name}
+                          width={440}
+                          height={300}
+                          className="w-full h-full object-cover group-hover:brightness-50 group-hover:scale-110 transition duration-300"
+                        />
+                      </div>
+                    )}
+                    <div className="p-5">
+                      <div className="flex justify-between items-start gap-3 mb-3">
+                        <div>
+                          <h3 className="text-base font-medium text-dark dark:text-white group-hover:text-primary duration-300 line-clamp-1">
+                            {p.name}
+                          </h3>
+                          <p className="text-sm text-dark/50 dark:text-white/50">{p.location}</p>
+                        </div>
+                        {p.rate && (
+                          <span className="shrink-0 text-sm text-primary px-3 py-1 rounded-full bg-primary/10 whitespace-nowrap">
+                            {p.rate}
+                          </span>
+                        )}
+                      </div>
+                      <div className="flex gap-4 text-sm text-dark/60 dark:text-white/60">
+                        <span>{p.beds} Beds</span>
+                        <span>{p.baths} Baths</span>
+                        <span>{p.area} m²</span>
+                      </div>
+                    </div>
+                  </Link>
+                );
+              })}
+            </div>
+          </div>
+        )}
       </div>
     </section>
   );
