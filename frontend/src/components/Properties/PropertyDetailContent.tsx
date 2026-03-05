@@ -8,6 +8,7 @@ import { propertyBySlugQuery } from "@/lib/sanity.queries";
 import { urlFor } from "@/lib/sanity.image";
 import type { PropertyHomes } from "@/types/properyHomes";
 import EMICalculator from "@/components/Properties/EMICalculator";
+import { breadcrumbSchema } from "@/lib/jsonld";
 
 
 type PropertyDetailContentProps = {
@@ -64,9 +65,31 @@ const PropertyDetailContent = async ({ slug, property: propertyProp }: PropertyD
 
   const rateLabel = property?.rate ?? "";
 
+  const categorySlug = property?.category === "commercial" ? "commercial" : "residential";
+  const categoryLabel = property?.category === "commercial" ? "Commercial" : "Residential";
+  const SITE_URL = "https://uniselrealty.com";
+
+  const breadcrumbItems = [
+    { name: "Home", url: SITE_URL },
+    { name: categoryLabel, url: `${SITE_URL}/${categorySlug}` },
+    { name: property.name, url: `${SITE_URL}/${categorySlug}/${property.slug}` },
+  ];
+
   return (
     <section className="!pt-44 pb-20 relative">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema(breadcrumbItems)) }}
+      />
       <div className="container mx-auto max-w-8xl px-5 2xl:px-0">
+        {/* Breadcrumb */}
+        <nav aria-label="Breadcrumb" className="mb-6 flex items-center gap-2 text-sm text-dark/50 dark:text-white/50">
+          <Link href="/" className="hover:text-primary duration-200">Home</Link>
+          <Icon icon="ph:caret-right" width={14} height={14} />
+          <Link href={`/${categorySlug}`} className="hover:text-primary duration-200">{categoryLabel}</Link>
+          <Icon icon="ph:caret-right" width={14} height={14} />
+          <span className="text-dark dark:text-white truncate max-w-xs">{property.name}</span>
+        </nav>
         <div className="grid grid-cols-12 items-end gap-6">
           <div className="lg:col-span-8 col-span-12">
             <h1 className="lg:text-52 text-40 font-semibold text-dark dark:text-white">
