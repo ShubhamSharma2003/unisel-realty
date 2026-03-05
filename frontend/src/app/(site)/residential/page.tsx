@@ -3,7 +3,7 @@ import PropertiesListing from "@/components/Properties/PropertyList";
 import React from "react";
 import { Metadata } from "next";
 import { getPropertiesCount } from "@/lib/sanity.services";
-import { propertyCollectionSchema } from "@/lib/jsonld";
+import { propertyCollectionSchema, breadcrumbSchema } from "@/lib/jsonld";
 
 export async function generateMetadata(): Promise<Metadata> {
     const totalProperties = await getPropertiesCount();
@@ -17,6 +17,7 @@ export async function generateMetadata(): Promise<Metadata> {
         title,
         description,
         keywords: ["residential properties", "homes gurgaon", "apartments gurgaon", "luxury villas", "real estate gurgaon"],
+        alternates: { canonical: `${siteUrl}/residential` },
         openGraph: {
             title: `Residential Properties in Gurgaon | ${siteName}`,
             description,
@@ -42,12 +43,20 @@ const ResidentialPage = async () => {
         description: `Explore ${totalProperties} residential properties in Gurgaon. Premium apartments, villas, and homes by top developers.`,
         url: "https://uniselrealty.com/residential",
     });
+    const breadcrumbs = breadcrumbSchema([
+        { name: "Home", url: "https://uniselrealty.com" },
+        { name: "Residential", url: "https://uniselrealty.com/residential" },
+    ]);
 
     return (
         <>
             <script
                 type="application/ld+json"
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+            />
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbs) }}
             />
             <HeroSub
                 title="Residential Properties in Gurgaon."

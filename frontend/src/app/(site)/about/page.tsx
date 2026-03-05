@@ -1,11 +1,12 @@
 import { Metadata } from "next";
 import HeroSub from "@/components/shared/HeroSub";
-import { aboutPageSchema } from "@/lib/jsonld";
+import { aboutPageSchema, breadcrumbSchema } from "@/lib/jsonld";
 
 export const metadata: Metadata = {
     title: "About Us | Unisel Realty — Gurgaon Real Estate Experts",
     description: "Learn about Unisel Realty — Gurgaon's trusted real estate consultants. We help buyers, sellers, and investors find the best residential and commercial properties.",
     keywords: ["about unisel realty", "real estate consultants gurgaon", "property experts gurgaon"],
+    alternates: { canonical: "https://uniselrealty.com/about" },
     openGraph: {
         title: "About Us | Unisel Realty",
         description: "Gurgaon's trusted real estate consultants helping buyers, sellers, and investors.",
@@ -25,12 +26,20 @@ export const metadata: Metadata = {
 
 const AboutPage = () => {
     const schema = aboutPageSchema();
+    const breadcrumbs = breadcrumbSchema([
+        { name: "Home", url: "https://uniselrealty.com" },
+        { name: "About Us", url: "https://uniselrealty.com/about" },
+    ]);
 
     return (
         <>
             <script
                 type="application/ld+json"
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+            />
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbs) }}
             />
             <HeroSub
                 title="About Unisel Realty."

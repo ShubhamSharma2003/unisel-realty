@@ -5,7 +5,7 @@ import { Icon } from "@iconify/react/dist/iconify.js"
 export const metadata: Metadata = {
   title: "404 - Page Not Found | Unisel Realty",
   description: "The page you're looking for doesn't exist. Return to Unisel Realty's homepage to explore our real estate listings.",
-  robots: { index: false, follow: false },
+  robots: { index: false, follow: true },
   openGraph: {
     title: "Page Not Found | Unisel Realty",
     description: "The page you're looking for doesn't exist. Return to Unisel Realty's homepage to explore our real estate listings.",

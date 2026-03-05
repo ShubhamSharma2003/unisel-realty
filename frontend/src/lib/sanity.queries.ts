@@ -313,6 +313,12 @@ export const heroBannersQuery = groq`
   }
 `;
 
+export const blogSlugsQuery = groq`
+  *[_type == "post" && defined(slug.current)]{
+    "slug": slug.current
+  }
+`;
+
 export const builderPartnersQuery = groq`
   *[_type == "builderPartner"] | order(order asc, name asc) {
     _id,
