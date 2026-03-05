@@ -169,7 +169,7 @@ type PropertyData = {
   name: string;
   slug: string;
   location: string;
-  rate: string | number;
+  rate?: string | number;
   beds: number;
   baths: number;
   area: number;
@@ -200,7 +200,7 @@ export const propertyDetailSchema = (property: PropertyData) => {
       value: property.area,
       unitCode: "FTK",
     },
-    price: String(property.rate),
+    ...(property.rate !== undefined ? { price: String(property.rate) } : {}),
     priceCurrency: "INR",
     ...(property.mainImageUrl
       ? {
