@@ -16,10 +16,10 @@ const font = Bricolage_Grotesque({ subsets: ["latin"] });
 export const metadata: Metadata = {
   metadataBase: new URL('https://uniselrealty.com'),
   title: {
-    default: 'Unisel Realty — Gurgaon Real Estate Consultants | Residential & Commercial Properties',
+    default: 'Unisel Realty — Gurgaon Real Estate Consultants',
     template: '%s | Unisel Realty',
   },
-  description: 'Unisel Realty Pvt. Ltd. — Gurgaon\'s trusted real estate consultants with 15+ years experience. Buy, sell, or lease residential and commercial properties in Gurgaon. Expert team of 20+ professionals for new bookings, resale, and leasing.',
+  description: 'Buy, sell or lease residential & commercial properties in Gurgaon. 15+ years experience, 20+ expert advisors. Trusted by 1000+ clients.',
   keywords: [
     'real estate gurgaon',
     'property in gurgaon',
@@ -40,25 +40,16 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: 'Unisel Realty — Gurgaon Real Estate Consultants',
-    description: 'Gurgaon\'s trusted real estate consultants with 15+ years experience. Buy, sell, or lease residential and commercial properties.',
+    description: 'Buy, sell or lease residential & commercial properties in Gurgaon. 15+ years experience, 20+ expert advisors.',
     url: 'https://uniselrealty.com',
     siteName: 'Unisel Realty',
-    images: [
-      {
-        url: 'https://uniselrealty.com/images/header/unisel-logo.png',
-        width: 500,
-        height: 500,
-        alt: 'Unisel Realty — Gurgaon Real Estate Consultants',
-      },
-    ],
     locale: 'en_US',
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Unisel Realty — Gurgaon Real Estate Consultants',
-    description: 'Gurgaon\'s trusted real estate consultants with 15+ years experience. Buy, sell, or lease residential and commercial properties.',
-    images: ['https://uniselrealty.com/images/header/unisel-logo.png'],
+    description: 'Buy, sell or lease residential & commercial properties in Gurgaon. 15+ years experience, 20+ expert advisors.',
   },
   icons: {
     icon: '/favicon.ico',
