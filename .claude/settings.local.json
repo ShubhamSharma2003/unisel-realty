@@ -6,7 +6,9 @@
       "Bash(find \"c:/Users/Shubham/Desktop/UniselRealtyNew/frontend/src/app/\\(site\\)/services\" -name \"page.tsx\")",
       "Bash(npm run build)",
       "Bash(find \"c:\\\\Users\\\\Shubham\\\\Desktop\\\\UniselRealtyNew\\\\frontend\\\\src\\\\app\\\\\\(site\\)\\\\residential\" -type f)",
-      "Bash(find \"c:\\\\Users\\\\Shubham\\\\Desktop\\\\UniselRealtyNew\\\\frontend\\\\src\\\\app\\\\\\(site\\)\\\\commercial\" -type f)"
+      "Bash(find \"c:\\\\Users\\\\Shubham\\\\Desktop\\\\UniselRealtyNew\\\\frontend\\\\src\\\\app\\\\\\(site\\)\\\\commercial\" -type f)",
+      "Bash(xargs grep -l \"propertyDetail\\\\|PropertyDetail\\\\|property.*detail\")",
+      "Bash(xargs grep -l \"propertyCard\\\\|PropertyCard\\\\|Card.*tsx\")"
     ],
     "additionalDirectories": [
       "c:\\Users\\Shubham\\Desktop\\UniselRealtyNew\\frontend\\src\\app\\(site)\\properties"

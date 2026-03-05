@@ -18,7 +18,8 @@ export type PropertyHomes = {
   name: string;
   slug: string;
   location: string;
-  rate: string | number;
+  rate?: string;
+  priceLabel?: string;
   beds: number;
   baths: number;
   area: number;

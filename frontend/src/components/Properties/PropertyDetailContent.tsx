@@ -62,7 +62,7 @@ const PropertyDetailContent = async ({ slug, property: propertyProp }: PropertyD
           .url();
   };
 
-  const rateLabel = property?.rate !== undefined ? String(property?.rate) : "";
+  const rateLabel = property?.rate ?? "";
 
   return (
     <section className="!pt-44 pb-20 relative">
@@ -253,10 +253,10 @@ const PropertyDetailContent = async ({ slug, property: propertyProp }: PropertyD
           <div className="lg:col-span-4 col-span-12 self-start sticky top-32">
             <div className="bg-primary/10 p-8 rounded-2xl relative z-10 overflow-hidden">
               <h4 className="text-dark text-3xl font-medium dark:text-white">
-                ${rateLabel}
+                {rateLabel}
               </h4>
               <p className="text-sm text-dark/50 dark:text-white">
-                Discounted Price
+                {property?.priceLabel || "Connect to get the best deal"}
               </p>
               <Link
                 href="/contact"
