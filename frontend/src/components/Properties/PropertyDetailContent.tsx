@@ -4,24 +4,23 @@ import Link from "next/link";
 import { Icon } from "@iconify/react";
 import { PortableText } from "@portabletext/react";
 import { sanityClient } from "@/lib/sanity.client";
-import { propertyBySlugQuery } from "@/lib/sanity.queries";
+import { propertyBySlugQuery, similarPropertiesQuery } from "@/lib/sanity.queries";
 import { urlFor } from "@/lib/sanity.image";
 import type { PropertyHomes } from "@/types/properyHomes";
-import { testimonials } from "@/app/api/testimonial";
+import EMICalculator from "@/components/Properties/EMICalculator";
+import { breadcrumbSchema } from "@/lib/jsonld";
+
 
 type PropertyDetailContentProps = {
   slug: string;
+  property?: PropertyHomes | null;
 };
 
 const portableTextComponents = {
   types: {
     image: ({ value }: { value: { asset?: { _ref?: string }; alt?: string } }) => {
-      if (!value?.asset?._ref) {
-        return null;
-      }
-
+      if (!value?.asset?._ref) return null;
       const imageUrl = urlFor(value).width(1200).height(800).fit("max").url();
-
       return (
         <Image
           src={imageUrl}
@@ -36,8 +35,8 @@ const portableTextComponents = {
   },
 };
 
-const PropertyDetailContent = async ({ slug }: PropertyDetailContentProps) => {
-  const property = await sanityClient.fetch<PropertyHomes | null>(
+const PropertyDetailContent = async ({ slug, property: propertyProp }: PropertyDetailContentProps) => {
+  const property = propertyProp ?? await sanityClient.fetch<PropertyHomes | null>(
     propertyBySlugQuery,
     { slug }
   );
@@ -45,6 +44,11 @@ const PropertyDetailContent = async ({ slug }: PropertyDetailContentProps) => {
   if (!property) {
     notFound();
   }
+
+  const similarProperties = await sanityClient.fetch<PropertyHomes[]>(
+    similarPropertiesQuery,
+    { category: property.category ?? "residential", slug }
+  );
 
   const mainImageSource = property?.images?.[0];
   const mainImage = mainImageSource
@@ -64,11 +68,33 @@ const PropertyDetailContent = async ({ slug }: PropertyDetailContentProps) => {
           .url();
   };
 
-  const rateLabel = property?.rate !== undefined ? String(property?.rate) : "";
+  const rateLabel = property?.rate ?? "";
+
+  const categorySlug = property?.category === "commercial" ? "commercial" : "residential";
+  const categoryLabel = property?.category === "commercial" ? "Commercial" : "Residential";
+  const SITE_URL = "https://uniselrealty.com";
+
+  const breadcrumbItems = [
+    { name: "Home", url: SITE_URL },
+    { name: categoryLabel, url: `${SITE_URL}/${categorySlug}` },
+    { name: property.name, url: `${SITE_URL}/${categorySlug}/${property.slug}` },
+  ];
 
   return (
     <section className="!pt-44 pb-20 relative">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema(breadcrumbItems)) }}
+      />
       <div className="container mx-auto max-w-8xl px-5 2xl:px-0">
+        {/* Breadcrumb */}
+        <nav aria-label="Breadcrumb" className="mb-6 flex items-center gap-2 text-sm text-dark/50 dark:text-white/50">
+          <Link href="/" className="hover:text-primary duration-200">Home</Link>
+          <Icon icon="ph:caret-right" width={14} height={14} />
+          <Link href={`/${categorySlug}`} className="hover:text-primary duration-200">{categoryLabel}</Link>
+          <Icon icon="ph:caret-right" width={14} height={14} />
+          <span className="text-dark dark:text-white truncate max-w-xs">{property.name}</span>
+        </nav>
         <div className="grid grid-cols-12 items-end gap-6">
           <div className="lg:col-span-8 col-span-12">
             <h1 className="lg:text-52 text-40 font-semibold text-dark dark:text-white">
@@ -85,6 +111,17 @@ const PropertyDetailContent = async ({ slug }: PropertyDetailContentProps) => {
                 {property?.location}
               </p>
             </div>
+            {property?.reraNumber && (
+              <a
+                href="https://hrera.org.in"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-1.5 w-fit mt-2 text-sm text-primary/80 hover:text-primary duration-300"
+              >
+                <Icon icon="ph:certificate" width={16} height={16} />
+                RERA Reg. No: {property.reraNumber}
+              </a>
+            )}
           </div>
           <div className="lg:col-span-4 col-span-12">
             <div className="flex">
@@ -241,16 +278,16 @@ const PropertyDetailContent = async ({ slug }: PropertyDetailContentProps) => {
               ></iframe>
             ) : null}
           </div>
-          <div className="lg:col-span-4 col-span-12">
+          <div className="lg:col-span-4 col-span-12 self-start sticky top-32">
             <div className="bg-primary/10 p-8 rounded-2xl relative z-10 overflow-hidden">
               <h4 className="text-dark text-3xl font-medium dark:text-white">
-                ${rateLabel}
+                {rateLabel}
               </h4>
               <p className="text-sm text-dark/50 dark:text-white">
-                Discounted Price
+                {property?.priceLabel || "Connect to get the best deal"}
               </p>
               <Link
-                href="#"
+                href="/contact"
                 className="py-4 px-8 bg-primary text-white rounded-full w-full block text-center hover:bg-dark duration-300 text-base mt-8 hover:cursor-pointer"
               >
                 Get in touch
@@ -265,44 +302,105 @@ const PropertyDetailContent = async ({ slug }: PropertyDetailContentProps) => {
                 />
               </div>
             </div>
-            {testimonials.slice(0, 1).map((item, index) => (
-              <div
-                key={index}
-                className="border p-10 rounded-2xl border-dark/10 dark:border-white/20 mt-10 flex flex-col gap-6"
-              >
-                <Icon
-                  icon="ph:house-simple"
-                  width={44}
-                  height={44}
-                  className="text-primary"
-                />
-                <p className="text-xm text-dark dark:text-white">
-                  {item.review}
-                </p>
-                <div className="flex items-center gap-6">
-                  {item.image && (
-                    <Image
-                      src={typeof item.image === 'string' ? item.image : urlFor(item.image).width(80).height(80).fit("crop").url()}
-                      alt={item.name}
-                      width={80}
-                      height={80}
-                      className="w-20 h-20 rounded-2xl"
-                      unoptimized={true}
-                    />
-                  )}
-                  <div className="">
-                    <h3 className="text-xm text-dark dark:text-white">
-                      {item.name}
-                    </h3>
-                    <h4 className="text-base text-dark/50 dark:text-white/50">
-                      {item.position}
-                    </h4>
-                  </div>
-                </div>
+            <div className="border p-8 rounded-2xl border-dark/10 dark:border-white/20 mt-10 flex flex-col gap-5">
+              <div>
+                <h3 className="text-xl font-medium text-dark dark:text-white">Enquire about this property</h3>
+                <p className="text-sm text-dark/50 dark:text-white/50 mt-1">Our team will get back to you shortly.</p>
               </div>
-            ))}
+              <form className="flex flex-col gap-4">
+                <input
+                  type="text"
+                  name="name"
+                  placeholder="Your name*"
+                  required
+                  className="px-5 py-3 border border-dark/10 dark:border-white/10 rounded-full bg-transparent text-dark dark:text-white placeholder:text-dark/40 dark:placeholder:text-white/40 text-sm focus-visible:outline-none focus-visible:border-primary"
+                />
+                <input
+                  type="tel"
+                  name="phone"
+                  placeholder="Phone number*"
+                  required
+                  className="px-5 py-3 border border-dark/10 dark:border-white/10 rounded-full bg-transparent text-dark dark:text-white placeholder:text-dark/40 dark:placeholder:text-white/40 text-sm focus-visible:outline-none focus-visible:border-primary"
+                />
+                <input
+                  type="email"
+                  name="email"
+                  placeholder="Email address*"
+                  required
+                  className="px-5 py-3 border border-dark/10 dark:border-white/10 rounded-full bg-transparent text-dark dark:text-white placeholder:text-dark/40 dark:placeholder:text-white/40 text-sm focus-visible:outline-none focus-visible:border-primary"
+                />
+                <textarea
+                  name="message"
+                  rows={4}
+                  placeholder="Your message"
+                  className="px-5 py-3 border border-dark/10 dark:border-white/10 rounded-2xl bg-transparent text-dark dark:text-white placeholder:text-dark/40 dark:placeholder:text-white/40 text-sm focus-visible:outline-none focus-visible:border-primary resize-none"
+                />
+                <button
+                  type="submit"
+                  className="py-3.5 px-8 bg-primary text-white rounded-full font-semibold text-sm hover:bg-dark duration-300 hover:cursor-pointer"
+                >
+                  Send Message
+                </button>
+              </form>
+            </div>
           </div>
         </div>
+        <EMICalculator propertyRate={property?.rate} />
+
+        {similarProperties && similarProperties.length > 0 && (
+          <div className="mt-16 border-t border-dark/10 dark:border-white/10 pt-12">
+            <h2 className="text-2xl font-semibold text-dark dark:text-white mb-8">Similar Properties</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {similarProperties.map((p) => {
+                const catSlug = p.category === "commercial" ? "commercial" : "residential";
+                const thumb = p.images?.[0]
+                  ? typeof p.images[0] === "object" && "src" in p.images[0]
+                    ? (p.images[0] as { src: string }).src
+                    : urlFor(p.images[0]).width(880).height(600).fit("crop").url()
+                  : null;
+                return (
+                  <Link
+                    key={p._id}
+                    href={`/${catSlug}/${p.slug}`}
+                    className="group relative rounded-2xl border border-dark/10 dark:border-white/10 hover:shadow-3xl duration-300 dark:hover:shadow-white/20 overflow-hidden block"
+                  >
+                    {thumb && (
+                      <div className="overflow-hidden h-52">
+                        <Image
+                          src={thumb}
+                          alt={p.name}
+                          width={440}
+                          height={300}
+                          className="w-full h-full object-cover group-hover:brightness-50 group-hover:scale-110 transition duration-300"
+                        />
+                      </div>
+                    )}
+                    <div className="p-5">
+                      <div className="flex justify-between items-start gap-3 mb-3">
+                        <div>
+                          <h3 className="text-base font-medium text-dark dark:text-white group-hover:text-primary duration-300 line-clamp-1">
+                            {p.name}
+                          </h3>
+                          <p className="text-sm text-dark/50 dark:text-white/50">{p.location}</p>
+                        </div>
+                        {p.rate && (
+                          <span className="shrink-0 text-sm text-primary px-3 py-1 rounded-full bg-primary/10 whitespace-nowrap">
+                            {p.rate}
+                          </span>
+                        )}
+                      </div>
+                      <div className="flex gap-4 text-sm text-dark/60 dark:text-white/60">
+                        <span>{p.beds} Beds</span>
+                        <span>{p.baths} Baths</span>
+                        <span>{p.area} m²</span>
+                      </div>
+                    </div>
+                  </Link>
+                );
+              })}
+            </div>
+          </div>
+        )}
       </div>
     </section>
   );

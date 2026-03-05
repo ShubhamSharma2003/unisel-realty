@@ -44,7 +44,7 @@ export async function generateMetadata({
     openGraph: {
       title,
       description,
-      url: `${siteUrl}/properties/${slug}`,
+      url: `${siteUrl}/residential/${slug}`,
       siteName,
       images: [{ url: imageUrl, width: 1200, height: 630, alt: property.name }],
       type: "website",

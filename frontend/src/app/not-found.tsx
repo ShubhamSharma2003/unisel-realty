@@ -3,14 +3,14 @@ import { Metadata } from "next";
 import { Icon } from "@iconify/react/dist/iconify.js"
 
 export const metadata: Metadata = {
-  title: "404 - Page Not Found | Homely",
-  description: "The page you're looking for doesn't exist. Return to Homely's homepage to explore our real estate listings.",
+  title: "404 - Page Not Found | Unisel Realty",
+  description: "The page you're looking for doesn't exist. Return to Unisel Realty's homepage to explore our real estate listings.",
   robots: { index: false, follow: false },
   openGraph: {
-    title: "Page Not Found | Homely",
-    description: "The page you're looking for doesn't exist. Return to Homely's homepage to explore our real estate listings.",
+    title: "Page Not Found | Unisel Realty",
+    description: "The page you're looking for doesn't exist. Return to Unisel Realty's homepage to explore our real estate listings.",
     url: "/404",
-    siteName: "Homely",
+    siteName: "Unisel Realty",
     images: [
       {
         url: "/images/404-og.jpg",
@@ -24,8 +24,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Page Not Found | Homely",
-    description: "The page you're looking for doesn't exist. Return to Homely's homepage to explore our real estate listings.",
+    title: "Page Not Found | Unisel Realty",
+    description: "The page you're looking for doesn't exist. Return to Unisel Realty's homepage to explore our real estate listings.",
     images: ["/images/404-og.jpg"],
   },
 };

@@ -125,11 +125,32 @@ export const propertiesByCategoryQuery = groq`
     "slug": slug.current,
     location,
     rate,
+    priceLabel,
     beds,
     baths,
     area,
     images,
-    category
+    category,
+    status,
+    reraApproved
+  }
+`;
+
+export const propertiesByCategoryAndStatusQuery = groq`
+  *[_type == "property" && category == $category && status == $status] | order(_createdAt desc) {
+    _id,
+    name,
+    "slug": slug.current,
+    location,
+    rate,
+    priceLabel,
+    beds,
+    baths,
+    area,
+    images,
+    category,
+    status,
+    reraApproved
   }
 `;
 
@@ -140,11 +161,14 @@ export const propertiesForHomeQuery = groq`
     "slug": slug.current,
     location,
     rate,
+    priceLabel,
     beds,
     baths,
     area,
     images,
-    category
+    category,
+    status,
+    reraApproved
   }
 `;
 
@@ -155,11 +179,14 @@ export const propertiesQuery = groq`
     "slug": slug.current,
     location,
     rate,
+    priceLabel,
     beds,
     baths,
     area,
     images,
-    category
+    category,
+    status,
+    reraApproved
   }
 `;
 
@@ -185,6 +212,22 @@ export const propertiesSectionQuery = groq`
   }
 `;
 
+export const similarPropertiesQuery = groq`
+  *[_type == "property" && category == $category && slug.current != $slug] | order(_createdAt desc)[0...3] {
+    _id,
+    name,
+    "slug": slug.current,
+    location,
+    rate,
+    beds,
+    baths,
+    area,
+    images,
+    category,
+    status
+  }
+`;
+
 export const propertySlugsQuery = groq`
   *[_type == "property" && defined(slug.current)]{
     "slug": slug.current
@@ -198,6 +241,7 @@ export const propertyBySlugQuery = groq`
     "slug": slug.current,
     location,
     rate,
+    priceLabel,
     beds,
     baths,
     area,
@@ -213,7 +257,9 @@ export const propertyBySlugQuery = groq`
       icon,
       label
     },
-    mapUrl
+    mapUrl,
+    reraNumber,
+    reraApproved
   }
 `;
 
@@ -263,6 +309,15 @@ export const heroBannersQuery = groq`
     ctaText,
     ctaLink,
     viewDetailsUrl,
+    order
+  }
+`;
+
+export const builderPartnersQuery = groq`
+  *[_type == "builderPartner"] | order(order asc, name asc) {
+    _id,
+    name,
+    logo,
     order
   }
 `;

@@ -1,6 +1,7 @@
 import { sanityClient } from "./sanity.client";
 import {
   propertiesByCategoryQuery,
+  propertiesByCategoryAndStatusQuery,
   propertiesQuery,
   propertyBySlugQuery,
   serviceBySlugQuery,
@@ -11,7 +12,7 @@ import {
   heroSectionQuery,
   heroBannersQuery,
   navLinksQuery,
-  blogListQuery,
+  builderPartnersQuery,
 } from "./sanity.queries";
 import type { Service, ServicesSection } from "@/types/service";
 import type { PropertyHomes } from "@/types/properyHomes";
@@ -33,6 +34,9 @@ export const getServiceBySlug = async (slug: string) =>
 
 export const getPropertiesByCategory = async (category: string) =>
   sanityClient.fetch<PropertyHomes[]>(propertiesByCategoryQuery, { category }, { next: { tags: ['properties'] } });
+
+export const getPropertiesByCategoryAndStatus = async (category: string, status: string) =>
+  sanityClient.fetch<PropertyHomes[]>(propertiesByCategoryAndStatusQuery, { category, status }, { next: { tags: ['properties'] } });
 
 export const getProperties = async () =>
   sanityClient.fetch<PropertyHomes[]>(propertiesQuery, {}, { next: { tags: ['properties'] } });
@@ -63,3 +67,13 @@ export const getBlogCount = async () =>
 
 export const getPropertiesCount = async () =>
   sanityClient.fetch<number>(`count(*[_type == "property"])`, {}, { next: { tags: ['properties'] } });
+
+export type BuilderPartner = {
+  _id: string;
+  name: string;
+  logo: { asset: { _ref: string } };
+  order?: number;
+};
+
+export const getBuilderPartners = async () =>
+  sanityClient.fetch<BuilderPartner[]>(builderPartnersQuery, {}, { next: { tags: ['builder-partners'] } });

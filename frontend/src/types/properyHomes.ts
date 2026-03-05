@@ -18,16 +18,20 @@ export type PropertyHomes = {
   name: string;
   slug: string;
   location: string;
-  rate: string | number;
+  rate?: string;
+  priceLabel?: string;
   beds: number;
   baths: number;
   area: number;
   images?: PropertyImage[] | null;
   category?: string;
+  status?: string;
   description?: any[];
   features?: PropertyFeature[];
   amenities?: PropertyAmenity[];
   mapUrl?: string;
+  reraNumber?: string;
+  reraApproved?: boolean;
 };
 
 export type PropertiesSection = {

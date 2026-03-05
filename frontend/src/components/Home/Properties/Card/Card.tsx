@@ -13,7 +13,7 @@ const PropertyCard: React.FC<{ item: PropertyHomes }> = ({ item }) => {
       ? mainImageSource.src
       : urlFor(mainImageSource).width(880).height(600).fit('crop').url()
     : null;
-  const rateLabel = rate !== undefined ? String(rate) : '';
+  const rateLabel = rate ?? '';
 
   return (
     <div>
@@ -54,7 +54,7 @@ const PropertyCard: React.FC<{ item: PropertyHomes }> = ({ item }) => {
             <div>
               {rateLabel ? (
                 <button className='text-base font-normal text-primary px-5 py-2 rounded-full bg-primary/10'>
-                  ${rateLabel}
+                  {rateLabel}
                 </button>
               ) : null}
             </div>

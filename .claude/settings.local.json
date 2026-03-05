@@ -1,0 +1,20 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(ls -la \"c:/Users/Shubham/Desktop/UniselRealtyNew/frontend/src/app/\\(site\\)/\")",
+      "Bash(find \"c:/Users/Shubham/Desktop/UniselRealtyNew/frontend/src/app/\\(site\\)\" -type f)",
+      "Bash(find \"c:/Users/Shubham/Desktop/UniselRealtyNew/frontend/src/app/\\(site\\)/services\" -name \"page.tsx\")",
+      "Bash(npm run build)",
+      "Bash(find \"c:\\\\Users\\\\Shubham\\\\Desktop\\\\UniselRealtyNew\\\\frontend\\\\src\\\\app\\\\\\(site\\)\\\\residential\" -type f)",
+      "Bash(find \"c:\\\\Users\\\\Shubham\\\\Desktop\\\\UniselRealtyNew\\\\frontend\\\\src\\\\app\\\\\\(site\\)\\\\commercial\" -type f)",
+      "Bash(xargs grep -l \"propertyDetail\\\\|PropertyDetail\\\\|property.*detail\")",
+      "Bash(xargs grep -l \"propertyCard\\\\|PropertyCard\\\\|Card.*tsx\")",
+      "Bash(find \"c:\\\\Users\\\\Shubham\\\\Desktop\\\\UniselRealtyNew\\\\frontend\\\\src\\\\app\\\\\\(site\\)\\\\services\" -maxdepth 1 -type f -name \"*.tsx\")",
+      "Bash(ls -la \"c:\\\\Users\\\\Shubham\\\\Desktop\\\\UniselRealtyNew\\\\frontend\\\\src\\\\app\\\\\\(site\\)\\\\services\")",
+      "Bash(find \"c:\\\\Users\\\\Shubham\\\\Desktop\\\\UniselRealtyNew\\\\frontend\\\\src\\\\app\\\\\\(site\\)\\\\services\" -maxdepth 2 -name \"layout.tsx\" -o -name \"page.tsx\")"
+    ],
+    "additionalDirectories": [
+      "c:\\Users\\Shubham\\Desktop\\UniselRealtyNew\\frontend\\src\\app\\(site)\\properties"
+    ]
+  }
+}

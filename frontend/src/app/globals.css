@@ -1,4 +1,9 @@
 @import 'tailwindcss';
+
+@keyframes marquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
 @plugin 'tailwindcss-animate';
 
 @custom-variant dark (&:where(.dark, .dark *));
@@ -120,4 +125,48 @@ section {
 
 .blog-details p {
   @apply text-dark dark:text-white text-xm leading-[1.2]
+}
+
+.property-description p, .property-description hr {
+  @apply mb-3 text-dark/70 dark:text-white/70 text-base leading-6;
+}
+
+.property-description strong {
+  @apply font-semibold text-dark dark:text-white;
+}
+
+.property-description ul {
+  @apply list-none space-y-1 mb-3;
+}
+
+.property-description ul li {
+  @apply relative pl-4 text-base text-dark/70 dark:text-white/70 before:absolute before:w-1.5 before:h-1.5 before:rounded-full before:bg-primary before:top-2 before:left-0;
+}
+
+.property-description ol {
+  @apply mb-3 list-inside list-decimal space-y-1;
+}
+
+.property-description ol li {
+  @apply text-base text-dark/70 dark:text-white/70;
+}
+
+.property-description h1 {
+  @apply mb-4 text-3xl font-semibold text-dark dark:text-white;
+}
+
+.property-description h2 {
+  @apply mb-3 text-2xl font-semibold text-dark dark:text-white;
+}
+
+.property-description h3 {
+  @apply mb-3 text-xl font-semibold text-dark dark:text-white;
+}
+
+.property-description h4 {
+  @apply mb-3 text-lg font-semibold text-dark dark:text-white;
+}
+
+.property-description hr {
+  @apply border-dark/10 dark:border-white/10;
 }

@@ -36,7 +36,7 @@ export async function generateMetadata({
     : `${siteUrl}/images/header/unisel-logo.png`;
 
   const title = `${property.name} | ${siteName}`;
-  const description = `${property.beds} bed, ${property.baths} bath property at ${property.location}, Gurgaon. Area: ${property.area} sq.ft.`;
+  const description = `${property.beds} bed, ${property.baths} bath commercial property at ${property.location}, Gurgaon. Area: ${property.area} sq.ft.`;
 
   return {
     title,
@@ -44,7 +44,7 @@ export async function generateMetadata({
     openGraph: {
       title,
       description,
-      url: `${siteUrl}/properties/${slug}`,
+      url: `${siteUrl}/commercial/${slug}`,
       siteName,
       images: [{ url: imageUrl, width: 1200, height: 630, alt: property.name }],
       type: "website",
@@ -58,7 +58,7 @@ export async function generateMetadata({
   };
 }
 
-export default async function PropertyDetailPage({
+export default async function CommercialPropertyDetailPage({
   params,
 }: {
   params: Promise<{ slug: string }>;
@@ -80,7 +80,7 @@ export default async function PropertyDetailPage({
     beds: property.beds,
     baths: property.baths,
     area: property.area,
-    category: property.category ?? "residential",
+    category: property.category ?? "commercial",
     mainImageUrl,
   });
 
