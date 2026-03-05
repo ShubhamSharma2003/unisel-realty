@@ -11,5 +11,5 @@ export type Blog = {
   detail?: string;
   author?: string;
   authorImage?: SanityImageSource;
-  content?: any[];
+  content?: unknown[];
 };

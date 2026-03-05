@@ -6,7 +6,7 @@ import { PortableText } from "@portabletext/react";
 import { sanityClient } from "@/lib/sanity.client";
 import { propertyBySlugQuery, similarPropertiesQuery } from "@/lib/sanity.queries";
 import { urlFor } from "@/lib/sanity.image";
-import type { PropertyHomes } from "@/types/properyHomes";
+import type { PropertyHomes, PropertyImage } from "@/types/properyHomes";
 import EMICalculator from "@/components/Properties/EMICalculator";
 import { breadcrumbSchema } from "@/lib/jsonld";
 
@@ -57,7 +57,7 @@ const PropertyDetailContent = async ({ slug, property: propertyProp }: PropertyD
       : urlFor(mainImageSource).width(1600).height(1080).fit("crop").url()
     : null;
 
-  const getImageUrl = (img: any, index: number) => {
+  const getImageUrl = (img: PropertyImage, index: number) => {
     if (!img) return null;
     return typeof img === 'object' && "src" in img
       ? img.src

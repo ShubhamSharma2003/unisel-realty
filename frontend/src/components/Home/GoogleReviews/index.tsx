@@ -30,8 +30,8 @@ const GoogleReviews = ({ appId = "81d9b80f-1860-4f42-b491-1f73506a22d0" }: Googl
           strategy="lazyOnload"
           onLoad={() => {
             // Reinitialize Elfsight apps after script loads
-            if ((window as any).elfsight) {
-              (window as any).elfsight.reload();
+            if ((window as unknown as { elfsight?: { reload: () => void } }).elfsight) {
+              (window as unknown as { elfsight: { reload: () => void } }).elfsight.reload();
             }
           }}
         />

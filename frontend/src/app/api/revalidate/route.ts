@@ -23,8 +23,6 @@ export async function POST(request: NextRequest) {
 
     // Extract document types that were published
     const documentIds = body._ids || []
-    const deletedIds = body._deleted || []
-
     // Revalidate all relevant tags and pages
     // This will clear the ISR cache for all pages using Sanity data
     revalidateTag('sanity-data')

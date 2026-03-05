@@ -1,4 +1,5 @@
 import type { SanityImageSource } from "@sanity/image-url/lib/types/types";
+import type { TypedObject } from "@portabletext/types";
 
 export type PropertyImage = { src: string } | SanityImageSource;
 
@@ -26,7 +27,7 @@ export type PropertyHomes = {
   images?: PropertyImage[] | null;
   category?: string;
   status?: string;
-  description?: any[];
+  description?: TypedObject[];
   features?: PropertyFeature[];
   amenities?: PropertyAmenity[];
   mapUrl?: string;
