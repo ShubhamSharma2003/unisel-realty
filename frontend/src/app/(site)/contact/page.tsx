@@ -61,7 +61,7 @@ export default function ContactPage() {
                             </p>
                         </div>
                         <div className='absolute bottom-6 left-6 lg:bottom-12 lg:left-12 flex flex-col gap-4 text-white'>
-                            <Link href={'/'} className='w-fit'>
+                            <Link href={'tel:+918010303303'} className='w-fit'>
                                 <div className='flex items-center gap-4 group w-fit'>
                                     <Icon icon={'ph:phone'} width={32} height={32} />
                                     <p className='text-sm xs:text-base mobile:text-xm font-normal group-hover:text-primary'>+91 8010 303 303</p>
@@ -75,7 +75,7 @@ export default function ContactPage() {
                             </Link>
                             <div className='flex items-center gap-4'>
                                 <Icon icon={'ph:map-pin'} width={32} height={32} />
-                                <p className='text-sm xs:text-base mobile:text-xm font-normal'>Blane Street, Manchester</p>
+                                <p className='text-sm xs:text-base mobile:text-xm font-normal'>408, 4th floor, Adani Miracle Mile<br />Sector 60, Gurgaon</p>
                             </div>
                         </div>
                     </div>

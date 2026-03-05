@@ -7,7 +7,7 @@ import { sanityClient } from "@/lib/sanity.client";
 import { propertyBySlugQuery } from "@/lib/sanity.queries";
 import { urlFor } from "@/lib/sanity.image";
 import type { PropertyHomes } from "@/types/properyHomes";
-import { testimonials } from "@/app/api/testimonial";
+
 
 type PropertyDetailContentProps = {
   slug: string;
@@ -17,12 +17,8 @@ type PropertyDetailContentProps = {
 const portableTextComponents = {
   types: {
     image: ({ value }: { value: { asset?: { _ref?: string }; alt?: string } }) => {
-      if (!value?.asset?._ref) {
-        return null;
-      }
-
+      if (!value?.asset?._ref) return null;
       const imageUrl = urlFor(value).width(1200).height(800).fit("max").url();
-
       return (
         <Image
           src={imageUrl}
@@ -277,42 +273,47 @@ const PropertyDetailContent = async ({ slug, property: propertyProp }: PropertyD
                 />
               </div>
             </div>
-            {testimonials.slice(0, 1).map((item, index) => (
-              <div
-                key={index}
-                className="border p-10 rounded-2xl border-dark/10 dark:border-white/20 mt-10 flex flex-col gap-6"
-              >
-                <Icon
-                  icon="ph:house-simple"
-                  width={44}
-                  height={44}
-                  className="text-primary"
-                />
-                <p className="text-xm text-dark dark:text-white">
-                  {item.review}
-                </p>
-                <div className="flex items-center gap-6">
-                  {item.image && (
-                    <Image
-                      src={typeof item.image === 'string' ? item.image : urlFor(item.image).width(80).height(80).fit("crop").url()}
-                      alt={item.name}
-                      width={80}
-                      height={80}
-                      className="w-20 h-20 rounded-2xl"
-                      unoptimized={true}
-                    />
-                  )}
-                  <div className="">
-                    <h3 className="text-xm text-dark dark:text-white">
-                      {item.name}
-                    </h3>
-                    <h4 className="text-base text-dark/50 dark:text-white/50">
-                      {item.position}
-                    </h4>
-                  </div>
-                </div>
+            <div className="border p-8 rounded-2xl border-dark/10 dark:border-white/20 mt-10 flex flex-col gap-5">
+              <div>
+                <h3 className="text-xl font-medium text-dark dark:text-white">Enquire about this property</h3>
+                <p className="text-sm text-dark/50 dark:text-white/50 mt-1">Our team will get back to you shortly.</p>
               </div>
-            ))}
+              <form className="flex flex-col gap-4">
+                <input
+                  type="text"
+                  name="name"
+                  placeholder="Your name*"
+                  required
+                  className="px-5 py-3 border border-dark/10 dark:border-white/10 rounded-full bg-transparent text-dark dark:text-white placeholder:text-dark/40 dark:placeholder:text-white/40 text-sm focus-visible:outline-none focus-visible:border-primary"
+                />
+                <input
+                  type="tel"
+                  name="phone"
+                  placeholder="Phone number*"
+                  required
+                  className="px-5 py-3 border border-dark/10 dark:border-white/10 rounded-full bg-transparent text-dark dark:text-white placeholder:text-dark/40 dark:placeholder:text-white/40 text-sm focus-visible:outline-none focus-visible:border-primary"
+                />
+                <input
+                  type="email"
+                  name="email"
+                  placeholder="Email address*"
+                  required
+                  className="px-5 py-3 border border-dark/10 dark:border-white/10 rounded-full bg-transparent text-dark dark:text-white placeholder:text-dark/40 dark:placeholder:text-white/40 text-sm focus-visible:outline-none focus-visible:border-primary"
+                />
+                <textarea
+                  name="message"
+                  rows={4}
+                  placeholder="Your message"
+                  className="px-5 py-3 border border-dark/10 dark:border-white/10 rounded-2xl bg-transparent text-dark dark:text-white placeholder:text-dark/40 dark:placeholder:text-white/40 text-sm focus-visible:outline-none focus-visible:border-primary resize-none"
+                />
+                <button
+                  type="submit"
+                  className="py-3.5 px-8 bg-primary text-white rounded-full font-semibold text-sm hover:bg-dark duration-300 hover:cursor-pointer"
+                >
+                  Send Message
+                </button>
+              </form>
+            </div>
           </div>
         </div>
       </div>

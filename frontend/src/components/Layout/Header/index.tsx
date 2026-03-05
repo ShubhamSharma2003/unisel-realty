@@ -86,7 +86,7 @@ const Header: React.FC<{ navLinks: NavLinks[] }> = ({ navLinks }) => {
               />
             </button>
             <div className={`hidden md:block`}>
-              <Link href='#' className={`text-base text-inherit flex items-center gap-2 border-r pr-6 ${isHomepage
+              <Link href='tel:+918010303303' className={`text-base text-inherit flex items-center gap-2 border-r pr-6 ${isHomepage
                 ? sticky
                   ? 'text-dark dark:text-white hover:text-primary border-dark dark:border-white'
                   : 'text-white hover:text-primary'
@@ -94,7 +94,7 @@ const Header: React.FC<{ navLinks: NavLinks[] }> = ({ navLinks }) => {
                 }`}
               >
                 <Icon icon={'ph:phone-bold'} width={24} height={24} />
-                +1-212-456-789
+                +91 8010 303 303
               </Link>
             </div>
             <div>
@@ -163,11 +163,11 @@ const Header: React.FC<{ navLinks: NavLinks[] }> = ({ navLinks }) => {
             <p className='text-base sm:text-xm font-normal text-white/40'>
               Contact
             </p>
-            <Link href="#" className='text-base sm:text-xm font-medium text-inherit hover:text-primary'>
+            <Link href="mailto:info@uniselrealty.com" className='text-base sm:text-xm font-medium text-inherit hover:text-primary'>
               info@uniselrealty.com
             </Link>
-            <Link href="#" className='text-base sm:text-xm font-medium text-inherit hover:text-primary'>
-              +91 8010 303 303{' '}
+            <Link href="tel:+918010303303" className='text-base sm:text-xm font-medium text-inherit hover:text-primary'>
+              +91 8010 303 303
             </Link>
           </div>
         </div>

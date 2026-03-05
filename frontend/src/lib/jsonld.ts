@@ -22,10 +22,10 @@ export const organizationSchema = () => ({
       },
       image: { "@id": `${SITE_URL}/#logo` },
       description:
-        "Unisel Realty Pvt. Ltd. is based in Gurgaon at Golf Course Extension Road, with over 15 years of rich experience in real estate. Specialised team of 20+ professionals in new booking, leasing, resale.",
+        "Unisel Realty Pvt. Ltd. is based in Gurgaon at 408, 4th floor, Adani Miracle Mile, Sector 60, with over 15 years of rich experience in real estate. Specialised team of 20+ professionals in new booking, leasing, resale.",
       address: {
         "@type": "PostalAddress",
-        streetAddress: "Golf Course Extension Road",
+        streetAddress: "408, 4th floor, Adani Miracle Mile, Sector 60",
         addressLocality: "Gurgaon",
         addressRegion: "Haryana",
         addressCountry: "IN",
@@ -57,10 +57,10 @@ export const homepageSchema = (faqs: FaqItem[]) => ({
       name: "Unisel Realty Pvt Ltd",
       url: SITE_URL,
       description:
-        "Unisel Realty Pvt. Ltd. is based in Gurgaon at the key location of Golf Course Extension Road, with over 15 years of rich experience in real estate.",
+        "Unisel Realty Pvt. Ltd. is based in Gurgaon at 408, 4th floor, Adani Miracle Mile, Sector 60, with over 15 years of rich experience in real estate.",
       address: {
         "@type": "PostalAddress",
-        streetAddress: "Golf Course Extension Road",
+        streetAddress: "408, 4th floor, Adani Miracle Mile, Sector 60",
         addressLocality: "Gurgaon",
         addressRegion: "Haryana",
         addressCountry: "IN",
