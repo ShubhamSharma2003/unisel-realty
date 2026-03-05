@@ -5,9 +5,11 @@ import { Icon } from '@iconify/react'
 import { notFound } from "next/navigation";
 import { PortableText } from "@portabletext/react";
 import { sanityClient } from "@/lib/sanity.client";
-import { blogPostBySlugQuery } from "@/lib/sanity.queries";
+import { blogPostBySlugQuery, blogSlugsQuery } from "@/lib/sanity.queries";
 import { urlFor } from "@/lib/sanity.image";
-import { blogArticleSchema } from "@/lib/jsonld";
+import { blogArticleSchema, breadcrumbSchema } from "@/lib/jsonld";
+
+const siteUrl = "https://uniselrealty.com";
 
 const portableTextComponents = {
     types: {
@@ -28,29 +30,60 @@ const portableTextComponents = {
     },
 };
 
+export async function generateStaticParams() {
+    const slugs = await sanityClient.fetch<{ slug: string }[]>(blogSlugsQuery);
+    return slugs.map((s) => ({ slug: s.slug }));
+}
+
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
     const { slug } = await params;
     const post = await sanityClient.fetch(blogPostBySlugQuery, { slug });
-    const siteName = "Unisel Realty";
-    const authorName = process.env.AUTHOR_NAME || "Your Author Name";
 
-    if (post) {
+    if (!post) {
         return {
-            title: `${post.title || "Single Post Page"} | ${siteName}`,
-            author: authorName,
-            robots: {
-                index: true, follow: true, nocache: true,
-                googleBot: { index: true, follow: false, "max-video-preview": -1, "max-image-preview": "large", "max-snippet": -1 },
-            },
+            title: "Not Found",
+            description: "No blog article has been found",
+            robots: { index: false, follow: false },
         };
     }
+
+    const coverImageUrl = post.coverImage
+        ? urlFor(post.coverImage).width(1200).height(630).fit("crop").url()
+        : null;
+
     return {
-        title: "Not Found",
-        description: "No blog article has been found",
-        author: authorName,
+        title: post.title,
+        description: post.excerpt || `Read ${post.title} on Unisel Realty Blog.`,
+        keywords: post.tag ? [post.tag, "real estate", "gurgaon", "unisel realty"] : undefined,
+        alternates: {
+            canonical: `${siteUrl}/blog/${slug}`,
+        },
+        openGraph: {
+            title: post.title,
+            description: post.excerpt || `Read ${post.title} on Unisel Realty Blog.`,
+            url: `${siteUrl}/blog/${slug}`,
+            type: "article",
+            publishedTime: post.date || undefined,
+            authors: [post.author || "Unisel Realty"],
+            images: coverImageUrl
+                ? [{ url: coverImageUrl, width: 1200, height: 630, alt: post.title }]
+                : undefined,
+        },
+        twitter: {
+            card: "summary_large_image" as const,
+            title: post.title,
+            description: post.excerpt || `Read ${post.title} on Unisel Realty Blog.`,
+            images: coverImageUrl ? [coverImageUrl] : undefined,
+        },
         robots: {
-            index: false, follow: false, nocache: false,
-            googleBot: { index: false, follow: false, "max-video-preview": -1, "max-image-preview": "large", "max-snippet": -1 },
+            index: true,
+            follow: true,
+            googleBot: {
+                index: true,
+                follow: true,
+                "max-image-preview": "large" as const,
+                "max-snippet": -1,
+            },
         },
     };
 }
@@ -77,11 +110,21 @@ export default async function Post({ params }: { params: Promise<{ slug: string 
         tag: post.tag,
     });
 
+    const breadcrumbs = breadcrumbSchema([
+        { name: "Home", url: siteUrl },
+        { name: "Blog", url: `${siteUrl}/blog` },
+        { name: post.title ?? "Article", url: `${siteUrl}/blog/${slug}` },
+    ]);
+
     return (
         <>
             <script
                 type="application/ld+json"
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+            />
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbs) }}
             />
             <section className="relative !pt-44 pb-0!">
                 <div className="container max-w-8xl mx-auto md:px-0 px-4">
@@ -91,7 +134,7 @@ export default async function Post({ params }: { params: Promise<{ slug: string 
                                 <Icon icon={'ph:arrow-left'} width={20} height={20} />
                                 <span>Go Back</span>
                             </Link>
-                            <h2 className="text-dark dark:text-white md:text-52 text-40 leading-[1.2] font-semibold pt-7">{post?.title}</h2>
+                            <h1 className="text-dark dark:text-white md:text-52 text-40 leading-[1.2] font-semibold pt-7">{post?.title}</h1>
                             <h6 className="text-xm mt-5 text-dark dark:text-white">{post?.detail}</h6>
                         </div>
                         <div className="flex items-center justify-between gap-6 mt-12">

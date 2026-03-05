@@ -3,9 +3,11 @@ import { sanityClient } from "@/lib/sanity.client";
 import { propertySlugsQuery } from "@/lib/sanity.queries";
 import { getPropertyBySlug } from "@/lib/sanity.services";
 import { urlFor } from "@/lib/sanity.image";
-import { propertyDetailSchema } from "@/lib/jsonld";
+import { propertyDetailSchema, breadcrumbSchema } from "@/lib/jsonld";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
+
+const siteUrl = "https://uniselrealty.com";
 
 export async function generateStaticParams() {
   const properties = await sanityClient.fetch<{ slug: string }[]>(
@@ -21,7 +23,6 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { slug } = await params;
   const property = await getPropertyBySlug(slug);
-  const siteUrl = "https://uniselrealty.com";
   const siteName = "Unisel Realty";
 
   if (!property) {
@@ -36,11 +37,12 @@ export async function generateMetadata({
     : `${siteUrl}/images/header/unisel-logo.png`;
 
   const title = `${property.name} | ${siteName}`;
-  const description = `${property.beds} bed, ${property.baths} bath property at ${property.location}, Gurgaon. Area: ${property.area} sq.ft.`;
+  const description = `${property.name} — ${property.beds} BHK, ${property.baths} bath at ${property.location}, Gurgaon. Area: ${property.area} sq.ft. Contact Unisel Realty for best deals.`;
 
   return {
     title,
     description,
+    alternates: { canonical: `${siteUrl}/residential/${slug}` },
     openGraph: {
       title,
       description,
@@ -84,11 +86,21 @@ export default async function PropertyDetailPage({
     mainImageUrl,
   });
 
+  const breadcrumbs = breadcrumbSchema([
+    { name: "Home", url: siteUrl },
+    { name: "Residential", url: `${siteUrl}/residential` },
+    { name: property.name, url: `${siteUrl}/residential/${slug}` },
+  ]);
+
   return (
     <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbs) }}
       />
       <PropertyDetailContent slug={slug} property={property} />
     </>

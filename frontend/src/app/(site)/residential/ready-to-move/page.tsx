@@ -1,11 +1,13 @@
 import HeroSub from "@/components/shared/HeroSub";
 import PropertiesListing from "@/components/Properties/PropertyList";
 import { Metadata } from "next";
+import { breadcrumbSchema } from "@/lib/jsonld";
 
 export const metadata: Metadata = {
     title: "Ready to Move Properties in Gurgaon | Unisel Realty",
     description: "Find ready-to-move residential properties in Gurgaon. Move in immediately — verified listings of apartments and villas available right now.",
     keywords: ["ready to move properties gurgaon", "ready possession flats gurgaon", "immediate possession apartments", "unisel realty"],
+    alternates: { canonical: "https://uniselrealty.com/residential/ready-to-move" },
     openGraph: {
         title: "Ready to Move Properties in Gurgaon | Unisel Realty",
         description: "Find ready-to-move residential properties in Gurgaon. Move in immediately — no waiting.",
@@ -24,8 +26,18 @@ export const metadata: Metadata = {
 };
 
 const ReadyToMovePage = () => {
+    const breadcrumbs = breadcrumbSchema([
+        { name: "Home", url: "https://uniselrealty.com" },
+        { name: "Residential", url: "https://uniselrealty.com/residential" },
+        { name: "Ready to Move", url: "https://uniselrealty.com/residential/ready-to-move" },
+    ]);
+
     return (
         <>
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbs) }}
+            />
             <HeroSub
                 title="Ready to Move Properties."
                 description="Move in immediately — verified listings of apartments and villas available right now."

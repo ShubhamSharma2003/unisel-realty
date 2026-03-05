@@ -3,8 +3,10 @@ import { servicesSlugsQuery } from "@/lib/sanity.queries";
 import ServicePageContent from "@/components/Properties/ServicePageContent";
 import { getServiceBySlug } from '@/lib/sanity.services';
 import { urlFor } from '@/lib/sanity.image';
-import { servicePageSchema } from '@/lib/jsonld';
+import { servicePageSchema, breadcrumbSchema } from '@/lib/jsonld';
 import { notFound } from 'next/navigation';
+
+const siteUrl = 'https://uniselrealty.com';
 
 export async function generateStaticParams() {
   const services = await sanityClient.fetch<{ slug: string }[]>(servicesSlugsQuery);
@@ -14,7 +16,6 @@ export async function generateStaticParams() {
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   const service = await getServiceBySlug(slug);
-  const siteUrl = 'https://uniselrealty.com';
   const siteName = 'Unisel Realty';
 
   if (!service) {
@@ -34,6 +35,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   return {
     title,
     description,
+    alternates: { canonical: `${siteUrl}/services/${slug}` },
     openGraph: {
       title,
       description,
@@ -73,11 +75,21 @@ export default async function ServicePage({
     category: service.category,
   });
 
+  const breadcrumbs = breadcrumbSchema([
+    { name: "Home", url: siteUrl },
+    { name: "Services", url: `${siteUrl}/services` },
+    { name: service.title, url: `${siteUrl}/services/${slug}` },
+  ]);
+
   return (
     <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbs) }}
       />
       <ServicePageContent slug={slug} />
     </>

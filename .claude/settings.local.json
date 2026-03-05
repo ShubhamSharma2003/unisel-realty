@@ -11,7 +11,13 @@
       "Bash(xargs grep -l \"propertyCard\\\\|PropertyCard\\\\|Card.*tsx\")",
       "Bash(find \"c:\\\\Users\\\\Shubham\\\\Desktop\\\\UniselRealtyNew\\\\frontend\\\\src\\\\app\\\\\\(site\\)\\\\services\" -maxdepth 1 -type f -name \"*.tsx\")",
       "Bash(ls -la \"c:\\\\Users\\\\Shubham\\\\Desktop\\\\UniselRealtyNew\\\\frontend\\\\src\\\\app\\\\\\(site\\)\\\\services\")",
-      "Bash(find \"c:\\\\Users\\\\Shubham\\\\Desktop\\\\UniselRealtyNew\\\\frontend\\\\src\\\\app\\\\\\(site\\)\\\\services\" -maxdepth 2 -name \"layout.tsx\" -o -name \"page.tsx\")"
+      "Bash(find \"c:\\\\Users\\\\Shubham\\\\Desktop\\\\UniselRealtyNew\\\\frontend\\\\src\\\\app\\\\\\(site\\)\\\\services\" -maxdepth 2 -name \"layout.tsx\" -o -name \"page.tsx\")",
+      "Bash(ls -la \"c:\\\\Users\\\\Shubham\\\\Desktop\\\\UniselRealtyNew\\\\frontend\\\\src\\\\app\\\\\\(site\\)\")",
+      "Bash(ls -la /c/Users/Shubham/Desktop/UniselRealtyNew/frontend/public/*.ico /c/Users/Shubham/Desktop/UniselRealtyNew/frontend/public/*.png /c/Users/Shubham/Desktop/UniselRealtyNew/frontend/public/*.jpg)",
+      "Bash(find src/app -name \"page.tsx\" -exec head -30 {} +)",
+      "Bash(xargs grep -l \"loaderFile\\\\|imageLoader\\\\|Image Loader\")",
+      "Bash(xargs grep -l \"compress\\\\|minify\\\\|optimize\")",
+      "Bash(xargs grep -l \"robots\\\\|sitemap\")"
     ],
     "additionalDirectories": [
       "c:\\Users\\Shubham\\Desktop\\UniselRealtyNew\\frontend\\src\\app\\(site)\\properties"

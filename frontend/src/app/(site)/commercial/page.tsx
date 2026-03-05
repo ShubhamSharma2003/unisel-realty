@@ -1,12 +1,13 @@
 import HeroSub from "@/components/shared/HeroSub";
 import PropertiesListing from "@/components/Properties/PropertyList";
 import { Metadata } from "next";
-import { propertyCollectionSchema } from "@/lib/jsonld";
+import { propertyCollectionSchema, breadcrumbSchema } from "@/lib/jsonld";
 
 export const metadata: Metadata = {
     title: "Commercial Properties in Gurgaon | Unisel Realty",
     description: "Explore premium commercial properties in Gurgaon — office spaces, retail shops, and pre-leased investments. Expert guidance for business real estate.",
     keywords: ["commercial properties gurgaon", "office spaces gurgaon", "retail shops gurgaon", "commercial real estate", "unisel realty"],
+    alternates: { canonical: "https://uniselrealty.com/commercial" },
     openGraph: {
         title: "Commercial Properties in Gurgaon | Unisel Realty",
         description: "Explore premium commercial properties in Gurgaon — office spaces, retail shops, and pre-leased investments.",
@@ -30,12 +31,20 @@ const CommercialPage = () => {
         description: "Explore premium commercial properties in Gurgaon — office spaces, retail shops, and pre-leased investments.",
         url: "https://uniselrealty.com/commercial",
     });
+    const breadcrumbs = breadcrumbSchema([
+        { name: "Home", url: "https://uniselrealty.com" },
+        { name: "Commercial", url: "https://uniselrealty.com/commercial" },
+    ]);
 
     return (
         <>
             <script
                 type="application/ld+json"
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+            />
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbs) }}
             />
             <HeroSub
                 title="Commercial Properties in Gurgaon."

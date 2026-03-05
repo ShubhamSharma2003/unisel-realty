@@ -2,7 +2,7 @@ import BlogList from "@/components/Blog";
 import HeroSub from "@/components/shared/HeroSub";
 import { Metadata } from "next";
 import { getBlogCount } from "@/lib/sanity.services";
-import { blogListingSchema } from "@/lib/jsonld";
+import { blogListingSchema, breadcrumbSchema } from "@/lib/jsonld";
 
 export async function generateMetadata(): Promise<Metadata> {
     const blogCount = await getBlogCount();
@@ -14,6 +14,7 @@ export async function generateMetadata(): Promise<Metadata> {
         title: `Real Estate Blog | ${siteName}`,
         description,
         keywords: ["real estate blog", "property insights gurgaon", "market updates", "unisel realty blog"],
+        alternates: { canonical: `${siteUrl}/blog` },
         openGraph: {
             title: `Real Estate Blog | ${siteName}`,
             description,
@@ -35,12 +36,20 @@ export async function generateMetadata(): Promise<Metadata> {
 const BlogPage = async () => {
     const blogCount = await getBlogCount();
     const schema = blogListingSchema(blogCount);
+    const breadcrumbs = breadcrumbSchema([
+        { name: "Home", url: "https://uniselrealty.com" },
+        { name: "Blog", url: "https://uniselrealty.com/blog" },
+    ]);
 
     return (
         <>
             <script
                 type="application/ld+json"
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+            />
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbs) }}
             />
             <HeroSub
                 title="Real estate insights."

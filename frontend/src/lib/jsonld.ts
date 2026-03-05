@@ -28,9 +28,16 @@ export const organizationSchema = () => ({
         streetAddress: "408, 4th floor, Adani Miracle Mile, Sector 60",
         addressLocality: "Gurgaon",
         addressRegion: "Haryana",
+        postalCode: "122102",
         addressCountry: "IN",
       },
-      sameAs: ["https://www.facebook.com/uniselrealty"],
+      telephone: "+91-9999999999",
+      email: "info@uniselrealty.com",
+      sameAs: [
+        "https://www.facebook.com/uniselrealty",
+        "https://www.instagram.com/uniselrealty",
+        "https://www.linkedin.com/company/uniselrealty",
+      ],
     },
     {
       "@type": "WebSite",
@@ -40,6 +47,14 @@ export const organizationSchema = () => ({
       description: "Gurgaon's trusted real estate consultants",
       publisher: { "@id": `${SITE_URL}/#organization` },
       inLanguage: "en-US",
+      potentialAction: {
+        "@type": "SearchAction",
+        target: {
+          "@type": "EntryPoint",
+          urlTemplate: `${SITE_URL}/residential?q={search_term_string}`,
+        },
+        "query-input": "required name=search_term_string",
+      },
     },
   ],
 });
@@ -63,24 +78,39 @@ export const homepageSchema = (faqs: FaqItem[]) => ({
         streetAddress: "408, 4th floor, Adani Miracle Mile, Sector 60",
         addressLocality: "Gurgaon",
         addressRegion: "Haryana",
+        postalCode: "122102",
         addressCountry: "IN",
       },
-      areaServed: "Gurgaon",
+      areaServed: {
+        "@type": "City",
+        name: "Gurgaon",
+        sameAs: "https://en.wikipedia.org/wiki/Gurgaon",
+      },
       image: LOGO_URL,
-      sameAs: ["https://www.facebook.com/uniselrealty"],
+      sameAs: [
+        "https://www.facebook.com/uniselrealty",
+        "https://www.instagram.com/uniselrealty",
+        "https://www.linkedin.com/company/uniselrealty",
+      ],
+      priceRange: "$$",
+      openingHours: "Mo-Sa 09:00-18:00",
     },
-    {
-      "@type": "FAQPage",
-      "@id": `${SITE_URL}/#faqpage`,
-      mainEntity: faqs.map(({ question, answer }) => ({
-        "@type": "Question",
-        name: question,
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: answer,
-        },
-      })),
-    },
+    ...(faqs.length > 0
+      ? [
+          {
+            "@type": "FAQPage",
+            "@id": `${SITE_URL}/#faqpage`,
+            mainEntity: faqs.map(({ question, answer }) => ({
+              "@type": "Question",
+              name: question,
+              acceptedAnswer: {
+                "@type": "Answer",
+                text: answer,
+              },
+            })),
+          },
+        ]
+      : []),
   ],
 });
 
@@ -130,8 +160,8 @@ export const blogArticleSchema = (post: BlogData) => ({
         image: {
           "@type": "ImageObject",
           url: post.coverImageUrl,
-          width: 1500,
-          height: 980,
+          width: 1200,
+          height: 630,
         },
       }
     : {}),
@@ -143,7 +173,7 @@ export const blogArticleSchema = (post: BlogData) => ({
   },
 });
 
-// ─── Property listing: CollectionPage ──────────────────────────────────────────
+// ─── Property listing: CollectionPage + ItemList ─────────────────────────────
 
 type PropertyListingPageData = {
   name: string;
@@ -161,6 +191,28 @@ export const propertyCollectionSchema = (data: PropertyListingPageData) => ({
   isPartOf: { "@id": `${SITE_URL}/#website` },
   publisher: { "@id": `${SITE_URL}/#organization` },
   inLanguage: "en-US",
+});
+
+type PropertyListItem = {
+  name: string;
+  slug: string;
+  category?: string;
+};
+
+export const propertyItemListSchema = (
+  items: PropertyListItem[],
+  listName: string
+) => ({
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  name: listName,
+  numberOfItems: items.length,
+  itemListElement: items.map((item, index) => ({
+    "@type": "ListItem",
+    position: index + 1,
+    url: `${SITE_URL}/${item.category ?? "residential"}/${item.slug}`,
+    name: item.name,
+  })),
 });
 
 // ─── Property detail: RealEstateListing ────────────────────────────────────────
@@ -191,6 +243,7 @@ export const propertyDetailSchema = (property: PropertyData) => {
       streetAddress: property.location,
       addressLocality: "Gurgaon",
       addressRegion: "Haryana",
+      postalCode: "122102",
       addressCountry: "IN",
     },
     numberOfRooms: property.beds,
@@ -207,8 +260,8 @@ export const propertyDetailSchema = (property: PropertyData) => {
           image: {
             "@type": "ImageObject",
             url: property.mainImageUrl,
-            width: 1600,
-            height: 1080,
+            width: 1200,
+            height: 630,
           },
         }
       : {}),
@@ -236,7 +289,11 @@ export const servicePageSchema = (service: ServiceData) => ({
   url: `${SITE_URL}/services/${service.slug}`,
   provider: { "@id": `${SITE_URL}/#organization` },
   serviceType: service.category ?? "Real Estate Service",
-  areaServed: "Gurgaon",
+  areaServed: {
+    "@type": "City",
+    name: "Gurgaon",
+    sameAs: "https://en.wikipedia.org/wiki/Gurgaon",
+  },
   ...(service.imageUrl
     ? {
         image: {
@@ -291,6 +348,13 @@ export const contactPageSchema = () => ({
   description:
     "Get in touch with Unisel Realty for all your real estate needs in Gurgaon.",
   isPartOf: { "@id": `${SITE_URL}/#website` },
-  mainEntity: { "@id": `${SITE_URL}/#organization` },
+  mainEntity: {
+    "@type": "ContactPoint",
+    telephone: "+91-9999999999",
+    contactType: "customer service",
+    email: "info@uniselrealty.com",
+    areaServed: "IN",
+    availableLanguage: ["English", "Hindi"],
+  },
   inLanguage: "en-US",
 });
