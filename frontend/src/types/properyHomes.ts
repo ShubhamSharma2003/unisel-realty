@@ -18,6 +18,7 @@ export type PropertyHomes = {
   name: string;
   slug: string;
   location: string;
+  micromarket?: string;
   rate?: string;
   priceLabel?: string;
   beds: number;

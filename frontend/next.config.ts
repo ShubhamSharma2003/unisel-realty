@@ -13,7 +13,6 @@ const nextConfig: NextConfig = {
   async redirects() {
     return [
       { source: "/properties", destination: "/residential", permanent: true },
-      { source: "/properties/:slug", destination: "/residential/:slug", permanent: true },
       { source: "/blogs", destination: "/blog", permanent: true },
       { source: "/blogs/:slug", destination: "/blog/:slug", permanent: true },
       { source: "/contactus", destination: "/contact", permanent: true },
@@ -22,6 +21,7 @@ const nextConfig: NextConfig = {
       { source: "/residential-homes", destination: "/residential", permanent: true },
       { source: "/office-spaces", destination: "/commercial", permanent: true },
       { source: "/documentation", destination: "/", permanent: true },
+      { source: "/commercial/pre-leased-properties-gurgaon", destination: "/commercial/pre-leased", permanent: true },
     ];
   },
 

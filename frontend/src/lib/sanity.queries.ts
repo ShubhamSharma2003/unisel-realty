@@ -124,6 +124,7 @@ export const propertiesByCategoryQuery = groq`
     name,
     "slug": slug.current,
     location,
+    micromarket,
     rate,
     priceLabel,
     beds,
@@ -142,6 +143,7 @@ export const propertiesByCategoryAndStatusQuery = groq`
     name,
     "slug": slug.current,
     location,
+    micromarket,
     rate,
     priceLabel,
     beds,
@@ -160,6 +162,7 @@ export const propertiesForHomeQuery = groq`
     name,
     "slug": slug.current,
     location,
+    micromarket,
     rate,
     priceLabel,
     beds,
@@ -178,6 +181,7 @@ export const propertiesQuery = groq`
     name,
     "slug": slug.current,
     location,
+    micromarket,
     rate,
     priceLabel,
     beds,
@@ -202,6 +206,7 @@ export const propertiesSectionQuery = groq`
       name,
       "slug": slug.current,
       location,
+      micromarket,
       rate,
       beds,
       baths,
@@ -218,6 +223,7 @@ export const similarPropertiesQuery = groq`
     name,
     "slug": slug.current,
     location,
+    micromarket,
     rate,
     beds,
     baths,
@@ -240,6 +246,7 @@ export const propertyBySlugQuery = groq`
     name,
     "slug": slug.current,
     location,
+    micromarket,
     rate,
     priceLabel,
     beds,
@@ -259,6 +266,25 @@ export const propertyBySlugQuery = groq`
     },
     mapUrl,
     reraNumber,
+    reraApproved
+  }
+`;
+
+export const propertiesByMicromarketQuery = groq`
+  *[_type == "property" && micromarket == $micromarket] | order(_createdAt desc) {
+    _id,
+    name,
+    "slug": slug.current,
+    location,
+    micromarket,
+    rate,
+    priceLabel,
+    beds,
+    baths,
+    area,
+    images,
+    category,
+    status,
     reraApproved
   }
 `;

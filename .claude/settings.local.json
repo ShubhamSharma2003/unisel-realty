@@ -17,10 +17,19 @@
       "Bash(find src/app -name \"page.tsx\" -exec head -30 {} +)",
       "Bash(xargs grep -l \"loaderFile\\\\|imageLoader\\\\|Image Loader\")",
       "Bash(xargs grep -l \"compress\\\\|minify\\\\|optimize\")",
-      "Bash(xargs grep -l \"robots\\\\|sitemap\")"
+      "Bash(xargs grep -l \"robots\\\\|sitemap\")",
+      "Bash(find \"c:/Users/Shubham/Desktop/UniselRealtyNew/frontend/src/app/\\(site\\)\" -type f -name \"page.tsx\")",
+      "Bash(xargs grep -l \"propertySlugsQuery\\\\|propertyBySlugQuery\\\\|*properties*Query\")",
+      "Bash(find \"c:/Users/Shubham/Desktop/UniselRealtyNew/frontend/src/app/\\(site\\)/residential\" -type f -name \"layout.tsx\" -o -name \"error.tsx\" -o -name \"not-found.tsx\")",
+      "Bash(find \"c:\\\\Users\\\\Shubham\\\\Desktop\\\\UniselRealtyNew\\\\frontend/src/app/\\(site\\)\" -name \"page.tsx\" -path \"*/residential/*\" -o -path \"*/commercial/*\")",
+      "Bash(ls \"c:/Users/Shubham/Desktop/UniselRealtyNew/frontend/src/app/\\(site\\)/residential/\")",
+      "Bash(ls \"c:/Users/Shubham/Desktop/UniselRealtyNew/frontend/src/app/\\(site\\)/commercial/\")",
+      "Bash(ls \"c:/Users/Shubham/Desktop/UniselRealtyNew/frontend/src/app/\\(site\\)/properties/[slug]/\")"
     ],
     "additionalDirectories": [
-      "c:\\Users\\Shubham\\Desktop\\UniselRealtyNew\\frontend\\src\\app\\(site)\\properties"
+      "c:\\Users\\Shubham\\Desktop\\UniselRealtyNew\\frontend\\src\\app\\(site)\\properties",
+      "c:\\Users\\Shubham\\Desktop\\UniselRealtyNew\\frontend\\src\\app\\(site)\\location",
+      "c:\\Users\\Shubham\\Desktop\\UniselRealtyNew\\frontend\\src\\app\\(site)\\properties\\[slug]"
     ]
   }
 }
