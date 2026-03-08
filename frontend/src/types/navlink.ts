@@ -3,4 +3,5 @@ export type NavLinks = {
   label: string
   href: string
   order?: number
+  children?: NavLinks[]
 }

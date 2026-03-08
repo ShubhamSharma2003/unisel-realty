@@ -13,6 +13,7 @@ import {
   heroBannersQuery,
   navLinksQuery,
   builderPartnersQuery,
+  propertiesByMicromarketQuery,
 } from "./sanity.queries";
 import type { Service, ServicesSection } from "@/types/service";
 import type { PropertyHomes } from "@/types/properyHomes";
@@ -43,6 +44,9 @@ export const getProperties = async () =>
 
 export const getPropertyBySlug = async (slug: string) =>
   sanityClient.fetch<PropertyHomes | null>(propertyBySlugQuery, { slug }, { next: { tags: ['properties'] } });
+
+export const getPropertiesByMicromarket = async (micromarket: string) =>
+  sanityClient.fetch<PropertyHomes[]>(propertiesByMicromarketQuery, { micromarket }, { next: { tags: ['properties'] } });
 
 export const getTestimonialSection = async () =>
   sanityClient.fetch<TestimonialSection | null>(testimonialSectionQuery, {}, { next: { tags: ['testimonials'] } });
