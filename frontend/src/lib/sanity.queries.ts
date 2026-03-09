@@ -345,6 +345,23 @@ export const blogSlugsQuery = groq`
   }
 `;
 
+export const featuredPropertyQuery = groq`
+  *[_type == "property" && featured == true && defined(name)] | order(_updatedAt desc)[0] {
+    _id,
+    name,
+    "slug": slug.current,
+    location,
+    rate,
+    priceLabel,
+    beds,
+    baths,
+    area,
+    images,
+    category,
+    description
+  }
+`;
+
 export const builderPartnersQuery = groq`
   *[_type == "builderPartner"] | order(order asc, name asc) {
     _id,
