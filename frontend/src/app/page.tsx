@@ -32,7 +32,7 @@ export default function Home() {
       <BuilderPartners />
       <FeaturedProperty />
       <Testimonial />
-      <GoogleReviews appId="81d9b80f-1860-4f42-b491-1f73506a22d0" />
+      <GoogleReviews />
       <BlogSmall />
       <GetInTouch />
       <FAQ />

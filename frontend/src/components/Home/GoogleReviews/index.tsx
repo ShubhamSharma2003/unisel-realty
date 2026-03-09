@@ -1,12 +1,34 @@
 "use client";
 
 import Script from "next/script";
+import { useEffect } from "react";
 
-interface GoogleReviewsProps {
-  appId?: string;
-}
+const GoogleReviews = () => {
+  useEffect(() => {
+    const hideAttribution = () => {
+      const widget = document.getElementById(
+        "featurable-944fcdc4-c7ef-4f77-ba81-68fe1773f165"
+      );
+      if (!widget) return;
 
-const GoogleReviews = ({ appId = "81d9b80f-1860-4f42-b491-1f73506a22d0" }: GoogleReviewsProps) => {
+      const shadowHost = widget.querySelector(".shadow-wrapper");
+      const shadowRoot = shadowHost?.shadowRoot;
+      if (!shadowRoot) return;
+
+      const style = document.createElement("style");
+      style.textContent = `
+        a[href*="featurable.com?utm_source=widget"] {
+          display: none !important;
+        }
+      `;
+      shadowRoot.appendChild(style);
+    };
+
+    // Wait for widget to render
+    const timer = setTimeout(hideAttribution, 2000);
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
     <section className="py-16 bg-white dark:bg-gray-900">
       <div className="container mx-auto max-w-8xl px-4 sm:px-6 lg:px-0">
@@ -19,21 +41,12 @@ const GoogleReviews = ({ appId = "81d9b80f-1860-4f42-b491-1f73506a22d0" }: Googl
           </p>
         </div>
 
-        {/* Elfsight Google Reviews Widget */}
-        <div className="flex justify-center">
-          <div className={`elfsight-app-${appId}`} data-elfsight-app-lazy></div>
-        </div>
+        {/* Featurable Google Reviews Widget */}
+        <div id="featurable-944fcdc4-c7ef-4f77-ba81-68fe1773f165" data-featurable-async></div>
 
-        {/* Load Elfsight Script */}
         <Script
-          src="https://elfsightcdn.com/platform.js"
+          src="https://featurable.com/assets/v2/carousel_default.min.js"
           strategy="lazyOnload"
-          onLoad={() => {
-            // Reinitialize Elfsight apps after script loads
-            if ((window as any).elfsight) {
-              (window as any).elfsight.reload();
-            }
-          }}
         />
       </div>
     </section>
