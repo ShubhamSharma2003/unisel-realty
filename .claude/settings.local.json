@@ -24,7 +24,15 @@
       "Bash(find \"c:\\\\Users\\\\Shubham\\\\Desktop\\\\UniselRealtyNew\\\\frontend/src/app/\\(site\\)\" -name \"page.tsx\" -path \"*/residential/*\" -o -path \"*/commercial/*\")",
       "Bash(ls \"c:/Users/Shubham/Desktop/UniselRealtyNew/frontend/src/app/\\(site\\)/residential/\")",
       "Bash(ls \"c:/Users/Shubham/Desktop/UniselRealtyNew/frontend/src/app/\\(site\\)/commercial/\")",
-      "Bash(ls \"c:/Users/Shubham/Desktop/UniselRealtyNew/frontend/src/app/\\(site\\)/properties/[slug]/\")"
+      "Bash(ls \"c:/Users/Shubham/Desktop/UniselRealtyNew/frontend/src/app/\\(site\\)/properties/[slug]/\")",
+      "Bash(xargs grep -l \"propertySlugs\\\\|propertyBySlug\\\\|sanity\")",
+      "Bash(xargs grep -l \"GROQ\\\\|groq\")",
+      "Bash(npx tsc --noEmit --pretty)",
+      "Bash(npx tsc --noEmit)",
+      "Bash(npx next info)",
+      "Bash(curl -s \"https://uqxf8913.api.sanity.io/v2024-10-01/data/query/production?query=*%5B_type%20%3D%3D%20%22property%22%20%26%26%20featured%20%3D%3D%20true%5D%5B0%5D%7Bname%2Cfeatured%7D\")",
+      "Bash(curl -s \"https://uqxf8913.api.sanity.io/v2024-10-01/data/query/production?query=*%5B_type%20%3D%3D%20%22property%22%20%26%26%20featured%20%3D%3D%20true%5D%5B0%5D%7B_id%2Cname%2Cslug%2Clocation%2Crate%2Cfeatured%7D\")",
+      "Bash(curl -s \"https://uqxf8913.api.sanity.io/v2024-10-01/data/query/production?query=*%5B_type%20%3D%3D%20%22property%22%20%26%26%20featured%20%3D%3D%20true%20%26%26%20defined\\(name\\)%5D%20%7C%20order\\(_updatedAt%20desc\\)%5B0%5D%7B_id%2Cname%2Clocation%2Crate%2Cfeatured%7D\")"
     ],
     "additionalDirectories": [
       "c:\\Users\\Shubham\\Desktop\\UniselRealtyNew\\frontend\\src\\app\\(site)\\properties",
