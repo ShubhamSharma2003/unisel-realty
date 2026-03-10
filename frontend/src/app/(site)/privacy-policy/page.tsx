@@ -2,7 +2,7 @@ import { Metadata } from "next";
 import HeroSub from "@/components/shared/HeroSub";
 
 export const metadata: Metadata = {
-    title: "Privacy Policy | Unisel Realty — Gurgaon Real Estate",
+    title: "Privacy Policy | Unisel Realty - Gurgaon Real Estate",
     description: "Unisel Realty's Privacy Policy — how we collect, use, and protect your personal data under India's DPDP Act, 2023.",
     keywords: ["privacy policy", "unisel realty privacy", "data protection", "DPDP Act"],
     alternates: { canonical: "https://uniselrealty.com/privacy-policy" },
@@ -231,7 +231,7 @@ const PrivacyPolicyPage = () => {
                         <h2 className="text-xl font-semibold text-black dark:text-white mb-3">11. Grievance Officer</h2>
                         <div className="bg-black/[0.03] dark:bg-white/[0.04] border border-black/10 dark:border-white/10 rounded-2xl p-6 text-base text-black/70 dark:text-white/70 leading-7 space-y-1">
                             <p className="font-medium text-black dark:text-white">Grievance Officer — Unisel Realty</p>
-                            <p>Unisel Realty — Real Estate Agent &amp; Property Consultant, Gurgaon</p>
+                            <p>Unisel Realty - Real Estate Agent &amp; Property Consultant, Gurgaon</p>
                             <p>408, 4th Floor, Adani Miracle Mile, Sector 60, Gurgaon, Haryana — 122003</p>
                             <p>
                                 Email:{" "}

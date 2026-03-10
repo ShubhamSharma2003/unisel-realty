@@ -329,7 +329,7 @@ export const aboutPageSchema = () => ({
   "@type": "AboutPage",
   "@id": `${SITE_URL}/about`,
   url: `${SITE_URL}/about`,
-  name: "About Us | Unisel Realty — Gurgaon Real Estate Experts",
+  name: "About Us | Unisel Realty - Gurgaon Real Estate Experts",
   description:
     "Unisel Realty is a premier real estate consultancy based in Gurgaon, specialising in residential and commercial properties.",
   isPartOf: { "@id": `${SITE_URL}/#website` },
