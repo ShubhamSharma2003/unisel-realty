@@ -8,4 +8,6 @@ export const FooterLinks: footerlinks[] = [
     { label: 'Dwarka Expressway', href: '/location/dwarka-expressway' },
     { label: 'Blog', href: '/blog' },
     { label: 'Contact Us', href: '/contact' },
+    { label: 'Privacy Policy', href: '/privacy-policy' },
+    { label: 'Terms & Conditions', href: '/terms-and-conditions' },
 ]
