@@ -180,11 +180,11 @@ const HeroContent = ({ section, banners }: HeroContentProps) => {
 
                   {banner?.price && <div className="md:absolute bottom-0 md:-right-68 xl:right-0 bg-white dark:bg-black py-12 px-8 mobile:px-16 md:pl-16 md:pr-[295px] rounded-2xl md:rounded-none md:rounded-tl-2xl mt-24">
                     <div className="grid grid-cols-2 sm:grid-cols-4 md:flex gap-16 md:gap-24 sm:text-center dark:text-white text-black">
-                      {banner?.bedrooms ? (
+                      {banner?.configuration ? (
                         <div className="flex flex-col sm:items-center gap-3">
                           <Image
                             src="/images/hero/sofa.svg"
-                            alt="bedrooms"
+                            alt="configuration"
                             width={32}
                             height={32}
                             className="block dark:hidden"
@@ -192,23 +192,23 @@ const HeroContent = ({ section, banners }: HeroContentProps) => {
                           />
                           <Image
                             src="/images/hero/dark-sofa.svg"
-                            alt="bedrooms"
+                            alt="configuration"
                             width={32}
                             height={32}
                             className="hidden dark:block"
                             unoptimized={true}
                           />
                           <p className="text-sm sm:text-base font-normal text-inherit">
-                            {banner?.bedrooms} Bedrooms
+                            {banner?.configuration}
                           </p>
                         </div>
                       ) : null}
 
-                      {banner?.bathrooms ? (
+                      {banner?.structure ? (
                         <div className="flex flex-col sm:items-center gap-3">
                           <Image
                             src="/images/hero/tube.svg"
-                            alt="bathrooms"
+                            alt="structure"
                             width={32}
                             height={32}
                             className="block dark:hidden"
@@ -216,14 +216,14 @@ const HeroContent = ({ section, banners }: HeroContentProps) => {
                           />
                           <Image
                             src="/images/hero/dark-tube.svg"
-                            alt="bathrooms"
+                            alt="structure"
                             width={32}
                             height={32}
                             className="hidden dark:block"
                             unoptimized={true}
                           />
                           <p className="text-sm sm:text-base font-normal text-inherit">
-                            {banner?.bathrooms} Restroom
+                            {banner?.structure}
                           </p>
                         </div>
                       ) : null}

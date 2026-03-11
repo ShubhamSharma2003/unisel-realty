@@ -21,9 +21,9 @@ export type PropertyHomes = {
   micromarket?: string;
   rate?: string;
   priceLabel?: string;
-  beds: number;
-  baths: number;
-  area: number;
+  configuration?: string;
+  structure?: string;
+  area?: string;
   images?: PropertyImage[] | null;
   category?: string;
   status?: string;

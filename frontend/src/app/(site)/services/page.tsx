@@ -9,7 +9,7 @@ const SITE_NAME = "Unisel Realty";
 export const metadata: Metadata = {
   title: `Our Services | ${SITE_NAME}`,
   description:
-    "Explore the full range of real estate services offered by Unisel Realty — from home loans and property management to NRI investment advisory in Gurgaon.",
+    "Explore the full range of real estate services offered by Unisel Realty - from home loans and property management to NRI investment advisory in Gurgaon.",
   alternates: { canonical: `${SITE_URL}/services` },
   openGraph: {
     title: `Our Services | ${SITE_NAME}`,

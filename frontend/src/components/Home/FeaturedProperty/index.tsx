@@ -66,12 +66,12 @@ const FeaturedProperty = async () => {
               </p>
             )}
             <div className="grid grid-cols-2 gap-10">
-              {property.beds != null && (
+              {property.configuration && (
                 <div className="flex items-center gap-4">
                   <div className="bg-dark/5 dark:bg-white/5 p-2.5 rounded-[6px]">
                     <Image
                       src="/images/hero/sofa.svg"
-                      alt="bedrooms"
+                      alt="configuration"
                       width={24}
                       height={24}
                       className="block dark:hidden"
@@ -79,22 +79,22 @@ const FeaturedProperty = async () => {
                     />
                     <Image
                       src="/images/hero/dark-sofa.svg"
-                      alt="bedrooms"
+                      alt="configuration"
                       width={24}
                       height={24}
                       className="hidden dark:block"
                       unoptimized
                     />
                   </div>
-                  <h6>{property.beds} Bedrooms</h6>
+                  <h6>{property.configuration}</h6>
                 </div>
               )}
-              {property.baths != null && (
+              {property.structure && (
                 <div className="flex items-center gap-4">
                   <div className="bg-dark/5 dark:bg-white/5 p-2.5 rounded-[6px]">
                     <Image
                       src="/images/hero/tube.svg"
-                      alt="bathrooms"
+                      alt="structure"
                       width={24}
                       height={24}
                       className="block dark:hidden"
@@ -102,14 +102,14 @@ const FeaturedProperty = async () => {
                     />
                     <Image
                       src="/images/hero/dark-tube.svg"
-                      alt="bathrooms"
+                      alt="structure"
                       width={24}
                       height={24}
                       className="hidden dark:block"
                       unoptimized
                     />
                   </div>
-                  <h6>{property.baths} Bathrooms</h6>
+                  <h6>{property.structure}</h6>
                 </div>
               )}
               {property.area != null && (

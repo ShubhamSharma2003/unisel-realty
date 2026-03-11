@@ -1,7 +1,7 @@
 "use client";
 
-import { useState, useMemo, useCallback } from "react";
-import { useRouter, usePathname, useSearchParams } from "next/navigation";
+import { useState, useMemo, useCallback, useEffect } from "react";
+import { useRouter, usePathname } from "next/navigation";
 import { Icon } from "@iconify/react";
 import PropertyCard from "@/components/Home/Properties/Card/Card";
 import type { PropertyHomes } from "@/types/properyHomes";
@@ -11,7 +11,6 @@ type SortOption = "price-asc" | "price-desc" | "area-asc" | "area-desc" | "name-
 interface FilterState {
   search: string;
   sort: SortOption;
-  beds: string;
   minPrice: string;
   maxPrice: string;
   status: string;
@@ -26,8 +25,6 @@ const SORT_OPTIONS: { value: SortOption; label: string }[] = [
   { value: "name-asc", label: "Name: A → Z" },
 ];
 
-const BED_OPTIONS = ["1", "2", "3", "4+"];
-
 const STATUS_LABELS: Record<string, string> = {
   "new-launch": "New Launch",
   "ready-to-move": "Ready to Move",
@@ -41,20 +38,28 @@ interface Props {
 export default function PropertyListingClient({ properties }: Props) {
   const router = useRouter();
   const pathname = usePathname();
-  const searchParams = useSearchParams();
 
   const [filters, setFilters] = useState<FilterState>({
-    search: searchParams.get("search") ?? "",
-    sort: (searchParams.get("sort") as SortOption) ?? "",
-    beds: searchParams.get("beds") ?? "",
-    minPrice: searchParams.get("minPrice") ?? "",
-    maxPrice: searchParams.get("maxPrice") ?? "",
-    status: searchParams.get("status") ?? "",
+    search: "",
+    sort: "",
+    minPrice: "",
+    maxPrice: "",
+    status: "",
   });
+
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    setFilters({
+      search: params.get("search") ?? "",
+      sort: (params.get("sort") as SortOption) ?? "",
+      minPrice: params.get("minPrice") ?? "",
+      maxPrice: params.get("maxPrice") ?? "",
+      status: params.get("status") ?? "",
+    });
+  }, []);
   const [filtersOpen, setFiltersOpen] = useState(false);
 
   // Conditional filter visibility
-  const showBeds = useMemo(() => properties.some((p) => p.beds > 0), [properties]);
   const allStatuses = useMemo(
     () => [...new Set(properties.map((p) => p.status).filter(Boolean))] as string[],
     [properties]
@@ -63,7 +68,6 @@ export default function PropertyListingClient({ properties }: Props) {
 
   const activeFilterCount = [
     filters.search,
-    filters.beds,
     filters.minPrice,
     filters.maxPrice,
     filters.status,
@@ -75,7 +79,6 @@ export default function PropertyListingClient({ properties }: Props) {
       const params = new URLSearchParams();
       if (newFilters.search) params.set("search", newFilters.search);
       if (newFilters.sort) params.set("sort", newFilters.sort);
-      if (newFilters.beds) params.set("beds", newFilters.beds);
       if (newFilters.minPrice) params.set("minPrice", newFilters.minPrice);
       if (newFilters.maxPrice) params.set("maxPrice", newFilters.maxPrice);
       if (newFilters.status) params.set("status", newFilters.status);
@@ -95,7 +98,7 @@ export default function PropertyListingClient({ properties }: Props) {
   );
 
   const clearAll = useCallback(() => {
-    const empty: FilterState = { search: "", sort: "", beds: "", minPrice: "", maxPrice: "", status: "" };
+    const empty: FilterState = { search: "", sort: "", minPrice: "", maxPrice: "", status: "" };
     setFilters(empty);
     router.replace(pathname, { scroll: false });
   }, [pathname, router]);
@@ -110,12 +113,6 @@ export default function PropertyListingClient({ properties }: Props) {
           p.name.toLowerCase().includes(q) ||
           (p.location ?? "").toLowerCase().includes(q)
       );
-    }
-
-    if (filters.beds === "4+") {
-      result = result.filter((p) => p.beds >= 4);
-    } else if (filters.beds) {
-      result = result.filter((p) => p.beds === Number(filters.beds));
     }
 
     if (filters.minPrice) {
@@ -137,10 +134,10 @@ export default function PropertyListingClient({ properties }: Props) {
         result.sort((a, b) => Number(b.rate) - Number(a.rate));
         break;
       case "area-asc":
-        result.sort((a, b) => a.area - b.area);
+        result.sort((a, b) => (a.area ?? "").localeCompare(b.area ?? ""));
         break;
       case "area-desc":
-        result.sort((a, b) => b.area - a.area);
+        result.sort((a, b) => (b.area ?? "").localeCompare(a.area ?? ""));
         break;
       case "name-asc":
         result.sort((a, b) => a.name.localeCompare(b.name));
@@ -236,28 +233,6 @@ export default function PropertyListingClient({ properties }: Props) {
           {/* Expandable Filter Panel */}
           {filtersOpen && (
             <div className="rounded-2xl border border-dark/10 dark:border-white/10 bg-white dark:bg-dark p-5 flex flex-col sm:flex-row flex-wrap gap-6">
-              {/* Beds */}
-              {showBeds && (
-                <div className="flex flex-col gap-2">
-                  <p className="text-xs font-semibold text-dark/50 dark:text-white/50 uppercase tracking-wide">Bedrooms</p>
-                  <div className="flex gap-2 flex-wrap">
-                    {BED_OPTIONS.map((b) => (
-                      <button
-                        key={b}
-                        onClick={() => setFilter("beds", filters.beds === b ? "" : b)}
-                        className={`px-4 py-1.5 rounded-full text-sm border transition-colors duration-200 ${
-                          filters.beds === b
-                            ? "bg-primary border-primary text-white"
-                            : "border-dark/10 dark:border-white/10 text-dark dark:text-white hover:border-primary hover:text-primary"
-                        }`}
-                      >
-                        {b}
-                      </button>
-                    ))}
-                  </div>
-                </div>
-              )}
-
               {/* Price Range */}
               <div className="flex flex-col gap-2">
                 <p className="text-xs font-semibold text-dark/50 dark:text-white/50 uppercase tracking-wide">Price Range</p>

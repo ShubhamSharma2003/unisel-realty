@@ -125,10 +125,10 @@ const Footer = ({ footerMenus }: FooterProps) => {
             ©2026 Unisel Realty- All rights reserved
           </p>
           <div className="flex gap-8 items-center justify-center w-full md:w-auto">
-            <Link href="#" className="text-white/40 hover:text-primary text-sm">
+            <Link href="/terms-and-conditions" className="text-white/40 hover:text-primary text-sm">
               Terms of service
             </Link>
-            <Link href="#" className="text-white/40 hover:text-primary text-sm">
+            <Link href="/privacy-policy" className="text-white/40 hover:text-primary text-sm">
               Privacy policy
             </Link>
           </div>

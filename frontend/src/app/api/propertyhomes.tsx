@@ -7,9 +7,9 @@ export const propertyHomes: PropertyHomes[] = [
     slug: 'serenity-height-villas',
     location: '15 s aurora ave, miami',
     rate: '570,000',
-    beds: 4,
-    baths: 3,
-    area: 120,
+    configuration: '4 BHK',
+    structure: 'RCC Frame Structure',
+    area: '120 sq.ft.',
     images: [
       {
         src: "/images/properties/property1/property1.jpg",
@@ -31,9 +31,9 @@ export const propertyHomes: PropertyHomes[] = [
     slug: 'mountain-retreat-villa',
     location: '18 s aurora ave, miami',
     rate: '575,000',
-    beds: 5,
-    baths: 2,
-    area: 150,
+    configuration: '5 BHK',
+    structure: 'RCC Frame Structure',
+    area: '150 sq.ft.',
     images: [
       {
         src: "/images/properties/property2/property2.jpg",
@@ -55,9 +55,9 @@ export const propertyHomes: PropertyHomes[] = [
     slug: 'modern-luxe-villa',
     location: '20 s aurora ave, miami',
     rate: '580,000',
-    beds: 3,
-    baths: 4,
-    area: 180,
+    configuration: '3 BHK',
+    structure: 'RCC Frame Structure',
+    area: '180 sq.ft.',
     images: [
       {
         src: "/images/properties/property3/property3.jpg",
@@ -79,9 +79,9 @@ export const propertyHomes: PropertyHomes[] = [
     slug: 'royal-orchid-villas',
     location: '12 emerald heights, los angeles',
     rate: '590,000',
-    beds: 6,
-    baths: 3,
-    area: 200,
+    configuration: '6 BHK',
+    structure: 'RCC Frame Structure',
+    area: '200 sq.ft.',
     images: [
       {
         src: "/images/properties/property4/property4.jpg",
@@ -103,9 +103,9 @@ export const propertyHomes: PropertyHomes[] = [
     slug: 'grand-cista-villas',
     location: '25 skyline boulevard, san diego',
     rate: '710,000',
-    beds: 2,
-    baths: 1,
-    area: 90,
+    configuration: '2 BHK',
+    structure: 'RCC Frame Structure',
+    area: '90 sq.ft.',
     images: [
       {
         src: "/images/properties/property5/property5.jpg",
@@ -127,9 +127,9 @@ export const propertyHomes: PropertyHomes[] = [
     slug: 'imperial-pearn-villas',
     location: '18 sapphire bay road, naples',
     rate: '630,000',
-    beds: 4,
-    baths: 2,
-    area: 130,
+    configuration: '4 BHK',
+    structure: 'RCC Frame Structure',
+    area: '130 sq.ft.',
     images: [
       {
         src: "/images/properties/property6/property6.jpg",
@@ -151,9 +151,9 @@ export const propertyHomes: PropertyHomes[] = [
     slug: 'opulent-heven-villas',
     location: '22 ocean breeze drive, malibu',
     rate: '620,000',
-    beds: 6,
-    baths: 3,
-    area: 180,
+    configuration: '6 BHK',
+    structure: 'RCC Frame Structure',
+    area: '180 sq.ft.',
     images: [
       {
         src: "/images/properties/property7.jpg",
@@ -175,9 +175,9 @@ export const propertyHomes: PropertyHomes[] = [
     slug: 'elite-crest-villas',
     location: '10 palm view lane, beverly hills',
     rate: '750,000',
-    beds: 4,
-    baths: 3,
-    area: 150,
+    configuration: '4 BHK',
+    structure: 'RCC Frame Structure',
+    area: '150 sq.ft.',
     images: [
       {
         src: "/images/properties/property8.jpg",
@@ -199,9 +199,9 @@ export const propertyHomes: PropertyHomes[] = [
     slug: 'majestic-bay-villas',
     location: '8 sunset cove, miami beach',
     rate: '680,000',
-    beds: 4,
-    baths: 2,
-    area: 120,
+    configuration: '4 BHK',
+    structure: 'RCC Frame Structure',
+    area: '120 sq.ft.',
     images: [
       {
         src: "/images/properties/property9.jpg",

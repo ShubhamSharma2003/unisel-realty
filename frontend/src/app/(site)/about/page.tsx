@@ -3,8 +3,8 @@ import HeroSub from "@/components/shared/HeroSub";
 import { aboutPageSchema, breadcrumbSchema } from "@/lib/jsonld";
 
 export const metadata: Metadata = {
-    title: "About Us | Unisel Realty — Gurgaon Real Estate Experts",
-    description: "Learn about Unisel Realty — Gurgaon's trusted real estate consultants. We help buyers, sellers, and investors find the best residential and commercial properties.",
+    title: "About Us | Unisel Realty - Gurgaon Real Estate Experts",
+    description: "Learn about Unisel Realty - Gurgaon's trusted real estate consultants. We help buyers, sellers, and investors find the best residential and commercial properties.",
     keywords: ["about unisel realty", "real estate consultants gurgaon", "property experts gurgaon"],
     alternates: { canonical: "https://uniselrealty.com/about" },
     openGraph: {

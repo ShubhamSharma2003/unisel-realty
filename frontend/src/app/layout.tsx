@@ -16,7 +16,7 @@ const font = Bricolage_Grotesque({ subsets: ["latin"] });
 export const metadata: Metadata = {
   metadataBase: new URL('https://uniselrealty.com'),
   title: {
-    default: 'Unisel Realty — Gurgaon Real Estate Consultants',
+    default: 'Unisel Realty - Gurgaon Real Estate Consultants',
     template: '%s | Unisel Realty',
   },
   description: 'Buy, sell or lease residential & commercial properties in Gurgaon. 15+ years experience, 20+ expert advisors. Trusted by 1000+ clients.',
@@ -39,7 +39,7 @@ export const metadata: Metadata = {
     canonical: 'https://uniselrealty.com',
   },
   openGraph: {
-    title: 'Unisel Realty — Gurgaon Real Estate Consultants',
+    title: 'Unisel Realty - Gurgaon Real Estate Consultants',
     description: 'Buy, sell or lease residential & commercial properties in Gurgaon. 15+ years experience, 20+ expert advisors.',
     url: 'https://uniselrealty.com',
     siteName: 'Unisel Realty',
@@ -48,7 +48,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Unisel Realty — Gurgaon Real Estate Consultants',
+    title: 'Unisel Realty - Gurgaon Real Estate Consultants',
     description: 'Buy, sell or lease residential & commercial properties in Gurgaon. 15+ years experience, 20+ expert advisors.',
   },
   icons: {
