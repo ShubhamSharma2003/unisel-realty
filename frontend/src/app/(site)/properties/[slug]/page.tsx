@@ -36,7 +36,7 @@ export async function generateMetadata({
     : `${siteUrl}/images/header/unisel-logo.png`;
 
   const title = `${property.name} | ${siteName}`;
-  const description = `${property.name} — ${property.beds} BHK, ${property.baths} bath at ${property.location}, Gurgaon. Area: ${property.area} sq.ft. Contact Unisel Realty for best deals.`;
+  const description = `${property.name}${property.configuration ? ` — ${property.configuration}` : ""} at ${property.location}, Gurgaon.${property.area ? ` Area: ${property.area}.` : ""} Contact Unisel Realty for best deals.`;
 
   return {
     title,
@@ -81,8 +81,8 @@ export default async function PropertyDetailPage({
     slug: property.slug,
     location: property.location,
     rate: property.rate,
-    beds: property.beds,
-    baths: property.baths,
+    configuration: property.configuration,
+    structure: property.structure,
     area: property.area,
     category: property.category ?? "residential",
     mainImageUrl,

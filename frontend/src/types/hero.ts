@@ -8,8 +8,8 @@ export type HeroBanner = {
   background?: string;
   backgroundImage?: SanityImageSource;
   backgroundImageMobile?: SanityImageSource;
-  bedrooms?: number;
-  bathrooms?: number;
+  configuration?: string;
+  structure?: string;
   features?: string[];
   price?: number;
   priceLabel?: string;

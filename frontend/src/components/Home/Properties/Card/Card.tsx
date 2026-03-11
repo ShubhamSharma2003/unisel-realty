@@ -5,7 +5,7 @@ import Link from 'next/link'
 import { urlFor } from '@/lib/sanity.image'
 
 const PropertyCard: React.FC<{ item: PropertyHomes }> = ({ item }) => {
-  const { name, location, rate, beds, baths, area, slug, images } = item
+  const { name, location, rate, configuration, structure, area, slug, images } = item
 
   const mainImageSource = images?.[0];
   const mainImage = mainImageSource
@@ -61,15 +61,15 @@ const PropertyCard: React.FC<{ item: PropertyHomes }> = ({ item }) => {
           </div>
           <div className='flex'>
             <div className='flex flex-col gap-2 border-e border-black/10 dark:border-white/20 pr-2 xs:pr-4 mobile:pr-8'>
-              <Icon icon={'solar:bed-linear'} width={20} height={20} />
+              <Icon icon={'solar:home-2-linear'} width={20} height={20} />
               <p className='text-sm mobile:text-base font-normal text-black dark:text-white'>
-                {beds} Bedrooms
+                {configuration}
               </p>
             </div>
             <div className='flex flex-col gap-2 border-e border-black/10 dark:border-white/20 px-2 xs:px-4 mobile:px-8'>
-              <Icon icon={'solar:bath-linear'} width={20} height={20} />
+              <Icon icon={'solar:buildings-2-linear'} width={20} height={20} />
               <p className='text-sm mobile:text-base font-normal text-black dark:text-white'>
-                {baths} Bathrooms
+                {structure}
               </p>
             </div>
             <div className='flex flex-col gap-2 pl-2 xs:pl-4 mobile:pl-8'>
@@ -79,7 +79,7 @@ const PropertyCard: React.FC<{ item: PropertyHomes }> = ({ item }) => {
                 height={20}
               />
               <p className='text-sm mobile:text-base font-normal text-black dark:text-white'>
-                {area}m<sup>2</sup>
+                {area}
               </p>
             </div>
           </div>

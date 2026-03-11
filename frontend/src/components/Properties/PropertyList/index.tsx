@@ -1,4 +1,3 @@
-import { Suspense } from 'react'
 import { getProperties, getPropertiesByCategory, getPropertiesByCategoryAndStatus } from '@/lib/sanity.services'
 import PropertyListingClient from '@/components/Properties/PropertyListingClient'
 
@@ -21,11 +20,7 @@ const PropertiesListing: React.FC<PropertiesListingProps> = async ({ category, s
     ? properties.filter((p) => p.reraApproved === true)
     : properties;
 
-  return (
-    <Suspense>
-      <PropertyListingClient properties={displayProperties} />
-    </Suspense>
-  )
+  return <PropertyListingClient properties={displayProperties} />
 }
 
 export default PropertiesListing

@@ -222,22 +222,27 @@ type PropertyData = {
   slug: string;
   location: string;
   rate?: string | number;
-  beds: number;
-  baths: number;
-  area: number;
+  configuration?: string;
+  structure?: string;
+  area?: string;
   category?: string;
   mainImageUrl?: string | null;
 };
 
 export const propertyDetailSchema = (property: PropertyData) => {
   const category = property.category ?? "residential";
+  const descParts = [property.name];
+  if (property.configuration) descParts.push(property.configuration);
+  if (property.structure) descParts.push(property.structure);
+  descParts.push(`located at ${property.location}, Gurgaon`);
+  if (property.area) descParts.push(`Area: ${property.area}`);
   return {
     "@context": "https://schema.org",
     "@type": "RealEstateListing",
     "@id": `${SITE_URL}/${category}/${property.slug}`,
     url: `${SITE_URL}/${category}/${property.slug}`,
     name: property.name,
-    description: `${property.name} — ${property.beds} bed, ${property.baths} bath property located at ${property.location}, Gurgaon. Area: ${property.area} sq.ft.`,
+    description: descParts.join(" — "),
     address: {
       "@type": "PostalAddress",
       streetAddress: property.location,
@@ -246,13 +251,7 @@ export const propertyDetailSchema = (property: PropertyData) => {
       postalCode: "122102",
       addressCountry: "IN",
     },
-    numberOfRooms: property.beds,
-    numberOfBathroomsTotal: property.baths,
-    floorSize: {
-      "@type": "QuantitativeValue",
-      value: property.area,
-      unitCode: "FTK",
-    },
+    ...(property.area ? { floorSize: { "@type": "QuantitativeValue", value: property.area } } : {}),
     ...(property.rate !== undefined ? { price: String(property.rate) } : {}),
     priceCurrency: "INR",
     ...(property.mainImageUrl

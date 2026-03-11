@@ -126,15 +126,15 @@ const PropertyDetailContent = async ({ slug, property: propertyProp }: PropertyD
           <div className="lg:col-span-4 col-span-12">
             <div className="flex">
               <div className="flex flex-col gap-2 border-e border-black/10 dark:border-white/20 pr-2 xs:pr-4 mobile:pr-8">
-                <Icon icon={"solar:bed-linear"} width={20} height={20} />
+                <Icon icon={"solar:home-2-linear"} width={20} height={20} />
                 <p className="text-sm mobile:text-base font-normal text-black dark:text-white">
-                  {property?.beds} Bedrooms
+                  {property?.configuration}
                 </p>
               </div>
               <div className="flex flex-col gap-2 border-e border-black/10 dark:border-white/20 px-2 xs:px-4 mobile:px-8">
-                <Icon icon={"solar:bath-linear"} width={20} height={20} />
+                <Icon icon={"solar:buildings-2-linear"} width={20} height={20} />
                 <p className="text-sm mobile:text-base font-normal text-black dark:text-white">
-                  {property?.baths} Bathrooms
+                  {property?.structure}
                 </p>
               </div>
               <div className="flex flex-col gap-2 pl-2 xs:pl-4 mobile:pl-8">
@@ -144,7 +144,7 @@ const PropertyDetailContent = async ({ slug, property: propertyProp }: PropertyD
                   height={20}
                 />
                 <p className="text-sm mobile:text-base font-normal text-black dark:text-white">
-                  {property?.area}m<sup>2</sup>
+                  {property?.area}
                 </p>
               </div>
             </div>
@@ -390,9 +390,9 @@ const PropertyDetailContent = async ({ slug, property: propertyProp }: PropertyD
                         )}
                       </div>
                       <div className="flex gap-4 text-sm text-dark/60 dark:text-white/60">
-                        <span>{p.beds} Beds</span>
-                        <span>{p.baths} Baths</span>
-                        <span>{p.area} m²</span>
+                        <span>{p.configuration}</span>
+                        <span>{p.structure}</span>
+                        <span>{p.area}</span>
                       </div>
                     </div>
                   </Link>
