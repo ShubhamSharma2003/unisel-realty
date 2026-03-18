@@ -13,6 +13,11 @@ export type PropertyAmenity = {
   label?: string;
 };
 
+export type PropertyConfiguration = {
+  type: string;
+  size: string;
+};
+
 export type PropertyHomes = {
   _id: string;
   name: string;
@@ -30,6 +35,7 @@ export type PropertyHomes = {
   description?: any[];
   features?: PropertyFeature[];
   amenities?: PropertyAmenity[];
+  configurations?: PropertyConfiguration[];
   mapUrl?: string;
   reraNumber?: string;
   reraApproved?: boolean;

@@ -264,6 +264,10 @@ export const propertyBySlugQuery = groq`
       icon,
       label
     },
+    configurations[] {
+      type,
+      size
+    },
     mapUrl,
     reraNumber,
     reraApproved
