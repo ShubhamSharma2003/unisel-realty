@@ -33,10 +33,10 @@ const Footer = ({ footerMenus }: FooterProps) => {
             <Link href="#">
               <Icon icon="ph:x-logo-bold" width={24} height={24} className="text-white hover:text-primary duration-300" />
             </Link>
-            <Link href="#">
+            <Link href="https://www.facebook.com/uniselrealty">
               <Icon icon="ph:facebook-logo-bold" width={24} height={24} className="text-white hover:text-primary duration-300" />
             </Link>
-            <Link href="#">
+            <Link href="https://www.instagram.com/uniselrealty">
               <Icon icon="ph:instagram-logo-bold" width={24} height={24} className="text-white hover:text-primary duration-300" />
             </Link>
           </div>

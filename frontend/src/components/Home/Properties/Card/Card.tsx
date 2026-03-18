@@ -39,7 +39,7 @@ const PropertyCard: React.FC<{ item: PropertyHomes }> = ({ item }) => {
             />
           </div>
         </div>
-        <div className='p-6'>
+        <div className='px-3 py-6'>
           <div className='flex flex-col mobile:flex-row gap-5 mobile:gap-0 justify-between mb-6'>
             <div>
               <Link href={`/properties/${slug}`}>
@@ -59,29 +59,22 @@ const PropertyCard: React.FC<{ item: PropertyHomes }> = ({ item }) => {
               ) : null}
             </div>
           </div>
-          <div className='flex'>
-            <div className='flex flex-col gap-2 border-e border-black/10 dark:border-white/20 pr-2 xs:pr-4 mobile:pr-8'>
+          <div className="flex items-center justify-between text-xs mobile:text-base">
+            <div className="flex flex-col items-center justify-center gap-2 text-center border-r border-black/10 dark:border-white/20 pr-4">
               <Icon icon={'solar:home-2-linear'} width={20} height={20} />
-              <p className='text-sm mobile:text-base font-normal text-black dark:text-white'>
-                {configuration}
-              </p>
+              <span>{configuration}</span>
             </div>
-            <div className='flex flex-col gap-2 border-e border-black/10 dark:border-white/20 px-2 xs:px-4 mobile:px-8'>
+
+            <div className="flex flex-col items-center justify-center gap-2 text-center border-r border-black/10 dark:border-white/20 px-4">
               <Icon icon={'solar:buildings-2-linear'} width={20} height={20} />
-              <p className='text-sm mobile:text-base font-normal text-black dark:text-white'>
-                {structure}
-              </p>
+              <span>{structure}</span>
             </div>
-            <div className='flex flex-col gap-2 pl-2 xs:pl-4 mobile:pl-8'>
-              <Icon
-                icon={'lineicons:arrow-all-direction'}
-                width={20}
-                height={20}
-              />
-              <p className='text-sm mobile:text-base font-normal text-black dark:text-white'>
-                {area}
-              </p>
+
+            <div className="flex flex-col items-center justify-center gap-2 text-center pl-4">
+              <Icon icon={'lineicons:arrow-all-direction'} width={20} height={20} />
+              <span>{area}</span>
             </div>
+
           </div>
         </div>
       </div>
