@@ -310,7 +310,7 @@ const PropertyDetailContent = async ({ slug, property: propertyProp }: PropertyD
               </div>
             </div>
             <div className="border p-8 rounded-2xl border-dark/10 dark:border-white/20 mt-10">
-              <ContactForm variant="sidebar" />
+              <ContactForm variant="sidebar" source="property" propertySlug={property.slug} />
             </div>
           </div>
         </div>
