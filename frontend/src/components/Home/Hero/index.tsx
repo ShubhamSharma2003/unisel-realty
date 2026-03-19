@@ -1,10 +1,10 @@
-import HeroContent from "./HeroContent";
 import { getHeroBanners } from "@/lib/sanity.services";
+import HeroWrapper from "./HeroWrapper";
 
 const Hero = async () => {
   const banners = await getHeroBanners();
 
-  return <HeroContent section={null} banners={banners} />;
+  return <HeroWrapper banners={banners} />;
 };
 
 export default Hero;

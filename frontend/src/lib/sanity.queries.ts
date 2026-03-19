@@ -325,8 +325,10 @@ export const heroSectionQuery = groq`
 export const heroBannersQuery = groq`
   *[_type == "heroBanner"] | order(order asc, _createdAt desc) {
     _id,
+    eyebrow,
     location,
     title,
+    subCopy,
     bannerImage,
     background,
     backgroundImage,

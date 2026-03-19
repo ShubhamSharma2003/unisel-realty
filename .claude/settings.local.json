@@ -40,7 +40,10 @@
       "Bash(npm run:*)",
       "WebSearch",
       "Bash(npm install:*)",
-      "Bash(npm ls:*)"
+      "Bash(npm ls:*)",
+      "Bash(grep -E \"\\\\.\\(ts|tsx\\)$\")",
+      "Bash(find /c/Users/Shubham/Desktop/UniselRealtyNew/frontend/src/app -name \"page.tsx\" -path \"*/\\(site\\)\" -o -name \"page.tsx\" -path \"*/\\\\\\(site\\\\\\)\")",
+      "Bash(ls -la /c/Users/Shubham/Desktop/UniselRealtyNew/frontend/src/app/\\\\\\(site\\\\\\)/)"
     ],
     "additionalDirectories": [
       "c:\\Users\\Shubham\\Desktop\\UniselRealtyNew\\frontend\\src\\app\\(site)\\properties",

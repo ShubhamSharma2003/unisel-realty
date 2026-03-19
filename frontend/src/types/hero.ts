@@ -2,8 +2,10 @@ import type { SanityImageSource } from "@sanity/image-url/lib/types/types";
 
 export type HeroBanner = {
   _id?: string;
+  eyebrow?: string;
   location: string;
   title: string;
+  subCopy?: string;
   bannerImage?: SanityImageSource;
   background?: string;
   backgroundImage?: SanityImageSource;
