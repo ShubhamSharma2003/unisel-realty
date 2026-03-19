@@ -54,13 +54,14 @@ const PropertyDetailContent = async ({ slug, property: propertyProp }: PropertyD
   // Prepare image URLs for carousel
   const imageUrls = property?.images?.map((img) => {
     if (!img) return null;
-    return typeof img === 'object' && "src" in img
-      ? img.src
-      : urlFor(img)
-          .width(1600)
-          .height(1080)
-          .fit("crop")
-          .url();
+    if (typeof img === 'object' && "src" in img) return img.src as string;
+    // Skip images without an asset reference (e.g. incomplete Sanity uploads)
+    if (typeof img === 'object' && !("asset" in img)) return null;
+    return urlFor(img)
+      .width(1600)
+      .height(1080)
+      .fit("crop")
+      .url();
   }).filter((url): url is string => url !== null) || [];
 
 

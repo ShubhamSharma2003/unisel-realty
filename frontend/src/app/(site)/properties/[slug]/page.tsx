@@ -31,8 +31,11 @@ export async function generateMetadata({
     };
   }
 
-  const imageUrl = property.images?.[0]
-    ? urlFor(property.images[0]).width(1200).height(630).url()
+  const firstImage = property.images?.find(
+    (img) => img && typeof img === "object" && "asset" in img
+  );
+  const imageUrl = firstImage
+    ? urlFor(firstImage).width(1200).height(630).url()
     : `${siteUrl}/images/header/unisel-logo.png`;
 
   const title = `${property.name} | ${siteName}`;
@@ -69,8 +72,11 @@ export default async function PropertyDetailPage({
 
   if (!property) notFound();
 
-  const mainImageUrl = property.images?.[0]
-    ? urlFor(property.images[0]).width(1600).height(1080).fit("crop").url()
+  const firstImage = property.images?.find(
+    (img) => img && typeof img === "object" && "asset" in img
+  );
+  const mainImageUrl = firstImage
+    ? urlFor(firstImage).width(1600).height(1080).fit("crop").url()
     : null;
 
   const categoryLabel = property.category === "commercial" ? "Commercial" : "Residential";
