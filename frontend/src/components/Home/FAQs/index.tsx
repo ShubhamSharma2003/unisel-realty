@@ -10,44 +10,28 @@ import {
 
 export const FAQ_ITEMS = [
     {
-        question: "What does a property dealer in Gurgaon do?",
-        answer: "A property dealer — or real estate channel partner — is a RERA-registered advisor who bridges the gap between buyers and developers. At Unisel Realty, we shortlist properties, arrange site visits, negotiate prices, verify RERA status, process home loans, and handle all legal paperwork. We're authorised for DLF, M3M, Emaar, and 15+ developers. You get developer pricing, plus unbiased expert advice — at zero advisory fee.",
-    },
-    {
-        question: "How do I buy a flat in Gurgaon?",
-        answer: "Here's how it works: (1) Set your budget — 2BHK flats start from ₹60 lakh on Dwarka Expressway; Golf Course Road luxury starts from ₹3 Cr+. (2) Pick a location — Dwarka Expressway, Golf Course Road, New Gurgaon, or Sohna Road. (3) Call us for a free site visit and honest consultation. (4) Verify RERA registration at hrera.org.in. (5) We handle booking, home loan, and legal documentation end to end.",
-    },
-    {
-        question: "Which are the best areas to buy property in Gurgaon in 2025–26?",
-        answer: "Golf Course Road for ultra-luxury (DLF & Emaar), Golf Course Extension Road for premium (M3M & Sobha), Dwarka Expressway for fastest-growing value (2BHK–4BHK), New Gurgaon Sectors 79–115 for affordable high-rises, Sohna Road for mid-segment with strong rentals, and MG Road/Cyber City for commercial property. We'll recommend the right one based on your budget and goals.",
-    },
-    {
-        question: "What is the price of a luxury apartment in Gurgaon?",
-        answer: "Prices vary by location: Golf Course Road — ₹3 Cr to ₹25 Cr+ (DLF, Emaar ultra-luxury); Golf Course Extension Road — ₹1.5 Cr to ₹8 Cr (M3M, Sobha, Birla Estate); Dwarka Expressway — ₹80 lakh to ₹3 Cr (2BHK–4BHK); New Gurgaon — ₹60 lakh to ₹2 Cr (first-time buyer segment). Contact us for real-time, developer-verified pricing on any specific project.",
-    },
-    {
-        question: "Is Gurgaon a good city to invest in real estate?",
-        answer: "Consistently, yes. Gurgaon ranks among India's top real estate destinations — driven by strong infrastructure (NH-48, Dwarka Expressway, Delhi Metro), proximity to IGI Airport, RERA compliance, and 250+ Fortune 500 companies in Cyber City. Golf Course Road and Dwarka Expressway have delivered 10–18% CAGR capital appreciation over five years. It's a sound choice for both end-use and investment.",
-    },
-    {
-        question: "What is a real estate channel partner in Gurgaon?",
-        answer: "A RERA-registered agent formally authorised by a developer to market and sell their projects. Unisel Realty is an authorised channel partner for DLF, M3M, Emaar, Adani Realty, Godrej, Birla Estate, and 15+ others. You pay the same price as the developer's direct office — but you get unbiased project comparisons, free legal advice, and full transaction support on your side.",
+        question: "What makes Unisel Realty different from other real estate consultants in Gurgaon?",
+        answer: "Unisel Realty has been operating exclusively in Gurgaon's luxury real estate market since 2006 — 18 years of on-ground market intelligence that newer, pan-India firms cannot replicate. We are authorised channel partners of DLF, Godrej and M3M with pre-launch inventory access, a dedicated NRI desk, and post-purchase property management — all under one roof. Our 62% repeat client rate reflects the outcome, not just the promise.",
     },
     {
         question: "Can NRIs buy property in Gurgaon?",
-        answer: "Yes. NRIs and OCIs can purchase residential and commercial property in India under FEMA (1999). Our dedicated NRI desk handles: FEMA & RBI-compliant guidance, virtual 3D property tours, Power of Attorney drafting and registration, home loans from NRI-friendly banks, and rental income repatriation. We manage the full transaction remotely — you invest from wherever you are.",
+        answer: "Yes. Non-Resident Indians (NRIs) and Persons of Indian Origin (PIOs) can purchase residential and commercial properties in India under FEMA regulations — without RBI permission in most cases. Our dedicated NRI desk manages the complete transaction including Power of Attorney, TDS compliance under Section 195, Form 15CA/CB filing, and repatriation of sale proceeds. We have advised 200+ NRI clients across UAE, UK, USA, Singapore, Canada and Australia.",
     },
     {
-        question: "What are the charges when buying property in Gurgaon?",
-        answer: "Budget for: (1) BSP — Basic Sale Price. (2) PLC — Preferential Location Charges (higher floors, park/road facing). (3) GST — 5% on under-construction; nil on ready-to-move. (4) Stamp Duty — ~5–7% of property value in Haryana. (5) Registration Charges — 1% or flat ₹50,000. (6) Home Loan Processing Fee — 0.5–1% of loan amount. We give you a full cost breakdown upfront. No hidden charges, ever.",
+        question: "What is the best area to invest in Gurgaon in 2025?",
+        answer: "Based on our current advisory, Golf Course Road (Sectors 42–54) offers the highest appreciation potential for luxury residential buyers due to constrained new supply and sustained demand from MNC employees and HNI buyers. For highest rental yield, Sector 60–65 generates the strongest NRI rental enquiry. For commercial investment, the Dwarka Expressway SCO corridor (Sectors 99–115) is where we are directing the most client capital right now.",
     },
     {
-        question: "Which developers are best to buy property from in Gurgaon?",
-        answer: "Gurgaon's most reputed RERA-registered developers: DLF (ultra-luxury, Golf Course Road), Emaar India (premium residential & commercial), M3M (mid-luxury, Golf Course Extension Road), Adani Realty (Golf Course Road & Dwarka Expressway), Godrej Properties, Birla Estate, Max Estate, Smart World, Signature Global, Sobha, Hero Homes, AIPL, and Elan Group. We're authorised for all of them — giving you verified access to the best projects and prices.",
+        question: "How does Unisel Realty help NRI buyers manage property from abroad?",
+        answer: "We offer end-to-end post-purchase management — possession walkthrough, developer punch list resolution, interior coordination, rental listing on premium platforms, tenant screening, lease agreement execution, and annual yield reporting. 80+ units are currently under active management. NRI clients receive quarterly updates and have a single point of contact for all property matters.",
     },
     {
-        question: "How do I verify a property is RERA-registered in Gurgaon?",
-        answer: "Go to hrera.org.in — the official Haryana RERA website — and search by project name, developer name, or RERA number. Every project we list is 100% RERA-verified. Our own registration number is RC/HARERA/GGM/1940/1535/2022/308. One firm rule: never buy from any developer or agent that isn't RERA-registered. The legal risk simply isn't worth it.",
+        question: "What is an SCO plot and is it a good investment in Gurgaon?",
+        answer: "SCO (Shop-Cum-Office) is a commercial plot format unique to Haryana — ground floor retail, upper floors for office or residential lease. It combines rental income from multiple floors on a single owned plot, making it one of the highest-yielding real estate formats in NCR. On Dwarka Expressway, SCO plots near IGI Airport have delivered 18–24% appreciation since allotment. We currently advise on M3M and Emaar SCO inventory in Sectors 113 and 114.",
+    },
+    {
+        question: "Is Unisel Realty RERA registered?",
+        answer: "Yes. Unisel Realty Pvt. Ltd. is registered under the Real Estate (Regulation and Development) Act, 2016. All projects we advise on are RERA registered and we provide full RERA documentation to every client before any booking is initiated.",
     },
 ];
 
@@ -81,7 +65,7 @@ const FAQ: React.FC = () => {
                         </p>
                         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
                             <h2 className='text-40 lg:text-52 font-medium leading-[1.2] text-dark dark:text-white'>
-                                Frequently Asked Questions — Buying Property in Gurgaon
+                                Frequently Asked Questions
                             </h2>
                             <p className='text-dark/50 dark:text-white/50 text-lg leading-7 md:max-w-sm'>
                                 Real answers to the questions homebuyers, investors, and NRIs actually ask.

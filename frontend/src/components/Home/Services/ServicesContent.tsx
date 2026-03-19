@@ -25,13 +25,13 @@ const ServicesContent = ({ section, services }: ServicesContentProps) => {
 
   return (
     <section className="relative overflow-hidden">
-      <div className="absolute left-0 top-0">
+      <div className="absolute left-0 top-0 w-full max-w-[800px] pointer-events-none">
         <Image
           src={lightBackground}
           alt="vector"
           width={800}
           height={1050}
-          className="dark:hidden"
+          className="dark:hidden w-full h-auto"
           unoptimized={true}
         />
         <Image
@@ -39,12 +39,12 @@ const ServicesContent = ({ section, services }: ServicesContentProps) => {
           alt="vector"
           width={800}
           height={1050}
-          className="hidden dark:block"
+          className="hidden dark:block w-full h-auto"
           unoptimized={true}
         />
       </div>
       <div className="container max-w-8xl mx-auto px-5 2xl:px-0 relative z-10">
-        <div className="grid grid-cols-12 items-center gap-10">
+        <div className="grid grid-cols-12 items-center gap-5 lg:gap-10">
           <div className="lg:col-span-6 col-span-12">
             <p className="text-dark/75 dark:text-white/75 text-base font-semibold flex gap-2.5">
               <Icon
@@ -78,12 +78,12 @@ const ServicesContent = ({ section, services }: ServicesContentProps) => {
             </div>
           ) : null}
           {tertiaryService ? (
-            <div className="lg:col-span-3 col-span-6">
+            <div className="col-span-12 sm:col-span-6 lg:col-span-3">
               <ServiceCard service={tertiaryService} size="small" />
             </div>
           ) : null}
           {quaternaryService ? (
-            <div className="lg:col-span-3 col-span-6">
+            <div className="col-span-12 sm:col-span-6 lg:col-span-3">
               <ServiceCard service={quaternaryService} size="small" />
             </div>
           ) : null}

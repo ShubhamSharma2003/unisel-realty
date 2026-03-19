@@ -4,45 +4,35 @@ import Link from "next/link";
 const services = [
     {
         icon: "ph:buildings",
-        badge: "Property Management",
-        title: "Stress-free property management.",
-        description: "From tenant sourcing and rent collection to maintenance and legal compliance — we manage your property end-to-end so you earn without the effort.",
-        highlights: [
-            "Verified tenant screening",
-            "On-time rent collection",
-            "24hr maintenance support",
-            "Monthly inspection reports",
-        ],
-        href: "/services/property-management-gurgaon",
-        cta: "Explore Service",
+        badge: "Luxury Residential Advisory",
+        title: "Luxury Residential Advisory — Golf Course Road & Dwarka Expressway",
+        description: "Exclusive access to pre-launch inventory across DLF, Godrej, M3M and Sobha. We advise on micro-market positioning, configuration selection, and floor-level appreciation dynamics — so your first decision is your best decision.",
+        href: "/residential",
+        cta: "Explore Residential Properties",
     },
     {
-        icon: "ph:bank",
-        badge: "Home Loan",
-        title: "Best rates. Fastest approvals.",
-        description: "We partner with 20+ leading banks and NBFCs to get you the most competitive home loan rates in Gurgaon — with full documentation support at no cost.",
-        highlights: [
-            "20+ bank & NBFC partners",
-            "Rates starting at 8.5%",
-            "5-day avg. sanction time",
-            "Zero advisory fee",
-        ],
-        href: "/services/home-loan-gurgaon",
-        cta: "Check Eligibility",
+        icon: "ph:storefront",
+        badge: "Commercial & SCO",
+        title: "Commercial Real Estate & SCO Plot Investment — Gurgaon",
+        description: "Gurgaon's SCO plot corridor and commercial office market are among India's highest-yielding asset classes. We identify projects by developer track record, catchment quality, and rental demand — not just price.",
+        href: "/commercial",
+        cta: "Explore Commercial Properties",
     },
     {
         icon: "ph:globe",
-        badge: "NRI Corner",
-        title: "Invest in India from anywhere.",
-        description: "Dedicated NRI desk with FEMA-compliant guidance, Power of Attorney assistance, repatriation support, and a relationship manager across time zones.",
-        highlights: [
-            "FEMA & RBI compliant",
-            "Virtual property tours",
-            "Power of Attorney support",
-            "Rental income repatriation",
-        ],
+        badge: "NRI Advisory",
+        title: "NRI Real Estate Advisory — FEMA Compliant · End to End",
+        description: "We are specialists in NRI property transactions — not an afterthought desk. POA structuring, FEMA compliance, TDS filing, repatriation planning, post-purchase rental management. We handle the complexity so you do not have to manage it from abroad.",
         href: "/services/nri-property-investment-gurgaon",
-        cta: "Talk to NRI Desk",
+        cta: "Visit NRI Desk",
+    },
+    {
+        icon: "ph:house-simple",
+        badge: "Post-Purchase Management",
+        title: "Post-Purchase Property Management — For Residents & NRI Investors",
+        description: "80+ units under active management across Gurgaon. We handle possession walkthroughs, developer punch lists, tenant screening, lease agreements, and annual yield reporting. Your property performs whether you are in Gurgaon or Geneva.",
+        href: "/services/property-management-gurgaon",
+        cta: "Learn About Property Management",
     },
 ];
 
@@ -56,19 +46,19 @@ const ServicesOffered = () => {
                     <div>
                         <p className="text-dark/75 dark:text-white/75 text-base font-semibold flex gap-2.5 mb-4">
                             <Icon icon="ph:house-simple-fill" className="text-2xl text-primary" />
-                            Services We Offer
+                            Our Services
                         </p>
                         <h2 className="text-40 lg:text-52 font-medium leading-[1.2] text-dark dark:text-white">
-                            Everything you need,<br className="hidden md:block" /> in one place.
+                            End-to-End Real Estate Advisory —<br className="hidden md:block" /> Not Just Property Listings
                         </h2>
                     </div>
                     <p className="text-dark/50 dark:text-white/50 text-lg leading-7 md:max-w-sm">
-                        Beyond buying and selling — we offer expert services to protect, finance, and grow your real estate portfolio.
+                        We do not run a listing portal. Every service we offer is backed by 18 years of Gurgaon market knowledge and active developer relationships.
                     </p>
                 </div>
 
                 {/* Cards */}
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     {services.map((service) => (
                         <div
                             key={service.badge}
@@ -91,21 +81,10 @@ const ServicesOffered = () => {
                                 </h3>
 
                                 {/* Description */}
-                                <p className="text-dark/50 dark:text-white/50 text-base leading-6 mb-6">
+                                <p className="text-dark/50 dark:text-white/50 text-base leading-6 mb-8">
                                     {service.description}
                                 </p>
 
-                                {/* Highlights */}
-                                <ul className="flex flex-col gap-2.5 mb-8">
-                                    {service.highlights.map((point) => (
-                                        <li key={point} className="flex items-center gap-3 text-sm text-dark/70 dark:text-white/70">
-                                            <span className="w-5 h-5 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
-                                                <Icon icon="ph:check" width={12} height={12} className="text-primary" />
-                                            </span>
-                                            {point}
-                                        </li>
-                                    ))}
-                                </ul>
                             </div>
 
                             {/* CTA */}
