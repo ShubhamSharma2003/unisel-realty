@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useMemo, useEffect } from "react";
+import { useState, useMemo } from "react";
 import { Icon } from "@iconify/react";
 
 interface EMICalculatorProps {
@@ -21,12 +21,6 @@ export default function EMICalculator({ propertyRate }: EMICalculatorProps) {
   const [downPaymentPct, setDownPaymentPct] = useState("20");
   const [interestRate, setInterestRate] = useState("8.5");
   const [tenureYears, setTenureYears] = useState("20");
-  const [isClient, setIsClient] = useState(false);
-
-  useEffect(() => {
-    setIsClient(true);
-  }, []);
-
   const { loanAmount, emi, totalInterest, totalAmount, principalPct, interestPct } =
     useMemo(() => {
       const price = Number(propertyPrice) || 0;
@@ -56,20 +50,6 @@ export default function EMICalculator({ propertyRate }: EMICalculatorProps) {
   const fieldClass =
     "w-full px-4 py-3 rounded-xl border border-dark/10 dark:border-white/10 bg-transparent text-dark dark:text-white text-sm focus:outline-none focus:border-primary transition-colors";
 
-  // Server render: show header only to prevent hydration mismatch
-  if (!isClient) {
-    return (
-      <div className="mt-16 border-t border-dark/10 dark:border-white/10 pt-12">
-        <div className="flex items-center gap-3 mb-8">
-          <Icon icon="ph:calculator" width={28} className="text-primary" />
-          <div>
-            <h2 className="text-2xl font-semibold text-dark dark:text-white">EMI / Mortgage Calculator</h2>
-            <p className="text-sm text-dark/50 dark:text-white/50 mt-0.5">Estimate your monthly home loan repayment</p>
-          </div>
-        </div>
-      </div>
-    );
-  }
 
   return (
     <div className="mt-16 border-t border-dark/10 dark:border-white/10 pt-12">

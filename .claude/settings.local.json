@@ -38,7 +38,9 @@
       "Bash(rm -rf .next)",
       "Bash(rm -rf .turbo)",
       "Bash(npm run:*)",
-      "WebSearch"
+      "WebSearch",
+      "Bash(npm install:*)",
+      "Bash(npm ls:*)"
     ],
     "additionalDirectories": [
       "c:\\Users\\Shubham\\Desktop\\UniselRealtyNew\\frontend\\src\\app\\(site)\\properties",

@@ -7,7 +7,7 @@ import { sanityClient } from "@/lib/sanity.client";
 import { propertyBySlugQuery, similarPropertiesQuery } from "@/lib/sanity.queries";
 import { urlFor } from "@/lib/sanity.image";
 import type { PropertyHomes } from "@/types/properyHomes";
-import EMICalculator from "@/components/Properties/EMICalculator";
+import EMICalculatorWrapper from "@/components/Properties/EMICalculator/EMICalculatorWrapper";
 import PropertyImageCarousel from "@/components/Properties/PropertyImageCarousel";
 import { breadcrumbSchema } from "@/lib/jsonld";
 
@@ -350,7 +350,7 @@ const PropertyDetailContent = async ({ slug, property: propertyProp }: PropertyD
             </div>
           </div>
         </div>
-        <EMICalculator propertyRate={property?.rate} />
+        <EMICalculatorWrapper propertyRate={property?.rate} />
 
         {similarProperties && similarProperties.length > 0 && (
           <div className="mt-16 border-t border-dark/10 dark:border-white/10 pt-12">
