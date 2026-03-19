@@ -10,33 +10,19 @@ import {
   type CarouselApi,
 } from "@/components/ui/carousel";
 import { urlFor } from "@/lib/sanity.image";
-import type { HeroBanner, HeroSection } from "@/types/hero";
+import type { HeroBanner } from "@/types/hero";
 
 type HeroContentProps = {
-  section: HeroSection | null;
   banners: HeroBanner[];
 };
 
-const HeroContent = ({ section, banners }: HeroContentProps) => {
+const HeroContent = ({ banners }: HeroContentProps) => {
   const [api, setApi] = React.useState<CarouselApi | undefined>(undefined);
   const [current, setCurrent] = React.useState(0);
   const [count, setCount] = React.useState(0);
   const [isMobile, setIsMobile] = React.useState(false);
 
   React.useEffect(() => {
-    if (!api) return;
-
-    setCount(api.scrollSnapList().length);
-    setCurrent(api.selectedScrollSnap());
-
-    api.on("select", () => {
-      setCurrent(api.selectedScrollSnap());
-    });
-  }, [api]);
-
-  React.useEffect(() => {
-    if (typeof window === "undefined") return;
-
     const mediaQuery = window.matchMedia("(max-width: 767px)");
     const handleChange = (event: MediaQueryListEvent) => {
       setIsMobile(event.matches);
@@ -52,6 +38,17 @@ const HeroContent = ({ section, banners }: HeroContentProps) => {
     mediaQuery.addListener(handleChange);
     return () => mediaQuery.removeListener(handleChange);
   }, []);
+
+  React.useEffect(() => {
+    if (!api) return;
+
+    setCount(api.scrollSnapList().length);
+    setCurrent(api.selectedScrollSnap());
+
+    api.on("select", () => {
+      setCurrent(api.selectedScrollSnap());
+    });
+  }, [api]);
 
   const handleDotClick = (index: number) => {
     if (api) {
@@ -136,12 +133,23 @@ const HeroContent = ({ section, banners }: HeroContentProps) => {
                 >
                   <div className="container max-w-8xl mx-auto px-5 2xl:px-0 pt-32 md:pt-60 md:pb-68">
                     <div className="relative text-white dark:text-dark text-center md:text-start z-10">
+                      {banner?.eyebrow && (
+                        <p className="text-inherit text-sm sm:text-base font-medium tracking-widest uppercase opacity-80 mb-3">
+                          {banner.eyebrow}
+                        </p>
+                      )}
                       <h1 className="text-inherit text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold -tracking-wider md:max-w-2xl mt-4 mb-2">
                         {banner?.title}
                       </h1>
-                      <p className="text-inherit text-xl sm:text-2xl md:text-3xl font-semibold mb-4 md:max-w-2xl">
-                        {banner?.location}
-                      </p>
+                      {banner?.subCopy ? (
+                        <p className="text-inherit text-base sm:text-lg md:text-xl font-normal mb-6 md:max-w-2xl opacity-90 leading-relaxed">
+                          {banner.subCopy}
+                        </p>
+                      ) : (
+                        <p className="text-inherit text-xl sm:text-2xl md:text-3xl font-semibold mb-4 md:max-w-2xl">
+                          {banner?.location}
+                        </p>
+                      )}
 
                       <div className="flex flex-col xs:flex-row justify-center md:justify-start gap-4">
                         <Link
@@ -152,16 +160,12 @@ const HeroContent = ({ section, banners }: HeroContentProps) => {
                         </Link>
                         {banner?.viewDetailsUrl ? (
                           <Link
-                            href={banner?.viewDetailsUrl}
+                            href={banner.viewDetailsUrl}
                             className="px-8 py-4 border border-white dark:border-dark bg-transparent text-white dark:text-dark hover:bg-white dark:hover:bg-dark dark:hover:text-white hover:text-dark duration-300 text-base font-semibold rounded-full hover:cursor-pointer"
                           >
                             View Details
                           </Link>
-                        ) : (
-                          <button className="px-8 py-4 border border-white dark:border-dark bg-transparent text-white dark:text-dark hover:bg-white dark:hover:bg-dark dark:hover:text-white hover:text-dark duration-300 text-base font-semibold rounded-full hover:cursor-pointer">
-                            View Details
-                          </button>
-                        )}
+                        ) : null}
                       </div>
                     </div>
                     {bannerImageUrl ? (

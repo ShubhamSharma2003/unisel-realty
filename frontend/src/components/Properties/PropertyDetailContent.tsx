@@ -7,7 +7,8 @@ import { sanityClient } from "@/lib/sanity.client";
 import { propertyBySlugQuery, similarPropertiesQuery } from "@/lib/sanity.queries";
 import { urlFor } from "@/lib/sanity.image";
 import type { PropertyHomes } from "@/types/properyHomes";
-import EMICalculator from "@/components/Properties/EMICalculator";
+import EMICalculatorWrapper from "@/components/Properties/EMICalculator/EMICalculatorWrapper";
+import PropertyImageCarousel from "@/components/Properties/PropertyImageCarousel";
 import { breadcrumbSchema } from "@/lib/jsonld";
 
 
@@ -50,25 +51,26 @@ const PropertyDetailContent = async ({ slug, property: propertyProp }: PropertyD
     { category: property.category ?? "residential", slug }
   );
 
-  const mainImageSource = property?.images?.[0];
-  const mainImage = mainImageSource
-    ? typeof mainImageSource === 'object' && "src" in mainImageSource
-      ? mainImageSource.src
-      : urlFor(mainImageSource).width(1600).height(1080).fit("crop").url()
-    : null;
-
-  const getImageUrl = (img: any, index: number) => {
+  // Prepare image URLs for carousel
+  const imageUrls = property?.images?.map((img) => {
     if (!img) return null;
-    return typeof img === 'object' && "src" in img
-      ? img.src
-      : urlFor(img)
-          .width(index === 1 ? 640 : 320)
-          .height(index === 1 ? 800 : 400)
-          .fit("crop")
-          .url();
-  };
+    if (typeof img === 'object' && "src" in img) return img.src as string;
+    // Skip images without an asset reference (e.g. incomplete Sanity uploads)
+    if (typeof img === 'object' && !("asset" in img)) return null;
+    return urlFor(img)
+      .width(1600)
+      .height(1080)
+      .fit("crop")
+      .url();
+  }).filter((url): url is string => url !== null) || [];
+
 
   const rateLabel = property?.rate ?? "";
+
+  // Format configurations for display
+  const formattedConfigurations = property?.configurations
+    ?.map((config) => config.type)
+    .join(", ") || property?.configuration;
 
   const categorySlug = property?.category === "commercial" ? "commercial" : "residential";
   const categoryLabel = property?.category === "commercial" ? "Commercial" : "Residential";
@@ -128,15 +130,17 @@ const PropertyDetailContent = async ({ slug, property: propertyProp }: PropertyD
               <div className="flex flex-col gap-2 border-e border-black/10 dark:border-white/20 pr-2 xs:pr-4 mobile:pr-8">
                 <Icon icon={"solar:home-2-linear"} width={20} height={20} />
                 <p className="text-sm mobile:text-base font-normal text-black dark:text-white">
-                  {property?.configuration}
+                  {formattedConfigurations}
                 </p>
               </div>
-              <div className="flex flex-col gap-2 border-e border-black/10 dark:border-white/20 px-2 xs:px-4 mobile:px-8">
-                <Icon icon={"solar:buildings-2-linear"} width={20} height={20} />
-                <p className="text-sm mobile:text-base font-normal text-black dark:text-white">
-                  {property?.structure}
-                </p>
-              </div>
+              {property?.structure && (
+                <div className="flex flex-col gap-2 border-e border-black/10 dark:border-white/20 px-2 xs:px-4 mobile:px-8">
+                  <Icon icon={"solar:buildings-2-linear"} width={20} height={20} />
+                  <p className="text-sm mobile:text-base font-normal text-black dark:text-white">
+                    {property?.structure}
+                  </p>
+                </div>
+              )}
               <div className="flex flex-col gap-2 pl-2 xs:pl-4 mobile:pl-8">
                 <Icon
                   icon={"lineicons:arrow-all-direction"}
@@ -151,52 +155,54 @@ const PropertyDetailContent = async ({ slug, property: propertyProp }: PropertyD
           </div>
         </div>
         <div className="grid grid-cols-12 mt-8 gap-8">
-          <div className="lg:col-span-8 col-span-12 row-span-2">
-            {mainImage ? (
-              <div className="">
-                <Image
-                  src={mainImage}
-                  alt={property?.name}
-                  width={1600}
-                  height={1080}
-                  className="rounded-2xl w-full h-540 object-cover"
-                />
-              </div>
-            ) : null}
+          <PropertyImageCarousel
+            imageUrls={imageUrls}
+            propertyName={property?.name || ""}
+          />
+          <div className={`lg:col-span-4 col-span-12 self-start sticky top-32 transition-all duration-300`}>
+            <div className={`border border-dark/10 dark:border-white/20 rounded-2xl p-6 ${
+              property?.configurations && property?.configurations.length > 0
+                ? 'bg-white dark:bg-dark/50'
+                : 'bg-transparent'
+            }`}>
+              {property?.configurations && property.configurations.length > 0 ? (
+                <div className="space-y-4">
+                  <h3 className="text-lg font-semibold text-dark dark:text-white">Configurations</h3>
+                  <div className="space-y-0">
+                    {property.configurations?.map((config, index) => (
+                      <div key={index}>
+                        <div className="flex justify-between items-center py-3">
+                          <span className="text-dark/70 dark:text-white/70 text-sm">{config.type}</span>
+                          <span className="font-semibold text-dark dark:text-white text-sm">{config.size}</span>
+                        </div>
+                        {index !== (property.configurations?.length ?? 0) - 1 && (
+                          <div className="border-b border-dark/10 dark:border-white/10"></div>
+                        )}
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              ) : (
+                <div className="space-y-4">
+                  <h3 className="text-lg font-semibold text-dark dark:text-white">Configuration</h3>
+                  <div className="space-y-3">
+                    {property?.configuration && (
+                      <div className="flex justify-between items-center pb-3 border-b border-dark/10 dark:border-white/10">
+                        <span className="text-dark/70 dark:text-white/70 text-sm">Configuration</span>
+                        <span className="font-semibold text-dark dark:text-white text-sm">{property.configuration}</span>
+                      </div>
+                    )}
+                    {property?.area && (
+                      <div className="flex justify-between items-center">
+                        <span className="text-dark/70 dark:text-white/70 text-sm">Area</span>
+                        <span className="font-semibold text-dark dark:text-white text-sm">{property.area}</span>
+                      </div>
+                    )}
+                  </div>
+                </div>
+              )}
+            </div>
           </div>
-          {property?.images?.[1] ? (
-            <div className="lg:col-span-4 lg:block hidden">
-              <Image
-                src={getImageUrl(property?.images?.[1], 1) || ""}
-                alt="Property Image 2"
-                width={640}
-                height={800}
-                className="rounded-2xl w-full h-full object-cover"
-              />
-            </div>
-          ) : null}
-          {property?.images?.[2] ? (
-            <div className="lg:col-span-2 col-span-6">
-              <Image
-                src={getImageUrl(property?.images?.[2], 2) || ""}
-                alt="Property Image 3"
-                width={320}
-                height={400}
-                className="rounded-2xl w-full h-full object-cover"
-              />
-            </div>
-          ) : null}
-          {property?.images?.[3] ? (
-            <div className="lg:col-span-2 col-span-6">
-              <Image
-                src={getImageUrl(property?.images?.[3], 3) || ""}
-                alt="Property Image 4"
-                width={320}
-                height={400}
-                className="rounded-2xl w-full h-full object-cover"
-              />
-            </div>
-          ) : null}
         </div>
         <div className="grid grid-cols-12 gap-8 mt-10">
           <div className="lg:col-span-8 col-span-12">
@@ -345,7 +351,7 @@ const PropertyDetailContent = async ({ slug, property: propertyProp }: PropertyD
             </div>
           </div>
         </div>
-        <EMICalculator propertyRate={property?.rate} />
+        <EMICalculatorWrapper propertyRate={property?.rate} />
 
         {similarProperties && similarProperties.length > 0 && (
           <div className="mt-16 border-t border-dark/10 dark:border-white/10 pt-12">
@@ -359,43 +365,68 @@ const PropertyDetailContent = async ({ slug, property: propertyProp }: PropertyD
                     : urlFor(p.images[0]).width(880).height(600).fit("crop").url()
                   : null;
                 return (
-                  <Link
-                    key={p._id}
-                    href={`/${catSlug}/${p.slug}`}
-                    className="group relative rounded-2xl border border-dark/10 dark:border-white/10 hover:shadow-3xl duration-300 dark:hover:shadow-white/20 overflow-hidden block"
-                  >
-                    {thumb && (
-                      <div className="overflow-hidden h-52">
-                        <Image
-                          src={thumb}
-                          alt={p.name}
-                          width={440}
-                          height={300}
-                          className="w-full h-full object-cover group-hover:brightness-50 group-hover:scale-110 transition duration-300"
-                        />
-                      </div>
-                    )}
-                    <div className="p-5">
-                      <div className="flex justify-between items-start gap-3 mb-3">
-                        <div>
-                          <h3 className="text-base font-medium text-dark dark:text-white group-hover:text-primary duration-300 line-clamp-1">
-                            {p.name}
-                          </h3>
-                          <p className="text-sm text-dark/50 dark:text-white/50">{p.location}</p>
+                  <div key={p._id}>
+                    <div className="relative rounded-2xl border border-dark/10 dark:border-white/10 group hover:shadow-3xl duration-300 dark:hover:shadow-white/20">
+                      <div className="overflow-hidden rounded-t-2xl">
+                        <Link href={`/${catSlug}/${p.slug}`}>
+                          {thumb && (
+                            <Image
+                              src={thumb}
+                              alt={p.name}
+                              width={440}
+                              height={300}
+                              className="w-full rounded-t-2xl group-hover:brightness-50 group-hover:scale-125 transition duration-300 delay-75"
+                            />
+                          )}
+                        </Link>
+                        <div className="absolute top-6 right-6 p-4 bg-white rounded-full hidden group-hover:block">
+                          <Icon
+                            icon={'solar:arrow-right-linear'}
+                            width={24}
+                            height={24}
+                            className="text-black"
+                          />
                         </div>
-                        {p.rate && (
-                          <span className="shrink-0 text-sm text-primary px-3 py-1 rounded-full bg-primary/10 whitespace-nowrap">
-                            {p.rate}
-                          </span>
-                        )}
                       </div>
-                      <div className="flex gap-4 text-sm text-dark/60 dark:text-white/60">
-                        <span>{p.configuration}</span>
-                        <span>{p.structure}</span>
-                        <span>{p.area}</span>
+                      <div className="px-3 py-6">
+                        <div className="flex flex-col mobile:flex-row gap-5 mobile:gap-0 justify-between mb-6">
+                          <div>
+                            <Link href={`/${catSlug}/${p.slug}`}>
+                              <h3 className="text-xl font-medium text-dark dark:text-white duration-300 group-hover:text-primary">
+                                {p.name}
+                              </h3>
+                            </Link>
+                            <p className="text-base font-normal text-dark/50 dark:text-white/50">
+                              {p.location}
+                            </p>
+                          </div>
+                          <div>
+                            {p.rate && (
+                              <button className="text-base font-normal text-primary px-5 py-2 rounded-full bg-primary/10">
+                                {p.rate}
+                              </button>
+                            )}
+                          </div>
+                        </div>
+                        <div className="flex items-center justify-between text-xs mobile:text-base">
+                          <div className="flex flex-col items-center justify-center gap-2 text-center border-r border-dark/10 dark:border-white/20 pr-4">
+                            <Icon icon={'solar:home-2-linear'} width={20} height={20} />
+                            <span className="text-dark dark:text-white">{p.configuration}</span>
+                          </div>
+
+                          <div className="flex flex-col items-center justify-center gap-2 text-center border-r border-dark/10 dark:border-white/20 px-4">
+                            <Icon icon={'solar:buildings-2-linear'} width={20} height={20} />
+                            <span className="text-dark dark:text-white">{p.structure}</span>
+                          </div>
+
+                          <div className="flex flex-col items-center justify-center gap-2 text-center pl-4">
+                            <Icon icon={'lineicons:arrow-all-direction'} width={20} height={20} />
+                            <span className="text-dark dark:text-white">{p.area}</span>
+                          </div>
+                        </div>
                       </div>
                     </div>
-                  </Link>
+                  </div>
                 );
               })}
             </div>

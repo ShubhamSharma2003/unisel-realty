@@ -46,7 +46,7 @@ const BuilderPartners = async () => {
                                     src={urlFor(partner.logo).width(300).url()}
                                     alt={partner.name}
                                     fill
-                                    className="object-contain"
+                                    className="object-cover"
                                     sizes="180px"
                                 />
                             </div>

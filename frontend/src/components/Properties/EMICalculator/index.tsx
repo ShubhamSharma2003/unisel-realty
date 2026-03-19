@@ -21,7 +21,6 @@ export default function EMICalculator({ propertyRate }: EMICalculatorProps) {
   const [downPaymentPct, setDownPaymentPct] = useState("20");
   const [interestRate, setInterestRate] = useState("8.5");
   const [tenureYears, setTenureYears] = useState("20");
-
   const { loanAmount, emi, totalInterest, totalAmount, principalPct, interestPct } =
     useMemo(() => {
       const price = Number(propertyPrice) || 0;
@@ -50,6 +49,7 @@ export default function EMICalculator({ propertyRate }: EMICalculatorProps) {
 
   const fieldClass =
     "w-full px-4 py-3 rounded-xl border border-dark/10 dark:border-white/10 bg-transparent text-dark dark:text-white text-sm focus:outline-none focus:border-primary transition-colors";
+
 
   return (
     <div className="mt-16 border-t border-dark/10 dark:border-white/10 pt-12">
