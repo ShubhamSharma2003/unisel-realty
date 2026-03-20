@@ -3,6 +3,7 @@ import { Bricolage_Grotesque } from 'next/font/google'
 import './globals.css'
 import Header from '@/components/Layout/Header'
 import Footer from '@/components/Layout/Footer'
+import FloatingContact from '@/components/shared/FloatingContact'
 import { getFooterMenus } from '@/lib/sanity.services'
 import { organizationSchema } from '@/lib/jsonld'
 import { ThemeProvider } from 'next-themes'
@@ -113,6 +114,7 @@ export default async function RootLayout({
             <Header navLinks={navLinks} />
             {children}
             <Footer footerMenus={footerMenus} />
+            <FloatingContact />
           </ThemeProvider>
         </SessionProviderComp>
       </body>
