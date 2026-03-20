@@ -20,7 +20,7 @@ const PropertiesListing: React.FC<PropertiesListingProps> = async ({ category, s
     ? properties.filter((p) => p.reraApproved === true)
     : properties;
 
-  return <PropertyListingClient properties={displayProperties} />
+  return <PropertyListingClient properties={displayProperties} category={category} />
 }
 
 export default PropertiesListing

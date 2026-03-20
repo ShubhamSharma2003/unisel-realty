@@ -7,7 +7,6 @@ const TrustBar = () => {
         "500+ Families Served",
         "200+ NRI Investors",
         "DLF · Godrej · M3M Authorised Partner",
-        "Dubai Office",
         "RERA Registered",
     ];
 

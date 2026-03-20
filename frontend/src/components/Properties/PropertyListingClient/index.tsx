@@ -8,6 +8,25 @@ import type { PropertyHomes } from "@/types/properyHomes";
 
 type SortOption = "price-asc" | "price-desc" | "area-asc" | "area-desc" | "name-asc" | "";
 
+// Parses Indian-format price strings like "₹1.2 Cr", "₹50 Lac", "Starting ₹50 Lakh" to a raw number
+function parsePrice(rate?: string): number {
+  if (!rate) return 0;
+  const lower = rate.toLowerCase();
+  const cr = lower.match(/([\d.]+)\s*cr/);
+  const lac = lower.match(/([\d.]+)\s*(lac|lakh)/);
+  if (cr) return parseFloat(cr[1]) * 1e7;
+  if (lac) return parseFloat(lac[1]) * 1e5;
+  const num = rate.replace(/,/g, "").match(/[\d.]+/);
+  return num ? parseFloat(num[0]) : 0;
+}
+
+// Extracts the leading numeric value from area strings like "1200 sq.ft", "2.5 Acres"
+function parseArea(area?: string): number {
+  if (!area) return 0;
+  const match = area.replace(/,/g, "").match(/[\d.]+/);
+  return match ? parseFloat(match[0]) : 0;
+}
+
 interface FilterState {
   search: string;
   sort: SortOption;
@@ -28,14 +47,22 @@ const SORT_OPTIONS: { value: SortOption; label: string }[] = [
 const STATUS_LABELS: Record<string, string> = {
   "new-launch": "New Launch",
   "ready-to-move": "Ready to Move",
+  "under-construction": "Under Construction",
+  "near-possession": "Near Possession",
   "pre-leased": "Pre-Leased",
+};
+
+const CATEGORY_STATUSES: Record<string, string[]> = {
+  residential: ["new-launch", "ready-to-move", "under-construction", "near-possession"],
+  commercial: ["new-launch", "under-construction", "near-possession", "pre-leased"],
 };
 
 interface Props {
   properties: PropertyHomes[];
+  category?: string;
 }
 
-export default function PropertyListingClient({ properties }: Props) {
+export default function PropertyListingClient({ properties, category }: Props) {
   const router = useRouter();
   const pathname = usePathname();
 
@@ -59,12 +86,14 @@ export default function PropertyListingClient({ properties }: Props) {
   }, []);
   const [filtersOpen, setFiltersOpen] = useState(false);
 
-  // Conditional filter visibility
+  // Use fixed status list for known categories, fall back to statuses present in data
   const allStatuses = useMemo(
-    () => [...new Set(properties.map((p) => p.status).filter(Boolean))] as string[],
-    [properties]
+    (): string[] =>
+      (category ? CATEGORY_STATUSES[category] : undefined) ??
+      [...new Set(properties.map((p) => p.status).filter((s): s is string => !!s))],
+    [properties, category]
   );
-  const showStatus = allStatuses.length > 1;
+  const showStatus = allStatuses.length > 0;
 
   const activeFilterCount = [
     filters.search,
@@ -116,10 +145,12 @@ export default function PropertyListingClient({ properties }: Props) {
     }
 
     if (filters.minPrice) {
-      result = result.filter((p) => Number(p.rate) >= Number(filters.minPrice));
+      const min = parseFloat(filters.minPrice) * 1e7;
+      result = result.filter((p) => parsePrice(p.rate) >= min);
     }
     if (filters.maxPrice) {
-      result = result.filter((p) => Number(p.rate) <= Number(filters.maxPrice));
+      const max = parseFloat(filters.maxPrice) * 1e7;
+      result = result.filter((p) => parsePrice(p.rate) <= max);
     }
 
     if (filters.status) {
@@ -128,16 +159,16 @@ export default function PropertyListingClient({ properties }: Props) {
 
     switch (filters.sort) {
       case "price-asc":
-        result.sort((a, b) => Number(a.rate) - Number(b.rate));
+        result.sort((a, b) => parsePrice(a.rate) - parsePrice(b.rate));
         break;
       case "price-desc":
-        result.sort((a, b) => Number(b.rate) - Number(a.rate));
+        result.sort((a, b) => parsePrice(b.rate) - parsePrice(a.rate));
         break;
       case "area-asc":
-        result.sort((a, b) => (a.area ?? "").localeCompare(b.area ?? ""));
+        result.sort((a, b) => parseArea(a.area) - parseArea(b.area));
         break;
       case "area-desc":
-        result.sort((a, b) => (b.area ?? "").localeCompare(a.area ?? ""));
+        result.sort((a, b) => parseArea(b.area) - parseArea(a.area));
         break;
       case "name-asc":
         result.sort((a, b) => a.name.localeCompare(b.name));
@@ -235,11 +266,13 @@ export default function PropertyListingClient({ properties }: Props) {
             <div className="rounded-2xl border border-dark/10 dark:border-white/10 bg-white dark:bg-dark p-5 flex flex-col sm:flex-row flex-wrap gap-6">
               {/* Price Range */}
               <div className="flex flex-col gap-2">
-                <p className="text-xs font-semibold text-dark/50 dark:text-white/50 uppercase tracking-wide">Price Range</p>
+                <p className="text-xs font-semibold text-dark/50 dark:text-white/50 uppercase tracking-wide">Price Range <span className="normal-case font-normal">(in Cr)</span></p>
                 <div className="flex items-center gap-2">
                   <input
                     type="number"
-                    placeholder="Min"
+                    placeholder="Min Cr"
+                    min={0}
+                    step={0.1}
                     value={filters.minPrice}
                     onChange={(e) => setFilter("minPrice", e.target.value)}
                     className="w-28 rounded-full py-1.5 px-4 border border-dark/10 dark:border-white/10 bg-transparent text-dark dark:text-white placeholder:text-dark/30 dark:placeholder:text-white/30 text-sm focus-visible:outline-none focus-visible:border-primary"
@@ -247,7 +280,9 @@ export default function PropertyListingClient({ properties }: Props) {
                   <span className="text-dark/30 dark:text-white/30 text-sm">–</span>
                   <input
                     type="number"
-                    placeholder="Max"
+                    placeholder="Max Cr"
+                    min={0}
+                    step={0.1}
                     value={filters.maxPrice}
                     onChange={(e) => setFilter("maxPrice", e.target.value)}
                     className="w-28 rounded-full py-1.5 px-4 border border-dark/10 dark:border-white/10 bg-transparent text-dark dark:text-white placeholder:text-dark/30 dark:placeholder:text-white/30 text-sm focus-visible:outline-none focus-visible:border-primary"
