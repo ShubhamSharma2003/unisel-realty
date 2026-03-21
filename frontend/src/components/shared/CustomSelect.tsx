@@ -10,9 +10,10 @@ type CustomSelectProps = {
     placeholder: string;
     options: SelectOption[];
     size?: "md" | "sm";
+    onChange?: (value: string) => void;
 };
 
-const CustomSelect = ({ name, placeholder, options, size = "md" }: CustomSelectProps) => {
+const CustomSelect = ({ name, placeholder, options, size = "md", onChange }: CustomSelectProps) => {
     const [open, setOpen] = useState(false);
     const [selected, setSelected] = useState<SelectOption | null>(null);
     const ref = useRef<HTMLDivElement>(null);
@@ -56,7 +57,7 @@ const CustomSelect = ({ name, placeholder, options, size = "md" }: CustomSelectP
             {open && (
                 <ul
                     role="listbox"
-                    className="absolute top-full mt-2 left-0 right-0 bg-white dark:bg-dark border border-dark/10 dark:border-white/10 rounded-2xl shadow-xl dark:shadow-white/10 z-50 overflow-hidden py-1.5"
+                    className="absolute top-full mt-2 left-0 right-0 bg-white dark:bg-dark border border-dark/10 dark:border-white/10 rounded-2xl shadow-xl dark:shadow-white/10 z-50 overflow-y-auto max-h-60 py-1.5"
                 >
                     {options.map((opt) => {
                         const isActive = selected?.value === opt.value;
@@ -65,7 +66,7 @@ const CustomSelect = ({ name, placeholder, options, size = "md" }: CustomSelectP
                                 key={opt.value}
                                 role="option"
                                 aria-selected={isActive}
-                                onClick={() => { setSelected(opt); setOpen(false); }}
+                                onClick={() => { setSelected(opt); setOpen(false); onChange?.(opt.value); }}
                                 className={`px-5 py-2.5 text-sm cursor-pointer flex items-center justify-between gap-2 duration-150
                                     ${isActive
                                         ? "text-primary bg-primary/5 font-semibold"

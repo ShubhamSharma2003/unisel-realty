@@ -306,6 +306,28 @@ export const servicePageSchema = (service: ServiceData) => ({
   inLanguage: "en-US",
 });
 
+// ─── Valuation page ────────────────────────────────────────────────────────────
+
+export const valuationPageSchema = () => ({
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "@id": `${SITE_URL}/property-valuation`,
+  url: `${SITE_URL}/property-valuation`,
+  name: "Property Valuation Gurgaon — Check Current Market Value | Unisel Realty",
+  description:
+    "Get an instant estimate of your property's current market value in Gurgaon. Free online valuation tool covering all sectors and localities — by Unisel Realty.",
+  isPartOf: { "@id": `${SITE_URL}/#website` },
+  publisher: { "@id": `${SITE_URL}/#organization` },
+  inLanguage: "en-US",
+  about: {
+    "@type": "Service",
+    name: "Property Valuation",
+    provider: { "@id": `${SITE_URL}/#organization` },
+    areaServed: { "@type": "City", name: "Gurgaon" },
+    serviceType: "Real Estate Valuation",
+  },
+});
+
 // ─── Breadcrumb ────────────────────────────────────────────────────────────────
 
 type BreadcrumbItem = { name: string; url: string };
