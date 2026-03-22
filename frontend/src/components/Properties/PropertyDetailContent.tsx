@@ -299,15 +299,6 @@ const PropertyDetailContent = async ({ slug, property: propertyProp }: PropertyD
               >
                 Get in touch
               </Link>
-              <div className="absolute right-0 top-4 -z-[1]">
-                <Image
-                  src="/images/properties/vector.svg"
-                  width={400}
-                  height={500}
-                  alt="vector"
-                  unoptimized={true}
-                />
-              </div>
             </div>
             <div className="border p-8 rounded-2xl border-dark/10 dark:border-white/20 mt-10">
               <ContactForm variant="sidebar" source="property" propertySlug={property.slug} />

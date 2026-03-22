@@ -72,7 +72,7 @@ export const homepageSchema = (faqs: FaqItem[]) => ({
       name: "Unisel Realty Pvt Ltd",
       url: SITE_URL,
       description:
-        "Unisel Realty Pvt. Ltd. is based in Gurgaon at 408, 4th floor, Adani Miracle Mile, Sector 60, with over 15 years of rich experience in real estate.",
+        "Gurgaon's most trusted advisors for luxury real estate & high-return investments. Exclusive pre-launch access to DLF, Godrej and M3M. Dedicated NRI desk. $2B+ transacted value, 2000+ families placed in their dream homes. Est. 2006.",
       address: {
         "@type": "PostalAddress",
         streetAddress: "408, 4th floor, Adani Miracle Mile, Sector 60",
@@ -81,6 +81,7 @@ export const homepageSchema = (faqs: FaqItem[]) => ({
         postalCode: "122102",
         addressCountry: "IN",
       },
+      foundingDate: "2006",
       areaServed: {
         "@type": "City",
         name: "Gurgaon",
@@ -94,6 +95,7 @@ export const homepageSchema = (faqs: FaqItem[]) => ({
       ],
       priceRange: "$$",
       openingHours: "Mo-Sa 09:00-18:00",
+      slogan: "Not All Properties Are Investments. We Help You Pick the Right Ones.",
     },
     ...(faqs.length > 0
       ? [

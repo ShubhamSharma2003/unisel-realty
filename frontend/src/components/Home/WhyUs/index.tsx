@@ -40,7 +40,7 @@ const WhyUs = () => {
                         Why Choose Unisel Realty
                     </p>
                     <h2 className="text-40 lg:text-52 font-medium leading-[1.2] text-dark dark:text-white">
-                        Most Brokers Show You Properties.<br className="hidden md:block" /> We Show You Which Ones to Buy.
+                        Most Brokers Show You Properties.<br className="hidden md:block" /> We Consult You Which Ones to Buy.
                     </h2>
                 </div>
                 <p className="text-dark/50 dark:text-white/50 text-lg leading-7 md:max-w-sm">
