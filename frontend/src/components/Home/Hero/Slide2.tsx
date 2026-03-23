@@ -38,7 +38,7 @@ const Slide2 = ({ isMobile }: Slide2Props) => {
               </h1>
 
               <p className="text-sm sm:text-base md:text-lg text-white/85 leading-relaxed">
-                Gurgaon&apos;s most trusted advisors for luxury real estate &amp; high-return investments. Exclusive pre-launch access to DLF, Godrej and M3M. Dedicated NRI desk. Est. 2006.
+                Gurgaon&apos;s most trusted advisors for luxury real estate &amp; high-return investments. Exclusive pre-launch access to DLF, Godrej and M3M. Dedicated NRI desk.
               </p>
 
               <div className="flex flex-col sm:flex-row items-center justify-start gap-3 pt-1">

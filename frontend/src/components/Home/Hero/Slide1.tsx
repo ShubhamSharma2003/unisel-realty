@@ -38,7 +38,7 @@ const Slide1 = ({ isMobile }: Slide1Props) => {
                   href="/residential"
                   className="px-7 py-3.5 bg-white text-gray-900 text-sm font-semibold rounded-full hover:bg-white/90 transition-all duration-200 shadow-lg hover:shadow-xl text-center"
                 >
-                  Explore Homes
+                  Explore Residential
                 </Link>
                 <Link
                   href="/commercial"
