@@ -3,6 +3,7 @@ import { Bricolage_Grotesque } from 'next/font/google'
 import './globals.css'
 import Header from '@/components/Layout/Header'
 import Footer from '@/components/Layout/Footer'
+import FloatingContact from '@/components/shared/FloatingContact'
 import { getFooterMenus } from '@/lib/sanity.services'
 import { organizationSchema } from '@/lib/jsonld'
 import { ThemeProvider } from 'next-themes'
@@ -16,22 +17,26 @@ const font = Bricolage_Grotesque({ subsets: ["latin"] });
 export const metadata: Metadata = {
   metadataBase: new URL('https://uniselrealty.com'),
   title: {
-    default: 'Unisel Realty - Gurgaon Real Estate Consultants',
+    default: 'Unisel Realty — Luxury Real Estate & Investment Advisory, Gurgaon',
     template: '%s | Unisel Realty',
   },
-  description: 'Buy, sell or lease residential & commercial properties in Gurgaon. 15+ years experience, 20+ expert advisors. Trusted by 1000+ clients.',
+  description: "Gurgaon's most trusted advisors for luxury real estate & high-return investments. Exclusive pre-launch access to DLF, Godrej and M3M. Dedicated NRI desk. $2B+ transacted. Est. 2006.",
   keywords: [
     'real estate gurgaon',
-    'property in gurgaon',
-    'gurgaon properties',
+    'luxury real estate gurgaon',
+    'property investment gurgaon',
+    'DLF properties gurgaon',
+    'Godrej properties gurgaon',
+    'M3M properties gurgaon',
+    'pre-launch properties gurgaon',
     'residential property gurgaon',
     'commercial property gurgaon',
-    'buy property gurgaon',
+    'NRI real estate gurgaon',
     'real estate consultant gurgaon',
     'new launch gurgaon',
     'ready to move gurgaon',
     'unisel realty',
-    'golf course extension road',
+    'golf course road gurgaon',
     'pre leased property gurgaon',
   ],
   authors: [{ name: 'Unisel Realty Pvt Ltd', url: 'https://uniselrealty.com' }],
@@ -39,8 +44,8 @@ export const metadata: Metadata = {
     canonical: 'https://uniselrealty.com',
   },
   openGraph: {
-    title: 'Unisel Realty - Gurgaon Real Estate Consultants',
-    description: 'Buy, sell or lease residential & commercial properties in Gurgaon. 15+ years experience, 20+ expert advisors.',
+    title: 'Unisel Realty — Luxury Real Estate & Investment Advisory, Gurgaon',
+    description: "Gurgaon's most trusted advisors for luxury real estate & high-return investments. Exclusive pre-launch access to DLF, Godrej and M3M. Dedicated NRI desk. Est. 2006.",
     url: 'https://uniselrealty.com',
     siteName: 'Unisel Realty',
     locale: 'en_US',
@@ -48,8 +53,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Unisel Realty - Gurgaon Real Estate Consultants',
-    description: 'Buy, sell or lease residential & commercial properties in Gurgaon. 15+ years experience, 20+ expert advisors.',
+    title: 'Unisel Realty — Luxury Real Estate & Investment Advisory, Gurgaon',
+    description: "Gurgaon's most trusted advisors for luxury real estate & high-return investments. Exclusive pre-launch access to DLF, Godrej and M3M. Dedicated NRI desk. Est. 2006.",
   },
   icons: {
     icon: '/favicon.ico',
@@ -113,6 +118,7 @@ export default async function RootLayout({
             <Header navLinks={navLinks} />
             {children}
             <Footer footerMenus={footerMenus} />
+            <FloatingContact />
           </ThemeProvider>
         </SessionProviderComp>
       </body>

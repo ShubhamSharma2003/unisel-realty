@@ -43,7 +43,10 @@
       "Bash(npm ls:*)",
       "Bash(grep -E \"\\\\.\\(ts|tsx\\)$\")",
       "Bash(find /c/Users/Shubham/Desktop/UniselRealtyNew/frontend/src/app -name \"page.tsx\" -path \"*/\\(site\\)\" -o -name \"page.tsx\" -path \"*/\\\\\\(site\\\\\\)\")",
-      "Bash(ls -la /c/Users/Shubham/Desktop/UniselRealtyNew/frontend/src/app/\\\\\\(site\\\\\\)/)"
+      "Bash(ls -la /c/Users/Shubham/Desktop/UniselRealtyNew/frontend/src/app/\\\\\\(site\\\\\\)/)",
+      "WebFetch(domain:share.google)",
+      "WebFetch(domain:www.google.com)",
+      "WebFetch(domain:www.magicbricks.com)"
     ],
     "additionalDirectories": [
       "c:\\Users\\Shubham\\Desktop\\UniselRealtyNew\\frontend\\src\\app\\(site)\\properties",

@@ -8,6 +8,7 @@ import { propertyBySlugQuery, similarPropertiesQuery } from "@/lib/sanity.querie
 import { urlFor } from "@/lib/sanity.image";
 import type { PropertyHomes } from "@/types/properyHomes";
 import EMICalculatorWrapper from "@/components/Properties/EMICalculator/EMICalculatorWrapper";
+import ContactForm from "@/components/shared/ContactForm";
 import PropertyImageCarousel from "@/components/Properties/PropertyImageCarousel";
 import { breadcrumbSchema } from "@/lib/jsonld";
 
@@ -298,56 +299,9 @@ const PropertyDetailContent = async ({ slug, property: propertyProp }: PropertyD
               >
                 Get in touch
               </Link>
-              <div className="absolute right-0 top-4 -z-[1]">
-                <Image
-                  src="/images/properties/vector.svg"
-                  width={400}
-                  height={500}
-                  alt="vector"
-                  unoptimized={true}
-                />
-              </div>
             </div>
-            <div className="border p-8 rounded-2xl border-dark/10 dark:border-white/20 mt-10 flex flex-col gap-5">
-              <div>
-                <h3 className="text-xl font-medium text-dark dark:text-white">Enquire about this property</h3>
-                <p className="text-sm text-dark/50 dark:text-white/50 mt-1">Our team will get back to you shortly.</p>
-              </div>
-              <form className="flex flex-col gap-4">
-                <input
-                  type="text"
-                  name="name"
-                  placeholder="Your name*"
-                  required
-                  className="px-5 py-3 border border-dark/10 dark:border-white/10 rounded-full bg-transparent text-dark dark:text-white placeholder:text-dark/40 dark:placeholder:text-white/40 text-sm focus-visible:outline-none focus-visible:border-primary"
-                />
-                <input
-                  type="tel"
-                  name="phone"
-                  placeholder="Phone number*"
-                  required
-                  className="px-5 py-3 border border-dark/10 dark:border-white/10 rounded-full bg-transparent text-dark dark:text-white placeholder:text-dark/40 dark:placeholder:text-white/40 text-sm focus-visible:outline-none focus-visible:border-primary"
-                />
-                <input
-                  type="email"
-                  name="email"
-                  placeholder="Email address*"
-                  required
-                  className="px-5 py-3 border border-dark/10 dark:border-white/10 rounded-full bg-transparent text-dark dark:text-white placeholder:text-dark/40 dark:placeholder:text-white/40 text-sm focus-visible:outline-none focus-visible:border-primary"
-                />
-                <textarea
-                  name="message"
-                  rows={4}
-                  placeholder="Your message"
-                  className="px-5 py-3 border border-dark/10 dark:border-white/10 rounded-2xl bg-transparent text-dark dark:text-white placeholder:text-dark/40 dark:placeholder:text-white/40 text-sm focus-visible:outline-none focus-visible:border-primary resize-none"
-                />
-                <button
-                  type="submit"
-                  className="py-3.5 px-8 bg-primary text-white rounded-full font-semibold text-sm hover:bg-dark duration-300 hover:cursor-pointer"
-                >
-                  Send Message
-                </button>
-              </form>
+            <div className="border p-8 rounded-2xl border-dark/10 dark:border-white/20 mt-10">
+              <ContactForm variant="sidebar" source="property" propertySlug={property.slug} />
             </div>
           </div>
         </div>

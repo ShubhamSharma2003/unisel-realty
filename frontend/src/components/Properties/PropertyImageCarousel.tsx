@@ -118,14 +118,14 @@ export default function PropertyImageCarousel({
       {imageUrls.length > 1 && (
         <div className="mt-3">
           <div ref={thumbRef} className="overflow-hidden">
-            <div className="flex gap-2">
+            <div className="flex gap-2 p-3">
               {imageUrls.map((url, index) => (
                 <button
                   key={index}
                   onClick={() => onThumbClick(index)}
                   className={`flex-[0_0_80px] min-w-0 rounded-lg overflow-hidden border-2 transition-all duration-200 ${
                     index === selectedIndex
-                      ? 'border-primary opacity-100 ring-2 ring-primary/30 scale-105'
+                      ? 'border-primary opacity-100'
                       : 'border-transparent opacity-50 hover:opacity-80'
                   }`}
                   aria-label={`Go to image ${index + 1}`}

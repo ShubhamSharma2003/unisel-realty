@@ -2,6 +2,7 @@ import Link from "next/link";
 import { Icon } from "@iconify/react"
 
 import type { FooterMenu } from "@/types/footerMenu";
+import NewsletterForm from "./NewsletterForm";
 
 type FooterProps = {
   footerMenus: FooterMenu[];
@@ -19,12 +20,7 @@ const Footer = ({ footerMenus }: FooterProps) => {
             promotions, and exclusive offers.
           </p>
           <div className="flex lg:flex-row flex-col items-center lg:gap-10 gap-3 w-full lg:w-auto">
-            <div className="flex flex-col sm:flex-row gap-2 lg:order-1 order-2 w-full lg:w-auto">
-              <input type="email" placeholder="Enter Your Email" className="w-full sm:w-auto rounded-full py-4 px-6 bg-white/10 placeholder:text-white text-white focus-visible:outline-0" />
-              <button className="text-dark bg-white py-4 px-8 font-semibold rounded-full hover:bg-primary hover:text-white duration-300 hover:cursor-pointer w-full sm:w-auto">
-                Subscribe
-              </button>
-            </div>
+            <NewsletterForm />
             <p className="text-white/40 text-sm lg:max-w-[45%] order-1 lg:order-2">
               By subscribing, you agree to receive our promotional emails. You can unsubscribe at any time.
             </p>

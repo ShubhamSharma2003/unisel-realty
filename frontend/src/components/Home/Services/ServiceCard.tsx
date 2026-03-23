@@ -27,13 +27,13 @@ const ServiceCard = ({ service, size }: ServiceCardProps) => {
             alt={service.title}
             width={size === "large" ? 680 : 320}
             height={386}
-            className="w-full"
+            className="w-full h-[220px] sm:h-auto object-cover"
           />
         ) : null}
       </Link>
       <Link
         href={`/${service.slug}`}
-        className="absolute w-full h-full bg-gradient-to-b from-black/0 to-black/80 top-full flex flex-col justify-between pl-10 pb-10 group-hover:top-0 duration-500"
+        className="absolute w-full h-full bg-gradient-to-b from-black/0 to-black/80 top-0 flex flex-col justify-between pl-10 pb-10"
       >
         <div className="flex justify-end mt-6 mr-6">
           <div className="bg-white text-dark rounded-full w-fit p-4">
@@ -42,7 +42,7 @@ const ServiceCard = ({ service, size }: ServiceCardProps) => {
         </div>
         <div className="flex flex-col gap-2.5">
           <h3 className="text-white text-2xl">{service.title}</h3>
-          <p className="text-white/80 text-base leading-6">
+          <p className="sr-only">
             {service.description}
           </p>
         </div>

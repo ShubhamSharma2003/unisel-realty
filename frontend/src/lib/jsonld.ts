@@ -72,7 +72,7 @@ export const homepageSchema = (faqs: FaqItem[]) => ({
       name: "Unisel Realty Pvt Ltd",
       url: SITE_URL,
       description:
-        "Unisel Realty Pvt. Ltd. is based in Gurgaon at 408, 4th floor, Adani Miracle Mile, Sector 60, with over 15 years of rich experience in real estate.",
+        "Gurgaon's most trusted advisors for luxury real estate & high-return investments. Exclusive pre-launch access to DLF, Godrej and M3M. Dedicated NRI desk. $2B+ transacted value, 2000+ families placed in their dream homes. Est. 2006.",
       address: {
         "@type": "PostalAddress",
         streetAddress: "408, 4th floor, Adani Miracle Mile, Sector 60",
@@ -81,6 +81,7 @@ export const homepageSchema = (faqs: FaqItem[]) => ({
         postalCode: "122102",
         addressCountry: "IN",
       },
+      foundingDate: "2006",
       areaServed: {
         "@type": "City",
         name: "Gurgaon",
@@ -94,6 +95,7 @@ export const homepageSchema = (faqs: FaqItem[]) => ({
       ],
       priceRange: "$$",
       openingHours: "Mo-Sa 09:00-18:00",
+      slogan: "Not All Properties Are Investments. We Help You Pick the Right Ones.",
     },
     ...(faqs.length > 0
       ? [
@@ -304,6 +306,28 @@ export const servicePageSchema = (service: ServiceData) => ({
       }
     : {}),
   inLanguage: "en-US",
+});
+
+// ─── Valuation page ────────────────────────────────────────────────────────────
+
+export const valuationPageSchema = () => ({
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "@id": `${SITE_URL}/property-valuation`,
+  url: `${SITE_URL}/property-valuation`,
+  name: "Property Valuation Gurgaon — Check Current Market Value | Unisel Realty",
+  description:
+    "Get an instant estimate of your property's current market value in Gurgaon. Free online valuation tool covering all sectors and localities — by Unisel Realty.",
+  isPartOf: { "@id": `${SITE_URL}/#website` },
+  publisher: { "@id": `${SITE_URL}/#organization` },
+  inLanguage: "en-US",
+  about: {
+    "@type": "Service",
+    name: "Property Valuation",
+    provider: { "@id": `${SITE_URL}/#organization` },
+    areaServed: { "@type": "City", name: "Gurgaon" },
+    serviceType: "Real Estate Valuation",
+  },
 });
 
 // ─── Breadcrumb ────────────────────────────────────────────────────────────────

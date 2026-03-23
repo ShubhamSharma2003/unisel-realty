@@ -45,7 +45,7 @@ const Header: React.FC<{ navLinks: NavLinks[] }> = ({ navLinks }) => {
           <div>
             <Link href='/'>
               <Image
-                src={'/images/header/unisel-logo-dark.png'}
+                src={'/images/header/new-logo-color.png'}
                 alt='logo'
                 width={150}
                 height={68}
@@ -53,7 +53,7 @@ const Header: React.FC<{ navLinks: NavLinks[] }> = ({ navLinks }) => {
                 className={`${isHomepage ? sticky ? "block dark:hidden" : "hidden" : sticky ? "block dark:hidden" : "block dark:hidden"}`}
               />
               <Image
-                src={'/images/header/unisel-logo-dark.png'}
+                src={'/images/header/new-logo-white.png'}
                 alt='logo'
                 width={150}
                 height={68}
