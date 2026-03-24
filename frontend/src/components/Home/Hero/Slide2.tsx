@@ -15,7 +15,7 @@ const Slide2 = ({ isMobile }: Slide2Props) => {
       <div className="relative w-full h-full flex flex-col">
         <Image
           src={bgImage}
-          alt=""
+          alt="Unisel Realty - Gurgaon's trusted real estate advisory since 2006"
           fill
           className="object-cover object-top"
           priority={true}

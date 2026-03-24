@@ -6,12 +6,6 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: "*",
         allow: "/",
-        disallow: ["/api/", "/studio/", "/_next/"],
-      },
-      {
-        userAgent: "Googlebot",
-        allow: "/",
-        disallow: ["/api/", "/studio/", "/_next/"],
       },
     ],
     sitemap: "https://uniselrealty.com/sitemap.xml",

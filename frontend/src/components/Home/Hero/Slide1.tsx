@@ -7,7 +7,7 @@ type Slide1Props = {
 
 const Slide1 = ({ isMobile }: Slide1Props) => {
   const bgImage = isMobile
-    ? "/images/hero/hero-mob-1.png"
+    ? "/images/hero/hero-mob-1new.png"
     : "/images/hero/hero-desk-1.png";
 
   return (
@@ -15,7 +15,7 @@ const Slide1 = ({ isMobile }: Slide1Props) => {
       <div className="relative w-full h-full flex flex-col">
         <Image
           src={bgImage}
-          alt=""
+          alt="Luxury residential and commercial properties in Gurgaon"
           fill
           className="object-cover object-center"
           priority={false}

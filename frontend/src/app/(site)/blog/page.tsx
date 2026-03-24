@@ -1,14 +1,12 @@
 import BlogList from "@/components/Blog";
 import HeroSub from "@/components/shared/HeroSub";
 import { Metadata } from "next";
-import { getBlogCount } from "@/lib/sanity.services";
 import { blogListingSchema, breadcrumbSchema } from "@/lib/jsonld";
 
 export async function generateMetadata(): Promise<Metadata> {
-    const blogCount = await getBlogCount();
     const siteUrl = 'https://uniselrealty.com';
     const siteName = 'Unisel Realty';
-    const description = `Stay ahead in the property market with expert advice and updates. Read our ${blogCount} insightful blog posts.`;
+    const description = "Expert insights on Gurgaon luxury real estate, NRI property investment, and market trends from Unisel Realty's advisory team.";
 
     return {
         title: `Real Estate Blog | ${siteName}`,
@@ -34,8 +32,7 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 const BlogPage = async () => {
-    const blogCount = await getBlogCount();
-    const schema = blogListingSchema(blogCount);
+    const schema = blogListingSchema();
     const breadcrumbs = breadcrumbSchema([
         { name: "Home", url: "https://uniselrealty.com" },
         { name: "Blog", url: "https://uniselrealty.com/blog" },

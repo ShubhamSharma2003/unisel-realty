@@ -5,7 +5,7 @@ const Logo: React.FC = () => {
     <>
       <Image
         src={'/images/header/new-logo-color.svg'}
-        alt='logo'
+        alt='Unisel Realty Logo'
         width={150}
         height={68}
         unoptimized={true}
@@ -13,7 +13,7 @@ const Logo: React.FC = () => {
       />
       <Image
         src={'/images/header/new-logo-white.svg'}
-        alt='logo'
+        alt='Unisel Realty Logo'
         width={150}
         height={68}
         unoptimized={true}
