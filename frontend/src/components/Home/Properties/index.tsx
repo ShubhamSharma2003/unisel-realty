@@ -1,4 +1,5 @@
 import { Icon } from "@iconify/react";
+import Link from "next/link";
 import PropertyCard from "./Card/Card";
 import { sanityClient } from "@/lib/sanity.client";
 import {
@@ -57,6 +58,15 @@ const Properties = async () => {
               <PropertyCard item={item} />
             </div>
           ))}
+        </div>
+        <div className="mt-12 flex justify-center">
+          <Link
+            href="/all-properties"
+            className="inline-flex items-center gap-2 px-8 py-3 rounded-full bg-primary text-white text-sm font-medium hover:bg-primary/90 transition-colors duration-200"
+          >
+            View All Properties
+            <Icon icon="ph:arrow-right" width={16} />
+          </Link>
         </div>
       </div>
     </section>

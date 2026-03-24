@@ -358,11 +358,30 @@ export const aboutPageSchema = () => ({
   "@type": "AboutPage",
   "@id": `${SITE_URL}/about`,
   url: `${SITE_URL}/about`,
-  name: "About Us | Unisel Realty - Gurgaon Real Estate Experts",
+  name: "About Unisel Realty | Gurgaon's Trusted Luxury Real Estate Advisory Since 2006",
   description:
-    "Unisel Realty is a premier real estate consultancy based in Gurgaon, specialising in residential and commercial properties.",
+    "Unisel Realty Pvt Ltd — 18+ years advising on luxury residential and commercial properties in Gurgaon. 2B+ transacted, 2000+ families served, 75% repeat client rate.",
   isPartOf: { "@id": `${SITE_URL}/#website` },
   about: { "@id": `${SITE_URL}/#organization` },
+  mainEntity: {
+    "@type": "RealEstateAgent",
+    "@id": `${SITE_URL}/#agent`,
+    name: "Unisel Realty Pvt Ltd",
+    foundingDate: "2006",
+    numberOfEmployees: { "@type": "QuantitativeValue", value: 20 },
+    areaServed: {
+      "@type": "City",
+      name: "Gurgaon",
+      sameAs: "https://en.wikipedia.org/wiki/Gurgaon",
+    },
+    knowsAbout: [
+      "Luxury Residential Properties",
+      "Commercial Real Estate",
+      "NRI Property Investment",
+      "Pre-Launch Property Allotment",
+      "Property Management",
+    ],
+  },
   inLanguage: "en-US",
 });
 
