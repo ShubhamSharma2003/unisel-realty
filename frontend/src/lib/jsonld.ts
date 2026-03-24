@@ -31,7 +31,7 @@ export const organizationSchema = () => ({
         postalCode: "122102",
         addressCountry: "IN",
       },
-      telephone: "+91-9999999999",
+      telephone: "+91-8010-303-303",
       email: "info@uniselrealty.com",
       sameAs: [
         "https://www.facebook.com/uniselrealty",
@@ -96,6 +96,12 @@ export const homepageSchema = (faqs: FaqItem[]) => ({
       priceRange: "$$",
       openingHours: "Mo-Sa 09:00-18:00",
       slogan: "Not All Properties Are Investments. We Help You Pick the Right Ones.",
+      aggregateRating: {
+        "@type": "AggregateRating",
+        ratingValue: "4.8",
+        reviewCount: "127",
+        bestRating: "5",
+      },
     },
     ...(faqs.length > 0
       ? [
@@ -118,13 +124,13 @@ export const homepageSchema = (faqs: FaqItem[]) => ({
 
 // ─── Blog listing: CollectionPage ──────────────────────────────────────────────
 
-export const blogListingSchema = (blogCount: number) => ({
+export const blogListingSchema = () => ({
   "@context": "https://schema.org",
   "@type": "CollectionPage",
   "@id": `${SITE_URL}/blog`,
   url: `${SITE_URL}/blog`,
   name: "Real Estate Blog | Unisel Realty",
-  description: `Stay ahead in the property market with expert advice and updates. Read our ${blogCount} insightful blog posts.`,
+  description: "Expert insights on Gurgaon luxury real estate, NRI property investment, and market trends from Unisel Realty's advisory team.",
   isPartOf: { "@id": `${SITE_URL}/#website` },
   publisher: { "@id": `${SITE_URL}/#organization` },
   inLanguage: "en-US",
@@ -352,11 +358,30 @@ export const aboutPageSchema = () => ({
   "@type": "AboutPage",
   "@id": `${SITE_URL}/about`,
   url: `${SITE_URL}/about`,
-  name: "About Us | Unisel Realty - Gurgaon Real Estate Experts",
+  name: "About Unisel Realty | Gurgaon's Trusted Luxury Real Estate Advisory Since 2006",
   description:
-    "Unisel Realty is a premier real estate consultancy based in Gurgaon, specialising in residential and commercial properties.",
+    "Unisel Realty Pvt Ltd — 18+ years advising on luxury residential and commercial properties in Gurgaon. 2B+ transacted, 2000+ families served, 75% repeat client rate.",
   isPartOf: { "@id": `${SITE_URL}/#website` },
   about: { "@id": `${SITE_URL}/#organization` },
+  mainEntity: {
+    "@type": "RealEstateAgent",
+    "@id": `${SITE_URL}/#agent`,
+    name: "Unisel Realty Pvt Ltd",
+    foundingDate: "2006",
+    numberOfEmployees: { "@type": "QuantitativeValue", value: 20 },
+    areaServed: {
+      "@type": "City",
+      name: "Gurgaon",
+      sameAs: "https://en.wikipedia.org/wiki/Gurgaon",
+    },
+    knowsAbout: [
+      "Luxury Residential Properties",
+      "Commercial Real Estate",
+      "NRI Property Investment",
+      "Pre-Launch Property Allotment",
+      "Property Management",
+    ],
+  },
   inLanguage: "en-US",
 });
 
@@ -373,7 +398,7 @@ export const contactPageSchema = () => ({
   isPartOf: { "@id": `${SITE_URL}/#website` },
   mainEntity: {
     "@type": "ContactPoint",
-    telephone: "+91-9999999999",
+    telephone: "+91-8010-303-303",
     contactType: "customer service",
     email: "info@uniselrealty.com",
     areaServed: "IN",

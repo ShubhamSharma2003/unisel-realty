@@ -15,7 +15,7 @@ const Slide2 = ({ isMobile }: Slide2Props) => {
       <div className="relative w-full h-full flex flex-col">
         <Image
           src={bgImage}
-          alt=""
+          alt="Unisel Realty - Gurgaon's trusted real estate advisory since 2006"
           fill
           className="object-cover object-top"
           priority={true}
@@ -49,7 +49,7 @@ const Slide2 = ({ isMobile }: Slide2Props) => {
                   Get in touch
                 </Link>
                 <Link
-                  href="/residential"
+                  href="/all-properties"
                   className="px-7 py-3.5 border-2 border-white/70 text-white text-sm font-semibold rounded-full hover:bg-white/15 hover:border-white transition-all duration-200 backdrop-blur-sm text-center"
                 >
                   View Details

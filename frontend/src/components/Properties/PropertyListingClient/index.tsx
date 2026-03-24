@@ -33,6 +33,7 @@ interface FilterState {
   minPrice: string;
   maxPrice: string;
   status: string;
+  category: string;
 }
 
 const SORT_OPTIONS: { value: SortOption; label: string }[] = [
@@ -66,12 +67,15 @@ export default function PropertyListingClient({ properties, category }: Props) {
   const router = useRouter();
   const pathname = usePathname();
 
+  const showCategoryFilter = !category;
+
   const [filters, setFilters] = useState<FilterState>({
     search: "",
     sort: "",
     minPrice: "",
     maxPrice: "",
     status: "",
+    category: "",
   });
 
   useEffect(() => {
@@ -82,16 +86,18 @@ export default function PropertyListingClient({ properties, category }: Props) {
       minPrice: params.get("minPrice") ?? "",
       maxPrice: params.get("maxPrice") ?? "",
       status: params.get("status") ?? "",
+      category: params.get("category") ?? "",
     });
   }, []);
   const [filtersOpen, setFiltersOpen] = useState(false);
 
   // Use fixed status list for known categories, fall back to statuses present in data
+  const effectiveCategory = category || filters.category || undefined;
   const allStatuses = useMemo(
     (): string[] =>
-      (category ? CATEGORY_STATUSES[category] : undefined) ??
+      (effectiveCategory ? CATEGORY_STATUSES[effectiveCategory] : undefined) ??
       [...new Set(properties.map((p) => p.status).filter((s): s is string => !!s))],
-    [properties, category]
+    [properties, effectiveCategory]
   );
   const showStatus = allStatuses.length > 0;
 
@@ -101,6 +107,7 @@ export default function PropertyListingClient({ properties, category }: Props) {
     filters.maxPrice,
     filters.status,
     filters.sort,
+    filters.category,
   ].filter(Boolean).length;
 
   const updateURL = useCallback(
@@ -111,6 +118,7 @@ export default function PropertyListingClient({ properties, category }: Props) {
       if (newFilters.minPrice) params.set("minPrice", newFilters.minPrice);
       if (newFilters.maxPrice) params.set("maxPrice", newFilters.maxPrice);
       if (newFilters.status) params.set("status", newFilters.status);
+      if (newFilters.category) params.set("category", newFilters.category);
       const query = params.toString();
       router.replace(`${pathname}${query ? `?${query}` : ""}`, { scroll: false });
     },
@@ -127,13 +135,17 @@ export default function PropertyListingClient({ properties, category }: Props) {
   );
 
   const clearAll = useCallback(() => {
-    const empty: FilterState = { search: "", sort: "", minPrice: "", maxPrice: "", status: "" };
+    const empty: FilterState = { search: "", sort: "", minPrice: "", maxPrice: "", status: "", category: "" };
     setFilters(empty);
     router.replace(pathname, { scroll: false });
   }, [pathname, router]);
 
   const displayed = useMemo(() => {
     let result = [...properties];
+
+    if (filters.category) {
+      result = result.filter((p) => p.category === filters.category);
+    }
 
     if (filters.search) {
       const q = filters.search.toLowerCase();
@@ -289,6 +301,33 @@ export default function PropertyListingClient({ properties, category }: Props) {
                   />
                 </div>
               </div>
+
+              {/* Category */}
+              {showCategoryFilter && (
+                <div className="flex flex-col gap-2">
+                  <p className="text-xs font-semibold text-dark/50 dark:text-white/50 uppercase tracking-wide">Category</p>
+                  <div className="flex gap-2 flex-wrap">
+                    {["residential", "commercial"].map((c) => (
+                      <button
+                        key={c}
+                        onClick={() => {
+                          const newCat = filters.category === c ? "" : c;
+                          const updated = { ...filters, category: newCat, status: "" };
+                          setFilters(updated);
+                          updateURL(updated);
+                        }}
+                        className={`px-4 py-1.5 rounded-full text-sm border transition-colors duration-200 capitalize ${
+                          filters.category === c
+                            ? "bg-primary border-primary text-white"
+                            : "border-dark/10 dark:border-white/10 text-dark dark:text-white hover:border-primary hover:text-primary"
+                        }`}
+                      >
+                        {c}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              )}
 
               {/* Status */}
               {showStatus && (

@@ -1,6 +1,7 @@
 import { footerlinks } from "@/types/footerlinks"
 
 export const FooterLinks: footerlinks[] = [
+    { label: 'All Properties', href: '/all-properties' },
     { label: 'Residential', href: '/residential' },
     { label: 'Commercial', href: '/commercial' },
     { label: 'Golf Course Road', href: '/location/golf-course-road' },

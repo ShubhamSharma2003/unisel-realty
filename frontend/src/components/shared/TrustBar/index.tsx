@@ -14,7 +14,7 @@ const trustItems: TrustItem[] = [
     { value: 20, suffix: "+", label: "Years in Gurgaon" },
     { prefix: "$", value: 2, suffix: "B+", label: "Transacted" },
     { value: 2000, suffix: "+", label: "Families Served" },
-    { value: 500, suffix: "+", label: "NRI Investors" },
+    { value: 75, suffix: "%", label: "Repeat Client Rate" },
 ];
 
 function StatBlock({ item, active }: { item: TrustItem; active: boolean }) {
@@ -47,10 +47,7 @@ const TrustBar = () => {
 
         const observer = new IntersectionObserver(
             ([entry]) => {
-                if (entry.isIntersecting) {
-                    setActive(true);
-                    observer.disconnect();
-                }
+                setActive(entry.isIntersecting);
             },
             { threshold: 0.3 }
         );

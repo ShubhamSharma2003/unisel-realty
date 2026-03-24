@@ -26,7 +26,7 @@ const Footer = ({ footerMenus }: FooterProps) => {
             </p>
           </div>
           <div className="flex items-center gap-6">
-            <Link href="#">
+            <Link href="https://www.x.com/uniselrealty">
               <Icon icon="ph:x-logo-bold" width={24} height={24} className="text-white hover:text-primary duration-300" />
             </Link>
             <Link href="https://www.facebook.com/uniselrealty">
@@ -103,16 +103,8 @@ const Footer = ({ footerMenus }: FooterProps) => {
         {/* RERA Disclaimer */}
         <div className="border-t border-white/10 py-4 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
           <p className="text-white/40 text-xs">
-            Prices and details are subject to change. Please verify all property details with RERA before making any purchase decision.
+            RERA Reg. No: RC/HARERA/GGM/1940/1535/2022/308
           </p>
-          <a
-            href="https://hrera.org.in"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-white/40 text-xs hover:text-primary duration-300 whitespace-nowrap flex-shrink-0"
-          >
-            Verify on RERA Haryana →
-          </a>
         </div>
 
         {/* Bottom Section: Copyright */}
