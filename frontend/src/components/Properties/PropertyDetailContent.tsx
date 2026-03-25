@@ -11,6 +11,7 @@ import EMICalculatorWrapper from "@/components/Properties/EMICalculator/EMICalcu
 import ContactForm from "@/components/shared/ContactForm";
 import PropertyImageCarousel from "@/components/Properties/PropertyImageCarousel";
 import { breadcrumbSchema } from "@/lib/jsonld";
+import ShareButton from "@/components/Properties/ShareButton";
 
 
 type PropertyDetailContentProps = {
@@ -100,9 +101,15 @@ const PropertyDetailContent = async ({ slug, property: propertyProp }: PropertyD
         </nav>
         <div className="grid grid-cols-12 items-end gap-6">
           <div className="lg:col-span-8 col-span-12">
-            <h1 className="lg:text-52 text-40 font-semibold text-dark dark:text-white">
-              {property?.name}
-            </h1>
+            <ShareButton
+              title={property.name}
+              url={`${SITE_URL}/${categorySlug}/${property.slug}`}
+            />
+            <div className="flex items-start justify-between gap-4">
+              <h1 className="lg:text-52 text-40 font-semibold text-dark dark:text-white">
+                {property?.name}
+              </h1>
+            </div>
             <div className="flex gap-2.5">
               <Icon
                 icon="ph:map-pin"
