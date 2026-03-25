@@ -1,5 +1,5 @@
 import { Icon } from "@iconify/react";
-import Link from "next/link";
+import ServiceCarousel from "./ServiceCarousel";
 
 const services = [
     {
@@ -58,46 +58,7 @@ const ServicesOffered = () => {
                 </div>
 
                 {/* Cards */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    {services.map((service) => (
-                        <div
-                            key={service.badge}
-                            className="group border border-black/10 dark:border-white/10 rounded-2xl p-8 flex flex-col justify-between hover:border-primary/40 dark:hover:border-primary/40 hover:shadow-3xl duration-300 dark:hover:shadow-white/10 bg-white dark:bg-transparent"
-                        >
-                            <div>
-                                {/* Icon + Badge */}
-                                <div className="flex items-center gap-3 mb-6">
-                                    <div className="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center group-hover:bg-primary duration-300 flex-shrink-0">
-                                        <Icon icon={service.icon} width={24} height={24} className="text-primary group-hover:text-white duration-300" />
-                                    </div>
-                                    <span className="text-sm font-semibold text-primary">
-                                        {service.badge}
-                                    </span>
-                                </div>
-
-                                {/* Title */}
-                                <h3 className="text-2xl font-medium text-dark dark:text-white leading-[1.3] mb-4">
-                                    {service.title}
-                                </h3>
-
-                                {/* Description */}
-                                <p className="text-dark/50 dark:text-white/50 text-base leading-6 mb-8">
-                                    {service.description}
-                                </p>
-
-                            </div>
-
-                            {/* CTA */}
-                            <Link
-                                href={service.href}
-                                className="flex items-center gap-2 text-base font-semibold text-primary group-hover:gap-4 duration-300"
-                            >
-                                {service.cta}
-                                <Icon icon="ph:arrow-right" width={18} height={18} />
-                            </Link>
-                        </div>
-                    ))}
-                </div>
+                <ServiceCarousel services={services} />
             </div>
         </section>
     );

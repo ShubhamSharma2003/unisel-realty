@@ -278,7 +278,7 @@ export default function MapClient({
         </div>
 
         {/* Property list sidebar */}
-        <div className="lg:w-[380px] flex flex-col gap-3 max-h-[500px] overflow-y-auto pr-1">
+        <div className="lg:w-[380px] flex flex-col gap-3 max-h-[300px] lg:max-h-[500px] overflow-y-auto pr-1">
           {filtered.length === 0 && (
             <p className="text-center text-gray-500 py-8">
               No properties found in this area.

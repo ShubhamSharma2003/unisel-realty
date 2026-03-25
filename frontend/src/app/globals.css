@@ -6,6 +6,15 @@
 }
 @plugin 'tailwindcss-animate';
 
+/* Hide scrollbar for horizontal sliders */
+@utility scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
 @custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
