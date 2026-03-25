@@ -1,6 +1,5 @@
 import { Icon } from "@iconify/react";
-import Link from "next/link";
-import PropertyCard from "./Card/Card";
+import PropertySlider from "./PropertySlider";
 import { sanityClient } from "@/lib/sanity.client";
 import {
   propertiesForHomeQuery,
@@ -52,22 +51,7 @@ const Properties = async () => {
             {subtitle}
           </p>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-10">
-          {properties.map((item, index) => (
-            <div key={item.slug || index} className="">
-              <PropertyCard item={item} />
-            </div>
-          ))}
-        </div>
-        <div className="mt-12 flex justify-center">
-          <Link
-            href="/all-properties"
-            className="inline-flex items-center gap-2 px-8 py-3 rounded-full bg-primary text-white text-sm font-medium hover:bg-primary/90 transition-colors duration-200"
-          >
-            View All Properties
-            <Icon icon="ph:arrow-right" width={16} />
-          </Link>
-        </div>
+        <PropertySlider properties={properties} />
       </div>
     </section>
   );

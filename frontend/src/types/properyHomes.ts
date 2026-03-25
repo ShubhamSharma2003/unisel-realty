@@ -36,6 +36,8 @@ export type PropertyHomes = {
   features?: PropertyFeature[];
   amenities?: PropertyAmenity[];
   configurations?: PropertyConfiguration[];
+  latitude?: number;
+  longitude?: number;
   mapUrl?: string;
   reraNumber?: string;
   reraApproved?: boolean;

@@ -1,4 +1,5 @@
 import { Icon } from "@iconify/react";
+import WhyUsCarousel from "./WhyUsCarousel";
 
 const pillars = [
     {
@@ -48,36 +49,8 @@ const WhyUs = () => {
                 </p>
             </div>
 
-            {/* Pillars Grid */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-6 mb-10">
-                {pillars.map((pillar, index) => (
-                    <div
-                        key={pillar.title}
-                        className="relative border border-black/10 dark:border-white/10 rounded-2xl p-8 group hover:border-primary/40 hover:shadow-3xl dark:hover:shadow-white/10 duration-300 overflow-hidden flex flex-col"
-                    >
-                        {/* Large background number */}
-                        <span className="absolute top-4 right-5 text-7xl font-bold text-black/[0.04] dark:text-white/[0.04] select-none leading-none">
-                            {String(index + 1).padStart(2, "0")}
-                        </span>
-
-                        <div className="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center mb-6 group-hover:bg-primary duration-300 flex-shrink-0">
-                            <Icon icon={pillar.icon} width={26} height={26} className="text-primary group-hover:text-white duration-300" />
-                        </div>
-
-                        <h3 className="text-xl font-semibold text-dark dark:text-white mb-3 leading-snug">
-                            {pillar.title}
-                        </h3>
-                        <p className="text-dark/50 dark:text-white/50 text-base leading-6 mb-6 flex-1">
-                            {pillar.description}
-                        </p>
-
-                        {/* Proof point */}
-                        <p className="text-xs font-semibold text-primary/80 border-t border-black/[0.06] dark:border-white/[0.06] pt-4 leading-relaxed">
-                            {pillar.proof}
-                        </p>
-                    </div>
-                ))}
-            </div>
+            {/* Pillars */}
+            <WhyUsCarousel pillars={pillars} />
 
         </section>
     );

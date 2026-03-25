@@ -171,7 +171,9 @@ export const propertiesForHomeQuery = groq`
     images,
     category,
     status,
-    reraApproved
+    reraApproved,
+    latitude,
+    longitude
   }
 `;
 
@@ -190,7 +192,27 @@ export const propertiesQuery = groq`
     images,
     category,
     status,
-    reraApproved
+    reraApproved,
+    latitude,
+    longitude
+  }
+`;
+
+export const propertiesForMapQuery = groq`
+  *[_type == "property"] | order(_createdAt desc) {
+    _id,
+    name,
+    "slug": slug.current,
+    location,
+    micromarket,
+    rate,
+    configuration,
+    area,
+    images,
+    category,
+    status,
+    latitude,
+    longitude
   }
 `;
 
