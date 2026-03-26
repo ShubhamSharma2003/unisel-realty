@@ -29,7 +29,7 @@ const NavLink: React.FC<NavLinkProps> = ({ item, onClick }) => {
   }
 
   const linkclasses = clsx(
-    'py-3 text-3xl sm:text-5xl font-medium text-white/40 rounded-full group-hover:text-primary',
+    'py-3 text-2xl sm:text-4xl font-medium text-white/40 rounded-full group-hover:text-primary',
     {
       '!text-primary': isActive,
     }
