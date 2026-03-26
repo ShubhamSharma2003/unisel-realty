@@ -41,7 +41,7 @@ const BuilderPartners = async () => {
                             key={`${partner._id}-${index}`}
                             className="flex items-center justify-center px-0 py-0 border border-black/10 dark:border-white/10 rounded-2xl bg-white dark:bg-white/5 min-w-[180px] h-[80px] flex-shrink-0 hover:border-primary/50 duration-300"
                         >
-                            <div className="relative w-full h-full">
+                            <div className="relative w-full h-full rounded-2xl overflow-hidden">
                                 <Image
                                     src={urlFor(partner.logo).width(300).url()}
                                     alt={partner.name}
