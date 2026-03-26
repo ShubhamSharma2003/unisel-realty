@@ -85,7 +85,7 @@ html {
 }
 
 section {
-  @apply py-24
+  @apply py-10 lg:py-24
 }
 
 .blog-details p, .blog-details hr {

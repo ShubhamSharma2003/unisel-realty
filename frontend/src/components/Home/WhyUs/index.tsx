@@ -31,10 +31,10 @@ const pillars = [
 
 const WhyUs = () => {
     return (
-        <section className="container max-w-8xl mx-auto px-5 2xl:px-0 py-14 md:py-20">
+        <section className="container max-w-8xl mx-auto px-5 2xl:px-0">
 
             {/* Header */}
-            <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+            <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-6 md:mb-12">
                 <div>
                     <p className="text-dark/75 dark:text-white/75 text-base font-semibold flex gap-2.5 mb-4">
                         <Icon icon="ph:house-simple-fill" className="text-2xl text-primary" />

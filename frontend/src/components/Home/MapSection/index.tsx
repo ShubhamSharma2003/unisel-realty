@@ -12,9 +12,9 @@ const MapSection = async () => {
   if (!properties?.length) return null;
 
   return (
-    <section className="py-20">
+    <section>
       <div className="container max-w-8xl mx-auto px-5 2xl:px-0">
-        <div className="mb-12 flex flex-col gap-3">
+        <div className="mb-6 md:mb-12 flex flex-col gap-3">
           <div className="flex gap-2.5 items-center justify-center">
             <span>
               <Icon

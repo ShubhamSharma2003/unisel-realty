@@ -12,7 +12,7 @@ const BuilderPartners = async () => {
     const track = [...partners, ...partners];
 
     return (
-        <section className="bg-black/[0.02] dark:bg-white/[0.02] border-y border-black/10 dark:border-white/10 py-14 md:py-20">
+        <section className="bg-black/[0.02] dark:bg-white/[0.02] border-y border-black/10 dark:border-white/10">
             <div className="container max-w-8xl mx-auto px-5 2xl:px-0 mb-10">
                 <div className="text-center">
                     <p className="text-dark/75 dark:text-white/75 text-base font-semibold flex gap-2.5 justify-center mb-4">
