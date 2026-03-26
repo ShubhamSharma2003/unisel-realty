@@ -230,7 +230,7 @@ export default function MapClient({
       {/* Map + sidebar layout */}
       <div className="flex flex-col lg:flex-row gap-6 min-h-[500px]">
         {/* Map */}
-        <div className="flex-1 rounded-2xl overflow-hidden border border-dark/10 dark:border-white/10 relative z-0">
+        <div className="flex-1 rounded-2xl overflow-hidden border border-dark/10 dark:border-white/10 relative z-0 aspect-square lg:aspect-auto">
           <MapContainer
             center={GURGAON_CENTER}
             zoom={12}
