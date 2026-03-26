@@ -29,9 +29,9 @@ const PropertySlider = ({ properties }: { properties: PropertyHomes[] }) => {
       {/* Mobile carousel */}
       <div className="md:hidden">
         <div ref={mobileRef} className="overflow-hidden -mx-5 px-5">
-          <div className="flex gap-3">
+          <div className="flex ml-[-0.75rem]">
             {properties.map((item, index) => (
-              <div key={item.slug || index} className="min-w-0 flex-[0_0_85%]">
+              <div key={item.slug || index} className="min-w-0 flex-[0_0_85%] pl-3">
                 <PropertyCard item={item} />
               </div>
             ))}

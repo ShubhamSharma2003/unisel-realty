@@ -82,7 +82,11 @@ export const navLinksQuery = groq`
     _id,
     label,
     href,
-    order
+    order,
+    children[] {
+      label,
+      href
+    }
   }
 `;
 

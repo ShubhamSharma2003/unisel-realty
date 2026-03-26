@@ -63,7 +63,7 @@ const FAQ: React.FC = () => {
                             <Icon icon="ph:house-simple-fill" className="text-2xl text-primary " />
                             FAQs
                         </p>
-                        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+                        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-6 md:mb-12">
                             <h2 className='text-40 lg:text-52 font-medium leading-[1.2] text-dark dark:text-white'>
                                 Frequently Asked Questions
                             </h2>
