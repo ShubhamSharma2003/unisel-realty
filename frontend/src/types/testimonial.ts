@@ -9,7 +9,12 @@ export type Testimonial = {
 };
 
 export type TestimonialSection = {
+    visible?: boolean;
     badge?: string;
     title?: string;
     subtitle?: string;
+};
+
+export type GetInTouchSection = {
+    visible?: boolean;
 };

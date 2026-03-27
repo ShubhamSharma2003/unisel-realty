@@ -59,7 +59,9 @@
       "Bash(find \"c:\\\\Users\\\\Shubham\\\\Desktop\\\\UniselRealtyNew\\\\frontend\\\\src\\\\app\\\\\\(site\\)\" -type d)",
       "Bash(find \"c:\\\\Users\\\\Shubham\\\\Desktop\\\\UniselRealtyNew\\\\frontend\\\\src\\\\app\\\\\\(site\\)\" -maxdepth 1 -type f)",
       "Bash(ls -la \"c:\\\\Users\\\\Shubham\\\\Desktop\\\\UniselRealtyNew\\\\frontend\\\\src\\\\app\\\\\\(site\\)/\")",
-      "Bash(xargs grep:*)"
+      "Bash(xargs grep:*)",
+      "Bash(grep -r \"show\\\\|visible\\\\|display\\\\|homepage\\\\|contact\" /c/Users/Shubham/Desktop/UniselRealtyNew/studio-unisel-realty --include=\"*.ts\" ! -path \"*/node_modules/*\")",
+      "Bash(xargs cat:*)"
     ],
     "additionalDirectories": [
       "c:\\Users\\Shubham\\Desktop\\UniselRealtyNew\\frontend\\src\\app\\(site)\\properties",

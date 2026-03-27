@@ -132,22 +132,20 @@ const FeaturedProperty = async () => {
                       unoptimized
                     />
                   </div>
-                  <h6>
-                    {property.area} m<sup>2</sup>
-                  </h6>
+                  <h6>{property.area} m<sup>2</sup></h6>
                 </div>
               )}
             </div>
-            <div className="flex gap-10">
+            <div className="flex items-center gap-10">
               <Link
                 href={`/residential/${property.slug}`}
-                className="py-4 px-8 bg-primary hover:bg-dark duration-300 rounded-full text-white"
+                className="py-2.5 px-6 bg-primary hover:bg-dark duration-300 rounded-full text-white text-sm"
               >
                 View Details
               </Link>
               {property.rate && (
                 <div>
-                  <h4 className="text-3xl text-dark dark:text-white font-medium">
+                  <h4 className="text-xl text-dark dark:text-white font-medium">
                     {property.rate}
                   </h4>
                   {property.priceLabel && (
