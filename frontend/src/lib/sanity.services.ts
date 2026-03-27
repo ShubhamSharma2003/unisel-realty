@@ -14,10 +14,11 @@ import {
   navLinksQuery,
   builderPartnersQuery,
   propertiesByMicromarketQuery,
+  getInTouchSectionQuery,
 } from "./sanity.queries";
 import type { Service, ServicesSection } from "@/types/service";
 import type { PropertyHomes } from "@/types/properyHomes";
-import type { Testimonial, TestimonialSection } from "@/types/testimonial";
+import type { Testimonial, TestimonialSection, GetInTouchSection } from "@/types/testimonial";
 import type { HeroBanner, HeroSection } from "@/types/hero";
 import type { NavLinks } from "@/types/navlink";
 
@@ -81,3 +82,6 @@ export type BuilderPartner = {
 
 export const getBuilderPartners = async () =>
   sanityClient.fetch<BuilderPartner[]>(builderPartnersQuery, {}, { next: { tags: ['builder-partners'] } });
+
+export const getGetInTouchSection = async () =>
+  sanityClient.fetch<GetInTouchSection | null>(getInTouchSectionQuery, {}, { next: { tags: ['home'] } });

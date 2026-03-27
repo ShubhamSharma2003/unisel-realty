@@ -321,9 +321,16 @@ export const propertiesByMicromarketQuery = groq`
 
 export const testimonialSectionQuery = groq`
   *[_type == "testimonialSection"][0] {
+    visible,
     badge,
     title,
     subtitle
+  }
+`;
+
+export const getInTouchSectionQuery = groq`
+  *[_type == "getInTouchSection"][0] {
+    visible
   }
 `;
 

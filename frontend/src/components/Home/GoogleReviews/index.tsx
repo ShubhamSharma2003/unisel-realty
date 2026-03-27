@@ -30,9 +30,9 @@ const GoogleReviews = () => {
   }, []);
 
   return (
-    <section className="py-1 bg-white dark:bg-gray-900">
+    <section className="pt-1 !pb-0 bg-white dark:bg-gray-900">
       <div className="container mx-auto max-w-8xl px-4 sm:px-6 lg:px-0">
-        <div className="text-center mb-6 md:mb-12">
+        <div className="text-center mb-0 md:mb-12">
           <h2 className="text-3xl md:text-4xl font-bold text-dark dark:text-white mb-4">
             What Our Customers Say
           </h2>

@@ -14,9 +14,15 @@ import WhyUs from '@/components/Home/WhyUs'
 import BuilderPartners from '@/components/Home/BuilderPartners'
 import { FAQ_ITEMS } from '@/components/Home/FAQs'
 import { homepageSchema } from '@/lib/jsonld'
+import { getTestimonialSection, getGetInTouchSection } from '@/lib/sanity.services'
 
-export default function Home() {
+export default async function Home() {
   const schema = homepageSchema(FAQ_ITEMS)
+
+  const [testimonialSection, getInTouchSection] = await Promise.all([
+    getTestimonialSection(),
+    getGetInTouchSection(),
+  ])
 
   return (
     <main>
@@ -33,10 +39,10 @@ export default function Home() {
       <WhyUs />
       <BuilderPartners />
       <FeaturedProperty />
-      <Testimonial />
+      {testimonialSection?.visible && <Testimonial />}
       <GoogleReviews />
       <BlogSmall />
-      <GetInTouch />
+      {getInTouchSection?.visible && <GetInTouch />}
       <FAQ />
     </main>
   )
