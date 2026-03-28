@@ -11,7 +11,9 @@ const PropertyCard: React.FC<{ item: PropertyHomes }> = ({ item }) => {
   const mainImage = mainImageSource
     ? typeof mainImageSource === 'object' && 'src' in mainImageSource
       ? mainImageSource.src
-      : urlFor(mainImageSource).width(880).height(600).fit('crop').url()
+      : typeof mainImageSource === 'object' && 'asset' in mainImageSource
+        ? urlFor(mainImageSource).width(880).height(600).fit('crop').url()
+        : null
     : null;
   const rateLabel = rate ?? '';
 

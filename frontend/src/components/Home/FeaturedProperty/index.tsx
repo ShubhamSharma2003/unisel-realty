@@ -17,13 +17,19 @@ const FeaturedProperty = async () => {
 
   if (!property) return null;
 
-  const images = (property.images || []).map((img, i) => {
-    const url =
-      typeof img === "object" && "src" in img
-        ? (img as { src: string }).src
-        : urlFor(img).width(680).height(530).fit("crop").url();
-    return { url, alt: `${property.name} - ${i + 1}` };
-  });
+  const images = (property.images || [])
+    .map((img, i) => {
+      if (!img) return null;
+      const url =
+        typeof img === "object" && "src" in img
+          ? (img as { src: string }).src
+          : typeof img === "object" && "asset" in img
+            ? urlFor(img).width(680).height(530).fit("crop").url()
+            : null;
+      if (!url) return null;
+      return { url, alt: `${property.name} - ${i + 1}` };
+    })
+    .filter(Boolean) as { url: string; alt: string }[];
 
   const description = property.description
     ? toPlainText(property.description)
