@@ -61,7 +61,8 @@
       "Bash(ls -la \"c:\\\\Users\\\\Shubham\\\\Desktop\\\\UniselRealtyNew\\\\frontend\\\\src\\\\app\\\\\\(site\\)/\")",
       "Bash(xargs grep:*)",
       "Bash(grep -r \"show\\\\|visible\\\\|display\\\\|homepage\\\\|contact\" /c/Users/Shubham/Desktop/UniselRealtyNew/studio-unisel-realty --include=\"*.ts\" ! -path \"*/node_modules/*\")",
-      "Bash(xargs cat:*)"
+      "Bash(xargs cat:*)",
+      "Bash(find c:/Users/Shubham/Desktop/UniselRealtyNew/frontend/src -type f \\\\\\(-name *location* -o -name *area* -o -name *config* \\\\\\))"
     ],
     "additionalDirectories": [
       "c:\\Users\\Shubham\\Desktop\\UniselRealtyNew\\frontend\\src\\app\\(site)\\properties",

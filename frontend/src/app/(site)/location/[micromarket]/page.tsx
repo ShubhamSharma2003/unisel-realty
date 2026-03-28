@@ -20,6 +20,21 @@ const MICROMARKETS: Record<string, { title: string; displayName: string; descrip
         displayName: "Dwarka Expressway",
         description: "Explore residential and commercial properties on Dwarka Expressway, Gurgaon.",
     },
+    "gwal-pahari": {
+        title: "Properties in Gwal Pahari, Gurgaon",
+        displayName: "Gwal Pahari",
+        description: "Explore premium residential and commercial properties in Gwal Pahari, Gurgaon.",
+    },
+    "sohna-road": {
+        title: "Properties on Sohna Road, Gurgaon",
+        displayName: "Sohna Road",
+        description: "Explore residential and commercial properties on Sohna Road, Gurgaon.",
+    },
+    "new-gurgaon": {
+        title: "Properties in New Gurgaon",
+        displayName: "New Gurgaon",
+        description: "Explore residential and commercial properties in New Gurgaon (Sectors 73-95).",
+    },
 };
 
 export async function generateStaticParams() {
