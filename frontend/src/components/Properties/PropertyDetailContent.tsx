@@ -219,7 +219,7 @@ const PropertyDetailContent = async ({ slug, property: propertyProp }: PropertyD
               <div className="py-8 my-8 border-y border-dark/10 dark:border-white/20 flex flex-col gap-8">
                 {property?.features.map((feature, index) => (
                   <div key={index} className="flex items-center gap-6">
-                    {feature.icon ? (
+                    {feature.icon && typeof feature.icon === "object" && "asset" in feature.icon ? (
                       <div className="flex-shrink-0">
                         <Image
                           src={urlFor(feature.icon).width(64).height(64).fit("max").url()}
@@ -262,7 +262,7 @@ const PropertyDetailContent = async ({ slug, property: propertyProp }: PropertyD
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mt-5 gap-6">
                   {property?.amenities.map((amenity, index) => (
                     <div key={index} className="flex items-center gap-2.5">
-                      {amenity.icon ? (
+                      {amenity.icon && typeof amenity.icon === "object" && "asset" in amenity.icon ? (
                         <Image
                           src={urlFor(amenity.icon).width(48).height(48).fit("max").url()}
                           alt={amenity.label || "Amenity icon"}
@@ -323,7 +323,9 @@ const PropertyDetailContent = async ({ slug, property: propertyProp }: PropertyD
                 const thumb = p.images?.[0]
                   ? typeof p.images[0] === "object" && "src" in p.images[0]
                     ? (p.images[0] as { src: string }).src
-                    : urlFor(p.images[0]).width(880).height(600).fit("crop").url()
+                    : typeof p.images[0] === "object" && "asset" in p.images[0]
+                      ? urlFor(p.images[0]).width(880).height(600).fit("crop").url()
+                      : null
                   : null;
                 return (
                   <div key={p._id}>
