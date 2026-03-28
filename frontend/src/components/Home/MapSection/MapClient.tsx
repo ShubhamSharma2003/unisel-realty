@@ -292,7 +292,9 @@ export default function MapClient({
             const mainImage = mainImageSource
               ? typeof mainImageSource === "object" && "src" in mainImageSource
                 ? mainImageSource.src
-                : urlFor(mainImageSource).width(200).height(140).fit("crop").url()
+                : typeof mainImageSource === "object" && "asset" in mainImageSource
+                  ? urlFor(mainImageSource).width(200).height(140).fit("crop").url()
+                  : null
               : null;
 
             return (
