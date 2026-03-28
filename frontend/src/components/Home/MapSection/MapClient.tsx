@@ -28,6 +28,9 @@ const MICROMARKET_COORDS: Record<string, [number, number]> = {
   "golf-course-road": [28.4595, 77.0935], // Excellent (Sector 43 area)
   "golf-course-extension-road": [28.4137, 77.0786], // Better "Center" (Sector 65 area)
   "dwarka-expressway": [28.4925, 77.0265], // Excellent (Sector 102 area)
+  "gwal-pahari": [28.3950, 77.0750], // Gwal Pahari area
+  "sohna-road": [28.3900, 77.0500], // Sohna Road (Sector 48-57 area)
+  "new-gurgaon": [28.4200, 77.0400], // New Gurgaon (Sectors 73-95)
 };
 
 const GURGAON_CENTER: [number, number] = [28.4595, 77.0266];
