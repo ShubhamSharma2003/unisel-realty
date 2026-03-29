@@ -136,27 +136,26 @@ export default async function Post({ params }: { params: Promise<{ slug: string 
                                 <Icon icon={'ph:arrow-left'} width={20} height={20} />
                                 <span>Go Back</span>
                             </Link>
-                            <h1 className="text-dark dark:text-white md:text-52 text-40 leading-[1.2] font-semibold pt-7">{post?.title}</h1>
+                            <h1 className="text-dark dark:text-white md:text-52 text-2xl leading-[1.2] font-semibold pt-7">{post?.title}</h1>
                             <h6 className="text-xm mt-5 text-dark dark:text-white">{post?.detail}</h6>
                         </div>
-                        <div className="flex items-center justify-between gap-6 mt-12">
-                            <div className="flex items-center gap-4">
+                        <div className="flex flex-col md:flex-row md:items-center gap-4 mt-5">
+                            <div className="flex items-center gap-3">
                                 {authorImageUrl ? (
-                                    <Image src={authorImageUrl} alt={post?.author || "Author"} className="bg-no-repeat bg-contain inline-block rounded-full !w-12 !h-12" width={48} height={48} quality={100} />
+                                    <Image src={authorImageUrl} alt={post?.author || "Author"} className="bg-no-repeat bg-contain inline-block rounded-full !w-10 !h-10" width={40} height={40} quality={100} />
                                 ) : null}
-                                <div>
-                                    <span className="text-xm text-dark dark:text-white">{post?.author}</span>
-                                </div>
+                                <span className="text-sm text-dark dark:text-white font-medium">{post?.author}</span>
                             </div>
-                            <div className="flex items-center gap-7">
-                                <div className="flex items-center gap-4">
-                                    <Icon icon={'ph:clock'} width={20} height={20} />
-                                    <span className="text-base text-dark font-medium dark:text-white">
+                            <div className="flex items-center gap-3">
+                                <div className="flex items-center gap-2">
+                                    <Icon icon={'ph:clock'} width={16} height={16} />
+                                    <span className="text-sm text-dark font-medium dark:text-white">
                                         {post?.date ? format(new Date(post.date), "MMM dd, yyyy") : ""}
                                     </span>
                                 </div>
-                                <div className="py-2.5 px-5 bg-dark/5 rounded-full dark:bg-white/15">
-                                    <p className="text-sm font-semibold text-dark dark:text-white">{post?.tag}</p>
+                                <span className="text-dark/30 dark:text-white/30">|</span>
+                                <div className="py-1.5 px-4 bg-dark/5 rounded-full dark:bg-white/15">
+                                    <p className="text-xs font-semibold text-dark dark:text-white">{post?.tag}</p>
                                 </div>
                             </div>
                         </div>
@@ -170,7 +169,7 @@ export default async function Post({ params }: { params: Promise<{ slug: string 
             </section>
             <section className="pt-12!">
                 <div className="container max-w-8xl mx-auto px-4">
-                    <div className="-mx-4 flex flex-wrap justify-center">
+                    <div className="flex flex-wrap justify-center">
                         <div className="blog-details markdown xl:pr-10">
                             <PortableText value={post?.content || []} components={portableTextComponents} />
                         </div>

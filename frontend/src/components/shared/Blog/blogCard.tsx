@@ -27,17 +27,17 @@ const BlogCard: FC<{ blog: Blog }> = ({ blog }) => {
                     <div className="aspect-[4/3] w-full bg-dark/5 dark:bg-white/10" />
                 )}
             </div>
-            <div className="flex justify-between items-center">
-                <div>
-                    <h3 className="mt-2 text-xl font-medium text-dark dark:text-white group-hover:text-primary">
-                        {title}
-                    </h3>
-                    <span className="text-base font-medium dark:text-white/50 text-dark/50 leading-loose">
+            <div>
+                <h3 className="mt-2 text-xl font-medium text-dark dark:text-white group-hover:text-primary">
+                    {title}
+                </h3>
+                <div className="flex justify-between items-center mt-1">
+                    <span className="text-base font-medium dark:text-white/50 text-dark/50">
                         {date ? format(new Date(date), "MMM dd, yyyy") : ""}
                     </span>
-                </div>
-                <div className="py-2.5 px-5 bg-dark/5 rounded-full dark:bg-white/15">
-                    <p className="text-sm font-semibold text-dark dark:text-white">{tag}</p>
+                    <div className="py-2.5 px-5 bg-dark/5 rounded-full dark:bg-white/15">
+                        <p className="text-sm font-semibold text-dark dark:text-white">{tag}</p>
+                    </div>
                 </div>
             </div>
         </Link>
