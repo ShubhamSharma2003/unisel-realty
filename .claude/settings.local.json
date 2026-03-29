@@ -62,7 +62,9 @@
       "Bash(xargs grep:*)",
       "Bash(grep -r \"show\\\\|visible\\\\|display\\\\|homepage\\\\|contact\" /c/Users/Shubham/Desktop/UniselRealtyNew/studio-unisel-realty --include=\"*.ts\" ! -path \"*/node_modules/*\")",
       "Bash(xargs cat:*)",
-      "Bash(find c:/Users/Shubham/Desktop/UniselRealtyNew/frontend/src -type f \\\\\\(-name *location* -o -name *area* -o -name *config* \\\\\\))"
+      "Bash(find c:/Users/Shubham/Desktop/UniselRealtyNew/frontend/src -type f \\\\\\(-name *location* -o -name *area* -o -name *config* \\\\\\))",
+      "Bash(find c:UsersShubhamDesktopUniselRealtyNewfrontend -name .env* -type f)",
+      "Bash(grep -r \"gtag\\\\|GA4\\\\|analytics\\\\|GTM\\\\|facebook.*pixel\" c:UsersShubhamDesktopUniselRealtyNewfrontendsrc --include=*.tsx --include=*.ts --include=*.jsx --include=*.js)"
     ],
     "additionalDirectories": [
       "c:\\Users\\Shubham\\Desktop\\UniselRealtyNew\\frontend\\src\\app\\(site)\\properties",

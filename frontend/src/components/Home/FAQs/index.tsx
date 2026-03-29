@@ -11,7 +11,7 @@ import {
 export const FAQ_ITEMS = [
     {
         question: "What makes Unisel Realty different from other real estate consultants in Gurgaon?",
-        answer: "Unisel Realty has been operating exclusively in Gurgaon's luxury real estate market since 2006 — 18 years of on-ground market intelligence that newer, pan-India firms cannot replicate. We are authorised channel partners of DLF, Godrej and M3M with pre-launch inventory access, a dedicated NRI desk, and post-purchase property management — all under one roof. Our 62% repeat client rate reflects the outcome, not just the promise.",
+        answer: "Unisel Realty has been operating exclusively in Gurgaon's luxury real estate market since 2006 — 20 years of on-ground market intelligence that newer, pan-India firms cannot replicate. We are authorised channel partners of DLF, Godrej and M3M with pre-launch inventory access, a dedicated NRI desk, and post-purchase property management — all under one roof. Our 90% client retention reflects the outcome, not just the promise.",
     },
     {
         question: "Can NRIs buy property in Gurgaon?",

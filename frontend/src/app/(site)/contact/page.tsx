@@ -74,7 +74,7 @@ export default function ContactPage() {
                             <Link href={'tel:+918010303303'} className='w-fit'>
                                 <div className='flex items-center gap-4 group w-fit'>
                                     <Icon icon={'ph:phone'} width={32} height={32} />
-                                    <p className='text-sm xs:text-base mobile:text-xm font-normal group-hover:text-primary'>+91 8010 303 303</p>
+                                    <p className='text-sm xs:text-base mobile:text-xm font-normal group-hover:text-primary'>+91 8010-303-303</p>
                                 </div>
                             </Link>
                             <Link href={'mailto:info@uniselrealty.com'} className='w-fit'>

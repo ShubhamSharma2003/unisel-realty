@@ -11,7 +11,7 @@ import { urlFor } from "@/lib/sanity.image";
 export const metadata: Metadata = {
     title: "About Unisel Realty | Gurgaon's Trusted Luxury Real Estate Advisory Since 2006",
     description:
-        "Unisel Realty Pvt Ltd — 20+ years advising on luxury residential and commercial properties in Gurgaon. 2B+ transacted, 2000+ families served, 75% repeat client rate. Exclusive pre-launch access to DLF, Godrej, M3M.",
+        "Unisel Realty Pvt Ltd — 20+ years advising on luxury residential and commercial properties in Gurgaon. $2B+ transacted, 10,000+ families served, 90% client retention. Exclusive pre-launch access to DLF, Godrej, M3M.",
     keywords: [
         "about unisel realty",
         "gurgaon real estate consultants",
@@ -25,7 +25,7 @@ export const metadata: Metadata = {
     openGraph: {
         title: "About Unisel Realty | Gurgaon's Trusted Luxury Real Estate Advisory",
         description:
-            "20+ years of expertise in Gurgaon luxury real estate. 2B+ transacted value, 2000+ families placed, 62% repeat client rate.",
+            "20+ years of expertise in Gurgaon luxury real estate. $2B+ transacted value, 10,000+ families placed, 90% client retention.",
         url: "https://uniselrealty.com/about",
         siteName: "Unisel Realty",
         images: [{ url: "/images/hero/og-image.jpg", width: 1200, height: 630, alt: "About Unisel Realty" }],
@@ -91,7 +91,7 @@ const values = [
     {
         icon: "ph:handshake-fill",
         title: "Client-First Approach",
-        description: "Our 75% repeat client rate speaks for itself. We build relationships, not transactions — guiding families from first enquiry through possession and beyond.",
+        description: "Our 90% client retention speaks for itself. We build relationships, not transactions — guiding families from first enquiry through possession and beyond.",
     },
     {
         icon: "ph:users-three-fill",
@@ -150,7 +150,7 @@ const AboutPage = async () => {
                                 Unisel Realty was founded in 2006 with a single mission: to bring honesty and expertise to Gurgaon&apos;s luxury real estate market. At a time when the industry was opaque and fragmented, we set out to become the advisor clients could trust completely.
                             </p>
                             <p className="text-base text-dark/60 dark:text-white/60 leading-7">
-                                Over 20 years, we have helped 2,000+ families find their dream homes, guided NRI investors across six countries, and built a track record of zero developer disputes. From our first pre-launch allotment on Golf Course Road to managing a portfolio of 80+ rental units today, every milestone reflects our commitment to doing right by our clients.
+                                Over 20 years, we have helped 10,000+ families find their dream homes, guided NRI investors across six countries, and built a track record of zero developer disputes. From our first pre-launch allotment on Golf Course Road to managing a portfolio of 80+ rental units today, every milestone reflects our commitment to doing right by our clients.
                             </p>
                             <p className="text-base text-dark/60 dark:text-white/60 leading-7">
                                 Today, Unisel Realty is a team of 20+ professionals specialising in new bookings, leasing, and resale — operating from our office at Adani Miracle Mile, Sector 60, Gurgaon. We remain focused exclusively on Gurgaon because depth of knowledge in one market beats shallow coverage across many.

@@ -72,7 +72,7 @@ export const homepageSchema = (faqs: FaqItem[]) => ({
       name: "Unisel Realty Pvt Ltd",
       url: SITE_URL,
       description:
-        "Gurgaon's most trusted advisors for luxury real estate & high-return investments. Exclusive pre-launch access to DLF, Godrej and M3M. Dedicated NRI desk. $2B+ transacted value, 2000+ families placed in their dream homes. Est. 2006.",
+        "Gurgaon's most trusted advisors for luxury real estate & high-return investments. Exclusive pre-launch access to DLF, Godrej and M3M. Dedicated NRI desk. $2B+ transacted value, 10,000+ families placed in their dream homes. Est. 2006.",
       address: {
         "@type": "PostalAddress",
         streetAddress: "408, 4th floor, Adani Miracle Mile, Sector 60",
@@ -360,7 +360,7 @@ export const aboutPageSchema = () => ({
   url: `${SITE_URL}/about`,
   name: "About Unisel Realty | Gurgaon's Trusted Luxury Real Estate Advisory Since 2006",
   description:
-    "Unisel Realty Pvt Ltd — 18+ years advising on luxury residential and commercial properties in Gurgaon. 2B+ transacted, 2000+ families served, 75% repeat client rate.",
+    "Unisel Realty Pvt Ltd — 20+ years advising on luxury residential and commercial properties in Gurgaon. $2B+ transacted, 10,000+ families served, 90% client retention.",
   isPartOf: { "@id": `${SITE_URL}/#website` },
   about: { "@id": `${SITE_URL}/#organization` },
   mainEntity: {

@@ -13,8 +13,8 @@ type TrustItem = {
 const trustItems: TrustItem[] = [
     { value: 20, suffix: "+", label: "Years in Gurgaon" },
     { prefix: "$", value: 2, suffix: "B+", label: "Transacted" },
-    { value: 2000, suffix: "+", label: "Families Served" },
-    { value: 75, suffix: "%", label: "Repeat Client Rate" },
+    { value: 10000, suffix: "+", label: "Families Served" },
+    { value: 90, suffix: "%", label: "Client Retention" },
 ];
 
 function StatBlock({ item, active }: { item: TrustItem; active: boolean }) {

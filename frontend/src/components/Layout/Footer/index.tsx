@@ -62,7 +62,7 @@ const Footer = ({ footerMenus }: FooterProps) => {
                   <h5 className="text-white text-lg font-semibold mb-4">Contact Info</h5>
                   <div className="flex flex-col gap-2">
                     <Link href="tel:+918010303303" className="text-white/60 text-sm hover:text-white duration-300 flex items-center gap-2">
-                      <Icon icon="ph:phone" width={18} /> +91 8010 303 303
+                      <Icon icon="ph:phone" width={18} /> +91 8010-303-303
                     </Link>
                     <Link href="mailto:info@uniselrealty.com" className="text-white/60 text-sm hover:text-white duration-300 flex items-center gap-2">
                       <Icon icon="ph:envelope" width={18} /> info@uniselrealty.com

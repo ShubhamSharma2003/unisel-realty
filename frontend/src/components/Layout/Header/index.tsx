@@ -94,7 +94,7 @@ const Header: React.FC<{ navLinks: NavLinks[] }> = ({ navLinks }) => {
                 }`}
               >
                 <Icon icon={'ph:phone-bold'} width={24} height={24} />
-                +91 8010 303 303
+                +91 8010-303-303
               </Link>
             </div>
             <div>
@@ -167,7 +167,7 @@ const Header: React.FC<{ navLinks: NavLinks[] }> = ({ navLinks }) => {
               info@uniselrealty.com
             </Link>
             <Link href="tel:+918010303303" className='text-base sm:text-xm font-medium text-inherit hover:text-primary'>
-              +91 8010 303 303
+              +91 8010-303-303
             </Link>
           </div>
         </div>

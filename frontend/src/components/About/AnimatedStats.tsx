@@ -12,9 +12,9 @@ type StatItem = {
 
 const stats: StatItem[] = [
     { prefix: "$", value: 2, suffix: "B+", label: "Transacted Value" },
-    { value: 2000, suffix: "+", label: "Families Served" },
+    { value: 10000, suffix: "+", label: "Families Served" },
     { value: 20, suffix: "+", label: "Years of Expertise" },
-    { value: 75, suffix: "%", label: "Repeat Client Rate" },
+    { value: 90, suffix: "%", label: "Client Retention" },
 ];
 
 export default function AnimatedStats() {

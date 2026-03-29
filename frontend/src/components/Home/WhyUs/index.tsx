@@ -17,8 +17,8 @@ const pillars = [
     {
         icon: "ph:chart-line-up",
         title: "Investment Advisory That Puts Your Returns First — Not Our Commission",
-        description: "We are not paid to push inventory. We are paid to protect your capital. If a project has delayed possession history, a weak developer track record, or sits in an oversupplied micro-market — we will tell you, even if it costs us the deal. Our 62% repeat client rate is built on exactly this.",
-        proof: "₹2,400 Cr+ transacted · 62% repeat client rate · 18 years zero developer disputes",
+        description: "We are not paid to push inventory. We are paid to protect your capital. If a project has delayed possession history, a weak developer track record, or sits in an oversupplied micro-market — we will tell you, even if it costs us the deal. Our 90% client retention is built on exactly this.",
+        proof: "₹2,400 Cr+ transacted · 90% client retention · 18 years zero developer disputes",
     },
     {
         icon: "ph:house-simple",

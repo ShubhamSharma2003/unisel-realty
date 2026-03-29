@@ -57,7 +57,7 @@ const TermsAndConditionsPage = () => {
                             <p>408, 4th Floor, Adani Miracle Mile, Sector 60, Gurgaon, Haryana — 122003</p>
                             <p>
                                 Phone:{" "}
-                                <a href="tel:+918010303303" className="text-primary underline underline-offset-2">+91 8010 303 303</a>
+                                <a href="tel:+918010303303" className="text-primary underline underline-offset-2">+91 8010-303-303</a>
                                 {"  "}|{"  "}
                                 Email:{" "}
                                 <a href="mailto:info@uniselrealty.com" className="text-primary underline underline-offset-2">info@uniselrealty.com</a>
@@ -183,7 +183,7 @@ const TermsAndConditionsPage = () => {
                             <p>408, 4th Floor, Adani Miracle Mile, Sector 60, Gurgaon, Haryana — 122003</p>
                             <p>
                                 Phone:{" "}
-                                <a href="tel:+918010303303" className="text-primary underline underline-offset-2">+91 8010 303 303</a>
+                                <a href="tel:+918010303303" className="text-primary underline underline-offset-2">+91 8010-303-303</a>
                                 {"  "}|{"  "}
                                 Email:{" "}
                                 <a href="mailto:info@uniselrealty.com" className="text-primary underline underline-offset-2">info@uniselrealty.com</a>

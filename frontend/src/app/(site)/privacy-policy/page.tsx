@@ -241,7 +241,7 @@ const PrivacyPolicyPage = () => {
                                 {"  "}|{"  "}
                                 Phone:{" "}
                                 <a href="tel:+918010303303" className="text-primary underline underline-offset-2">
-                                    +91 8010 303 303
+                                    +91 8010-303-303
                                 </a>
                             </p>
                             <p>Response Time: 30 days from receipt</p>
