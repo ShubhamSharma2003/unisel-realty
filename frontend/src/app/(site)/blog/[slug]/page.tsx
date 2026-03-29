@@ -9,6 +9,8 @@ import { blogPostBySlugQuery, blogSlugsQuery } from "@/lib/sanity.queries";
 import { urlFor } from "@/lib/sanity.image";
 import { blogArticleSchema, breadcrumbSchema } from "@/lib/jsonld";
 
+export const dynamic = 'force-dynamic';
+
 const siteUrl = "https://uniselrealty.com";
 
 const portableTextComponents = {

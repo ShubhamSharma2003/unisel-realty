@@ -7,6 +7,8 @@ import { propertyDetailSchema, breadcrumbSchema } from "@/lib/jsonld";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 
+export const dynamic = 'force-dynamic';
+
 const siteUrl = "https://uniselrealty.com";
 
 export async function generateStaticParams() {
