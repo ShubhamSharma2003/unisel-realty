@@ -11,6 +11,9 @@ import NextTopLoader from 'nextjs-toploader';
 import SessionProviderComp from '@/components/nextauth/SessionProvider'
 import { getNavLinks } from '@/lib/sanity.services'
 import type { Session } from 'next-auth'
+import { GoogleTagManager } from '@/components/Analytics/GoogleTagManager'
+import { MetaPixel } from '@/components/Analytics/MetaPixel'
+import { AnalyticsProvider } from '@/components/Analytics/AnalyticsProvider'
 
 const font = Bricolage_Grotesque({ subsets: ["latin"] });
 
@@ -110,20 +113,28 @@ export default async function RootLayout({
             __html: JSON.stringify(schema),
           }}
         />
+        {process.env.NEXT_PUBLIC_GTM_ID && (
+          <GoogleTagManager gtmId={process.env.NEXT_PUBLIC_GTM_ID} />
+        )}
+        {process.env.NEXT_PUBLIC_META_PIXEL_ID && (
+          <MetaPixel pixelId={process.env.NEXT_PUBLIC_META_PIXEL_ID} />
+        )}
       </head>
       <body className={`${font.className} bg-white dark:bg-black antialiased`}>
         <NextTopLoader color="#2596be" />
-        <SessionProviderComp session={session}>
-          <ThemeProvider
-            attribute='class'
-            enableSystem={true}
-            defaultTheme='light'>
-            <Header navLinks={navLinks} />
-            {children}
-            <Footer footerMenus={footerMenus} />
-            <FloatingContact />
-          </ThemeProvider>
-        </SessionProviderComp>
+        <AnalyticsProvider>
+          <SessionProviderComp session={session}>
+            <ThemeProvider
+              attribute='class'
+              enableSystem={true}
+              defaultTheme='light'>
+              <Header navLinks={navLinks} />
+              {children}
+              <Footer footerMenus={footerMenus} />
+              <FloatingContact />
+            </ThemeProvider>
+          </SessionProviderComp>
+        </AnalyticsProvider>
       </body>
     </html>
   )
