@@ -2,13 +2,10 @@
 
 import { useEffect } from 'react'
 import { usePathname, useSearchParams } from 'next/navigation'
+import { Suspense } from 'react'
 import { trackPageView } from '@/lib/analytics'
 
-interface AnalyticsProviderProps {
-  children: React.ReactNode
-}
-
-export function AnalyticsProvider({ children }: AnalyticsProviderProps) {
+function AnalyticsContent({ children }: { children: React.ReactNode }) {
   const pathname = usePathname()
   const searchParams = useSearchParams()
 
@@ -19,4 +16,16 @@ export function AnalyticsProvider({ children }: AnalyticsProviderProps) {
   }, [pathname, searchParams])
 
   return <>{children}</>
+}
+
+interface AnalyticsProviderProps {
+  children: React.ReactNode
+}
+
+export function AnalyticsProvider({ children }: AnalyticsProviderProps) {
+  return (
+    <Suspense fallback={null}>
+      <AnalyticsContent>{children}</AnalyticsContent>
+    </Suspense>
+  )
 }
