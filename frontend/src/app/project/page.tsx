@@ -1,13 +1,6 @@
-export const revalidate = false // Disable ISR - render dynamically
-
-import fs from 'fs'
-import path from 'path'
+import { redirect } from 'next/navigation'
 
 export default function OberioPage() {
-  const htmlPath = path.join(process.cwd(), 'src/app/project/oberoi-realty-gurgaon.html')
-  const htmlContent = fs.readFileSync(htmlPath, 'utf-8')
-
-  return (
-    <div dangerouslySetInnerHTML={{ __html: htmlContent }} />
-  )
+  // Redirect to static HTML file in public folder
+  redirect('/oberoi-realty-gurgaon.html')
 }
