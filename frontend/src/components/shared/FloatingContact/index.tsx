@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { Icon } from "@iconify/react";
+import { usePathname } from "next/navigation";
 
 const PHONE = "+918010303303";
 const WHATSAPP_NUMBER = "918010303303";
@@ -9,6 +10,10 @@ const WHATSAPP_MESSAGE = "Hi! I'm interested in a property. Could you please hel
 
 export default function FloatingContact() {
   const [open, setOpen] = useState(false);
+  const pathname = usePathname();
+  const isProjectPage = pathname.startsWith('/project');
+
+  if (isProjectPage) return null;
 
   return (
     <div className="fixed bottom-6 right-6 z-50 flex flex-col items-center gap-3">

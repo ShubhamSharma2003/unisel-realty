@@ -37,6 +37,9 @@ const Header: React.FC<{ navLinks: NavLinks[] }> = ({ navLinks }) => {
   }, [handleScroll])
 
   const isHomepage = pathname === '/'
+  const isProjectPage = pathname.startsWith('/project')
+
+  if (isProjectPage) return null
 
   return (
     <header className={`fixed h-24 py-1 z-50 w-full bg-transparent transition-all duration-300 lg:px-0 px-4 ${sticky ? "top-3" : "top-0"}`}>

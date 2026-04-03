@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(mkdir -p project)",
+      "Bash(mv \"\\(site\\)/project/layout.tsx\" \"project/layout.tsx\")",
+      "Bash(mv \"\\(site\\)/project/[slug]\" \"project/\")",
+      "Bash(mv \"\\(site\\)/project/*.html\" \"project/\")",
+      "Bash(rmdir \"\\(site\\)/project\")",
+      "Bash(mv \"src/app/\\(site\\)/project/oberoi-realty-gurgaon.html\" \"src/app/project/\")",
+      "Bash(rmdir \"src/app/\\(site\\)/project\")"
+    ]
+  }
+}

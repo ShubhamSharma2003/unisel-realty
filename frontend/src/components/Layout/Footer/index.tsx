@@ -1,5 +1,8 @@
+'use client';
+
 import Link from "next/link";
 import { Icon } from "@iconify/react"
+import { usePathname } from "next/navigation";
 
 import type { FooterMenu } from "@/types/footerMenu";
 import NewsletterForm from "./NewsletterForm";
@@ -9,6 +12,11 @@ type FooterProps = {
 };
 
 const Footer = ({ footerMenus }: FooterProps) => {
+  const pathname = usePathname();
+  const isProjectPage = pathname.startsWith('/project');
+
+  if (isProjectPage) return null;
+
   return (
     <footer className="relative z-10 bg-dark">
       <div className="container mx-auto max-w-8xl pt-14 px-4 sm:px-6 lg:px-0">
