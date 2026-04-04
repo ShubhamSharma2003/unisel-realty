@@ -268,7 +268,7 @@ export default function PopupForm() {
               </div>
 
               <p className="text-dark/60 dark:text-white/60 text-xs sm:text-sm mb-3 sm:mb-4 leading-relaxed">
-                Connect with our advisors. We'll contact you within 2 business hours.
+                Connect with our advisors. We&apos;ll contact you within 2 business hours.
               </p>
 
               {status === 'success' ? (
