@@ -71,6 +71,19 @@ html {
   scroll-behavior: smooth;
 }
 
+/* Cursor pointer for interactive elements */
+a,
+button,
+[role="button"],
+[onClick],
+select,
+textarea,
+input[type="checkbox"],
+input[type="radio"],
+input[type="range"] {
+  cursor: pointer;
+}
+
 /* Hide scrollbar for Chrome, Safari and Opera */
 .no-scrollbar::-webkit-scrollbar {
   display: none;
@@ -85,7 +98,7 @@ html {
 }
 
 section {
-  @apply py-10 lg:py-24
+  @apply py-6 lg:py-12
 }
 
 .blog-details p, .blog-details hr {

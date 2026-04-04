@@ -14,6 +14,7 @@ import type { Session } from 'next-auth'
 import { GoogleTagManager } from '@/components/Analytics/GoogleTagManager'
 import { MetaPixel } from '@/components/Analytics/MetaPixel'
 import { AnalyticsProvider } from '@/components/Analytics/AnalyticsProvider'
+import PopupForm from '@/components/shared/PopupForm'
 
 const font = Bricolage_Grotesque({ subsets: ["latin"] });
 
@@ -132,6 +133,7 @@ export default async function RootLayout({
               {children}
               <Footer footerMenus={footerMenus} />
               <FloatingContact />
+              <PopupForm />
             </ThemeProvider>
           </SessionProviderComp>
         </AnalyticsProvider>

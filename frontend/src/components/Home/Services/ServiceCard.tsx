@@ -19,7 +19,7 @@ const ServiceCard = ({ service, size }: ServiceCardProps) => {
     : null;
 
   return (
-    <div className="relative rounded-2xl overflow-hidden group">
+    <div className="relative rounded-2xl overflow-hidden group cursor-pointer">
       <Link href={`/${service.slug}`}>
         {imageUrl ? (
           <Image

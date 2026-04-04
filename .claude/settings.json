@@ -7,7 +7,8 @@
       "Bash(mv \"\\(site\\)/project/*.html\" \"project/\")",
       "Bash(rmdir \"\\(site\\)/project\")",
       "Bash(mv \"src/app/\\(site\\)/project/oberoi-realty-gurgaon.html\" \"src/app/project/\")",
-      "Bash(rmdir \"src/app/\\(site\\)/project\")"
+      "Bash(rmdir \"src/app/\\(site\\)/project\")",
+      "Read(//tmp/**)"
     ]
   }
 }

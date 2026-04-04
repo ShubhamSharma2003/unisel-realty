@@ -83,7 +83,7 @@ const ShareButton = ({ title, url }: ShareButtonProps) => {
                   href={link.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-3 text-sm text-dark/70 dark:text-white/70 hover:text-primary dark:hover:text-primary duration-200"
+                  className="flex items-center gap-3 text-sm text-dark/70 dark:text-white/70 hover:text-primary dark:hover:text-primary duration-200 cursor-pointer"
                   onClick={() => setOpen(false)}
                 >
                   <Icon icon={link.icon} width={20} height={20} />

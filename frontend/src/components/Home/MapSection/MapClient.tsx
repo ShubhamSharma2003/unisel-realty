@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import {
   MapContainer,
   TileLayer,
@@ -114,7 +114,8 @@ export default function MapClient({
 }) {
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const [filter, setFilter] = useState<string>("all");
-  const [statusFilter, setStatusFilter] = useState<string>("all");
+  const [isOpen, setIsOpen] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement>(null);
 
   // Compute properties with coordinates
   const mappedProperties = useMemo(() => {
@@ -131,11 +132,8 @@ export default function MapClient({
     if (filter !== "all") {
       result = result.filter((p) => p.micromarket === filter);
     }
-    if (statusFilter !== "all") {
-      result = result.filter((p) => p.status === statusFilter);
-    }
     return result;
-  }, [mappedProperties, filter, statusFilter]);
+  }, [mappedProperties, filter]);
 
   const selectedProperty = filtered.find((p) => p._id === selectedId) ?? null;
 
@@ -147,13 +145,6 @@ export default function MapClient({
     return Array.from(set);
   }, [mappedProperties]);
 
-  const statuses = useMemo(() => {
-    const set = new Set<string>();
-    for (const p of mappedProperties) {
-      if (p.status) set.add(p.status);
-    }
-    return Array.from(set);
-  }, [mappedProperties]);
 
   const formatMicromarket = (m: string) =>
     m.replace(/-/g, " ").replace(/\b\w/g, (c) => c.toUpperCase());
@@ -162,72 +153,86 @@ export default function MapClient({
 
   return (
     <div className="flex flex-col gap-6">
-      {/* Filter pills */}
-      <div className="flex flex-col gap-3 items-center">
-        <div className="flex flex-wrap gap-2 justify-center">
+      {/* Filter dropdown - Mobile only */}
+      <div className="flex justify-center lg:hidden">
+        <div className="relative w-full max-w-xs" ref={dropdownRef}>
           <button
+            onClick={() => setIsOpen(!isOpen)}
+            className="w-full px-4 py-2 rounded-lg bg-gray-100 dark:bg-white/10 text-gray-700 dark:text-white border border-gray-300 dark:border-white/20 hover:bg-gray-200 dark:hover:bg-white/20 transition-colors flex items-center justify-between cursor-pointer"
+          >
+            <span className="text-sm font-medium">
+              {filter === "all" ? "All Locations" : formatMicromarket(filter)}
+            </span>
+            <svg
+              className={`w-4 h-4 transition-transform ${isOpen ? "rotate-180" : ""}`}
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+            </svg>
+          </button>
+          {isOpen && (
+            <div className="absolute top-full left-0 right-0 mt-1 bg-white dark:bg-gray-900 border border-gray-300 dark:border-white/20 rounded-lg shadow-lg z-10">
+              <button
+                onClick={() => {
+                  setFilter("all");
+                  setSelectedId(null);
+                  setIsOpen(false);
+                }}
+                className="w-full px-4 py-2 text-left text-sm hover:bg-gray-100 dark:hover:bg-white/10 transition-colors first:rounded-t-lg cursor-pointer"
+              >
+                All Locations
+              </button>
+              {micromarkets.map((m) => (
+                <button
+                  key={m}
+                  onClick={() => {
+                    setFilter(m);
+                    setSelectedId(null);
+                    setIsOpen(false);
+                  }}
+                  className="w-full px-4 py-2 text-left text-sm hover:bg-gray-100 dark:hover:bg-white/10 transition-colors cursor-pointer"
+                >
+                  {formatMicromarket(m)}
+                </button>
+              ))}
+            </div>
+          )}
+        </div>
+      </div>
+
+      {/* Filter tabs - Desktop only */}
+      <div className="hidden lg:flex justify-center gap-2 flex-wrap">
+        <button
+          onClick={() => {
+            setFilter("all");
+            setSelectedId(null);
+          }}
+          className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors cursor-pointer ${
+            filter === "all"
+              ? "bg-primary text-white"
+              : "bg-gray-100 dark:bg-white/10 text-gray-700 dark:text-white hover:bg-gray-200 dark:hover:bg-white/20"
+          }`}
+        >
+          All Locations
+        </button>
+        {micromarkets.map((m) => (
+          <button
+            key={m}
             onClick={() => {
-              setFilter("all");
+              setFilter(m);
               setSelectedId(null);
             }}
-            className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
-              filter === "all"
+            className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors cursor-pointer ${
+              filter === m
                 ? "bg-primary text-white"
-                : "bg-gray-100 dark:bg-white/10 text-gray-700 dark:text-white/70 hover:bg-gray-200 dark:hover:bg-white/20"
+                : "bg-gray-100 dark:bg-white/10 text-gray-700 dark:text-white hover:bg-gray-200 dark:hover:bg-white/20"
             }`}
           >
-            All Locations
+            {formatMicromarket(m)}
           </button>
-          {micromarkets.map((m) => (
-            <button
-              key={m}
-              onClick={() => {
-                setFilter(m);
-                setSelectedId(null);
-              }}
-              className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
-                filter === m
-                  ? "bg-primary text-white"
-                  : "bg-gray-100 dark:bg-white/10 text-gray-700 dark:text-white/70 hover:bg-gray-200 dark:hover:bg-white/20"
-              }`}
-            >
-              {formatMicromarket(m)}
-            </button>
-          ))}
-        </div>
-        {statuses.length > 0 && (
-          <div className="flex flex-wrap gap-2 justify-center">
-            <button
-              onClick={() => {
-                setStatusFilter("all");
-                setSelectedId(null);
-              }}
-              className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
-                statusFilter === "all"
-                  ? "bg-primary text-white"
-                  : "bg-gray-100 dark:bg-white/10 text-gray-700 dark:text-white/70 hover:bg-gray-200 dark:hover:bg-white/20"
-              }`}
-            >
-              All Status
-            </button>
-            {statuses.map((s) => (
-              <button
-                key={s}
-                onClick={() => {
-                  setStatusFilter(s);
-                  setSelectedId(null);
-                }}
-                className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
-                  statusFilter === s
-                    ? "bg-primary text-white"
-                    : "bg-gray-100 dark:bg-white/10 text-gray-700 dark:text-white/70 hover:bg-gray-200 dark:hover:bg-white/20"
-                }`}
-              >
-                {STATUS_LABELS[s] || formatMicromarket(s)}
-              </button>
-            ))}
-          </div>
-        )}
+        ))}
       </div>
 
       {/* Map + sidebar layout */}
@@ -280,8 +285,11 @@ export default function MapClient({
           </MapContainer>
         </div>
 
-        {/* Property list sidebar */}
-        <div className="lg:w-[380px] flex flex-col gap-3 max-h-[300px] lg:max-h-[500px] overflow-y-auto pr-1">
+        {/* Property list sidebar - Horizontal scroll on mobile, vertical on lg+ */}
+        <div className="flex flex-row gap-3 overflow-x-auto pb-3 lg:pb-0 lg:flex-col lg:w-[380px] lg:max-h-[500px] lg:overflow-y-auto lg:overflow-x-hidden lg:pr-1 lg:gap-3">
+          {/* Mobile scroll hint */}
+          <div className="lg:hidden flex-shrink-0 w-1 flex-grow-0" />
+
           {filtered.length === 0 && (
             <p className="text-center text-gray-500 py-8">
               No properties found in this area.
@@ -301,7 +309,7 @@ export default function MapClient({
               <button
                 key={p._id}
                 onClick={() => setSelectedId(p._id)}
-                className={`flex gap-3 p-3 rounded-xl border text-left transition-all ${
+                className={`flex gap-3 p-3 rounded-xl border text-left transition-all flex-shrink-0 lg:flex-shrink w-[280px] lg:w-auto ${
                   selectedId === p._id
                     ? "border-primary bg-primary/5 shadow-md"
                     : "border-dark/10 dark:border-white/10 hover:border-primary/50"

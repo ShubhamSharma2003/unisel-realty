@@ -18,7 +18,7 @@ const PropertyCard: React.FC<{ item: PropertyHomes }> = ({ item }) => {
   const rateLabel = rate ?? '';
 
   return (
-    <div className='h-full'>
+    <div className='h-full cursor-pointer'>
       <div className='relative rounded-2xl border border-dark/10 dark:border-white/10 group hover:shadow-3xl duration-300 dark:hover:shadow-white/20 h-full flex flex-col'>
         <div className='overflow-hidden rounded-t-2xl'>
           <Link href={`/properties/${slug}`}>
@@ -44,7 +44,7 @@ const PropertyCard: React.FC<{ item: PropertyHomes }> = ({ item }) => {
         <div className='px-3 py-6 flex-1 flex flex-col'>
           <div className='flex flex-col mobile:flex-row gap-5 mobile:gap-0 justify-between mb-6 flex-1'>
             <div>
-              <Link href={`/properties/${slug}`}>
+              <Link href={`/properties/${slug}`} className='cursor-pointer'>
                 <h3 className='text-xl font-medium text-black dark:text-white duration-300 group-hover:text-primary'>
                   {name}
                 </h3>

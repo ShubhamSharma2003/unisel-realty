@@ -29,7 +29,7 @@ const NavLink: React.FC<NavLinkProps> = ({ item, onClick }) => {
   }
 
   const linkclasses = clsx(
-    'py-3 text-2xl sm:text-4xl font-medium text-white/40 rounded-full group-hover:text-primary',
+    'py-3 text-2xl sm:text-4xl font-medium text-white/40 rounded-full group-hover:text-primary cursor-pointer',
     {
       '!text-primary': isActive,
     }
@@ -96,7 +96,7 @@ const NavLink: React.FC<NavLinkProps> = ({ item, onClick }) => {
                   href={child.href}
                   onClick={onClick}
                   className={clsx(
-                    'text-lg sm:text-xl font-medium text-white/30 hover:text-primary transition-colors duration-200',
+                    'text-lg sm:text-xl font-medium text-white/30 hover:text-primary transition-colors duration-200 cursor-pointer',
                     { '!text-primary': child.href === path }
                   )}
                 >

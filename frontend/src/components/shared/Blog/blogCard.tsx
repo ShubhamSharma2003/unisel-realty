@@ -12,7 +12,7 @@ const BlogCard: FC<{ blog: Blog }> = ({ blog }) => {
         : null;
     const href = slug ? `/blogs/${slug}` : "/blogs";
     return (
-        <Link href={href} aria-label="blog cover 5xl:h-full 5xl:inline-block" className="gap-4 group">
+        <Link href={href} aria-label="blog cover 5xl:h-full 5xl:inline-block" className="gap-4 group cursor-pointer">
             <div className="overflow-hidden rounded-2xl flex-shrink-0">
                 {coverImageUrl ? (
                     <Image

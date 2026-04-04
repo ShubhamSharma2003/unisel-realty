@@ -9,7 +9,7 @@ export async function POST(req: NextRequest) {
     try {
         const body = await req.json();
 
-        const { fullName, phone, city, budget, propertyType, preferredContact, source, propertySlug } = body;
+        const { fullName, phone, email, city, budget, propertyType, preferredContact, source, propertySlug } = body;
 
         if (!fullName || !phone) {
             return NextResponse.json({ error: "Full name and phone are required." }, { status: 400 });
@@ -18,6 +18,7 @@ export async function POST(req: NextRequest) {
         const { error } = await supabaseAdmin.from("leads").insert({
             full_name: fullName,
             phone,
+            email: email || null,
             city: city || null,
             budget: budget || null,
             property_type: propertyType || null,
@@ -28,7 +29,12 @@ export async function POST(req: NextRequest) {
 
         if (error) {
             console.error("Supabase insert error:", error);
-            return NextResponse.json({ error: "Failed to save your enquiry. Please try again." }, { status: 500 });
+            console.error("Error code:", error.code);
+            console.error("Error message:", error.message);
+            return NextResponse.json({
+                error: "Failed to save your enquiry. Please try again.",
+                details: error.message
+            }, { status: 500 });
         }
 
         // Send notification email (non-blocking — don't fail the request if email fails)
@@ -41,6 +47,7 @@ export async function POST(req: NextRequest) {
                 <table style="border-collapse:collapse;width:100%;max-width:500px">
                     <tr><td style="padding:8px;border:1px solid #ddd;font-weight:bold">Name</td><td style="padding:8px;border:1px solid #ddd">${fullName}</td></tr>
                     <tr><td style="padding:8px;border:1px solid #ddd;font-weight:bold">Phone</td><td style="padding:8px;border:1px solid #ddd">${phone}</td></tr>
+                    ${email ? `<tr><td style="padding:8px;border:1px solid #ddd;font-weight:bold">Email</td><td style="padding:8px;border:1px solid #ddd">${email}</td></tr>` : ""}
                     <tr><td style="padding:8px;border:1px solid #ddd;font-weight:bold">City</td><td style="padding:8px;border:1px solid #ddd">${city || "—"}</td></tr>
                     <tr><td style="padding:8px;border:1px solid #ddd;font-weight:bold">Budget</td><td style="padding:8px;border:1px solid #ddd">${budget || "—"}</td></tr>
                     <tr><td style="padding:8px;border:1px solid #ddd;font-weight:bold">Property Type</td><td style="padding:8px;border:1px solid #ddd">${propertyType || "—"}</td></tr>

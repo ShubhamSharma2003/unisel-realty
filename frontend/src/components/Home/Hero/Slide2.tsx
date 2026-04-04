@@ -24,8 +24,8 @@ const Slide2 = ({ isMobile }: Slide2Props) => {
 
         {/* Left: title + CTAs */}
         <div className="relative z-10 flex-1 flex items-center -mt-32 md:mt-0">
-          <div className="container max-w-7xl mx-auto px-5 xl:px-8 w-full md:-mt-24">
-            <div className="flex flex-col gap-4 md:gap-5 text-white text-left max-w-[85vw] sm:max-w-sm md:max-w-2xl mx-0 items-start">
+          <div className="container max-w-7xl mx-auto px-5 xl:px-8 w-full md:-mt-30k">
+            <div className="flex flex-col gap-4 md:gap-5 text-white text-left max-w-[60vw] sm:max-w-sm md:max-w-2xl mx-0 items-start">
 
               <span className="inline-flex items-center justify-start">
                 <span className="text-xs sm:text-sm font-semibold tracking-[0.18em] uppercase text-white/70 border border-white/30 rounded-full px-4 py-1.5 backdrop-blur-sm bg-white/10">
@@ -44,13 +44,13 @@ const Slide2 = ({ isMobile }: Slide2Props) => {
               <div className="flex flex-col sm:flex-row items-center justify-start gap-3 pt-1">
                 <Link
                   href="/contact"
-                  className="px-7 py-3.5 bg-white text-gray-900 text-sm font-semibold rounded-full hover:bg-white/90 transition-all duration-200 shadow-lg hover:shadow-xl text-center"
+                  className="px-7 py-3.5 bg-white text-gray-900 text-sm font-semibold rounded-full hover:bg-white/90 transition-all duration-200 shadow-lg hover:shadow-xl text-center cursor-pointer"
                 >
                   Get in touch
                 </Link>
                 <Link
                   href="/all-properties"
-                  className="px-7 py-3.5 border-2 border-white/70 text-white text-sm font-semibold rounded-full hover:bg-white/15 hover:border-white transition-all duration-200 backdrop-blur-sm text-center"
+                  className="px-7 py-3.5 border-2 border-white/70 text-white text-sm font-semibold rounded-full hover:bg-white/15 hover:border-white transition-all duration-200 backdrop-blur-sm text-center cursor-pointer"
                 >
                   View Details
                 </Link>

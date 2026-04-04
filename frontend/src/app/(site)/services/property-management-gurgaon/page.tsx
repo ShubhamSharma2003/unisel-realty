@@ -65,10 +65,10 @@ const steps = [
 ];
 
 const stats = [
-    { value: "500+", label: "Properties Managed" },
-    { value: "98%", label: "On-Time Rent Rate" },
-    { value: "48hr", label: "Avg. Maintenance Response" },
-    { value: "10+", label: "Years of Experience" },
+    { value: "80+", label: "Units Under Management" },
+    { value: "4.2%", label: "Avg. Annual Rental Yield" },
+    { value: "20+", label: "Years of Expertise" },
+    { value: "90%", label: "Client Retention" },
 ];
 
 export default function PropertyManagementPage() {

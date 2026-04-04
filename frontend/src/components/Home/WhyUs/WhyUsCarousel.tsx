@@ -62,13 +62,13 @@ const WhyUsCarousel = ({ pillars }: { pillars: Pillar[] }) => {
         </div>
 
         {/* Dots */}
-        <div className="flex justify-center gap-2 mt-6">
+        <div className="flex justify-center gap-2 mt-3">
           {pillars.map((_, index) => (
             <button
               key={index}
               onClick={() => onDotClick(index)}
               aria-label={`Go to slide ${index + 1}`}
-              className={`rounded-full transition-all duration-300 ${
+              className={`rounded-full transition-all duration-300 cursor-pointer ${
                 selectedIndex === index
                   ? "w-8 h-3 bg-primary"
                   : "w-3 h-3 bg-lightskyblue"

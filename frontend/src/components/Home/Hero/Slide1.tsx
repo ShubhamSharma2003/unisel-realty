@@ -36,13 +36,13 @@ const Slide1 = ({ isMobile }: Slide1Props) => {
               <div className="flex flex-row items-center justify-center gap-3 pt-1">
                 <Link
                   href="/residential"
-                  className="px-7 py-3.5 bg-white text-gray-900 text-sm font-semibold rounded-full hover:bg-white/90 transition-all duration-200 shadow-lg hover:shadow-xl text-center"
+                  className="px-7 py-3.5 bg-white text-gray-900 text-sm font-semibold rounded-full hover:bg-white/90 transition-all duration-200 shadow-lg hover:shadow-xl text-center cursor-pointer"
                 >
                   Explore Residential
                 </Link>
                 <Link
                   href="/commercial"
-                  className="px-7 py-3.5 border-2 border-white/70 text-white text-sm font-semibold rounded-full hover:bg-white/15 hover:border-white transition-all duration-200 backdrop-blur-sm text-center"
+                  className="px-7 py-3.5 border-2 border-white/70 text-white text-sm font-semibold rounded-full hover:bg-white/15 hover:border-white transition-all duration-200 backdrop-blur-sm text-center cursor-pointer"
                 >
                   Explore Commercial
                 </Link>

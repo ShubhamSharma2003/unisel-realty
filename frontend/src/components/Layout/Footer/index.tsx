@@ -28,13 +28,13 @@ const Footer = ({ footerMenus }: FooterProps) => {
             </p>
           </div>
           <div className="flex items-center gap-6">
-            <Link href="https://www.x.com/uniselrealty">
+            <Link href="https://www.x.com/uniselrealty" className="cursor-pointer">
               <Icon icon="ph:x-logo-bold" width={24} height={24} className="text-white hover:text-primary duration-300" />
             </Link>
-            <Link href="https://www.facebook.com/uniselrealty">
+            <Link href="https://www.facebook.com/uniselrealty" className="cursor-pointer">
               <Icon icon="ph:facebook-logo-bold" width={24} height={24} className="text-white hover:text-primary duration-300" />
             </Link>
-            <Link href="https://www.instagram.com/uniselrealty">
+            <Link href="https://www.instagram.com/uniselrealty" className="cursor-pointer">
               <Icon icon="ph:instagram-logo-bold" width={24} height={24} className="text-white hover:text-primary duration-300" />
             </Link>
           </div>
@@ -63,17 +63,17 @@ const Footer = ({ footerMenus }: FooterProps) => {
                 <div>
                   <h5 className="text-white text-lg font-semibold mb-4">Contact Info</h5>
                   <div className="flex flex-col gap-2">
-                    <Link href="tel:+918010303303" className="text-white/60 text-sm hover:text-white duration-300 flex items-center gap-2">
+                    <Link href="tel:+918010303303" className="text-white/60 text-sm hover:text-white duration-300 flex items-center gap-2 cursor-pointer">
                       <Icon icon="ph:phone" width={18} /> +91 8010-303-303
                     </Link>
-                    <Link href="mailto:info@uniselrealty.com" className="text-white/60 text-sm hover:text-white duration-300 flex items-center gap-2">
+                    <Link href="mailto:info@uniselrealty.com" className="text-white/60 text-sm hover:text-white duration-300 flex items-center gap-2 cursor-pointer">
                       <Icon icon="ph:envelope" width={18} /> info@uniselrealty.com
                     </Link>
                   </div>
                 </div>
               </div>
 
-              <Link href="/contact" className="inline-block bg-primary text-base font-semibold py-4 px-8 rounded-full text-white hover:bg-white hover:text-dark duration-300 hover:cursor-pointer">
+              <Link href="/contact" className="inline-block bg-primary text-base font-semibold py-4 px-8 rounded-full text-white hover:bg-white hover:text-dark duration-300 cursor-pointer">
                 Get In Touch
               </Link>
             </div>
@@ -90,7 +90,7 @@ const Footer = ({ footerMenus }: FooterProps) => {
                   <div key={idx}>
                     <Link
                       href={item.href}
-                      className="text-white/40 text-sm hover:text-white duration-300"
+                      className="text-white/40 text-sm hover:text-white duration-300 cursor-pointer"
                     >
                       {item.label}
                     </Link>
@@ -115,10 +115,10 @@ const Footer = ({ footerMenus }: FooterProps) => {
             ©2026 Unisel Realty- All rights reserved
           </p>
           <div className="flex gap-8 items-center justify-center w-full md:w-auto">
-            <Link href="/terms-and-conditions" className="text-white/40 hover:text-primary text-sm">
+            <Link href="/terms-and-conditions" className="text-white/40 hover:text-primary text-sm cursor-pointer">
               Terms of service
             </Link>
-            <Link href="/privacy-policy" className="text-white/40 hover:text-primary text-sm">
+            <Link href="/privacy-policy" className="text-white/40 hover:text-primary text-sm cursor-pointer">
               Privacy policy
             </Link>
           </div>
