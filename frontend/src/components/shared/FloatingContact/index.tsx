@@ -2,7 +2,7 @@
 
 import { Icon } from "@iconify/react";
 
-const WHATSAPP_NUMBER = "918010303303";
+const WHATSAPP_NUMBER = "919873031665";
 const WHATSAPP_MESSAGE = "Hi! I'm interested in a property. Could you please help me?";
 
 export default function FloatingContact() {
