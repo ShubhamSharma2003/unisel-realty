@@ -46,10 +46,15 @@ const Footer = ({ footerMenus }: FooterProps) => {
 
             {/* Left Column: CTA & Contact Info */}
             <div className="lg:col-span-7 col-span-12">
-              <h2 className="text-white leading-[1.2] text-3xl md:text-40 font-medium mb-6 lg:max-w-3/4">
-                Begin your path to
-                success contact us today.
+              <h2 className="text-white leading-[1.3] text-2xl md:text-3xl font-medium mb-4 lg:max-w-3/4">
+                Invest in Gurgaon&apos;s Most Exclusive Properties
               </h2>
+              <p className="text-white/60 text-base leading-relaxed mb-3 lg:max-w-3/4">
+                Unisel offers curated access to luxury homes, expert insights, and personalized advisory for high-value investments.
+              </p>
+              <p className="text-white/80 text-base font-medium mb-6 lg:max-w-3/4">
+                Speak to our experts today and unlock the best opportunities in Gurgaon real estate.
+              </p>
 
               {/* Contact Details Section */}
               <div className="mb-10 grid grid-cols-1 sm:grid-cols-2 gap-8">
