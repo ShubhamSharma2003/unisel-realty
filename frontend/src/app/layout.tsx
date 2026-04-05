@@ -15,6 +15,7 @@ import { GoogleTagManager } from '@/components/Analytics/GoogleTagManager'
 import { MetaPixel } from '@/components/Analytics/MetaPixel'
 import { AnalyticsProvider } from '@/components/Analytics/AnalyticsProvider'
 import PopupForm from '@/components/shared/PopupForm'
+import Script from 'next/script'
 
 const font = Bricolage_Grotesque({ subsets: ["latin"] });
 
@@ -112,6 +113,23 @@ export default async function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify(schema),
+          }}
+        />
+        {/* Google Analytics 4 (gtag.js) */}
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-EYVDC9L4PS"
+          strategy="afterInteractive"
+        />
+        <Script
+          id="google-analytics"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'G-EYVDC9L4PS');
+            `,
           }}
         />
         {process.env.NEXT_PUBLIC_GTM_ID && (
