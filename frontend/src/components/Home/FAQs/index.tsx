@@ -1,6 +1,5 @@
 import { Icon } from '@iconify/react';
-import Image from 'next/image';
-import Script from 'next/script';
+
 import {
     Accordion,
     AccordionContent,
@@ -35,27 +34,9 @@ export const FAQ_ITEMS = [
     },
 ];
 
-const faqSchema = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": FAQ_ITEMS.map(({ question, answer }) => ({
-        "@type": "Question",
-        "name": question,
-        "acceptedAnswer": {
-            "@type": "Answer",
-            "text": answer,
-        },
-    })),
-};
-
 const FAQ: React.FC = () => {
     return (
         <section id='faqs'>
-            <Script
-                id="faq-schema"
-                type="application/ld+json"
-                dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-            />
             <div className='container max-w-8xl mx-auto px-5 2xl:px-0'>
                 <div className="flex">
                     <div className='lg:px-12 '>
