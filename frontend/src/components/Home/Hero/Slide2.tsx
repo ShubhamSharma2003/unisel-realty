@@ -23,7 +23,7 @@ const Slide2 = ({ isMobile }: Slide2Props) => {
         />
 
         {/* Left: title + CTAs */}
-        <div className="relative z-10 flex-1 flex items-center -mt-32 md:mt-0">
+        <div className="relative z-10 flex-1 flex items-center -mt-16 md:mt-0">
           <div className="container max-w-7xl mx-auto px-5 xl:px-8 w-full md:-mt-30k">
             <div className="flex flex-col gap-4 md:gap-5 text-white text-left max-w-[60vw] sm:max-w-sm md:max-w-2xl mx-0 items-start">
 
