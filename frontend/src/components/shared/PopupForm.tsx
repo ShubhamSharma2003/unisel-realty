@@ -58,6 +58,18 @@ export default function PopupForm() {
     return () => clearTimeout(timer)
   }, [])
 
+  // Lock body scroll when popup is open
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden'
+    } else {
+      document.body.style.overflow = ''
+    }
+    return () => {
+      document.body.style.overflow = ''
+    }
+  }, [isOpen])
+
   const handleClose = () => {
     setIsOpen(false)
     sessionStorage.setItem('popupFormClosed', 'true')
