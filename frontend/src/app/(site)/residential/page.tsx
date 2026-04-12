@@ -1,35 +1,53 @@
-import HeroSub from "@/components/shared/HeroSub";
-import PropertiesListing from "@/components/Properties/PropertyList";
 import React from "react";
 import { Metadata } from "next";
 import { getPropertiesCount } from "@/lib/sanity.services";
-import { propertyCollectionSchema, breadcrumbSchema } from "@/lib/jsonld";
+import {
+  propertyCollectionSchema,
+  breadcrumbSchema,
+  organizationSchema,
+} from "@/lib/jsonld";
+import { RESIDENTIAL_FAQS } from "@/components/Residential/residentialData";
+
+import ResidentialHero from "@/components/Residential/ResidentialHero";
+import ResidentialContent from "@/components/Residential/ResidentialContent";
+import PropertiesListing from "@/components/Properties/PropertyList";
 
 export async function generateMetadata(): Promise<Metadata> {
     const totalProperties = await getPropertiesCount();
     const siteUrl = 'https://uniselrealty.com';
     const siteName = 'Unisel Realty';
 
-    const title = `Residential Properties in Gurgaon | ${siteName}`;
-    const description = `Explore ${totalProperties} residential properties in Gurgaon. Premium apartments, villas, and homes by top developers.`;
+    const title = `Luxury Residential Properties in Gurgaon | ${siteName}`;
+    const description = `Explore ${totalProperties}+ curated luxury apartments & premium flats across Golf Course Road, Golf Course Extension Road & Dwarka Expressway. RERA-verified, direct developer pricing, zero brokerage. 18 years of expertise in Gurgaon real estate.`;
 
     return {
         title,
         description,
-        keywords: ["residential properties", "homes gurgaon", "apartments gurgaon", "luxury villas", "real estate gurgaon"],
+        keywords: [
+            "luxury residential properties gurgaon",
+            "premium apartments gurgaon",
+            "golf course road apartments",
+            "golf course extension road properties",
+            "dwarka expressway flats",
+            "DLF apartments gurgaon",
+            "godrej properties gurgaon",
+            "NRI property gurgaon",
+            "RERA registered properties gurgaon",
+            "real estate gurgaon",
+        ],
         alternates: { canonical: `${siteUrl}/residential` },
         openGraph: {
-            title: `Residential Properties in Gurgaon | ${siteName}`,
+            title: `Luxury Residential Properties in Gurgaon | ${siteName}`,
             description,
             url: `${siteUrl}/residential`,
             siteName,
-            images: [{ url: "/images/properties/og-image.jpg", width: 1200, height: 630, alt: "Unisel Realty residential properties Gurgaon" }],
+            images: [{ url: "/images/properties/og-image.jpg", width: 1200, height: 630, alt: "Unisel Realty luxury residential properties Gurgaon" }],
             locale: "en_US",
             type: "website",
         },
         twitter: {
             card: "summary_large_image",
-            title: `Residential Properties in Gurgaon | ${siteName}`,
+            title: `Luxury Residential Properties in Gurgaon | ${siteName}`,
             description,
             images: ["/images/properties/og-image.jpg"],
         },
@@ -39,17 +57,35 @@ export async function generateMetadata(): Promise<Metadata> {
 const ResidentialPage = async () => {
     const totalProperties = await getPropertiesCount();
     const schema = propertyCollectionSchema({
-        name: "Residential Properties in Gurgaon | Unisel Realty",
-        description: `Explore ${totalProperties} residential properties in Gurgaon. Premium apartments, villas, and homes by top developers.`,
+        name: "Luxury Residential Properties in Gurgaon | Unisel Realty",
+        description: `Explore ${totalProperties}+ curated luxury residential properties across Golf Course Road, Golf Course Extension Road & Dwarka Expressway.`,
         url: "https://uniselrealty.com/residential",
+        dateModified: "2026-04-12",
     });
+    const orgSchema = organizationSchema();
     const breadcrumbs = breadcrumbSchema([
         { name: "Home", url: "https://uniselrealty.com" },
         { name: "Residential", url: "https://uniselrealty.com/residential" },
     ]);
+    const faqSchema = {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        mainEntity: RESIDENTIAL_FAQS.map((faq) => ({
+            "@type": "Question",
+            name: faq.question,
+            acceptedAnswer: {
+                "@type": "Answer",
+                text: faq.answer,
+            },
+        })),
+    };
 
     return (
         <>
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(orgSchema) }}
+            />
             <script
                 type="application/ld+json"
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
@@ -58,12 +94,14 @@ const ResidentialPage = async () => {
                 type="application/ld+json"
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbs) }}
             />
-            <HeroSub
-                title="Residential Properties in Gurgaon."
-                description="Explore premium apartments, villas, and homes by top developers."
-                badge="Residential"
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
             />
+
+            <ResidentialHero />
             <PropertiesListing category="residential" />
+            <ResidentialContent />
         </>
     );
 };

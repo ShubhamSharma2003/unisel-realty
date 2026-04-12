@@ -189,15 +189,21 @@ type PropertyListingPageData = {
   url: string;
 };
 
-export const propertyCollectionSchema = (data: PropertyListingPageData) => ({
+export const propertyCollectionSchema = (
+  data: PropertyListingPageData & { dateModified?: string }
+) => ({
   "@context": "https://schema.org",
   "@type": "CollectionPage",
   "@id": data.url,
   url: data.url,
   name: data.name,
   description: data.description,
+  ...(data.dateModified ? { dateModified: data.dateModified } : {}),
   isPartOf: { "@id": `${SITE_URL}/#website` },
   publisher: { "@id": `${SITE_URL}/#organization` },
+  mainEntity: {
+    "@id": `${SITE_URL}/#agent`,
+  },
   inLanguage: "en-US",
 });
 
