@@ -25,7 +25,7 @@ export const metadata: Metadata = {
     default: 'Unisel Realty — Luxury Real Estate & Investment Advisory, Gurgaon',
     template: '%s | Unisel Realty',
   },
-  description: "Gurgaon's most trusted advisors for luxury real estate & high-return investments. Exclusive pre-launch access to DLF, Godrej and M3M. Dedicated NRI desk. $2B+ transacted. Est. 2006.",
+  description: "Gurgaon's trusted luxury real estate advisors. Exclusive pre-launch access to DLF, Godrej & M3M. NRI desk. $2B+ transacted. 10,000+ families served. Est. 2006.",
   keywords: [
     'real estate gurgaon',
     'luxury real estate gurgaon',
@@ -141,6 +141,20 @@ export default async function RootLayout({
         {process.env.NEXT_PUBLIC_META_PIXEL_ID && (
           <MetaPixel pixelId={process.env.NEXT_PUBLIC_META_PIXEL_ID} />
         )}
+        {/* Microsoft Clarity */}
+        <Script
+          id="microsoft-clarity"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function(c,l,a,r,i,t,y){
+                c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+                t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i+"?ref=bwt";
+                y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+              })(window, document, "clarity", "script", "wb4ccda0xg");
+            `,
+          }}
+        />
       </head>
       <body className={`${font.className} bg-white dark:bg-black antialiased`}>
         <NextTopLoader color="#2596be" />
