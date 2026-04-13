@@ -1,7 +1,7 @@
 import HeroSub from "@/components/shared/HeroSub";
 import PropertiesListingByMicromarket from "@/components/Properties/PropertyListByMicromarket";
 import { Metadata } from "next";
-import { breadcrumbSchema } from "@/lib/jsonld";
+import { breadcrumbSchema, locationPageSchema } from "@/lib/jsonld";
 import { notFound } from "next/navigation";
 
 const MICROMARKETS: Record<string, { title: string; displayName: string; description: string }> = {
@@ -79,8 +79,18 @@ const LocationPage = async ({ params }: PageProps) => {
         { name: info.displayName, url: `https://uniselrealty.com/location/${micromarket}` },
     ]);
 
+    const locationSchema = locationPageSchema({
+        name: info.title,
+        description: info.description,
+        micromarket,
+    });
+
     return (
         <>
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(locationSchema) }}
+            />
             <script
                 type="application/ld+json"
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbs) }}

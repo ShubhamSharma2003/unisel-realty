@@ -150,6 +150,7 @@ type BlogData = {
   slug: string;
   excerpt?: string;
   date?: string;
+  updatedAt?: string;
   author?: string;
   coverImageUrl?: string | null;
   tag?: string;
@@ -158,12 +159,12 @@ type BlogData = {
 export const blogArticleSchema = (post: BlogData) => ({
   "@context": "https://schema.org",
   "@type": "Article",
-  "@id": `${SITE_URL}/blog/${post.slug}`,
+  "@id": `${SITE_URL}/blog/${post.slug}#article`,
   headline: post.title,
   description: post.excerpt ?? "",
   url: `${SITE_URL}/blog/${post.slug}`,
   datePublished: post.date ?? "",
-  dateModified: post.date ?? "",
+  dateModified: post.updatedAt ?? post.date ?? "",
   author: {
     "@type": "Person",
     name: post.author ?? "Unisel Realty",
@@ -231,7 +232,7 @@ export const propertyItemListSchema = (
   itemListElement: items.map((item, index) => ({
     "@type": "ListItem",
     position: index + 1,
-    url: `${SITE_URL}/${item.category ?? "residential"}/${item.slug}`,
+    url: `${SITE_URL}/properties/${item.slug}`,
     name: item.name,
   })),
 });
@@ -251,7 +252,7 @@ type PropertyData = {
 };
 
 export const propertyDetailSchema = (property: PropertyData) => {
-  const category = property.category ?? "residential";
+  const canonicalUrl = `${SITE_URL}/properties/${property.slug}`;
   const descParts = [property.name];
   if (property.configuration) descParts.push(property.configuration);
   if (property.structure) descParts.push(property.structure);
@@ -260,8 +261,8 @@ export const propertyDetailSchema = (property: PropertyData) => {
   return {
     "@context": "https://schema.org",
     "@type": "RealEstateListing",
-    "@id": `${SITE_URL}/${category}/${property.slug}`,
-    url: `${SITE_URL}/${category}/${property.slug}`,
+    "@id": `${canonicalUrl}#listing`,
+    url: canonicalUrl,
     name: property.name,
     description: descParts.join(" — "),
     address: {
@@ -272,9 +273,26 @@ export const propertyDetailSchema = (property: PropertyData) => {
       postalCode: "122102",
       addressCountry: "IN",
     },
-    ...(property.area ? { floorSize: { "@type": "QuantitativeValue", value: property.area } } : {}),
-    ...(property.rate !== undefined ? { price: String(property.rate) } : {}),
-    priceCurrency: "INR",
+    ...(property.area
+      ? {
+          floorSize: {
+            "@type": "QuantitativeValue",
+            value: property.area,
+            unitCode: "FTK",
+          },
+        }
+      : {}),
+    ...(property.rate !== undefined
+      ? {
+          offers: {
+            "@type": "Offer",
+            price: String(property.rate),
+            priceCurrency: "INR",
+            availability: "https://schema.org/InStock",
+            seller: { "@id": `${SITE_URL}/#organization` },
+          },
+        }
+      : {}),
     ...(property.mainImageUrl
       ? {
           image: {
@@ -285,7 +303,6 @@ export const propertyDetailSchema = (property: PropertyData) => {
           },
         }
       : {}),
-    seller: { "@id": `${SITE_URL}/#organization` },
     inLanguage: "en-US",
   };
 };
@@ -362,6 +379,31 @@ export const breadcrumbSchema = (items: BreadcrumbItem[]) => ({
     name: item.name,
     item: item.url,
   })),
+});
+
+// ─── Location/micromarket page ─────────────────────────────────────────────────
+
+type LocationPageData = {
+  name: string;
+  description: string;
+  micromarket: string;
+};
+
+export const locationPageSchema = (data: LocationPageData) => ({
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "@id": `${SITE_URL}/location/${data.micromarket}`,
+  url: `${SITE_URL}/location/${data.micromarket}`,
+  name: data.name,
+  description: data.description,
+  isPartOf: { "@id": `${SITE_URL}/#website` },
+  publisher: { "@id": `${SITE_URL}/#organization` },
+  about: {
+    "@type": "Place",
+    name: data.name,
+    containedInPlace: { "@type": "City", name: "Gurgaon" },
+  },
+  inLanguage: "en-US",
 });
 
 // ─── About page ────────────────────────────────────────────────────────────────

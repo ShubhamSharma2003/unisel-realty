@@ -107,6 +107,7 @@ export default async function Post({ params }: { params: Promise<{ slug: string 
         slug: post.slug ?? slug,
         excerpt: post.excerpt,
         date: post.date,
+        updatedAt: post.updatedAt,
         author: post.author,
         coverImageUrl,
         tag: post.tag,

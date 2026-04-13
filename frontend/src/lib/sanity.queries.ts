@@ -57,6 +57,7 @@ export const blogPostBySlugQuery = groq`
     excerpt,
     coverImage,
     "date": publishedAt,
+    "updatedAt": _updatedAt,
     tag,
     detail,
     author,

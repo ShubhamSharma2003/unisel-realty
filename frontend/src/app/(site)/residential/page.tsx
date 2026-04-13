@@ -68,6 +68,7 @@ const ResidentialPage = async () => {
     const faqSchema = {
         "@context": "https://schema.org",
         "@type": "FAQPage",
+        "@id": "https://uniselrealty.com/residential#faqpage",
         mainEntity: RESIDENTIAL_FAQS.map((faq) => ({
             "@type": "Question",
             name: faq.question,
