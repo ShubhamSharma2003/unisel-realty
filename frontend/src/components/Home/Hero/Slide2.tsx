@@ -19,7 +19,7 @@ const Slide2 = ({ isMobile }: Slide2Props) => {
           fill
           className="object-cover object-top"
           priority={true}
-          unoptimized={true}
+          sizes="100vw"
         />
 
         {/* Left: title + CTAs */}

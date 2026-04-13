@@ -9,7 +9,7 @@ export async function generateMetadata(): Promise<Metadata> {
     const description = "Expert insights on Gurgaon luxury real estate, NRI property investment, and market trends from Unisel Realty's advisory team.";
 
     return {
-        title: `Real Estate Blog | ${siteName}`,
+        title: `Real Estate Blog`,
         description,
         keywords: ["real estate blog", "property insights gurgaon", "market updates", "unisel realty blog"],
         alternates: { canonical: `${siteUrl}/blog` },
@@ -18,7 +18,7 @@ export async function generateMetadata(): Promise<Metadata> {
             description,
             url: `${siteUrl}/blog`,
             siteName,
-            images: [{ url: "/images/blog/og-image.jpg", width: 1200, height: 630, alt: "Unisel Realty real estate blog" }],
+            images: [{ url: "/blog/opengraph-image", width: 1200, height: 630, alt: "Unisel Realty real estate blog" }],
             locale: "en_US",
             type: "website",
         },
@@ -26,7 +26,7 @@ export async function generateMetadata(): Promise<Metadata> {
             card: "summary_large_image",
             title: `Real Estate Blog | ${siteName}`,
             description,
-            images: ["/images/blog/og-image.jpg"],
+            images: ["/blog/opengraph-image"],
         },
     };
 }

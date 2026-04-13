@@ -145,7 +145,6 @@ export default function PopupForm() {
                   alt="Unisel Realty"
                   width={180}
                   height={80}
-                  unoptimized={true}
                   className="h-auto w-24 md:w-28"
                 />
               </div>

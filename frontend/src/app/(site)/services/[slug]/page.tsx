@@ -30,7 +30,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const description = service.description ?? '';
   const imageUrl = service.image
     ? urlFor(service.image).width(1200).height(630).url()
-    : `${siteUrl}/images/hero/og-image.jpg`;
+    : `${siteUrl}/services/opengraph-image`;
 
   return {
     title,

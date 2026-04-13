@@ -4,7 +4,7 @@ import Link from "next/link";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-    title: "Property Management Services in Gurgaon | Unisel Realty",
+    title: "Property Management Services in Gurgaon",
     description: "Professional property management services in Gurgaon. Tenant sourcing, rent collection, maintenance, and legal compliance — we manage your property so you don't have to.",
     keywords: ["property management gurgaon", "rental property management", "tenant management gurgaon", "property managers gurgaon", "unisel realty"],
     openGraph: {
@@ -12,7 +12,7 @@ export const metadata: Metadata = {
         description: "Professional property management in Gurgaon — tenant sourcing, rent collection, maintenance, and legal compliance.",
         url: "https://uniselrealty.com/services/property-management-gurgaon",
         siteName: "Unisel Realty",
-        images: [{ url: "/images/hero/og-image.jpg", width: 1200, height: 630, alt: "Property Management Gurgaon" }],
+        images: [{ url: "/services/opengraph-image", width: 1200, height: 630, alt: "Property Management Gurgaon" }],
         locale: "en_US",
         type: "website",
     },
@@ -20,7 +20,7 @@ export const metadata: Metadata = {
         card: "summary_large_image",
         title: "Property Management Services in Gurgaon | Unisel Realty",
         description: "Professional property management in Gurgaon.",
-        images: ["/images/hero/og-image.jpg"],
+        images: ["/services/opengraph-image"],
     },
 };
 

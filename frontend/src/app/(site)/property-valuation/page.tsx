@@ -4,7 +4,7 @@ import { valuationPageSchema, breadcrumbSchema } from "@/lib/jsonld";
 import ValuationTool from "@/components/valuation/ValuationTool";
 
 export const metadata: Metadata = {
-    title: "Property Valuation Gurgaon — Check Current Market Value | Unisel Realty",
+    title: "Property Valuation Gurgaon — Check Current Market Value",
     description:
         "Find out what your property is worth in Gurgaon. Free instant valuation tool covering all sectors and localities — by Unisel Realty, experts since 2006.",
     keywords: [

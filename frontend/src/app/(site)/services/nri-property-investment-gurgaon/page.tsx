@@ -4,7 +4,7 @@ import Link from "next/link";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-    title: "NRI Property Investment in Gurgaon | Unisel Realty",
+    title: "NRI Property Investment in Gurgaon",
     description: "NRI property investment services in Gurgaon. FEMA-compliant guidance, Power of Attorney, repatriation of funds, and end-to-end property management for NRIs.",
     keywords: ["NRI property investment gurgaon", "NRI real estate gurgaon", "NRI property buying india", "FEMA compliance property", "nri corner unisel realty"],
     openGraph: {
@@ -12,7 +12,7 @@ export const metadata: Metadata = {
         description: "FEMA-compliant NRI property investment guidance in Gurgaon — from purchase to rental management.",
         url: "https://uniselrealty.com/services/nri-property-investment-gurgaon",
         siteName: "Unisel Realty",
-        images: [{ url: "/images/hero/og-image.jpg", width: 1200, height: 630, alt: "NRI Property Investment Gurgaon" }],
+        images: [{ url: "/services/opengraph-image", width: 1200, height: 630, alt: "NRI Property Investment Gurgaon" }],
         locale: "en_US",
         type: "website",
     },
@@ -20,7 +20,7 @@ export const metadata: Metadata = {
         card: "summary_large_image",
         title: "NRI Property Investment in Gurgaon | Unisel Realty",
         description: "End-to-end NRI property investment guidance in Gurgaon.",
-        images: ["/images/hero/og-image.jpg"],
+        images: ["/services/opengraph-image"],
     },
 };
 

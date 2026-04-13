@@ -6,7 +6,7 @@ import { contactPageSchema, breadcrumbSchema } from "@/lib/jsonld";
 import ContactForm from "@/components/shared/ContactForm";
 
 export const metadata: Metadata = {
-    title: "Contact Us | Unisel Realty",
+    title: "Contact Us",
     description: "Get in touch with Unisel Realty for all your real estate needs. Contact our team for property inquiries, consultations, and expert advice.",
     keywords: ["contact", "real estate", "unisel realty", "property inquiry", "consultation"],
     alternates: { canonical: "https://uniselrealty.com/contact" },
@@ -15,7 +15,7 @@ export const metadata: Metadata = {
         description: "Get in touch with Unisel Realty for all your real estate needs.",
         url: "https://uniselrealty.com/contact",
         siteName: "Unisel Realty",
-        images: [{ url: "/images/contactUs/og-image.jpg", width: 1200, height: 630, alt: "Contact Unisel Realty" }],
+        images: [{ url: "/contact/opengraph-image", width: 1200, height: 630, alt: "Contact Unisel Realty" }],
         locale: "en_US",
         type: "website",
     },
@@ -23,7 +23,7 @@ export const metadata: Metadata = {
         card: "summary_large_image",
         title: "Contact Unisel Realty | Real Estate Experts",
         description: "Get in touch with Unisel Realty for all your real estate needs.",
-        images: ["/images/contactUs/og-image.jpg"],
+        images: ["/contact/opengraph-image"],
     },
 };
 
@@ -63,7 +63,7 @@ export default function ContactPage() {
             <div className='border border-black/10 dark:border-white/10 rounded-2xl p-4 shadow-xl dark:shadow-white/10'>
                 <div className='flex flex-col lg:flex-row lg:items-center gap-12'>
                     <div className='relative w-fit'>
-                        <Image src={'/images/contactUs/contactUs.jpg'} alt='Contact Unisel Realty office in Gurgaon' width={497} height={535} className='rounded-2xl brightness-50 h-full' unoptimized={true} />
+                        <Image src={'/images/contactUs/contactUs.jpg'} alt='Contact Unisel Realty office in Gurgaon' width={497} height={535} className='rounded-2xl brightness-50 h-full' />
                         <div className='absolute top-6 left-6 lg:top-12 lg:left-12 flex flex-col gap-2'>
                             <h2 className='text-xl xs:text-2xl mobile:text-3xl font-medium tracking-tight text-white'>Contact information</h2>
                             <p className='text-sm xs:text-base mobile:text-xm font-normal text-white/80'>

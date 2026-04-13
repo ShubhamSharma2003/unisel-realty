@@ -81,6 +81,13 @@ export const homepageSchema = (faqs: FaqItem[]) => ({
         postalCode: "122102",
         addressCountry: "IN",
       },
+      telephone: "+91-8010-303-303",
+      email: "info@uniselrealty.com",
+      geo: {
+        "@type": "GeoCoordinates",
+        latitude: 28.41490,
+        longitude: 77.09270,
+      },
       foundingDate: "2006",
       areaServed: {
         "@type": "City",

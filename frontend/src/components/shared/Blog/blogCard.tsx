@@ -10,7 +10,7 @@ const BlogCard: FC<{ blog: Blog }> = ({ blog }) => {
     const coverImageUrl = coverImage
         ? urlFor(coverImage).width(800).height(600).fit("crop").url()
         : null;
-    const href = slug ? `/blogs/${slug}` : "/blogs";
+    const href = slug ? `/blog/${slug}` : "/blog";
     return (
         <Link href={href} aria-label="blog cover 5xl:h-full 5xl:inline-block" className="gap-4 group cursor-pointer">
             <div className="overflow-hidden rounded-2xl flex-shrink-0">

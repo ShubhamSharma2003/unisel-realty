@@ -7,7 +7,7 @@ const SITE_URL = "https://uniselrealty.com";
 const SITE_NAME = "Unisel Realty";
 
 export const metadata: Metadata = {
-  title: `Our Services | ${SITE_NAME}`,
+  title: `Our Services`,
   description:
     "Explore the full range of real estate services offered by Unisel Realty - from home loans and property management to NRI investment advisory in Gurgaon.",
   alternates: { canonical: `${SITE_URL}/services` },
@@ -17,7 +17,7 @@ export const metadata: Metadata = {
       "Explore the full range of real estate services offered by Unisel Realty in Gurgaon.",
     url: `${SITE_URL}/services`,
     siteName: SITE_NAME,
-    images: [{ url: `${SITE_URL}/images/hero/og-image.jpg`, width: 1200, height: 630 }],
+    images: [{ url: `${SITE_URL}/services/opengraph-image`, width: 1200, height: 630 }],
     type: "website",
   },
   twitter: {

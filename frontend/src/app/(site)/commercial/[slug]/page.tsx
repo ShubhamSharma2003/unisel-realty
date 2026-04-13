@@ -47,11 +47,11 @@ export async function generateMetadata({
   return {
     title,
     description,
-    alternates: { canonical: `${siteUrl}/commercial/${slug}` },
+    alternates: { canonical: `${siteUrl}/properties/${slug}` },
     openGraph: {
       title,
       description,
-      url: `${siteUrl}/commercial/${slug}`,
+      url: `${siteUrl}/properties/${slug}`,
       siteName,
       images: [{ url: imageUrl, width: 1200, height: 630, alt: property.name }],
       type: "website",

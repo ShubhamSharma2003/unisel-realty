@@ -32,7 +32,6 @@ const ServicesContent = ({ section, services }: ServicesContentProps) => {
           width={800}
           height={1050}
           className="dark:hidden w-full h-auto"
-          unoptimized={true}
         />
         <Image
           src={darkBackground}
@@ -40,7 +39,6 @@ const ServicesContent = ({ section, services }: ServicesContentProps) => {
           width={800}
           height={1050}
           className="hidden dark:block w-full h-auto"
-          unoptimized={true}
         />
       </div>
       <div className="container max-w-8xl mx-auto px-5 2xl:px-0 relative z-10">

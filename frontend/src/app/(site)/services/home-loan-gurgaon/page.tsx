@@ -4,7 +4,7 @@ import Link from "next/link";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-    title: "Home Loan Assistance in Gurgaon | Unisel Realty",
+    title: "Home Loan Assistance in Gurgaon",
     description: "Get expert home loan guidance in Gurgaon. We connect you with 20+ leading banks and NBFCs, help with documentation, and get you the best interest rates.",
     keywords: ["home loan gurgaon", "housing loan gurgaon", "home loan assistance", "best home loan rates gurgaon", "unisel realty"],
     openGraph: {
@@ -12,7 +12,7 @@ export const metadata: Metadata = {
         description: "Expert home loan guidance in Gurgaon — best rates, 20+ bank partners, end-to-end documentation support.",
         url: "https://uniselrealty.com/services/home-loan-gurgaon",
         siteName: "Unisel Realty",
-        images: [{ url: "/images/hero/og-image.jpg", width: 1200, height: 630, alt: "Home Loan Gurgaon" }],
+        images: [{ url: "/services/opengraph-image", width: 1200, height: 630, alt: "Home Loan Gurgaon" }],
         locale: "en_US",
         type: "website",
     },
@@ -20,7 +20,7 @@ export const metadata: Metadata = {
         card: "summary_large_image",
         title: "Home Loan Assistance in Gurgaon | Unisel Realty",
         description: "Expert home loan guidance in Gurgaon.",
-        images: ["/images/hero/og-image.jpg"],
+        images: ["/services/opengraph-image"],
     },
 };
 

@@ -9,7 +9,7 @@ import { getBuilderPartners } from "@/lib/sanity.services";
 import { urlFor } from "@/lib/sanity.image";
 
 export const metadata: Metadata = {
-    title: "About Unisel Realty | Gurgaon's Trusted Luxury Real Estate Advisory Since 2006",
+    title: "About Us | Gurgaon's Trusted Luxury Real Estate Advisory Since 2006",
     description:
         "Unisel Realty Pvt Ltd — 20+ years advising on luxury residential and commercial properties in Gurgaon. $2B+ transacted, 10,000+ families served, 90% client retention. Exclusive pre-launch access to DLF, Godrej, M3M.",
     keywords: [
@@ -28,7 +28,7 @@ export const metadata: Metadata = {
             "20+ years of expertise in Gurgaon luxury real estate. $2B+ transacted value, 10,000+ families placed, 90% client retention.",
         url: "https://uniselrealty.com/about",
         siteName: "Unisel Realty",
-        images: [{ url: "/images/hero/og-image.jpg", width: 1200, height: 630, alt: "About Unisel Realty" }],
+        images: [{ url: "/about/opengraph-image", width: 1200, height: 630, alt: "About Unisel Realty" }],
         locale: "en_US",
         type: "website",
     },
@@ -37,7 +37,7 @@ export const metadata: Metadata = {
         title: "About Unisel Realty | Luxury Real Estate Advisory Since 2006",
         description:
             "Gurgaon's most trusted advisors for luxury real estate & high-return investments.",
-        images: ["/images/hero/og-image.jpg"],
+        images: ["/about/opengraph-image"],
     },
 };
 

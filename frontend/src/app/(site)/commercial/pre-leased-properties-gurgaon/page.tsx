@@ -4,7 +4,7 @@ import { Metadata } from "next";
 import { breadcrumbSchema } from "@/lib/jsonld";
 
 export const metadata: Metadata = {
-    title: "Pre-Leased Properties in Gurgaon | Unisel Realty",
+    title: "Pre-Leased Properties in Gurgaon",
     description: "Invest in pre-leased commercial properties in Gurgaon. Assured rental income from day one. Office spaces, retail, and warehouses with existing tenants.",
     keywords: ["pre-leased properties gurgaon", "assured rental income gurgaon", "investment properties gurgaon", "unisel realty"],
     alternates: { canonical: "https://uniselrealty.com/commercial/pre-leased-properties-gurgaon" },

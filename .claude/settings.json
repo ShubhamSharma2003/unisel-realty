@@ -13,7 +13,9 @@
       "Bash(node -e ':*)",
       "Bash(node -e \"var fs=require\\('fs'\\);var c=fs.readFileSync\\('frontend/src/components/Residential/residentialData.ts','utf8'\\);var old='2018\\\\\\\\u20132024';var nw='2018\\\\\\\\u20132025';console.log\\('found:',c.indexOf\\(old\\)\\);c=c.split\\(old\\).join\\(nw\\);fs.writeFileSync\\('frontend/src/components/Residential/residentialData.ts',c\\);console.log\\('done'\\);\")",
       "Bash(node -e \"var fs=require\\('fs'\\);var c=fs.readFileSync\\('frontend/src/components/Residential/residentialData.ts','utf8'\\);var old=String.raw\\\\`2018\\\\u20132024\\\\`;console.log\\('search:',JSON.stringify\\(old\\)\\);console.log\\('found:',c.indexOf\\(old\\)\\);c=c.split\\(old\\).join\\(String.raw\\\\`2018\\\\u20132025\\\\`\\);var old2=String.raw\\\\`For 2025\\\\u20132030\\\\`;c=c.split\\(old2\\).join\\(String.raw\\\\`For 2026\\\\u20132030\\\\`\\);fs.writeFileSync\\('frontend/src/components/Residential/residentialData.ts',c\\);console.log\\('done'\\);\")",
-      "Bash(node -e \"var fs=require\\('fs'\\);var c=fs.readFileSync\\('frontend/src/components/Residential/residentialData.ts','utf8'\\);var idx=0;while\\(\\(idx=c.indexOf\\('2024',idx\\)\\)!==-1\\){console.log\\(idx,JSON.stringify\\(c.slice\\(Math.max\\(0,idx-10\\),idx+15\\)\\)\\);idx++;}\")"
+      "Bash(node -e \"var fs=require\\('fs'\\);var c=fs.readFileSync\\('frontend/src/components/Residential/residentialData.ts','utf8'\\);var idx=0;while\\(\\(idx=c.indexOf\\('2024',idx\\)\\)!==-1\\){console.log\\(idx,JSON.stringify\\(c.slice\\(Math.max\\(0,idx-10\\),idx+15\\)\\)\\);idx++;}\")",
+      "Skill(seo-audit)",
+      "Skill(seo-audit:*)"
     ]
   }
 }

@@ -4,7 +4,6 @@ import { getPropertiesCount } from "@/lib/sanity.services";
 import {
   propertyCollectionSchema,
   breadcrumbSchema,
-  organizationSchema,
 } from "@/lib/jsonld";
 import { RESIDENTIAL_FAQS } from "@/components/Residential/residentialData";
 
@@ -17,7 +16,7 @@ export async function generateMetadata(): Promise<Metadata> {
     const siteUrl = 'https://uniselrealty.com';
     const siteName = 'Unisel Realty';
 
-    const title = `Luxury Residential Properties in Gurgaon | ${siteName}`;
+    const title = `Luxury Residential Properties in Gurgaon`;
     const description = `Explore ${totalProperties}+ curated luxury apartments & premium flats across Golf Course Road, Golf Course Extension Road & Dwarka Expressway. RERA-verified, direct developer pricing, zero brokerage. 18 years of expertise in Gurgaon real estate.`;
 
     return {
@@ -41,7 +40,7 @@ export async function generateMetadata(): Promise<Metadata> {
             description,
             url: `${siteUrl}/residential`,
             siteName,
-            images: [{ url: "/images/properties/og-image.jpg", width: 1200, height: 630, alt: "Unisel Realty luxury residential properties Gurgaon" }],
+            images: [{ url: "/residential/opengraph-image", width: 1200, height: 630, alt: "Unisel Realty luxury residential properties Gurgaon" }],
             locale: "en_US",
             type: "website",
         },
@@ -49,7 +48,7 @@ export async function generateMetadata(): Promise<Metadata> {
             card: "summary_large_image",
             title: `Luxury Residential Properties in Gurgaon | ${siteName}`,
             description,
-            images: ["/images/properties/og-image.jpg"],
+            images: ["/residential/opengraph-image"],
         },
     };
 }
@@ -62,7 +61,6 @@ const ResidentialPage = async () => {
         url: "https://uniselrealty.com/residential",
         dateModified: "2026-04-12",
     });
-    const orgSchema = organizationSchema();
     const breadcrumbs = breadcrumbSchema([
         { name: "Home", url: "https://uniselrealty.com" },
         { name: "Residential", url: "https://uniselrealty.com/residential" },
@@ -82,10 +80,6 @@ const ResidentialPage = async () => {
 
     return (
         <>
-            <script
-                type="application/ld+json"
-                dangerouslySetInnerHTML={{ __html: JSON.stringify(orgSchema) }}
-            />
             <script
                 type="application/ld+json"
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}

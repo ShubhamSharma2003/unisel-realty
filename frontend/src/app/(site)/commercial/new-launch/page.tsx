@@ -4,7 +4,7 @@ import { Metadata } from "next";
 import { breadcrumbSchema } from "@/lib/jsonld";
 
 export const metadata: Metadata = {
-    title: "New Launch Commercial Projects in Gurgaon | Unisel Realty",
+    title: "New Launch Commercial Projects in Gurgaon",
     description: "Explore the latest new launch commercial projects in Gurgaon. Office spaces, retail shops, and commercial plots by top developers.",
     keywords: ["new launch commercial projects gurgaon", "new commercial properties 2026", "office spaces gurgaon", "unisel realty"],
     alternates: { canonical: "https://uniselrealty.com/commercial/new-launch" },

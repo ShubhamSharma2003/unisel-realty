@@ -1,11 +1,4 @@
-"use client";
-
-import dynamic from "next/dynamic";
-
-const HeroContent = dynamic(() => import("./HeroContent"), {
-  ssr: false,
-  loading: () => <div style={{ height: "100svh" }} />,
-});
+import HeroContent from "./HeroContent";
 
 export default function HeroWrapper() {
   return <HeroContent />;

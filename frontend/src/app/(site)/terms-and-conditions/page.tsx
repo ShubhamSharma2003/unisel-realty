@@ -2,7 +2,7 @@ import { Metadata } from "next";
 import HeroSub from "@/components/shared/HeroSub";
 
 export const metadata: Metadata = {
-    title: "Terms & Conditions | Unisel Realty - Gurgaon Real Estate",
+    title: "Terms & Conditions - Gurgaon Real Estate",
     description: "Terms and conditions for using uniselrealty.com and our property advisory services. RERA-registered channel partner in Gurgaon, Haryana.",
     keywords: ["terms and conditions", "unisel realty terms", "real estate terms", "RERA channel partner"],
     alternates: { canonical: "https://uniselrealty.com/terms-and-conditions" },

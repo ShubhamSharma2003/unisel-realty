@@ -18,8 +18,8 @@ const Slide1 = ({ isMobile }: Slide1Props) => {
           alt="Luxury residential and commercial properties in Gurgaon"
           fill
           className="object-cover object-center"
-          priority={false}
-          unoptimized={true}
+          priority={true}
+          sizes="100vw"
         />
         <div className="absolute inset-0 z-0 bg-black/40" />
 

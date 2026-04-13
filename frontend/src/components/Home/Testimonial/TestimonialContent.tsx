@@ -54,7 +54,6 @@ const TestimonialContent = ({
           alt="victor"
           width={700}
           height={1039}
-          unoptimized={true}
         />
       </div>
       <div className="container max-w-8xl mx-auto px-5 2xl:px-0">
@@ -112,8 +111,7 @@ const TestimonialContent = ({
                               width={80}
                               height={80}
                               className="rounded-full lg:hidden block"
-                              unoptimized={true}
-                            />
+                                                          />
                           ) : null}
                           <div>
                             <h6 className="text-white text-xm font-medium">
@@ -134,8 +132,7 @@ const TestimonialContent = ({
                           width={440}
                           height={440}
                           className="lg:block hidden"
-                          unoptimized={true}
-                        />
+                                                  />
                       ) : null}
                     </div>
                   </div>

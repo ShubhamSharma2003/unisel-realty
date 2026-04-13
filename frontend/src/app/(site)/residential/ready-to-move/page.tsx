@@ -4,7 +4,7 @@ import { Metadata } from "next";
 import { breadcrumbSchema } from "@/lib/jsonld";
 
 export const metadata: Metadata = {
-    title: "Ready to Move Properties in Gurgaon | Unisel Realty",
+    title: "Ready to Move Properties in Gurgaon",
     description: "Find ready-to-move residential properties in Gurgaon. Move in immediately — verified listings of apartments and villas available right now.",
     keywords: ["ready to move properties gurgaon", "ready possession flats gurgaon", "immediate possession apartments", "unisel realty"],
     alternates: { canonical: "https://uniselrealty.com/residential/ready-to-move" },

@@ -4,7 +4,7 @@ import { Metadata } from "next";
 import { breadcrumbSchema } from "@/lib/jsonld";
 
 export const metadata: Metadata = {
-    title: "Near Possession Commercial Properties in Gurgaon | Unisel Realty",
+    title: "Near Possession Commercial Properties in Gurgaon",
     description: "Discover near-possession commercial properties in Gurgaon. Projects nearing completion — start earning rental income soon.",
     keywords: ["near possession commercial gurgaon", "nearing completion office spaces gurgaon", "almost ready commercial properties", "unisel realty"],
     alternates: { canonical: "https://uniselrealty.com/commercial/near-possession" },
