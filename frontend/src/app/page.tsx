@@ -1,3 +1,4 @@
+// Homepage - Main landing page for Unisel Realty
 import FeaturedProperty from '@/components/Home/FeaturedProperty'
 import Hero from '@/components/Home/Hero'
 import Properties from '@/components/Home/Properties'
