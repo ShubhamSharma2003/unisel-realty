@@ -86,7 +86,7 @@ export async function POST(req: NextRequest) {
             </table>
 
             <!-- CTA -->
-            <a href="https://uniselrealty.com/contact"
+            <a href="https://www.uniselrealty.com/contact"
                style="display:inline-block;background:#2596be;color:#ffffff;text-decoration:none;padding:14px 32px;border-radius:999px;font-size:14px;font-weight:600;letter-spacing:0.01em">
               Talk to an Advisor — Free
             </a>
@@ -101,7 +101,7 @@ export async function POST(req: NextRequest) {
             </p>
             <p style="margin:0;font-size:12px;color:#94a3b8">
               You're receiving this because you subscribed at
-              <a href="https://uniselrealty.com" style="color:#2596be;text-decoration:none">uniselrealty.com</a>.
+              <a href="https://www.uniselrealty.com" style="color:#2596be;text-decoration:none">uniselrealty.com</a>.
             </p>
           </td>
         </tr>

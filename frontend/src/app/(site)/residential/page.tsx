@@ -13,7 +13,7 @@ import PropertiesListing from "@/components/Properties/PropertyList";
 
 export async function generateMetadata(): Promise<Metadata> {
     const totalProperties = await getPropertiesCount();
-    const siteUrl = 'https://uniselrealty.com';
+    const siteUrl = 'https://www.uniselrealty.com';
     const siteName = 'Unisel Realty';
 
     const title = `Luxury Residential Properties in Gurgaon`;
@@ -58,17 +58,17 @@ const ResidentialPage = async () => {
     const schema = propertyCollectionSchema({
         name: "Luxury Residential Properties in Gurgaon | Unisel Realty",
         description: `Explore ${totalProperties}+ curated luxury residential properties across Golf Course Road, Golf Course Extension Road & Dwarka Expressway.`,
-        url: "https://uniselrealty.com/residential",
+        url: "https://www.uniselrealty.com/residential",
         dateModified: "2026-04-12",
     });
     const breadcrumbs = breadcrumbSchema([
-        { name: "Home", url: "https://uniselrealty.com" },
-        { name: "Residential", url: "https://uniselrealty.com/residential" },
+        { name: "Home", url: "https://www.uniselrealty.com" },
+        { name: "Residential", url: "https://www.uniselrealty.com/residential" },
     ]);
     const faqSchema = {
         "@context": "https://schema.org",
         "@type": "FAQPage",
-        "@id": "https://uniselrealty.com/residential#faqpage",
+        "@id": "https://www.uniselrealty.com/residential#faqpage",
         mainEntity: RESIDENTIAL_FAQS.map((faq) => ({
             "@type": "Question",
             name: faq.question,

@@ -17,7 +17,11 @@
       "Skill(seo-audit)",
       "Skill(seo-audit:*)",
       "Skill(seo-schema)",
-      "Skill(seo-schema:*)"
+      "Skill(seo-schema:*)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" -L \"https://www.uniselrealty.com/services\")",
+      "Bash(grep -rln \"https://uniselrealty\\\\.com\\\\b\" frontend)",
+      "Bash(grep -n \"uniselrealty\" frontend/next.config.ts)",
+      "Bash(ls frontend/public/llms.txt)"
     ]
   }
 }

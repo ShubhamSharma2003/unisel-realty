@@ -76,7 +76,7 @@ const PropertyDetailContent = async ({ slug, property: propertyProp }: PropertyD
 
   const categorySlug = property?.category === "commercial" ? "commercial" : "residential";
   const categoryLabel = property?.category === "commercial" ? "Commercial" : "Residential";
-  const SITE_URL = "https://uniselrealty.com";
+  const SITE_URL = "https://www.uniselrealty.com";
 
   const breadcrumbItems = [
     { name: "Home", url: SITE_URL },

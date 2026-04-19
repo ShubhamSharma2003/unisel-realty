@@ -10,7 +10,7 @@ export const metadata: Metadata = {
     openGraph: {
         title: "Property Management Services in Gurgaon | Unisel Realty",
         description: "Professional property management in Gurgaon — tenant sourcing, rent collection, maintenance, and legal compliance.",
-        url: "https://uniselrealty.com/services/property-management-gurgaon",
+        url: "https://www.uniselrealty.com/services/property-management-gurgaon",
         siteName: "Unisel Realty",
         images: [{ url: "/services/opengraph-image", width: 1200, height: 630, alt: "Property Management Gurgaon" }],
         locale: "en_US",

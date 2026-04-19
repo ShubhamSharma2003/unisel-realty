@@ -11,7 +11,7 @@ import { blogArticleSchema, breadcrumbSchema } from "@/lib/jsonld";
 
 export const dynamic = 'force-dynamic';
 
-const siteUrl = "https://uniselrealty.com";
+const siteUrl = "https://www.uniselrealty.com";
 
 const portableTextComponents = {
     types: {

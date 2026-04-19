@@ -7,11 +7,11 @@ export const metadata: Metadata = {
     title: "Under Construction Commercial Projects in Gurgaon",
     description: "Explore under-construction commercial projects in Gurgaon. Invest early in upcoming office spaces, retail, and mixed-use developments.",
     keywords: ["under construction commercial projects gurgaon", "upcoming commercial properties gurgaon", "office spaces under construction", "unisel realty"],
-    alternates: { canonical: "https://uniselrealty.com/commercial/under-construction" },
+    alternates: { canonical: "https://www.uniselrealty.com/commercial/under-construction" },
     openGraph: {
         title: "Under Construction Commercial Projects in Gurgaon | Unisel Realty",
         description: "Explore under-construction commercial projects in Gurgaon. Invest early at pre-completion prices.",
-        url: "https://uniselrealty.com/commercial/under-construction",
+        url: "https://www.uniselrealty.com/commercial/under-construction",
         siteName: "Unisel Realty",
         images: [{ url: "/images/properties/og-image.jpg", width: 1200, height: 630, alt: "Under construction commercial projects Gurgaon" }],
         locale: "en_US",
@@ -27,9 +27,9 @@ export const metadata: Metadata = {
 
 const CommercialUnderConstructionPage = () => {
     const breadcrumbs = breadcrumbSchema([
-        { name: "Home", url: "https://uniselrealty.com" },
-        { name: "Commercial", url: "https://uniselrealty.com/commercial" },
-        { name: "Under Construction", url: "https://uniselrealty.com/commercial/under-construction" },
+        { name: "Home", url: "https://www.uniselrealty.com" },
+        { name: "Commercial", url: "https://www.uniselrealty.com/commercial" },
+        { name: "Under Construction", url: "https://www.uniselrealty.com/commercial/under-construction" },
     ]);
 
     return (

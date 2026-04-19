@@ -15,12 +15,12 @@ export const metadata: Metadata = {
         "house valuation gurgaon",
         "unisel realty valuation",
     ],
-    alternates: { canonical: "https://uniselrealty.com/property-valuation" },
+    alternates: { canonical: "https://www.uniselrealty.com/property-valuation" },
     openGraph: {
         title: "Property Valuation Gurgaon — Check Current Market Value | Unisel Realty",
         description:
             "Find out what your property is worth in Gurgaon. Free instant valuation tool by Unisel Realty.",
-        url: "https://uniselrealty.com/property-valuation",
+        url: "https://www.uniselrealty.com/property-valuation",
         siteName: "Unisel Realty",
         locale: "en_US",
         type: "website",
@@ -42,8 +42,8 @@ const TRUST_POINTS = [
 export default function PropertyValuationPage() {
     const schema = valuationPageSchema();
     const breadcrumbs = breadcrumbSchema([
-        { name: "Home", url: "https://uniselrealty.com" },
-        { name: "Property Valuation", url: "https://uniselrealty.com/property-valuation" },
+        { name: "Home", url: "https://www.uniselrealty.com" },
+        { name: "Property Valuation", url: "https://www.uniselrealty.com/property-valuation" },
     ]);
 
     return (

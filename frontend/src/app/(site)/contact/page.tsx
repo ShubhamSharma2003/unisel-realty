@@ -9,11 +9,11 @@ export const metadata: Metadata = {
     title: "Contact Us",
     description: "Get in touch with Unisel Realty for all your real estate needs. Contact our team for property inquiries, consultations, and expert advice.",
     keywords: ["contact", "real estate", "unisel realty", "property inquiry", "consultation"],
-    alternates: { canonical: "https://uniselrealty.com/contact" },
+    alternates: { canonical: "https://www.uniselrealty.com/contact" },
     openGraph: {
         title: "Contact Unisel Realty | Real Estate Experts",
         description: "Get in touch with Unisel Realty for all your real estate needs.",
-        url: "https://uniselrealty.com/contact",
+        url: "https://www.uniselrealty.com/contact",
         siteName: "Unisel Realty",
         images: [{ url: "/contact/opengraph-image", width: 1200, height: 630, alt: "Contact Unisel Realty" }],
         locale: "en_US",
@@ -30,8 +30,8 @@ export const metadata: Metadata = {
 export default function ContactPage() {
     const schema = contactPageSchema();
     const breadcrumbs = breadcrumbSchema([
-        { name: "Home", url: "https://uniselrealty.com" },
-        { name: "Contact Us", url: "https://uniselrealty.com/contact" },
+        { name: "Home", url: "https://www.uniselrealty.com" },
+        { name: "Contact Us", url: "https://www.uniselrealty.com/contact" },
     ]);
 
     return (

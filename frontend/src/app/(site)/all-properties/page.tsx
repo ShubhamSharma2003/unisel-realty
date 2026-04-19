@@ -7,7 +7,7 @@ import { propertyCollectionSchema, breadcrumbSchema } from "@/lib/jsonld";
 
 export async function generateMetadata(): Promise<Metadata> {
     const totalProperties = await getPropertiesCount();
-    const siteUrl = 'https://uniselrealty.com';
+    const siteUrl = 'https://www.uniselrealty.com';
     const siteName = 'Unisel Realty';
 
     const title = `All Properties in Gurgaon | ${siteName}`;
@@ -41,11 +41,11 @@ const AllPropertiesPage = async () => {
     const schema = propertyCollectionSchema({
         name: "All Properties in Gurgaon | Unisel Realty",
         description: `Browse all ${totalProperties} properties in Gurgaon — residential, commercial, pre-leased, and more.`,
-        url: "https://uniselrealty.com/all-properties",
+        url: "https://www.uniselrealty.com/all-properties",
     });
     const breadcrumbs = breadcrumbSchema([
-        { name: "Home", url: "https://uniselrealty.com" },
-        { name: "All Properties", url: "https://uniselrealty.com/all-properties" },
+        { name: "Home", url: "https://www.uniselrealty.com" },
+        { name: "All Properties", url: "https://www.uniselrealty.com/all-properties" },
     ]);
 
     return (

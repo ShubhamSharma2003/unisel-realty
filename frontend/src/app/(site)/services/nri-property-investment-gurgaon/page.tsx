@@ -10,7 +10,7 @@ export const metadata: Metadata = {
     openGraph: {
         title: "NRI Property Investment in Gurgaon | Unisel Realty",
         description: "FEMA-compliant NRI property investment guidance in Gurgaon — from purchase to rental management.",
-        url: "https://uniselrealty.com/services/nri-property-investment-gurgaon",
+        url: "https://www.uniselrealty.com/services/nri-property-investment-gurgaon",
         siteName: "Unisel Realty",
         images: [{ url: "/services/opengraph-image", width: 1200, height: 630, alt: "NRI Property Investment Gurgaon" }],
         locale: "en_US",

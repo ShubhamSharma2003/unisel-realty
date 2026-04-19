@@ -21,7 +21,7 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { slug } = await params;
   const property = await getPropertyBySlug(slug);
-  const siteUrl = "https://uniselrealty.com";
+  const siteUrl = "https://www.uniselrealty.com";
   const siteName = "Unisel Realty";
 
   if (!property) {
@@ -95,9 +95,9 @@ export default async function PropertyDetailPage({
   });
 
   const breadcrumbs = breadcrumbSchema([
-    { name: "Home", url: "https://uniselrealty.com" },
-    { name: categoryLabel, url: `https://uniselrealty.com/${categoryPath}` },
-    { name: property.name, url: `https://uniselrealty.com/properties/${slug}` },
+    { name: "Home", url: "https://www.uniselrealty.com" },
+    { name: categoryLabel, url: `https://www.uniselrealty.com/${categoryPath}` },
+    { name: property.name, url: `https://www.uniselrealty.com/properties/${slug}` },
   ]);
 
   return (

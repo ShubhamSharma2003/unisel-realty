@@ -4,7 +4,7 @@ import { Metadata } from "next";
 import { blogListingSchema, breadcrumbSchema } from "@/lib/jsonld";
 
 export async function generateMetadata(): Promise<Metadata> {
-    const siteUrl = 'https://uniselrealty.com';
+    const siteUrl = 'https://www.uniselrealty.com';
     const siteName = 'Unisel Realty';
     const description = "Expert insights on Gurgaon luxury real estate, NRI property investment, and market trends from Unisel Realty's advisory team.";
 
@@ -34,8 +34,8 @@ export async function generateMetadata(): Promise<Metadata> {
 const BlogPage = async () => {
     const schema = blogListingSchema();
     const breadcrumbs = breadcrumbSchema([
-        { name: "Home", url: "https://uniselrealty.com" },
-        { name: "Blog", url: "https://uniselrealty.com/blog" },
+        { name: "Home", url: "https://www.uniselrealty.com" },
+        { name: "Blog", url: "https://www.uniselrealty.com/blog" },
     ]);
 
     return (

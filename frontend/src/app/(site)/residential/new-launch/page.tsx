@@ -7,11 +7,11 @@ export const metadata: Metadata = {
     title: "New Launch Projects in Gurgaon 2026",
     description: "Explore the latest new launch residential projects in Gurgaon. Pre-launch offers, RERA-approved projects by top developers like DLF, Sobha, M3M, and more.",
     keywords: ["new launch projects gurgaon", "new residential projects 2026", "pre-launch properties gurgaon", "DLF new launch", "unisel realty"],
-    alternates: { canonical: "https://uniselrealty.com/residential/new-launch" },
+    alternates: { canonical: "https://www.uniselrealty.com/residential/new-launch" },
     openGraph: {
         title: "New Launch Projects in Gurgaon 2026 | Unisel Realty",
         description: "Explore the latest new launch residential projects in Gurgaon. Pre-launch offers, RERA-approved projects by top developers.",
-        url: "https://uniselrealty.com/residential/new-launch",
+        url: "https://www.uniselrealty.com/residential/new-launch",
         siteName: "Unisel Realty",
         images: [{ url: "/images/properties/og-image.jpg", width: 1200, height: 630, alt: "New launch projects Gurgaon 2026" }],
         locale: "en_US",
@@ -27,9 +27,9 @@ export const metadata: Metadata = {
 
 const NewLaunchPage = () => {
     const breadcrumbs = breadcrumbSchema([
-        { name: "Home", url: "https://uniselrealty.com" },
-        { name: "Residential", url: "https://uniselrealty.com/residential" },
-        { name: "New Launch", url: "https://uniselrealty.com/residential/new-launch" },
+        { name: "Home", url: "https://www.uniselrealty.com" },
+        { name: "Residential", url: "https://www.uniselrealty.com/residential" },
+        { name: "New Launch", url: "https://www.uniselrealty.com/residential/new-launch" },
     ]);
 
     return (

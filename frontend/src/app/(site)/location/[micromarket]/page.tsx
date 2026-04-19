@@ -50,11 +50,11 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     return {
         title: `${info.title} | Unisel Realty`,
         description: info.description,
-        alternates: { canonical: `https://uniselrealty.com/location/${micromarket}` },
+        alternates: { canonical: `https://www.uniselrealty.com/location/${micromarket}` },
         openGraph: {
             title: `${info.title} | Unisel Realty`,
             description: info.description,
-            url: `https://uniselrealty.com/location/${micromarket}`,
+            url: `https://www.uniselrealty.com/location/${micromarket}`,
             siteName: "Unisel Realty",
             images: [{ url: "/images/properties/og-image.jpg", width: 1200, height: 630, alt: info.title }],
             locale: "en_US",
@@ -75,8 +75,8 @@ const LocationPage = async ({ params }: PageProps) => {
     if (!info) notFound();
 
     const breadcrumbs = breadcrumbSchema([
-        { name: "Home", url: "https://uniselrealty.com" },
-        { name: info.displayName, url: `https://uniselrealty.com/location/${micromarket}` },
+        { name: "Home", url: "https://www.uniselrealty.com" },
+        { name: info.displayName, url: `https://www.uniselrealty.com/location/${micromarket}` },
     ]);
 
     const locationSchema = locationPageSchema({

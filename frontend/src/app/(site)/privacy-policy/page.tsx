@@ -5,11 +5,11 @@ export const metadata: Metadata = {
     title: "Privacy Policy - Gurgaon Real Estate",
     description: "Unisel Realty's Privacy Policy — how we collect, use, and protect your personal data under India's DPDP Act, 2023.",
     keywords: ["privacy policy", "unisel realty privacy", "data protection", "DPDP Act"],
-    alternates: { canonical: "https://uniselrealty.com/privacy-policy" },
+    alternates: { canonical: "https://www.uniselrealty.com/privacy-policy" },
     openGraph: {
         title: "Privacy Policy | Unisel Realty",
         description: "How Unisel Realty collects, uses, and protects your personal data under India's DPDP Act, 2023.",
-        url: "https://uniselrealty.com/privacy-policy",
+        url: "https://www.uniselrealty.com/privacy-policy",
         siteName: "Unisel Realty",
         images: [{ url: "/images/hero/og-image.jpg", width: 1200, height: 630, alt: "Unisel Realty Privacy Policy" }],
         locale: "en_US",

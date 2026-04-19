@@ -1,4 +1,4 @@
-const SITE_URL = "https://uniselrealty.com";
+const SITE_URL = "https://www.uniselrealty.com";
 const LOGO_URL = `${SITE_URL}/images/header/unisel-logo.png`;
 
 // ─── Global: Organization + WebSite ────────────────────────────────────────────

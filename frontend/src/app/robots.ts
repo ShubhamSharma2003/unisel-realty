@@ -32,6 +32,6 @@ export default function robots(): MetadataRoute.Robots {
         allow: "/",
       },
     ],
-    sitemap: "https://uniselrealty.com/sitemap.xml",
+    sitemap: "https://www.uniselrealty.com/sitemap.xml",
   };
 }

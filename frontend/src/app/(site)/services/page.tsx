@@ -3,7 +3,7 @@ import HeroSub from "@/components/shared/HeroSub";
 import ServicesOffered from "@/components/Home/ServicesOffered";
 import { breadcrumbSchema } from "@/lib/jsonld";
 
-const SITE_URL = "https://uniselrealty.com";
+const SITE_URL = "https://www.uniselrealty.com";
 const SITE_NAME = "Unisel Realty";
 
 export const metadata: Metadata = {

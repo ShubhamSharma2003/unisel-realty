@@ -5,11 +5,11 @@ export const metadata: Metadata = {
     title: "Terms & Conditions - Gurgaon Real Estate",
     description: "Terms and conditions for using uniselrealty.com and our property advisory services. RERA-registered channel partner in Gurgaon, Haryana.",
     keywords: ["terms and conditions", "unisel realty terms", "real estate terms", "RERA channel partner"],
-    alternates: { canonical: "https://uniselrealty.com/terms-and-conditions" },
+    alternates: { canonical: "https://www.uniselrealty.com/terms-and-conditions" },
     openGraph: {
         title: "Terms & Conditions | Unisel Realty",
         description: "Terms governing use of uniselrealty.com and our property advisory services in Gurgaon.",
-        url: "https://uniselrealty.com/terms-and-conditions",
+        url: "https://www.uniselrealty.com/terms-and-conditions",
         siteName: "Unisel Realty",
         images: [{ url: "/images/hero/og-image.jpg", width: 1200, height: 630, alt: "Unisel Realty Terms & Conditions" }],
         locale: "en_US",

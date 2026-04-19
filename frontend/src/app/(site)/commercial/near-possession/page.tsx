@@ -7,11 +7,11 @@ export const metadata: Metadata = {
     title: "Near Possession Commercial Properties in Gurgaon",
     description: "Discover near-possession commercial properties in Gurgaon. Projects nearing completion — start earning rental income soon.",
     keywords: ["near possession commercial gurgaon", "nearing completion office spaces gurgaon", "almost ready commercial properties", "unisel realty"],
-    alternates: { canonical: "https://uniselrealty.com/commercial/near-possession" },
+    alternates: { canonical: "https://www.uniselrealty.com/commercial/near-possession" },
     openGraph: {
         title: "Near Possession Commercial Properties in Gurgaon | Unisel Realty",
         description: "Discover near-possession commercial properties in Gurgaon. Start earning rental income soon.",
-        url: "https://uniselrealty.com/commercial/near-possession",
+        url: "https://www.uniselrealty.com/commercial/near-possession",
         siteName: "Unisel Realty",
         images: [{ url: "/images/properties/og-image.jpg", width: 1200, height: 630, alt: "Near possession commercial properties Gurgaon" }],
         locale: "en_US",
@@ -27,9 +27,9 @@ export const metadata: Metadata = {
 
 const CommercialNearPossessionPage = () => {
     const breadcrumbs = breadcrumbSchema([
-        { name: "Home", url: "https://uniselrealty.com" },
-        { name: "Commercial", url: "https://uniselrealty.com/commercial" },
-        { name: "Near Possession", url: "https://uniselrealty.com/commercial/near-possession" },
+        { name: "Home", url: "https://www.uniselrealty.com" },
+        { name: "Commercial", url: "https://www.uniselrealty.com/commercial" },
+        { name: "Near Possession", url: "https://www.uniselrealty.com/commercial/near-possession" },
     ]);
 
     return (

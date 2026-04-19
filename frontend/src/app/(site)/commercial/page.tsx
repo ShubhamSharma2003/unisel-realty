@@ -7,11 +7,11 @@ export const metadata: Metadata = {
     title: "Commercial Properties in Gurgaon",
     description: "Explore premium commercial properties in Gurgaon — office spaces, retail shops, and pre-leased investments. Expert guidance for business real estate.",
     keywords: ["commercial properties gurgaon", "office spaces gurgaon", "retail shops gurgaon", "commercial real estate", "unisel realty"],
-    alternates: { canonical: "https://uniselrealty.com/commercial" },
+    alternates: { canonical: "https://www.uniselrealty.com/commercial" },
     openGraph: {
         title: "Commercial Properties in Gurgaon | Unisel Realty",
         description: "Explore premium commercial properties in Gurgaon — office spaces, retail shops, and pre-leased investments.",
-        url: "https://uniselrealty.com/commercial",
+        url: "https://www.uniselrealty.com/commercial",
         siteName: "Unisel Realty",
         images: [{ url: "/commercial/opengraph-image", width: 1200, height: 630, alt: "Commercial properties Gurgaon" }],
         locale: "en_US",
@@ -29,11 +29,11 @@ const CommercialPage = () => {
     const schema = propertyCollectionSchema({
         name: "Commercial Properties in Gurgaon | Unisel Realty",
         description: "Explore premium commercial properties in Gurgaon — office spaces, retail shops, and pre-leased investments.",
-        url: "https://uniselrealty.com/commercial",
+        url: "https://www.uniselrealty.com/commercial",
     });
     const breadcrumbs = breadcrumbSchema([
-        { name: "Home", url: "https://uniselrealty.com" },
-        { name: "Commercial", url: "https://uniselrealty.com/commercial" },
+        { name: "Home", url: "https://www.uniselrealty.com" },
+        { name: "Commercial", url: "https://www.uniselrealty.com/commercial" },
     ]);
 
     return (

@@ -6,7 +6,7 @@ import { urlFor } from '@/lib/sanity.image';
 import { servicePageSchema, breadcrumbSchema } from '@/lib/jsonld';
 import { notFound } from 'next/navigation';
 
-const siteUrl = 'https://uniselrealty.com';
+const siteUrl = 'https://www.uniselrealty.com';
 
 export async function generateStaticParams() {
   const services = await sanityClient.fetch<{ slug: string }[]>(servicesSlugsQuery);

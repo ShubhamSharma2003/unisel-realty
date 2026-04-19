@@ -21,12 +21,12 @@ export const metadata: Metadata = {
         "golf course road real estate",
         "dwarka expressway properties",
     ],
-    alternates: { canonical: "https://uniselrealty.com/about" },
+    alternates: { canonical: "https://www.uniselrealty.com/about" },
     openGraph: {
         title: "About Unisel Realty | Gurgaon's Trusted Luxury Real Estate Advisory",
         description:
             "20+ years of expertise in Gurgaon luxury real estate. $2B+ transacted value, 10,000+ families placed, 90% client retention.",
-        url: "https://uniselrealty.com/about",
+        url: "https://www.uniselrealty.com/about",
         siteName: "Unisel Realty",
         images: [{ url: "/about/opengraph-image", width: 1200, height: 630, alt: "About Unisel Realty" }],
         locale: "en_US",
@@ -105,8 +105,8 @@ const AboutPage = async () => {
     const track = partners && partners.length > 0 ? [...partners, ...partners] : [];
     const schema = aboutPageSchema();
     const breadcrumbs = breadcrumbSchema([
-        { name: "Home", url: "https://uniselrealty.com" },
-        { name: "About Us", url: "https://uniselrealty.com/about" },
+        { name: "Home", url: "https://www.uniselrealty.com" },
+        { name: "About Us", url: "https://www.uniselrealty.com/about" },
     ]);
 
     return (

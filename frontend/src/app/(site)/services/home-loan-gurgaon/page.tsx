@@ -10,7 +10,7 @@ export const metadata: Metadata = {
     openGraph: {
         title: "Home Loan Assistance in Gurgaon | Unisel Realty",
         description: "Expert home loan guidance in Gurgaon — best rates, 20+ bank partners, end-to-end documentation support.",
-        url: "https://uniselrealty.com/services/home-loan-gurgaon",
+        url: "https://www.uniselrealty.com/services/home-loan-gurgaon",
         siteName: "Unisel Realty",
         images: [{ url: "/services/opengraph-image", width: 1200, height: 630, alt: "Home Loan Gurgaon" }],
         locale: "en_US",

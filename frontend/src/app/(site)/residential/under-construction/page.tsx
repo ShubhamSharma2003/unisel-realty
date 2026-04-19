@@ -7,11 +7,11 @@ export const metadata: Metadata = {
     title: "Under Construction Residential Projects in Gurgaon",
     description: "Explore under-construction residential projects in Gurgaon. Invest early in upcoming apartments and villas by top developers at pre-completion prices.",
     keywords: ["under construction projects gurgaon", "upcoming residential projects gurgaon", "new apartments gurgaon", "unisel realty"],
-    alternates: { canonical: "https://uniselrealty.com/residential/under-construction" },
+    alternates: { canonical: "https://www.uniselrealty.com/residential/under-construction" },
     openGraph: {
         title: "Under Construction Residential Projects in Gurgaon | Unisel Realty",
         description: "Explore under-construction residential projects in Gurgaon. Invest early at pre-completion prices.",
-        url: "https://uniselrealty.com/residential/under-construction",
+        url: "https://www.uniselrealty.com/residential/under-construction",
         siteName: "Unisel Realty",
         images: [{ url: "/images/properties/og-image.jpg", width: 1200, height: 630, alt: "Under construction residential projects Gurgaon" }],
         locale: "en_US",
@@ -27,9 +27,9 @@ export const metadata: Metadata = {
 
 const UnderConstructionPage = () => {
     const breadcrumbs = breadcrumbSchema([
-        { name: "Home", url: "https://uniselrealty.com" },
-        { name: "Residential", url: "https://uniselrealty.com/residential" },
-        { name: "Under Construction", url: "https://uniselrealty.com/residential/under-construction" },
+        { name: "Home", url: "https://www.uniselrealty.com" },
+        { name: "Residential", url: "https://www.uniselrealty.com/residential" },
+        { name: "Under Construction", url: "https://www.uniselrealty.com/residential/under-construction" },
     ]);
 
     return (

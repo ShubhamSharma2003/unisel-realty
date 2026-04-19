@@ -7,11 +7,11 @@ export const metadata: Metadata = {
     title: "New Launch Commercial Projects in Gurgaon",
     description: "Explore the latest new launch commercial projects in Gurgaon. Office spaces, retail shops, and commercial plots by top developers.",
     keywords: ["new launch commercial projects gurgaon", "new commercial properties 2026", "office spaces gurgaon", "unisel realty"],
-    alternates: { canonical: "https://uniselrealty.com/commercial/new-launch" },
+    alternates: { canonical: "https://www.uniselrealty.com/commercial/new-launch" },
     openGraph: {
         title: "New Launch Commercial Projects in Gurgaon | Unisel Realty",
         description: "Explore the latest new launch commercial projects in Gurgaon by top developers.",
-        url: "https://uniselrealty.com/commercial/new-launch",
+        url: "https://www.uniselrealty.com/commercial/new-launch",
         siteName: "Unisel Realty",
         images: [{ url: "/images/properties/og-image.jpg", width: 1200, height: 630, alt: "New launch commercial projects Gurgaon" }],
         locale: "en_US",
@@ -27,9 +27,9 @@ export const metadata: Metadata = {
 
 const CommercialNewLaunchPage = () => {
     const breadcrumbs = breadcrumbSchema([
-        { name: "Home", url: "https://uniselrealty.com" },
-        { name: "Commercial", url: "https://uniselrealty.com/commercial" },
-        { name: "New Launch", url: "https://uniselrealty.com/commercial/new-launch" },
+        { name: "Home", url: "https://www.uniselrealty.com" },
+        { name: "Commercial", url: "https://www.uniselrealty.com/commercial" },
+        { name: "New Launch", url: "https://www.uniselrealty.com/commercial/new-launch" },
     ]);
 
     return (

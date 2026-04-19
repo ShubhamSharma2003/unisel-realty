@@ -106,7 +106,8 @@ export const servicesQuery = groq`
 
 export const servicesSlugsQuery = groq`
   *[_type == "service" && defined(slug.current)]{
-    "slug": slug.current
+    "slug": slug.current,
+    _updatedAt
   }
 `;
 
@@ -263,7 +264,8 @@ export const similarPropertiesQuery = groq`
 
 export const propertySlugsQuery = groq`
   *[_type == "property" && defined(slug.current)]{
-    "slug": slug.current
+    "slug": slug.current,
+    _updatedAt
   }
 `;
 
@@ -381,7 +383,8 @@ export const heroBannersQuery = groq`
 
 export const blogSlugsQuery = groq`
   *[_type == "post" && defined(slug.current)]{
-    "slug": slug.current
+    "slug": slug.current,
+    _updatedAt
   }
 `;
 

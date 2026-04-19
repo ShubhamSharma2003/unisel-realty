@@ -20,7 +20,7 @@ import Script from 'next/script'
 const font = Bricolage_Grotesque({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://uniselrealty.com'),
+  metadataBase: new URL('https://www.uniselrealty.com'),
   title: {
     default: 'Unisel Realty — Luxury Real Estate & Investment Advisory, Gurgaon',
     template: '%s | Unisel Realty',
@@ -44,14 +44,14 @@ export const metadata: Metadata = {
     'golf course road gurgaon',
     'pre leased property gurgaon',
   ],
-  authors: [{ name: 'Unisel Realty Pvt Ltd', url: 'https://uniselrealty.com' }],
+  authors: [{ name: 'Unisel Realty Pvt Ltd', url: 'https://www.uniselrealty.com' }],
   alternates: {
-    canonical: 'https://uniselrealty.com',
+    canonical: 'https://www.uniselrealty.com',
   },
   openGraph: {
     title: 'Unisel Realty — Luxury Real Estate & Investment Advisory, Gurgaon',
     description: "Gurgaon's most trusted advisors for luxury real estate & high-return investments. Exclusive pre-launch access to DLF, Godrej and M3M. Dedicated NRI desk. Est. 2006.",
-    url: 'https://uniselrealty.com',
+    url: 'https://www.uniselrealty.com',
     siteName: 'Unisel Realty',
     locale: 'en_US',
     type: 'website',

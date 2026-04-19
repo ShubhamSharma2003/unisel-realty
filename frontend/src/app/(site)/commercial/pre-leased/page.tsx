@@ -7,11 +7,11 @@ export const metadata: Metadata = {
     title: "Pre-Leased Properties in Gurgaon",
     description: "Invest in pre-leased commercial properties in Gurgaon. Assured rental income from day one. Office spaces, retail, and warehouses with existing tenants.",
     keywords: ["pre-leased properties gurgaon", "assured rental income gurgaon", "investment properties gurgaon", "unisel realty"],
-    alternates: { canonical: "https://uniselrealty.com/commercial/pre-leased" },
+    alternates: { canonical: "https://www.uniselrealty.com/commercial/pre-leased" },
     openGraph: {
         title: "Pre-Leased Properties in Gurgaon | Unisel Realty",
         description: "Invest in pre-leased commercial properties in Gurgaon. Assured rental income from day one.",
-        url: "https://uniselrealty.com/commercial/pre-leased",
+        url: "https://www.uniselrealty.com/commercial/pre-leased",
         siteName: "Unisel Realty",
         images: [{ url: "/images/properties/og-image.jpg", width: 1200, height: 630, alt: "Pre-leased properties Gurgaon" }],
         locale: "en_US",
@@ -27,9 +27,9 @@ export const metadata: Metadata = {
 
 const PreLeasedPage = () => {
     const breadcrumbs = breadcrumbSchema([
-        { name: "Home", url: "https://uniselrealty.com" },
-        { name: "Commercial", url: "https://uniselrealty.com/commercial" },
-        { name: "Pre-Leased", url: "https://uniselrealty.com/commercial/pre-leased" },
+        { name: "Home", url: "https://www.uniselrealty.com" },
+        { name: "Commercial", url: "https://www.uniselrealty.com/commercial" },
+        { name: "Pre-Leased", url: "https://www.uniselrealty.com/commercial/pre-leased" },
     ]);
 
     return (
