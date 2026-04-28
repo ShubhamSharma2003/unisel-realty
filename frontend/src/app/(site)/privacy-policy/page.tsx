@@ -67,6 +67,11 @@ const PrivacyPolicyPage = () => {
                         <p className="text-base text-black/70 dark:text-white/70 leading-7">
                             We may receive data from Google Ads, Meta Ads, property portals (99acres, MagicBricks, Housing.com), referral partners, and developers whose projects you expressed interest in elsewhere.
                         </p>
+
+                        <h3 className="text-base font-semibold text-black dark:text-white mb-2 mt-5">2.4 Form Submissions &amp; Contact Authorisation</h3>
+                        <p className="text-base text-black/70 dark:text-white/70 leading-7">
+                            When you voluntarily send us electronic mail or fill up the form, we will keep a record of this information so that we can respond to you. We only collect information from you when you register on our site or fill out a form. Also, when filling out a form on our site, you may be asked to enter your: name, e-mail address or phone number. You may, however, visit our site anonymously. In case you have submitted your personal information and contact details, we reserve the rights to Call, SMS, Email or WhatsApp about our products and offers, even if your number has DND activated on it.
+                        </p>
                     </div>
 
                     {/* Section 3 */}
@@ -82,7 +87,7 @@ const PrivacyPolicyPage = () => {
                                 "Provide free legal and tax consultation.",
                                 "Understand how people use our site and improve it.",
                                 "Meet our obligations under RERA, HARERA, and Indian law.",
-                                "Send newsletters and promotional communications — you can opt out any time.",
+                                "Send newsletters and marketing communications — you can opt out any time.",
                             ].map((item, i) => (
                                 <li key={i} className="flex gap-3 leading-7">
                                     <span className="text-primary mt-1 shrink-0">•</span>

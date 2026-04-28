@@ -24,7 +24,7 @@ const Footer = ({ footerMenus }: FooterProps) => {
           <div className="flex lg:flex-row flex-col items-center lg:gap-10 gap-3 w-full lg:w-auto">
             <NewsletterForm />
             <p className="text-white/40 text-sm lg:max-w-[45%] order-1 lg:order-2">
-              By subscribing, you agree to receive our promotional emails. You can unsubscribe at any time.
+              By subscribing, you agree to receive our marketing emails. You can unsubscribe at any time.
             </p>
           </div>
           <div className="flex items-center gap-6">

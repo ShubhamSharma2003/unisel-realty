@@ -349,6 +349,14 @@ export default function PopupForm() {
                     </div>
                   )}
 
+                  <p className="text-[11px] sm:text-xs text-dark/60 dark:text-white/60 leading-relaxed pt-1">
+                    I authorise Unisel Realty &amp; its representatives to contact me with updates and notifications via Email/SMS/WhatsApp/Call. This will override DND/NDNC. See our{' '}
+                    <Link href="/privacy-policy" onClick={handleClose} className="text-primary underline underline-offset-2">
+                      Privacy Policy
+                    </Link>
+                    .
+                  </p>
+
                   <button
                     type="submit"
                     disabled={status === 'loading'}
