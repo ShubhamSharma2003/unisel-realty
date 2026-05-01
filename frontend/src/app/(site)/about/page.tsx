@@ -9,23 +9,24 @@ import { getBuilderPartners } from "@/lib/sanity.services";
 import { urlFor } from "@/lib/sanity.image";
 
 export const metadata: Metadata = {
-    title: "About Us | Gurgaon's Trusted Luxury Real Estate Advisory Since 2006",
+    title: "About Us | Gurgaon's Trusted Luxury Real Estate Advisory Since 2005",
     description:
-        "Unisel Realty Pvt Ltd — 20+ years advising on luxury residential and commercial properties in Gurgaon. $2B+ transacted, 10,000+ families served, 90% client retention. Exclusive pre-launch access to DLF, Godrej, M3M.",
+        "Unisel Realty — 20+ years curating India's finest real estate. ₹2,400 Cr+ transacted, 3,800+ families housed, 4.9★ client rating. Pre-launch access to DLF, Godrej, M3M, Emaar. Gurgaon · Dubai NRI desk.",
     keywords: [
         "about unisel realty",
-        "gurgaon real estate consultants",
+        "gurgaon luxury real estate channel partner",
         "luxury property advisory gurgaon",
         "real estate experts gurgaon",
         "NRI property services gurgaon",
         "golf course road real estate",
         "dwarka expressway properties",
+        "rohit sharma unisel realty",
     ],
     alternates: { canonical: "https://www.uniselrealty.com/about" },
     openGraph: {
         title: "About Unisel Realty | Gurgaon's Trusted Luxury Real Estate Advisory",
         description:
-            "20+ years of expertise in Gurgaon luxury real estate. $2B+ transacted value, 10,000+ families placed, 90% client retention.",
+            "20+ years of expertise in Gurgaon luxury real estate. ₹2,400 Cr+ transacted, 3,800+ families housed, 4.9★ rating.",
         url: "https://www.uniselrealty.com/about",
         siteName: "Unisel Realty",
         images: [{ url: "/about/opengraph-image", width: 1200, height: 630, alt: "About Unisel Realty" }],
@@ -34,70 +35,200 @@ export const metadata: Metadata = {
     },
     twitter: {
         card: "summary_large_image",
-        title: "About Unisel Realty | Luxury Real Estate Advisory Since 2006",
+        title: "About Unisel Realty | Luxury Real Estate Advisory Since 2005",
         description:
             "Gurgaon's most trusted advisors for luxury real estate & high-return investments.",
         images: ["/about/opengraph-image"],
     },
 };
 
-const services = [
+const aboutTiles = [
     {
-        icon: "ph:buildings-fill",
-        title: "Luxury Residential Advisory",
+        icon: "ph:trophy-fill",
+        title: "Market Leadership",
         description:
-            "Pre-launch access to premium projects from DLF, Godrej, M3M, and Sobha across Golf Course Road, Dwarka Expressway, and New Gurgaon.",
+            "Consistently ranked among top channel partners by DLF, Godrej, M3M & Emaar in Gurgaon's premium segment.",
     },
     {
-        icon: "ph:storefront-fill",
-        title: "Commercial & SCO Investment",
+        icon: "ph:globe-hemisphere-east-fill",
+        title: "Dubai Office",
         description:
-            "Strategic guidance on Shop-Cum-Office plots and commercial real estate with a focus on yield optimisation and long-term appreciation.",
+            "Dedicated NRI investor desk in Dubai serving the Indian diaspora with seamless end-to-end transaction support.",
     },
     {
-        icon: "ph:globe-fill",
-        title: "NRI Property Services",
+        icon: "ph:magnifying-glass-fill",
+        title: "Curated Portfolio",
         description:
-            "End-to-end transaction support for 200+ NRI clients across UAE, UK, USA, Singapore, Canada, and Australia — including POA structuring, FEMA compliance, and repatriation planning.",
-    },
-    {
-        icon: "ph:key-fill",
-        title: "Post-Purchase Management",
-        description:
-            "Property management for 80+ units including possession coordination, tenant screening, rent collection, and yield reporting averaging 4.2% annual rental yield.",
-    },
-];
-
-const milestones = [
-    { year: "2006", text: "Founded with a vision to bring transparency to Gurgaon's real estate market" },
-    { year: "2010", text: "Pre-launch allotments in every major Golf Course Road project since this year" },
-    { year: "2015", text: "Expanded into NRI advisory services, now serving clients across 6 countries" },
-    { year: "2018", text: "Crossed 1,000 Cr+ in cumulative transacted value" },
-    { year: "2022", text: "Launched dedicated post-purchase property management vertical" },
-    { year: "2024", text: "Surpassed $2B+ in transacted value with zero developer disputes" },
-];
-
-const values = [
-    {
-        icon: "ph:shield-check-fill",
-        title: "Transparency First",
-        description: "Every recommendation is backed by data. No hidden commissions, no push-selling. We present the full picture so you decide with confidence.",
+            "Access to pre-launch allocations and exclusive inventory not available in the open market.",
     },
     {
         icon: "ph:chart-line-up-fill",
-        title: "Investment-Led Thinking",
-        description: "We don't just sell properties — we advise on investments. Every option we present is evaluated for capital appreciation, rental yield, and exit potential.",
+        title: "Wealth Advisory",
+        description:
+            "Beyond transactions — portfolio strategy, rental yield optimisation, and exit planning.",
+    },
+];
+
+const founderCreds = [
+    { num: "20+", label: "Years in Luxury Real Estate" },
+    { num: "₹2,400 Cr", label: "Transactions Supervised" },
+    { num: "3,800+", label: "Families Served" },
+    { num: "2", label: "Offices · Gurgaon & Dubai" },
+];
+
+const returns = [
+    {
+        project: "DLF The Camellias",
+        multiple: "3.8×",
+        period: "Over 6 years · 2018–2024",
+        type: "Ultra-Luxury · Golf Course Road",
+        featured: true,
     },
     {
-        icon: "ph:handshake-fill",
-        title: "Client-First Approach",
-        description: "Our 90% client retention speaks for itself. We build relationships, not transactions — guiding families from first enquiry through possession and beyond.",
+        project: "Godrej Golf Links",
+        multiple: "2.6×",
+        period: "Over 5 years · 2019–2024",
+        type: "Premium · Golf Course Extension",
     },
     {
-        icon: "ph:users-three-fill",
-        title: "Deep Market Expertise",
-        description: "A specialised team of 20+ professionals covering new bookings, leasing, and resale across every Gurgaon micro-market — from Sector 54 to Sector 113.",
+        project: "M3M Golf Estate",
+        multiple: "2.2×",
+        period: "Over 4 years · 2020–2024",
+        type: "Luxury · Sector 65",
     },
+    {
+        project: "Emaar Palm Heights",
+        multiple: "1.9×",
+        period: "Over 3 years · 2021–2024",
+        type: "Premium · Dwarka Expressway",
+    },
+];
+
+const markets = [
+    {
+        num: "01",
+        name: "Golf Course Road",
+        desc: "DLF Camellias · Aralias · Magnolias · Pinnacle",
+        psf: "₹35K–₹80K",
+    },
+    {
+        num: "02",
+        name: "Golf Course Ext. Road",
+        desc: "Godrej · M3M · Emaar · Sobha · Sector 65–70",
+        psf: "₹14K–₹30K",
+    },
+    {
+        num: "03",
+        name: "Dwarka Expressway",
+        desc: "Adani Realty · M3M · Sobha · Sector 99–113",
+        psf: "₹10K–₹22K",
+    },
+    {
+        num: "04",
+        name: "New Gurgaon",
+        desc: "High-yield emerging sectors with metro connectivity",
+        psf: "₹7K–₹14K",
+    },
+];
+
+const whyChoose = [
+    {
+        icon: "ph:target-fill",
+        title: "Pre-Launch Access",
+        description:
+            "Developer relationships unlock inventory before public launch — often at 15–25% below market pricing at possession. This alone has generated extraordinary returns for our earliest investors.",
+    },
+    {
+        icon: "ph:shield-check-fill",
+        title: "Transparent Advisory",
+        description:
+            "We tell clients what to avoid, not just what to buy. Our no-pressure advisory has built 20 years of referral trust. 68% of our business comes from existing client recommendations.",
+    },
+    {
+        icon: "ph:key-fill",
+        title: "End-to-End Management",
+        description:
+            "From site visits and due diligence through home loans, legal, interior handover, and tenant placement — Unisel is your single point of contact across the entire ownership journey.",
+    },
+    {
+        icon: "ph:globe-fill",
+        title: "NRI Specialisation",
+        description:
+            "Our Dubai NRI desk understands FEMA compliance, power of attorney structures, and repatriation. NRI clients invest with confidence knowing every regulatory detail is handled.",
+    },
+    {
+        icon: "ph:chart-line-up-fill",
+        title: "Market Intelligence",
+        description:
+            "Proprietary micro-market data updated weekly. We track FSI changes, infrastructure announcements, and developer distress opportunities before they become public knowledge.",
+    },
+    {
+        icon: "ph:diamond-fill",
+        title: "Portfolio Curation",
+        description:
+            "Not every project earns our recommendation. We advise clients against purchases we wouldn't make ourselves. This filter is why our clients' portfolios consistently outperform the market.",
+    },
+];
+
+const testimonials = [
+    {
+        badge: "287% Return · 6 Years",
+        text: "Unisel advised us to book in DLF Camellias when everyone else thought ₹25K PSF was the ceiling. Today it's touching ₹80K. They didn't just sell us a flat — they gave us a generational asset.",
+        initials: "RK",
+        name: "Rajiv Khanna",
+        tag: "MD, Pharmaceuticals",
+        location: "NRI · London",
+        featured: true,
+    },
+    {
+        badge: "160% Return · 4 Years",
+        text: "As an NRI, trust is everything. Unisel's Dubai team handled every detail — from legal due diligence to interior coordination — while I was 3,000 km away. Flawless experience, outstanding returns.",
+        initials: "PS",
+        name: "Priya Subramaniam",
+        tag: "Senior Executive, ADNOC",
+        location: "NRI · Abu Dhabi",
+    },
+    {
+        badge: "120% Return · 3 Years",
+        text: "I've worked with five agencies across Gurgaon. None come close to Unisel's market depth. They got me into M3M Golf Estate at pre-launch pricing. The appreciation has been extraordinary.",
+        initials: "AM",
+        name: "Ankit Mehrotra",
+        tag: "Partner, Big 4 Consulting",
+        location: "HNI · Gurgaon",
+    },
+    {
+        badge: "90% Return · 3 Years",
+        text: "The Unisel team understood my yield requirements immediately. They matched me to the perfect asset — a 4BHK on Golf Course Road now generating 5.2% net rental yield.",
+        initials: "SB",
+        name: "Sumit Bhatia",
+        tag: "VP, Global Bank",
+        location: "NRI · Singapore",
+    },
+    {
+        badge: "210% Return · 5 Years",
+        text: "We invested in two units on Golf Course Extension in 2019 on Unisel's recommendation. Both have tripled in value. We've since referred 11 friends and family — all equally satisfied.",
+        initials: "VN",
+        name: "Vikram Nair",
+        tag: "Entrepreneur, Tech Sector",
+        location: "HNI · Bengaluru",
+    },
+    {
+        badge: "Rental Yield 5.8% p.a.",
+        text: "Post-retirement, I wanted stable income from real estate. Unisel structured a portfolio of two mid-segment units. My monthly rental income has exceeded expectations every quarter for three years.",
+        initials: "MG",
+        name: "Meena Gupta",
+        tag: "Retired IAS Officer",
+        location: "HNI · Delhi NCR",
+    },
+];
+
+const nriCapabilities = [
+    "FEMA-compliant transaction structuring",
+    "Power of Attorney documentation support",
+    "Virtual site tours and 3D walkthroughs",
+    "NRI home loan partnerships with leading banks",
+    "Post-purchase rental management & yield reporting",
+    "Seamless fund repatriation guidance",
 ];
 
 const AboutPage = async () => {
@@ -122,9 +253,9 @@ const AboutPage = async () => {
 
             {/* Hero */}
             <HeroSub
-                title="About Unisel Realty."
-                description="Gurgaon's most trusted advisors for luxury real estate and high-return investments — since 2006."
-                badge="About Us"
+                title="Where Exceptional Addresses Meet Exceptional Returns."
+                description="Two decades of curating India's finest real estate opportunities for discerning investors across the globe. From Golf Course Road to Dwarka Expressway — we don't just sell properties, we engineer wealth."
+                badge="Luxury Real Estate Channel Partner · Gurgaon NCR"
             />
 
             {/* Stats Bar */}
@@ -134,44 +265,217 @@ const AboutPage = async () => {
                 </div>
             </section>
 
-            {/* Our Story */}
+            {/* About / Our Story */}
             <section className="container max-w-8xl mx-auto px-5 2xl:px-0 py-14 md:py-28">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start">
                     <div>
                         <p className="text-dark/75 dark:text-white/75 text-base font-semibold flex gap-2 items-center mb-4">
                             <Icon icon="ph:house-simple-fill" className="text-2xl text-primary" />
-                            Our Story
+                            About Unisel
                         </p>
                         <h2 className="lg:text-52 text-40 font-medium dark:text-white leading-tight mb-6">
-                            Built on Trust,<br /> Driven by Results.
+                            Twenty Years of Trust<br /> in Every Transaction.
                         </h2>
                         <div className="space-y-4">
                             <p className="text-base text-dark/60 dark:text-white/60 leading-7">
-                                Unisel Realty was founded in 2006 with a single mission: to bring honesty and expertise to Gurgaon&apos;s luxury real estate market. At a time when the industry was opaque and fragmented, we set out to become the advisor clients could trust completely.
+                                Established in the mid-2000s, Unisel Realty has emerged as Gurgaon&apos;s most trusted luxury real estate channel partner. Built on the twin pillars of market intelligence and client-first advisory, we&apos;ve guided HNIs, CXOs, and NRI investors toward addresses that don&apos;t just appreciate — they define lifestyles.
                             </p>
                             <p className="text-base text-dark/60 dark:text-white/60 leading-7">
-                                Over 20 years, we have helped 10,000+ families find their dream homes, guided NRI investors across six countries, and built a track record of zero developer disputes. From our first pre-launch allotment on Golf Course Road to managing a portfolio of 80+ rental units today, every milestone reflects our commitment to doing right by our clients.
-                            </p>
-                            <p className="text-base text-dark/60 dark:text-white/60 leading-7">
-                                Today, Unisel Realty is a team of 20+ professionals specialising in new bookings, leasing, and resale — operating from our office at Adani Miracle Mile, Sector 60, Gurgaon. We remain focused exclusively on Gurgaon because depth of knowledge in one market beats shallow coverage across many.
+                                Our team combines deep hyperlocal expertise with a global perspective, operating across Gurgaon and Dubai to serve clients wherever they are.
                             </p>
                         </div>
                     </div>
 
-                    {/* Timeline */}
-                    <div>
-                        <p className="text-dark/75 dark:text-white/75 text-base font-semibold flex gap-2 items-center mb-8">
-                            <Icon icon="ph:clock-clockwise-fill" className="text-2xl text-primary" />
-                            Key Milestones
-                        </p>
-                        <div className="relative pl-8 border-l-2 border-primary/20 space-y-8">
-                            {milestones.map((item) => (
-                                <div key={item.year} className="relative">
-                                    <div className="absolute -left-[2.55rem] top-0.5 w-5 h-5 rounded-full bg-primary/20 flex items-center justify-center">
-                                        <div className="w-2.5 h-2.5 rounded-full bg-primary" />
+                    {/* Tiles */}
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                        {aboutTiles.map((tile) => (
+                            <div
+                                key={tile.title}
+                                className="border border-dark/10 dark:border-white/10 rounded-2xl p-6 group hover:border-primary/40 hover:shadow-3xl transition-all duration-300"
+                            >
+                                <div className="w-12 h-12 rounded-xl bg-primary/10 group-hover:bg-primary flex items-center justify-center mb-4 transition-colors duration-300">
+                                    <Icon icon={tile.icon} className="text-xl text-primary group-hover:text-white transition-colors duration-300" />
+                                </div>
+                                <h3 className="text-lg font-semibold dark:text-white mb-2">{tile.title}</h3>
+                                <p className="text-sm text-dark/60 dark:text-white/60 leading-6">{tile.description}</p>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
+            {/* Founder */}
+            <section className="bg-dark/[0.02] dark:bg-white/[0.02]">
+                <div className="container max-w-8xl mx-auto px-5 2xl:px-0 py-14 md:py-28">
+                    <div className="grid grid-cols-1 lg:grid-cols-5 gap-12 lg:gap-16 items-start">
+                        {/* Left: photo card + creds */}
+                        <div className="lg:col-span-2">
+                            <div className="relative aspect-[3/4] rounded-2xl bg-gradient-to-br from-primary/15 to-primary/5 border border-primary/20 flex flex-col items-center justify-center overflow-hidden">
+                                <span className="absolute top-4 left-4 w-7 h-7 border-t border-l border-primary" />
+                                <span className="absolute top-4 right-4 w-7 h-7 border-t border-r border-primary" />
+                                <span className="absolute bottom-4 left-4 w-7 h-7 border-b border-l border-primary" />
+                                <span className="absolute bottom-4 right-4 w-7 h-7 border-b border-r border-primary" />
+                                <span className="text-8xl font-medium text-primary/30">RS</span>
+                                <span className="mt-2 text-xs tracking-[0.3em] uppercase text-primary/60">
+                                    Founder &amp; Managing Director
+                                </span>
+                                <span className="absolute bottom-0 left-0 right-0 h-[3px] bg-gradient-to-r from-transparent via-primary to-transparent" />
+                            </div>
+
+                            <div className="mt-5 bg-primary text-white rounded-xl px-5 py-4 flex items-center justify-between">
+                                <div>
+                                    <p className="text-base font-semibold">Rohit Sharma</p>
+                                    <p className="text-[11px] tracking-[0.18em] uppercase text-white/75 mt-1">
+                                        Founder &amp; MD · Unisel Realty
+                                    </p>
+                                </div>
+                                <span className="text-xs text-white/70">Est. 2005</span>
+                            </div>
+
+                            <div className="grid grid-cols-2 gap-3 mt-5">
+                                {founderCreds.map((c) => (
+                                    <div
+                                        key={c.label}
+                                        className="border border-dark/10 dark:border-white/10 rounded-xl p-4"
+                                    >
+                                        <p className="text-2xl font-medium text-primary leading-none">{c.num}</p>
+                                        <p className="text-[11px] tracking-[0.15em] uppercase text-dark/60 dark:text-white/60 mt-2">
+                                            {c.label}
+                                        </p>
                                     </div>
-                                    <p className="text-sm font-semibold text-primary mb-1">{item.year}</p>
-                                    <p className="text-base text-dark/60 dark:text-white/60 leading-7">{item.text}</p>
+                                ))}
+                            </div>
+                        </div>
+
+                        {/* Right: message */}
+                        <div className="lg:col-span-3">
+                            <p className="text-dark/75 dark:text-white/75 text-base font-semibold flex gap-2 items-center mb-4">
+                                <Icon icon="ph:quotes-fill" className="text-2xl text-primary" />
+                                Founder&apos;s Message
+                            </p>
+                            <h2 className="lg:text-52 text-40 font-medium dark:text-white leading-tight mb-6">
+                                We Built Unisel<br /> on One Promise — Your Trust.
+                            </h2>
+
+                            <div className="border-l-4 border-primary pl-5 mb-6">
+                                <p className="text-lg md:text-xl italic text-dark dark:text-white leading-relaxed">
+                                    &ldquo;I started Unisel Realty with a simple belief — that a homebuyer or investor deserves the same quality of advice that they give their most important business decisions. Not a sales pitch. Not a brochure. Real, honest counsel.&rdquo;
+                                </p>
+                            </div>
+
+                            <div className="space-y-4">
+                                <p className="text-base text-dark/60 dark:text-white/60 leading-7">
+                                    When I founded Unisel in 2005, Gurgaon&apos;s luxury segment was just beginning to take shape. Golf Course Road was still a promise. I saw what others didn&apos;t — that this corridor would become India&apos;s most coveted residential address. We positioned ourselves not as brokers, but as advisors who happened to facilitate transactions.
+                                </p>
+                                <p className="text-base text-dark/60 dark:text-white/60 leading-7">
+                                    Over two decades, I&apos;ve watched clients turn a single apartment purchase into a multi-crore portfolio. I&apos;ve seen NRI families secure their Indian roots with an address that reflects their success. And I&apos;ve seen the power of buying right — the right project, the right floor, the right timing — transform financial futures.
+                                </p>
+                                <p className="text-base text-dark/60 dark:text-white/60 leading-7">
+                                    Our Dubai office was born from one realisation: India&apos;s NRI community deserves a trusted partner in their own time zone who speaks their language — financially and culturally. Today, nearly 35% of our transactions are NRI-led, and that number grows every year.
+                                </p>
+                                <p className="text-base text-dark/60 dark:text-white/60 leading-7">
+                                    What keeps me going is not the transactions closed, but the calls I receive years later — <em className="text-primary not-italic font-medium">&ldquo;Rohit ji, that investment changed our family&apos;s life.&rdquo;</em> That is why Unisel exists.
+                                </p>
+                            </div>
+
+                            <div className="mt-8 pt-6 border-t border-dark/10 dark:border-white/10">
+                                <p className="text-2xl italic text-primary font-medium">Rohit Sharma</p>
+                                <p className="text-xs tracking-[0.2em] uppercase text-dark/60 dark:text-white/60 mt-2">
+                                    Founder &amp; Managing Director, Unisel Realty
+                                </p>
+                                <p className="text-xs text-dark/60 dark:text-white/60 mt-1">
+                                    Gurgaon · Dubai · Since 2005
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            {/* Track Record / Returns */}
+            <section className="container max-w-8xl mx-auto px-5 2xl:px-0 py-14 md:py-28">
+                <div className="text-center mb-12 max-w-3xl mx-auto">
+                    <p className="text-dark/75 dark:text-white/75 text-base font-semibold flex gap-2 items-center justify-center mb-4">
+                        <Icon icon="ph:trend-up-fill" className="text-2xl text-primary" />
+                        Track Record · Average Returns
+                    </p>
+                    <h2 className="lg:text-52 text-40 font-medium dark:text-white leading-tight">
+                        Portfolios That Outperform.
+                    </h2>
+                    <p className="text-dark/50 dark:text-white/50 text-base mt-3">
+                        Verified average capital appreciation across projects advised by Unisel Realty over holding periods of 3–7 years.
+                    </p>
+                </div>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-5">
+                    {returns.map((r) => (
+                        <div
+                            key={r.project}
+                            className={`relative rounded-2xl p-7 border transition-all duration-300 hover:shadow-3xl ${
+                                r.featured
+                                    ? "bg-primary/10 border-primary/40"
+                                    : "bg-white dark:bg-white/5 border-dark/10 dark:border-white/10 hover:border-primary/40"
+                            }`}
+                        >
+                            {r.featured && (
+                                <span className="absolute -top-3 left-1/2 -translate-x-1/2 bg-primary text-white text-[10px] font-bold tracking-[0.2em] uppercase px-3 py-1 rounded-full">
+                                    Best Performer
+                                </span>
+                            )}
+                            <p className="text-xs tracking-[0.2em] uppercase text-primary font-semibold mb-4">
+                                {r.project}
+                            </p>
+                            <p className="text-5xl font-medium dark:text-white leading-none flex items-baseline gap-1">
+                                <Icon icon="ph:arrow-up-bold" className="text-2xl text-primary" />
+                                {r.multiple}
+                            </p>
+                            <p className="text-xs text-dark/60 dark:text-white/60 mt-2 mb-5">{r.period}</p>
+                            <p className="text-xs text-dark/60 dark:text-white/60 pt-4 border-t border-dark/10 dark:border-white/10">
+                                {r.type}
+                            </p>
+                        </div>
+                    ))}
+                </div>
+
+                <p className="text-center text-xs text-dark/40 dark:text-white/40 mt-10 max-w-3xl mx-auto">
+                    Past performance is indicative and based on market data and client transaction records. Returns vary by specific unit, floor, and timing. This is not an investment guarantee.
+                </p>
+            </section>
+
+            {/* Markets */}
+            <section className="bg-dark/[0.02] dark:bg-white/[0.02]">
+                <div className="container max-w-8xl mx-auto px-5 2xl:px-0 py-14 md:py-28">
+                    <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 lg:gap-16 items-start">
+                        <div className="lg:col-span-1">
+                            <p className="text-dark/75 dark:text-white/75 text-base font-semibold flex gap-2 items-center mb-4">
+                                <Icon icon="ph:map-pin-fill" className="text-2xl text-primary" />
+                                Our Markets
+                            </p>
+                            <h2 className="lg:text-52 text-40 font-medium dark:text-white leading-tight mb-4">
+                                Gurgaon&apos;s Prime Corridors.
+                            </h2>
+                            <p className="text-base text-dark/60 dark:text-white/60 leading-7">
+                                We operate exclusively in Gurgaon&apos;s most sought-after micro-markets — corridors with proven appreciation history, world-class infrastructure, and consistent NRI demand.
+                            </p>
+                        </div>
+
+                        <div className="lg:col-span-2 flex flex-col gap-3">
+                            {markets.map((m) => (
+                                <div
+                                    key={m.name}
+                                    className="grid grid-cols-[auto_1fr_auto] gap-5 items-center px-6 py-5 border border-dark/10 dark:border-white/10 rounded-2xl bg-white dark:bg-white/5 hover:border-primary/40 hover:shadow-3xl transition-all duration-300"
+                                >
+                                    <span className="text-2xl font-medium text-primary/30 leading-none">{m.num}</span>
+                                    <div>
+                                        <p className="text-lg font-semibold dark:text-white">{m.name}</p>
+                                        <p className="text-xs text-dark/60 dark:text-white/60 mt-1">{m.desc}</p>
+                                    </div>
+                                    <div className="text-right">
+                                        <p className="text-lg font-medium text-primary leading-none">{m.psf}</p>
+                                        <p className="text-[10px] tracking-[0.15em] uppercase text-dark/60 dark:text-white/60 mt-1">
+                                            Per Sq. Ft.
+                                        </p>
+                                    </div>
                                 </div>
                             ))}
                         </div>
@@ -179,69 +483,144 @@ const AboutPage = async () => {
                 </div>
             </section>
 
-            {/* What We Do */}
+            {/* Why Choose Unisel */}
+            <section className="container max-w-8xl mx-auto px-5 2xl:px-0 py-14 md:py-28">
+                <div className="text-center mb-12 max-w-3xl mx-auto">
+                    <p className="text-dark/75 dark:text-white/75 text-base font-semibold flex gap-2 items-center justify-center mb-4">
+                        <Icon icon="ph:star-four-fill" className="text-2xl text-primary" />
+                        The Unisel Difference
+                    </p>
+                    <h2 className="lg:text-52 text-40 font-medium dark:text-white leading-tight">
+                        Why 3,800+ Families Chose Us.
+                    </h2>
+                </div>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                    {whyChoose.map((w, i) => (
+                        <div
+                            key={w.title}
+                            className="relative border border-dark/10 dark:border-white/10 rounded-2xl p-8 group hover:border-primary/40 hover:shadow-3xl transition-all duration-300 overflow-hidden"
+                        >
+                            <span className="absolute top-4 right-6 text-7xl font-bold text-dark/[0.04] dark:text-white/[0.04] select-none">
+                                {String(i + 1).padStart(2, "0")}
+                            </span>
+                            <div className="w-14 h-14 rounded-2xl bg-primary/10 group-hover:bg-primary flex items-center justify-center mb-5 transition-colors duration-300">
+                                <Icon icon={w.icon} className="text-2xl text-primary group-hover:text-white transition-colors duration-300" />
+                            </div>
+                            <h3 className="text-lg font-semibold dark:text-white mb-3">{w.title}</h3>
+                            <p className="text-sm text-dark/60 dark:text-white/60 leading-6">{w.description}</p>
+                        </div>
+                    ))}
+                </div>
+            </section>
+
+            {/* Testimonials */}
             <section className="bg-dark/[0.02] dark:bg-white/[0.02]">
                 <div className="container max-w-8xl mx-auto px-5 2xl:px-0 py-14 md:py-28">
-                    <div className="mb-12">
-                        <p className="text-dark/75 dark:text-white/75 text-base font-semibold flex gap-2 items-center mb-4">
-                            <Icon icon="ph:house-simple-fill" className="text-2xl text-primary" />
-                            What We Do
-                        </p>
-                        <h2 className="lg:text-52 text-40 font-medium dark:text-white leading-tight">
-                            End-to-End Real Estate Advisory.
-                        </h2>
-                        <p className="text-dark/50 dark:text-white/50 text-xm mt-3 max-w-2xl">
-                            From your first property search to post-purchase management, we cover every stage of the real estate journey.
-                        </p>
+                    <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-12">
+                        <div>
+                            <p className="text-dark/75 dark:text-white/75 text-base font-semibold flex gap-2 items-center mb-4">
+                                <Icon icon="ph:chat-circle-text-fill" className="text-2xl text-primary" />
+                                Client Stories
+                            </p>
+                            <h2 className="lg:text-52 text-40 font-medium dark:text-white leading-tight">
+                                Heard from Those Who Invested with Us.
+                            </h2>
+                        </div>
+                        <div className="md:text-right">
+                            <p className="text-5xl font-medium text-primary leading-none">4.9</p>
+                            <p className="text-lg text-primary tracking-[2px] mt-1">★★★★★</p>
+                            <p className="text-xs tracking-[0.2em] uppercase text-dark/60 dark:text-white/60 mt-1">
+                                Avg. Client Rating · 400+ Reviews
+                            </p>
+                        </div>
                     </div>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-6">
-                        {services.map((service, index) => (
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+                        {testimonials.map((t) => (
                             <div
-                                key={service.title}
-                                className="relative border border-dark/10 dark:border-white/10 rounded-2xl p-8 group hover:border-primary/40 hover:shadow-3xl transition-all duration-300 overflow-hidden"
+                                key={t.name}
+                                className={`relative rounded-2xl p-7 border transition-all duration-300 hover:shadow-3xl ${
+                                    t.featured
+                                        ? "bg-primary/10 border-primary/40"
+                                        : "bg-white dark:bg-white/5 border-dark/10 dark:border-white/10 hover:border-primary/40"
+                                }`}
                             >
-                                <span className="absolute top-4 right-6 text-7xl font-bold text-dark/[0.04] dark:text-white/[0.04] select-none">
-                                    {String(index + 1).padStart(2, "0")}
+                                <Icon
+                                    icon="ph:quotes-fill"
+                                    className="text-3xl text-primary/30 mb-3"
+                                />
+                                <span className="inline-flex items-center gap-1.5 bg-primary/10 border border-primary/30 text-primary text-[11px] font-semibold tracking-[0.08em] px-3 py-1.5 rounded-full mb-4">
+                                    <Icon icon="ph:arrow-up-bold" className="text-xs" />
+                                    {t.badge}
                                 </span>
-                                <div className="w-14 h-14 rounded-2xl bg-primary/10 group-hover:bg-primary flex items-center justify-center mb-6 transition-colors duration-300">
-                                    <Icon icon={service.icon} className="text-2xl text-primary group-hover:text-white transition-colors duration-300" />
+                                <p className="text-sm italic text-dark/75 dark:text-white/75 leading-7 mb-5">
+                                    &ldquo;{t.text}&rdquo;
+                                </p>
+                                <div className="flex items-center gap-3 pt-4 border-t border-dark/10 dark:border-white/10">
+                                    <div className="w-11 h-11 rounded-full bg-primary text-white flex items-center justify-center text-sm font-semibold shrink-0">
+                                        {t.initials}
+                                    </div>
+                                    <div>
+                                        <p className="text-sm font-semibold dark:text-white">{t.name}</p>
+                                        <p className="text-xs text-dark/60 dark:text-white/60">{t.tag}</p>
+                                        <span className="inline-block mt-1 text-[10px] font-bold tracking-[0.1em] uppercase bg-primary/15 text-primary px-2 py-0.5 rounded">
+                                            {t.location}
+                                        </span>
+                                    </div>
                                 </div>
-                                <h3 className="text-lg font-semibold dark:text-white mb-3">{service.title}</h3>
-                                <p className="text-sm text-dark/60 dark:text-white/60 leading-6">{service.description}</p>
                             </div>
                         ))}
                     </div>
                 </div>
             </section>
 
-            {/* Our Values */}
+            {/* NRI Investor Desk */}
             <section className="container max-w-8xl mx-auto px-5 2xl:px-0 py-14 md:py-28">
-                <div className="mb-12">
-                    <p className="text-dark/75 dark:text-white/75 text-base font-semibold flex gap-2 items-center mb-4">
-                        <Icon icon="ph:house-simple-fill" className="text-2xl text-primary" />
-                        Why Clients Trust Us
-                    </p>
-                    <h2 className="lg:text-52 text-40 font-medium dark:text-white leading-tight">
-                        Principles That Guide Every Decision.
-                    </h2>
-                </div>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                    {values.map((value) => (
-                        <div
-                            key={value.title}
-                            className="border border-dark/10 dark:border-white/10 rounded-2xl p-8 group hover:border-primary/40 hover:shadow-3xl transition-all duration-300"
-                        >
-                            <div className="flex items-start gap-5">
-                                <div className="w-12 h-12 rounded-xl bg-primary/10 group-hover:bg-primary flex items-center justify-center shrink-0 transition-colors duration-300">
-                                    <Icon icon={value.icon} className="text-xl text-primary group-hover:text-white transition-colors duration-300" />
-                                </div>
-                                <div>
-                                    <h3 className="text-lg font-semibold dark:text-white mb-2">{value.title}</h3>
-                                    <p className="text-sm text-dark/60 dark:text-white/60 leading-6">{value.description}</p>
-                                </div>
-                            </div>
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+                    {/* Visual */}
+                    <div className="relative h-[420px]">
+                        <div className="absolute top-0 left-0 w-[75%] rounded-2xl border border-primary/30 bg-primary/5 backdrop-blur p-7">
+                            <p className="text-[11px] tracking-[0.3em] uppercase text-primary font-semibold mb-3">
+                                🇦🇪 Dubai Office
+                            </p>
+                            <p className="text-3xl font-medium dark:text-white mb-2">Dubai</p>
+                            <p className="text-sm text-dark/60 dark:text-white/60 leading-6">
+                                Dedicated NRI investor desk serving the Indian diaspora with seamless India real estate investments.
+                            </p>
+                            <p className="text-xl mt-4">🇦🇪 🇬🇧 🇺🇸 🇸🇬 🇨🇦</p>
                         </div>
-                    ))}
+                        <div className="absolute bottom-0 right-0 w-[65%] rounded-2xl border border-dark/10 dark:border-white/10 bg-white dark:bg-white/5 p-6">
+                            <p className="text-[11px] tracking-[0.3em] uppercase text-primary font-semibold mb-3">
+                                Headquarters
+                            </p>
+                            <p className="text-3xl font-medium dark:text-white mb-2">Gurgaon</p>
+                            <p className="text-sm text-dark/60 dark:text-white/60 leading-6">
+                                Golf Course Road · Sector 42<br />Haryana, India 122002
+                            </p>
+                        </div>
+                    </div>
+
+                    <div>
+                        <p className="text-dark/75 dark:text-white/75 text-base font-semibold flex gap-2 items-center mb-4">
+                            <Icon icon="ph:airplane-tilt-fill" className="text-2xl text-primary" />
+                            NRI Investor Desk
+                        </p>
+                        <h2 className="lg:text-52 text-40 font-medium dark:text-white leading-tight mb-6">
+                            Invest in India from Anywhere in the World.
+                        </h2>
+                        <p className="text-base text-dark/60 dark:text-white/60 leading-7 mb-6">
+                            Our NRI desk was purpose-built for the Indian professional abroad who wants the wealth-building power of Gurgaon real estate without the complexity of managing it remotely. We&apos;ve executed over ₹600 Cr in NRI-led transactions.
+                        </p>
+                        <ul className="flex flex-col gap-3">
+                            {nriCapabilities.map((c) => (
+                                <li key={c} className="flex items-center gap-3 text-sm text-dark/75 dark:text-white/75">
+                                    <Icon icon="ph:check-circle-fill" className="text-primary text-lg shrink-0" />
+                                    {c}
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
                 </div>
             </section>
 
@@ -250,13 +629,13 @@ const AboutPage = async () => {
                 <div className="container max-w-8xl mx-auto px-5 2xl:px-0 mb-10">
                     <div className="text-center">
                         <p className="text-dark/75 dark:text-white/75 text-base font-semibold flex gap-2 items-center justify-center mb-4">
-                            <Icon icon="ph:house-simple-fill" className="text-2xl text-primary" />
-                            Our Partners
+                            <Icon icon="ph:handshake-fill" className="text-2xl text-primary" />
+                            Developer Partnerships
                         </p>
                         <h2 className="lg:text-52 text-40 font-medium dark:text-white leading-tight">
-                            Trusted by India&apos;s Top Developers.
+                            India&apos;s Most Prestigious Developers.
                         </h2>
-                        <p className="text-dark/50 dark:text-white/50 text-xm mt-3 max-w-2xl mx-auto">
+                        <p className="text-dark/50 dark:text-white/50 text-base mt-3 max-w-2xl mx-auto">
                             We work directly with the most reputed developers to secure pre-launch access and exclusive allotments for our clients.
                         </p>
                     </div>
@@ -296,17 +675,17 @@ const AboutPage = async () => {
             <section className="container max-w-8xl mx-auto px-5 2xl:px-0 py-14 md:py-28">
                 <div className="bg-primary rounded-3xl p-10 md:p-16 text-center">
                     <h2 className="text-3xl md:text-4xl font-medium text-white mb-4">
-                        Ready to Find Your Next Property?
+                        The Right Address Changes Everything.
                     </h2>
                     <p className="text-white/80 text-base md:text-lg max-w-2xl mx-auto mb-8">
-                        Whether you are buying your first home, diversifying your portfolio, or investing from abroad — our team is here to guide you every step of the way.
+                        Whether you&apos;re a first-time investor or expanding a multi-crore portfolio, our advisory team is ready to identify the right opportunity for your specific goals.
                     </p>
                     <div className="flex flex-col sm:flex-row gap-4 justify-center">
                         <Link
                             href="/contact"
                             className="inline-flex items-center justify-center gap-2 bg-white text-primary font-semibold px-8 py-3.5 rounded-full hover:bg-white/90 transition-colors duration-300"
                         >
-                            Get in Touch
+                            Book a Consultation
                             <Icon icon="ph:arrow-right" className="text-lg" />
                         </Link>
                         <Link

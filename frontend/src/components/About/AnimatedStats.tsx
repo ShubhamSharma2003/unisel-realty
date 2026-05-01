@@ -11,10 +11,10 @@ type StatItem = {
 };
 
 const stats: StatItem[] = [
-    { prefix: "$", value: 2, suffix: "B+", label: "Transacted Value" },
-    { value: 10000, suffix: "+", label: "Families Served" },
-    { value: 20, suffix: "+", label: "Years of Expertise" },
-    { value: 90, suffix: "%", label: "Client Retention" },
+    { prefix: "₹", value: 2400, suffix: " Cr+", label: "Total Transaction Value" },
+    { value: 20, suffix: "+", label: "Years of Market Leadership" },
+    { value: 3800, suffix: "+", label: "Families Housed & Wealth Created" },
+    { value: 4.9, suffix: "★", label: "Client Satisfaction Score" },
 ];
 
 export default function AnimatedStats() {
