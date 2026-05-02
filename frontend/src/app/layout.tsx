@@ -17,7 +17,12 @@ import { AnalyticsProvider } from '@/components/Analytics/AnalyticsProvider'
 import PopupForm from '@/components/shared/PopupForm'
 import Script from 'next/script'
 
-const font = Bricolage_Grotesque({ subsets: ["latin"] });
+const font = Bricolage_Grotesque({
+  subsets: ["latin"],
+  display: "swap",
+  fallback: ["system-ui", "Segoe UI", "Arial", "sans-serif"],
+  adjustFontFallback: false,
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://www.uniselrealty.com'),
