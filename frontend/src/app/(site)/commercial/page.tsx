@@ -350,15 +350,15 @@ const CommercialPage = () => {
                     </p>
                 </div>
 
-                <div className="bg-primary mt-10 border-y border-white/10">
+                <div className="bg-primary mt-10 border-y border-white/10 overflow-hidden">
                     <div className="max-w-4xl mx-auto flex flex-wrap justify-center">
                         {heroStats.map((s, i) => (
-                            <div key={s.label} className="flex items-stretch">
-                                <div className="flex flex-col items-center justify-center px-4 sm:px-8 py-6 flex-1 min-w-[140px] gap-1">
-                                    <span className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white tracking-tight leading-none">
+                            <div key={s.label} className="flex items-stretch min-w-0">
+                                <div className="flex flex-col items-center justify-center px-3 sm:px-8 py-6 flex-1 min-w-[110px] sm:min-w-[140px] gap-1">
+                                    <span className="text-xl sm:text-3xl lg:text-4xl font-bold text-white tracking-tight leading-none whitespace-nowrap">
                                         {s.num}
                                     </span>
-                                    <span className="text-white/60 text-[10px] sm:text-xs font-medium tracking-widest uppercase text-center">
+                                    <span className="text-white/60 text-[10px] sm:text-xs font-medium tracking-wider sm:tracking-widest uppercase text-center break-words">
                                         {s.label}
                                     </span>
                                 </div>
@@ -659,9 +659,9 @@ const CommercialPage = () => {
                                 Established
                             </p>
                         </div>
-                        <div>
+                        <div className="min-w-0">
                             <p className="text-lg md:text-xl font-medium text-primary mb-1">RERA Registered</p>
-                            <p className="text-[11px] text-dark/60 dark:text-white/60 tracking-[0.04em]">
+                            <p className="text-[11px] text-dark/60 dark:text-white/60 tracking-[0.04em] break-all">
                                 RC/HARERA/GGM/1940/1535/2022/308
                             </p>
                         </div>
@@ -705,7 +705,7 @@ const CommercialPage = () => {
                                 className="group border border-dark/10 dark:border-white/10 rounded-2xl bg-white dark:bg-white/5 hover:border-primary/40 hover:shadow-3xl transition-all duration-300"
                             >
                                 <summary className="cursor-pointer list-none flex items-center justify-between gap-4 px-6 py-5 text-base font-semibold dark:text-white">
-                                    <span>{f.q}</span>
+                                    <span className="min-w-0 break-words">{f.q}</span>
                                     <Icon
                                         icon="ph:plus-bold"
                                         className="text-primary text-xl shrink-0 transition-transform duration-300 group-open:rotate-45"
@@ -761,11 +761,11 @@ const CommercialPage = () => {
                     <div className="w-14 h-14 rounded-full bg-primary text-white flex items-center justify-center font-semibold text-lg shrink-0">
                         UR
                     </div>
-                    <div>
-                        <p className="text-sm font-semibold dark:text-white">
+                    <div className="min-w-0">
+                        <p className="text-sm font-semibold dark:text-white break-words">
                             Reviewed by Unisel Realty Advisory Team
                         </p>
-                        <p className="text-xs text-dark/60 dark:text-white/60 mt-1">
+                        <p className="text-xs text-dark/60 dark:text-white/60 mt-1 break-words">
                             RERA Registered Advisory · Established 2006 · Gurugram &amp; Dubai · Last updated May 2026
                         </p>
                     </div>
