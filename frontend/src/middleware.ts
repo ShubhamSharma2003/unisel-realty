@@ -5,6 +5,8 @@ const GONE_PATTERNS: RegExp[] = [
   /^\/wp-(admin|content|includes|login|json|config|cron)(\/|$)/i,
   /^\/xmlrpc(\/|$)/i,
   /^\/\.env(\/|$)/i,
+  /^\/sitemap\d+\.xml$/i,
+  /^\/sitemap[-_][\w-]+\.xml$/i,
 ];
 
 const GONE_BODY =
