@@ -1,6 +1,6 @@
 import React from 'react';
 import BlogCard from '@/components/shared/Blog/blogCard';
-import { Icon } from "@iconify/react";
+import { AppIcon as Icon } from "@/components/shared/AppIcon";
 import Link from 'next/link';
 import type { Blog } from '@/types/blog';
 import { sanityClient } from '@/lib/sanity.client';
@@ -35,7 +35,7 @@ const BlogSmall = async () => {
                             {subtitle}
                         </p>
                     </div>
-                    <Link href={ctaLink} className='bg-dark dark:bg-white text-white dark:text-dark py-4 px-8 rounded-full hover:bg-primary duration-300' aria-label="Read all blog articles">
+                    <Link href={ctaLink} className='bg-dark dark:bg-white text-white dark:text-dark py-4 px-8 rounded-full hover:bg-primary duration-300'>
                         {ctaText}
                     </Link>
                 </div>

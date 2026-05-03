@@ -1,5 +1,5 @@
 import { PropertyHomes } from '@/types/properyHomes'
-import { Icon } from '@iconify/react'
+import { AppIcon as Icon } from '@/components/shared/AppIcon'
 import Image from 'next/image'
 import Link from 'next/link'
 import { urlFor } from '@/lib/sanity.image'
@@ -12,7 +12,13 @@ const PropertyCard: React.FC<{ item: PropertyHomes }> = ({ item }) => {
     ? typeof mainImageSource === 'object' && 'src' in mainImageSource
       ? mainImageSource.src
       : typeof mainImageSource === 'object' && 'asset' in mainImageSource
-        ? urlFor(mainImageSource).width(880).height(600).fit('crop').url()
+        ? urlFor(mainImageSource)
+          .width(640)
+          .height(436)
+          .fit('crop')
+          .auto('format')
+          .quality(70)
+          .url()
         : null
     : null;
   const rateLabel = rate ?? '';
@@ -28,6 +34,8 @@ const PropertyCard: React.FC<{ item: PropertyHomes }> = ({ item }) => {
                 alt={name}
                 width={440}
                 height={300}
+                sizes="(max-width: 767px) 85vw, (max-width: 1279px) 33vw, 440px"
+                quality={70}
                 className='w-full rounded-t-2xl group-hover:brightness-50 group-hover:scale-125 transition duration-300 delay-75'
               />
             )}
@@ -55,9 +63,9 @@ const PropertyCard: React.FC<{ item: PropertyHomes }> = ({ item }) => {
             </div>
             <div>
               {rateLabel ? (
-                <button className='text-base font-normal text-primary px-5 py-2 rounded-full bg-primary/10'>
+                <span className='inline-flex text-base font-normal text-primary px-5 py-2 rounded-full bg-primary/10'>
                   {rateLabel}
-                </button>
+                </span>
               ) : null}
             </div>
           </div>

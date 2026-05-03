@@ -19,7 +19,7 @@
 
 @theme {
   /* Gradient colors */
-  --color-primary: #2596be;
+  --color-primary: #0f7398;
   --color-skyblue: #79adff;
   --color-lightskyblue: #9cc2dd;
   --color-dark: #172023;
@@ -191,4 +191,24 @@ section {
 
 .property-description hr {
   @apply border-dark/10 dark:border-white/10;
+}
+
+/* Keep muted copy readable enough for WCAG contrast on marketing sections. */
+.text-black\/50 {
+  color: rgb(0 0 0 / 0.7);
+}
+
+.text-dark\/50 {
+  color: rgb(23 32 35 / 0.74);
+}
+
+.text-gray-400 {
+  color: #4b5563;
+}
+
+.text-white\/40,
+.text-white\/50,
+.dark .dark\:text-white\/40,
+.dark .dark\:text-white\/50 {
+  color: rgb(255 255 255 / 0.72);
 }

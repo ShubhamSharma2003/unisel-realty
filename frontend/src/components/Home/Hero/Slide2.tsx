@@ -1,25 +1,24 @@
-import Image from "next/image";
 import Link from "next/link";
+import HeroPicture from "./HeroPicture";
 
 type Slide2Props = {
-  isMobile: boolean;
+  priority?: boolean;
 };
 
-const Slide2 = ({ isMobile }: Slide2Props) => {
-  const bgImage = isMobile
-    ? "/images/hero/hero-mob-2.jpeg"
-    : "/images/hero/hero-desk-2.png";
-
+const Slide2 = ({ priority = false }: Slide2Props) => {
   return (
     <div className="w-full h-full">
       <div className="relative w-full h-full flex flex-col">
-        <Image
-          src={bgImage}
+        <HeroPicture
+          desktopSrc="/images/hero/hero-desk-2.jpeg"
+          mobileSrc="/images/hero/hero-mob-2.jpeg"
           alt="Unisel Realty - Gurgaon's trusted real estate advisory since 2006"
-          fill
+          desktopWidth={1600}
+          desktopHeight={900}
+          mobileWidth={900}
+          mobileHeight={1600}
           className="object-cover object-top"
-          priority={true}
-          sizes="100vw"
+          priority={priority}
         />
 
         {/* Left: title + CTAs */}

@@ -3,7 +3,7 @@ import clsx from 'clsx'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { useRef, useState } from 'react'
-import { Icon } from '@iconify/react'
+import { AppIcon as Icon } from '@/components/shared/AppIcon'
 
 interface NavLinkProps {
   item: NavLinks;

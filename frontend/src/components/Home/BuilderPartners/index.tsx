@@ -1,4 +1,4 @@
-import { Icon } from "@iconify/react";
+import { AppIcon as Icon } from "@/components/shared/AppIcon";
 import Image from "next/image";
 import { getBuilderPartners } from "@/lib/sanity.services";
 import { urlFor } from "@/lib/sanity.image";
@@ -48,6 +48,7 @@ const BuilderPartners = async () => {
                                     fill
                                     className="object-cover"
                                     sizes="180px"
+                                    quality={70}
                                 />
                             </div>
                         </div>

@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { Icon } from "@iconify/react";
+import { AppIcon as Icon } from "@/components/shared/AppIcon";
 import { sanityClient } from "@/lib/sanity.client";
 import { featuredPropertyQuery } from "@/lib/sanity.queries";
 import { urlFor } from "@/lib/sanity.image";
@@ -24,7 +24,13 @@ const FeaturedProperty = async () => {
         typeof img === "object" && "src" in img
           ? (img as { src: string }).src
           : typeof img === "object" && "asset" in img
-            ? urlFor(img).width(680).height(530).fit("crop").url()
+            ? urlFor(img)
+              .width(680)
+              .height(530)
+              .fit("crop")
+              .auto("format")
+              .quality(72)
+              .url()
             : null;
       if (!url) return null;
       return { url, alt: `${property.name} - ${i + 1}` };

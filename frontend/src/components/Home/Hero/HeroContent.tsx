@@ -7,25 +7,21 @@ import Slide1 from "./Slide1";
 import Slide2 from "./Slide2";
 
 const HeroContent = () => {
-  const [isMobile, setIsMobile] = useState(false);
   const [selectedIndex, setSelectedIndex] = useState(0);
+  const [loadSecondarySlide, setLoadSecondarySlide] = useState(false);
   const autoplayPlugin = useRef(
-    Autoplay({ delay: 5000, stopOnInteraction: true, stopOnMouseEnter: true })
+    Autoplay({ delay: 15000, stopOnInteraction: true, stopOnMouseEnter: true })
   );
   const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true }, [
     autoplayPlugin.current,
   ]);
 
   useEffect(() => {
-    const mediaQuery = window.matchMedia("(max-width: 767px)");
-    const handleChange = (e: MediaQueryListEvent) => setIsMobile(e.matches);
-    setIsMobile(mediaQuery.matches);
-    if (mediaQuery.addEventListener) {
-      mediaQuery.addEventListener("change", handleChange);
-      return () => mediaQuery.removeEventListener("change", handleChange);
-    }
-    mediaQuery.addListener(handleChange);
-    return () => mediaQuery.removeListener(handleChange);
+    const timer = window.setTimeout(() => {
+      setLoadSecondarySlide(true);
+    }, 12000);
+
+    return () => window.clearTimeout(timer);
   }, []);
 
   const onSelect = useCallback(() => {
@@ -45,13 +41,22 @@ const HeroContent = () => {
   }, [emblaApi, onSelect]);
 
   const scrollTo = useCallback(
-    (index: number) => emblaApi?.scrollTo(index),
+    (index: number) => {
+      if (index > 0) {
+        setLoadSecondarySlide(true);
+      }
+      emblaApi?.scrollTo(index);
+    },
     [emblaApi]
   );
 
   const slides = [
-    <Slide2 key="slide2" isMobile={isMobile} />,
-    <Slide1 key="slide1" isMobile={isMobile} />,
+    <Slide2 key="slide2" priority />,
+    loadSecondarySlide ? (
+      <Slide1 key="slide1" />
+    ) : (
+      <div key="slide1-placeholder" className="h-full w-full bg-black" aria-hidden="true" />
+    ),
   ];
 
   return (

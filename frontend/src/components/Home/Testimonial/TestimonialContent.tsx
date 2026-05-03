@@ -2,7 +2,7 @@
 
 import * as React from "react";
 import Image from "next/image";
-import { Icon } from "@iconify/react";
+import { AppIcon as Icon } from "@/components/shared/AppIcon";
 import {
   Carousel,
   CarouselContent,
@@ -84,6 +84,8 @@ const TestimonialContent = ({
                       .width(800)
                       .height(800)
                       .fit("crop")
+                      .auto("format")
+                      .quality(70)
                       .url()
                 : null;
 
@@ -110,6 +112,8 @@ const TestimonialContent = ({
                               alt={item.name}
                               width={80}
                               height={80}
+                              sizes="80px"
+                              quality={70}
                               className="rounded-full lg:hidden block"
                                                           />
                           ) : null}
@@ -131,6 +135,8 @@ const TestimonialContent = ({
                           alt={item.name}
                           width={440}
                           height={440}
+                          sizes="(max-width: 1023px) 0px, 440px"
+                          quality={70}
                           className="lg:block hidden"
                                                   />
                       ) : null}

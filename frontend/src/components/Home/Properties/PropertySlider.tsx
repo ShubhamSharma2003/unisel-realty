@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef, useCallback } from "react";
-import { Icon } from "@iconify/react";
+import { AppIcon as Icon } from "@/components/shared/AppIcon";
 import PropertyCard from "./Card/Card";
 import type { PropertyHomes } from "@/types/properyHomes";
 import useEmblaCarousel from "embla-carousel-react";

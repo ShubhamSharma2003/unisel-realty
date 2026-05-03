@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { Icon } from "@iconify/react/dist/iconify.js";
+import { AppIcon as Icon } from "@/components/shared/AppIcon";
 import type { Service } from "@/types/service";
 import { urlFor } from "@/lib/sanity.image";
 
@@ -15,6 +15,8 @@ const ServiceCard = ({ service, size }: ServiceCardProps) => {
         .width(size === "large" ? 680 : 320)
         .height(386)
         .fit("crop")
+        .auto("format")
+        .quality(70)
         .url()
     : null;
 
@@ -27,6 +29,8 @@ const ServiceCard = ({ service, size }: ServiceCardProps) => {
             alt={service.title}
             width={size === "large" ? 680 : 320}
             height={386}
+            sizes={size === "large" ? "(max-width: 1023px) 100vw, 50vw" : "(max-width: 1023px) 50vw, 25vw"}
+            quality={70}
             className="w-full h-[220px] sm:h-auto object-cover"
           />
         ) : null}

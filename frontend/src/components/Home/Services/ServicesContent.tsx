@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { Icon } from "@iconify/react/dist/iconify.js";
+import { AppIcon as Icon } from "@/components/shared/AppIcon";
 import Link from "next/link";
 import ServiceCard from "./ServiceCard";
 import type { Service, ServicesSection } from "@/types/service";

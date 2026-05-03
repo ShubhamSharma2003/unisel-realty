@@ -1,4 +1,4 @@
-import { Icon } from "@iconify/react";
+import { AppIcon as Icon } from "@/components/shared/AppIcon";
 import { sanityClient } from "@/lib/sanity.client";
 import { propertiesForMapQuery } from "@/lib/sanity.queries";
 import type { PropertyHomes } from "@/types/properyHomes";

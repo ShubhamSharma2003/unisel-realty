@@ -11,15 +11,13 @@ import NextTopLoader from 'nextjs-toploader';
 import SessionProviderComp from '@/components/nextauth/SessionProvider'
 import { getNavLinks } from '@/lib/sanity.services'
 import type { Session } from 'next-auth'
-import { GoogleTagManager } from '@/components/Analytics/GoogleTagManager'
-import { MetaPixel } from '@/components/Analytics/MetaPixel'
 import { AnalyticsProvider } from '@/components/Analytics/AnalyticsProvider'
+import { DeferredAnalytics } from '@/components/Analytics/DeferredAnalytics'
 import PopupForm from '@/components/shared/PopupForm'
-import Script from 'next/script'
 
 const font = Bricolage_Grotesque({
   subsets: ["latin"],
-  display: "swap",
+  display: "optional",
   fallback: ["system-ui", "Segoe UI", "Arial", "sans-serif"],
   adjustFontFallback: false,
 });
@@ -123,46 +121,13 @@ export default async function RootLayout({
             __html: JSON.stringify(schema),
           }}
         />
-        {/* Google Analytics 4 (gtag.js) */}
-        <Script
-          src="https://www.googletagmanager.com/gtag/js?id=G-EYVDC9L4PS"
-          strategy="afterInteractive"
-        />
-        <Script
-          id="google-analytics"
-          strategy="afterInteractive"
-          dangerouslySetInnerHTML={{
-            __html: `
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              gtag('js', new Date());
-              gtag('config', 'G-EYVDC9L4PS');
-            `,
-          }}
-        />
-        {process.env.NEXT_PUBLIC_GTM_ID && (
-          <GoogleTagManager gtmId={process.env.NEXT_PUBLIC_GTM_ID} />
-        )}
-        {process.env.NEXT_PUBLIC_META_PIXEL_ID && (
-          <MetaPixel pixelId={process.env.NEXT_PUBLIC_META_PIXEL_ID} />
-        )}
-        {/* Microsoft Clarity */}
-        <Script
-          id="microsoft-clarity"
-          strategy="afterInteractive"
-          dangerouslySetInnerHTML={{
-            __html: `
-              (function(c,l,a,r,i,t,y){
-                c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-                t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i+"?ref=bwt";
-                y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-              })(window, document, "clarity", "script", "wb4ccda0xg");
-            `,
-          }}
-        />
       </head>
       <body className={`${font.className} bg-white dark:bg-black antialiased`}>
-        <NextTopLoader color="#2596be" />
+        <NextTopLoader color="#0f7398" />
+        <DeferredAnalytics
+          gtmId={process.env.NEXT_PUBLIC_GTM_ID}
+          metaPixelId={process.env.NEXT_PUBLIC_META_PIXEL_ID}
+        />
         <AnalyticsProvider>
           <SessionProviderComp session={session}>
             <ThemeProvider

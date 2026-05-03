@@ -1,11 +1,13 @@
 'use client'
 
 import { useState, useEffect, useRef } from 'react'
-import { Icon } from '@iconify/react'
+import { AppIcon as Icon } from '@/components/shared/AppIcon'
 import Image from 'next/image'
 import Link from 'next/link'
 
 type Status = 'idle' | 'loading' | 'success' | 'error'
+
+const POPUP_DELAY_MS = 15000
 
 const trustPoints = [
   {
@@ -53,7 +55,7 @@ export default function PopupForm() {
 
     const timer = setTimeout(() => {
       setIsOpen(true)
-    }, 5000)
+    }, POPUP_DELAY_MS)
 
     return () => clearTimeout(timer)
   }, [])
@@ -227,6 +229,7 @@ export default function PopupForm() {
                 <button
                   onClick={handleClose}
                   className="text-dark/40 dark:text-white/40 hover:text-dark dark:hover:text-white transition flex-shrink-0 cursor-pointer"
+                  aria-label="Close contact form"
                 >
                   <Icon icon="tabler:x" width={20} height={20} />
                 </button>

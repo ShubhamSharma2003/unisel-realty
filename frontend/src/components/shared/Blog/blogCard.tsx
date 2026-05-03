@@ -8,11 +8,17 @@ import { urlFor } from "@/lib/sanity.image";
 const BlogCard: FC<{ blog: Blog }> = ({ blog }) => {
     const { title, coverImage, date, slug, tag } = blog;
     const coverImageUrl = coverImage
-        ? urlFor(coverImage).width(800).height(600).fit("crop").url()
+        ? urlFor(coverImage)
+            .width(480)
+            .height(390)
+            .fit("crop")
+            .auto("format")
+            .quality(70)
+            .url()
         : null;
     const href = slug ? `/blog/${slug}` : "/blog";
     return (
-        <Link href={href} aria-label="blog cover 5xl:h-full 5xl:inline-block" className="gap-4 group cursor-pointer">
+        <Link href={href} className="gap-4 group cursor-pointer">
             <div className="overflow-hidden rounded-2xl flex-shrink-0">
                 {coverImageUrl ? (
                     <Image
@@ -21,6 +27,8 @@ const BlogCard: FC<{ blog: Blog }> = ({ blog }) => {
                         className="transition group-hover:scale-110"
                         width={190}
                         height={163}
+                        sizes="(max-width: 1023px) 50vw, 33vw"
+                        quality={70}
                         style={{ width: "100%", height: "100%" }}
                     />
                 ) : (

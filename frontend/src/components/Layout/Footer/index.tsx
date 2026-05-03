@@ -1,7 +1,7 @@
 'use client';
 
 import Link from "next/link";
-import { Icon } from "@iconify/react"
+import { AppIcon as Icon } from "@/components/shared/AppIcon"
 
 import type { FooterMenu } from "@/types/footerMenu";
 import NewsletterForm from "./NewsletterForm";
@@ -28,13 +28,13 @@ const Footer = ({ footerMenus }: FooterProps) => {
             </p>
           </div>
           <div className="flex items-center gap-6">
-            <Link href="https://www.x.com/uniselrealty" className="cursor-pointer">
+            <Link href="https://www.x.com/uniselrealty" className="cursor-pointer" aria-label="Follow Unisel Realty on X">
               <Icon icon="ph:x-logo-bold" width={24} height={24} className="text-white hover:text-primary duration-300" />
             </Link>
-            <Link href="https://www.facebook.com/uniselrealty" className="cursor-pointer">
+            <Link href="https://www.facebook.com/uniselrealty" className="cursor-pointer" aria-label="Follow Unisel Realty on Facebook">
               <Icon icon="ph:facebook-logo-bold" width={24} height={24} className="text-white hover:text-primary duration-300" />
             </Link>
-            <Link href="https://www.instagram.com/uniselrealty" className="cursor-pointer">
+            <Link href="https://www.instagram.com/uniselrealty" className="cursor-pointer" aria-label="Follow Unisel Realty on Instagram">
               <Icon icon="ph:instagram-logo-bold" width={24} height={24} className="text-white hover:text-primary duration-300" />
             </Link>
           </div>

@@ -1,5 +1,5 @@
 'use client'
-import { Icon } from '@iconify/react'
+import { AppIcon as Icon } from '@/components/shared/AppIcon'
 import Link from 'next/link'
 import { useEffect, useRef, useState, useCallback } from 'react'
 import NavLink from './Navigation/NavLink'
@@ -46,14 +46,14 @@ const Header: React.FC<{ navLinks: NavLinks[] }> = ({ navLinks }) => {
             <Link href='/'>
               <Image
                 src={'/images/header/new-logo-color.png'}
-                alt='logo'
+                alt='Unisel Realty'
                 width={150}
                 height={68}
                 className={`${isHomepage ? sticky ? "block dark:hidden" : "hidden" : sticky ? "block dark:hidden" : "block dark:hidden"}`}
               />
               <Image
                 src={'/images/header/new-logo-white.png'}
-                alt='logo'
+                alt='Unisel Realty'
                 width={150}
                 height={68}
                 className={`${isHomepage ? sticky ? "hidden dark:block" : "block" : sticky ? "dark:block hidden" : "dark:block hidden"}`}
@@ -64,6 +64,7 @@ const Header: React.FC<{ navLinks: NavLinks[] }> = ({ navLinks }) => {
             <button
               className='hover:cursor-pointer'
               onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+              aria-label='Toggle color theme'
             >
               <Icon
                 icon={'solar:sun-bold'}

@@ -1,25 +1,24 @@
-import Image from "next/image";
 import Link from "next/link";
+import HeroPicture from "./HeroPicture";
 
 type Slide1Props = {
-  isMobile: boolean;
+  priority?: boolean;
 };
 
-const Slide1 = ({ isMobile }: Slide1Props) => {
-  const bgImage = isMobile
-    ? "/images/hero/hero-mob-1new.png"
-    : "/images/hero/hero-desk-1.png";
-
+const Slide1 = ({ priority = false }: Slide1Props) => {
   return (
     <div className="w-full h-full">
       <div className="relative w-full h-full flex flex-col">
-        <Image
-          src={bgImage}
+        <HeroPicture
+          desktopSrc="/images/hero/hero-desk-1.png"
+          mobileSrc="/images/hero/hero-mob-1new.png"
           alt="Luxury residential and commercial properties in Gurgaon"
-          fill
+          desktopWidth={1920}
+          desktopHeight={1080}
+          mobileWidth={608}
+          mobileHeight={1080}
           className="object-cover object-center"
-          priority={true}
-          sizes="100vw"
+          priority={priority}
         />
         <div className="absolute inset-0 z-0 bg-black/40" />
 

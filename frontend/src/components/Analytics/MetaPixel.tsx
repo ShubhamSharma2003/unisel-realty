@@ -32,6 +32,7 @@ export function MetaPixel({ pixelId }: MetaPixelProps) {
         <img
           height="1"
           width="1"
+          alt=""
           style={{ display: 'none' }}
           src={`https://www.facebook.com/tr?id=${pixelId}&ev=PageView&noscript=1`}
         />

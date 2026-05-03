@@ -1,0 +1,10 @@
+
+> homely-nextjs@1.0.0 start
+> next start -p 3001
+
+   ▲ Next.js 15.2.8
+   - Local:        http://localhost:3001
+   - Network:      http://10.200.0.36:3001
+
+ ✓ Starting...
+ ✓ Ready in 1184ms

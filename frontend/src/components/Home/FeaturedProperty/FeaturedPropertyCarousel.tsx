@@ -41,6 +41,8 @@ const FeaturedPropertyCarousel: React.FC<Props> = ({ images }) => {
                 alt={img.alt}
                 width={680}
                 height={530}
+                sizes="(max-width: 1023px) 100vw, 50vw"
+                quality={72}
                 className="rounded-2xl w-full h-full object-cover"
               />
             </CarouselItem>
@@ -53,6 +55,7 @@ const FeaturedPropertyCarousel: React.FC<Props> = ({ images }) => {
             key={index}
             onClick={() => handleDotClick(index)}
             className={`w-2.5 h-2.5 rounded-full ${current === index + 1 ? "bg-white" : "bg-white/50"}`}
+            aria-label={`Go to featured property image ${index + 1}`}
           />
         ))}
       </div>

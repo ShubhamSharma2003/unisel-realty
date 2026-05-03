@@ -301,7 +301,13 @@ export default function MapClient({
               ? typeof mainImageSource === "object" && "src" in mainImageSource
                 ? mainImageSource.src
                 : typeof mainImageSource === "object" && "asset" in mainImageSource
-                  ? urlFor(mainImageSource).width(200).height(140).fit("crop").url()
+                  ? urlFor(mainImageSource)
+                    .width(160)
+                    .height(112)
+                    .fit("crop")
+                    .auto("format")
+                    .quality(65)
+                    .url()
                   : null
               : null;
 
@@ -321,6 +327,8 @@ export default function MapClient({
                     alt={p.name}
                     width={100}
                     height={70}
+                    sizes="100px"
+                    quality={65}
                     className="rounded-lg object-cover w-[100px] h-[70px] flex-shrink-0"
                   />
                 )}

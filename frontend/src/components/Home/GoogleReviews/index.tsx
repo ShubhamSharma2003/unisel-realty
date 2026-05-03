@@ -1,10 +1,32 @@
 "use client";
 
 import Script from "next/script";
-import { useEffect } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const GoogleReviews = () => {
+  const [shouldLoadReviews, setShouldLoadReviews] = useState(false);
+  const sectionRef = useRef<HTMLElement>(null);
+
   useEffect(() => {
+    const section = sectionRef.current;
+    if (!section || shouldLoadReviews) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry.isIntersecting) return;
+        setShouldLoadReviews(true);
+        observer.disconnect();
+      },
+      { rootMargin: "400px 0px" }
+    );
+
+    observer.observe(section);
+    return () => observer.disconnect();
+  }, [shouldLoadReviews]);
+
+  useEffect(() => {
+    if (!shouldLoadReviews) return;
+
     const hideAttribution = () => {
       const widget = document.getElementById(
         "featurable-944fcdc4-c7ef-4f77-ba81-68fe1773f165"
@@ -27,10 +49,10 @@ const GoogleReviews = () => {
     // Wait for widget to render
     const timer = setTimeout(hideAttribution, 2000);
     return () => clearTimeout(timer);
-  }, []);
+  }, [shouldLoadReviews]);
 
   return (
-    <section className="pt-1 !pb-0 bg-white dark:bg-gray-900">
+    <section ref={sectionRef} className="pt-1 !pb-0 bg-white dark:bg-gray-900">
       <div className="container mx-auto max-w-8xl px-4 sm:px-6 lg:px-0">
         <div className="text-center mb-0 md:mb-12">
           <h2 className="text-3xl md:text-4xl font-bold text-dark dark:text-white mb-4">
@@ -42,12 +64,17 @@ const GoogleReviews = () => {
         </div>
 
         {/* Featurable Google Reviews Widget */}
-        <div id="featurable-944fcdc4-c7ef-4f77-ba81-68fe1773f165" data-featurable-async></div>
-
-        <Script
-          src="https://featurable.com/assets/v2/carousel_default.min.js"
-          strategy="lazyOnload"
-        />
+        {shouldLoadReviews ? (
+          <>
+            <div id="featurable-944fcdc4-c7ef-4f77-ba81-68fe1773f165" data-featurable-async></div>
+            <Script
+              src="https://featurable.com/assets/v2/carousel_default.min.js"
+              strategy="afterInteractive"
+            />
+          </>
+        ) : (
+          <div className="min-h-[280px] rounded-2xl bg-gray-50 dark:bg-white/5" aria-hidden="true" />
+        )}
       </div>
     </section>
   );
