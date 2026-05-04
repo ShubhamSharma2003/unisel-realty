@@ -1,6 +1,6 @@
 import type { MetadataRoute } from "next";
 import { sanityClient } from "@/lib/sanity.client";
-import { propertySlugsQuery, servicesSlugsQuery, blogSlugsQuery } from "@/lib/sanity.queries";
+import { propertySlugsQuery, blogSlugsQuery } from "@/lib/sanity.queries";
 
 const SITE_URL = "https://www.uniselrealty.com";
 
@@ -9,9 +9,8 @@ type SlugDoc = { slug: string; _updatedAt: string };
 const STATIC_LASTMOD = new Date("2026-04-19");
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const [properties, services, blogs] = await Promise.all([
+  const [properties, blogs] = await Promise.all([
     sanityClient.fetch<SlugDoc[]>(propertySlugsQuery),
-    sanityClient.fetch<SlugDoc[]>(servicesSlugsQuery),
     sanityClient.fetch<SlugDoc[]>(blogSlugsQuery),
   ]);
 
@@ -30,6 +29,9 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { url: `${SITE_URL}/all-properties`, lastModified: STATIC_LASTMOD },
     { url: `${SITE_URL}/blog`, lastModified: STATIC_LASTMOD },
     { url: `${SITE_URL}/services`, lastModified: STATIC_LASTMOD },
+    { url: `${SITE_URL}/services/home-loan-gurgaon`, lastModified: STATIC_LASTMOD },
+    { url: `${SITE_URL}/services/nri-property-investment-gurgaon`, lastModified: STATIC_LASTMOD },
+    { url: `${SITE_URL}/services/property-management-gurgaon`, lastModified: STATIC_LASTMOD },
     { url: `${SITE_URL}/about`, lastModified: STATIC_LASTMOD },
     { url: `${SITE_URL}/contact`, lastModified: STATIC_LASTMOD },
     { url: `${SITE_URL}/property-valuation`, lastModified: STATIC_LASTMOD },
@@ -46,13 +48,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       lastModified: new Date(p._updatedAt),
     }));
 
-  const serviceRoutes: MetadataRoute.Sitemap = services
-    .filter((s) => isValidSlug(s.slug))
-    .map((s) => ({
-      url: `${SITE_URL}/services/${s.slug}`,
-      lastModified: new Date(s._updatedAt),
-    }));
-
   const blogRoutes: MetadataRoute.Sitemap = blogs
     .filter((b) => isValidSlug(b.slug))
     .map((b) => ({
@@ -60,5 +55,5 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       lastModified: new Date(b._updatedAt),
     }));
 
-  return [...staticRoutes, ...propertyRoutes, ...serviceRoutes, ...blogRoutes];
+  return [...staticRoutes, ...propertyRoutes, ...blogRoutes];
 }
