@@ -3,7 +3,7 @@ import { Metadata } from "next";
 import { Icon } from "@iconify/react/dist/iconify.js"
 
 export const metadata: Metadata = {
-  title: "404 - Page Not Found | Unisel Realty",
+  title: "404 - Page Not Found",
   description: "The page you're looking for doesn't exist. Return to Unisel Realty's homepage to explore our real estate listings.",
   robots: { index: false, follow: true },
   openGraph: {

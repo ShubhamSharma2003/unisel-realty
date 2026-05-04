@@ -24,6 +24,19 @@ const nextConfig: NextConfig = {
       { source: "/office-spaces", destination: "/commercial", permanent: true },
       { source: "/documentation", destination: "/", permanent: true },
       { source: "/commercial/pre-leased-properties-gurgaon", destination: "/commercial/pre-leased", permanent: true },
+      // Fix 404s from old /property/ route (now /properties/)
+      { source: "/property/:slug", destination: "/properties/:slug", permanent: true },
+      // Fix 404s from old /city/ route (now /location/)
+      { source: "/city/:slug", destination: "/location/:slug", permanent: true },
+      // Fix /about-us -> /about
+      { source: "/about-us", destination: "/about", permanent: true },
+      // Old WordPress amenity filter pages
+      { source: "/feature/:slug", destination: "/residential", permanent: true },
+      // Old WordPress /location index (no index page exists)
+      { source: "/location", destination: "/residential", permanent: true },
+      // Old WordPress blog slugs
+      { source: "/haryana-allows-registration-of-independent-floors-as-commercial-units-in-licensed-colonies", destination: "/blog", permanent: true },
+      { source: "/kherki-daula-toll-plaza-to-be-shifted-in-2-3-months-says-cm-khattar", destination: "/blog", permanent: true },
     ];
   },
 

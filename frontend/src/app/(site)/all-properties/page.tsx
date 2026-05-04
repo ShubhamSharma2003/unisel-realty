@@ -10,7 +10,7 @@ export async function generateMetadata(): Promise<Metadata> {
     const siteUrl = 'https://www.uniselrealty.com';
     const siteName = 'Unisel Realty';
 
-    const title = `All Properties in Gurgaon | ${siteName}`;
+    const title = `All Properties in Gurgaon`;
     const description = `Browse all ${totalProperties} properties in Gurgaon — residential, commercial, pre-leased, and more. Find your perfect property with ${siteName}.`;
 
     return {

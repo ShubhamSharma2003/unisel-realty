@@ -48,7 +48,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     const info = MICROMARKETS[micromarket];
     if (!info) return {};
     return {
-        title: `${info.title} | Unisel Realty`,
+        title: info.title,
         description: info.description,
         alternates: { canonical: `https://www.uniselrealty.com/location/${micromarket}` },
         openGraph: {
