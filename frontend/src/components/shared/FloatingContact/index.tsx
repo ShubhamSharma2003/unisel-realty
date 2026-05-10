@@ -3,7 +3,7 @@
 import { AppIcon as Icon } from "@/components/shared/AppIcon";
 
 const WHATSAPP_NUMBER = "919873031665";
-const WHATSAPP_MESSAGE = "Hi! I'm interested in a property. Could you please help me? [#WEB]";
+const WHATSAPP_MESSAGE = "Hi! I'm interested in a property. Could you please help me?";
 
 export default function FloatingContact() {
   return (
