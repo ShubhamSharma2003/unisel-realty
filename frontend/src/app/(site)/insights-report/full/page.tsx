@@ -133,7 +133,7 @@ export default async function FullReportPage() {
                             <Icon icon="ph:arrow-right" width={16} height={16} />
                         </Link>
                         <a
-                            href="https://wa.me/918010303303?text=Hi%20Unisel%2C%20I%27d%20like%20a%20WhatsApp%20brief%20on%20the%20investment%20report."
+                            href="https://wa.me/919873031665?text=Hi%20Unisel%2C%20I%27d%20like%20a%20WhatsApp%20brief%20on%20the%20investment%20report."
                             target="_blank"
                             rel="noopener noreferrer"
                             className="inline-flex items-center gap-2 border-2 border-primary text-primary hover:bg-primary hover:text-white font-semibold uppercase tracking-wider text-sm px-7 py-3.5 rounded-full transition-all"
