@@ -35,6 +35,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { url: `${SITE_URL}/about`, lastModified: STATIC_LASTMOD },
     { url: `${SITE_URL}/contact`, lastModified: STATIC_LASTMOD },
     { url: `${SITE_URL}/property-valuation`, lastModified: STATIC_LASTMOD },
+    { url: `${SITE_URL}/insights-report`, lastModified: STATIC_LASTMOD },
     { url: `${SITE_URL}/privacy-policy`, lastModified: STATIC_LASTMOD },
     { url: `${SITE_URL}/terms-and-conditions`, lastModified: STATIC_LASTMOD },
   ];

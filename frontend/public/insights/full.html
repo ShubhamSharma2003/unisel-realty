@@ -1,0 +1,1353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Unisel Realty — Investment Research Report Q2 2025</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;1,400;1,600&family=Inter:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --navy:#0B1F4A;
+  --navy2:#152B65;
+  --blue:#1452C8;
+  --blue2:#2563EB;
+  --blue-lt:#EFF6FF;
+  --sky:#60A5FA;
+  --white:#FFFFFF;
+  --off:#F8FAFC;
+  --border:#E2EAF4;
+  --border2:#CBD5E1;
+  --text:#0B1F4A;
+  --mid:#2D4475;
+  --muted:#64748B;
+  --gold:#B45309;
+  --gold2:#D97706;
+  --gold-lt:#FFFBEB;
+  --green:#059669;
+  --green-lt:#ECFDF5;
+  --red:#DC2626;
+  --red-lt:#FEF2F2;
+  --aipl:#2563EB;
+  --godrej:#7C3AED;
+  --smart:#0891B2;
+  --sh1:0 1px 3px rgba(11,31,74,.06);
+  --sh2:0 4px 16px rgba(11,31,74,.08);
+  --sh3:0 12px 40px rgba(11,31,74,.12);
+}
+html{scroll-behavior:smooth;}
+body{font-family:'Inter',sans-serif;background:var(--off);color:var(--text);line-height:1.6;font-size:14px;}
+
+/* ══ TOPBAR ══ */
+.topbar{
+  background:var(--navy);height:54px;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 40px;position:sticky;top:0;z-index:200;
+  box-shadow:0 2px 20px rgba(0,0,0,0.35);
+}
+.tb-logo img{height:32px;filter:brightness(0) invert(1);opacity:.9;}
+.tb-nav{display:flex;gap:0;}
+.tb-nav a{
+  font-size:11px;color:rgba(255,255,255,.5);
+  padding:0 14px;height:54px;display:flex;align-items:center;
+  text-decoration:none;letter-spacing:.05em;
+  border-bottom:2px solid transparent;transition:all .15s;
+  white-space:nowrap;
+}
+.tb-nav a:hover,.tb-nav a.active{color:var(--sky);border-bottom-color:var(--sky);}
+.tb-right{display:flex;align-items:center;gap:10px;}
+.tb-conf{
+  font-size:9px;letter-spacing:.18em;text-transform:uppercase;
+  background:rgba(96,165,250,.12);border:1px solid rgba(96,165,250,.25);
+  color:var(--sky);padding:4px 12px;border-radius:3px;
+}
+.tb-user{font-size:11px;color:rgba(255,255,255,.4);}
+
+/* ══ COVER ══ */
+.cover{
+  background:linear-gradient(180deg,
+    #FFFFFF 0%,
+    #FFFFFF -67px,
+    #E6F2F7 -125px,
+    #7FB7CC 134px,
+    #2685AB 222px,
+    #0F7398 390px,
+    #1A98C0 101%
+  );
+  padding:200px 100px 100px 100px;position:relative;overflow:hidden;
+}
+@media(max-width:900px){
+  .cover{
+    background:linear-gradient(180deg,
+      #FFFFFF 0%,
+      #FFFFFF 90px,
+      #E6F2F7 140px,
+      #7FB7CC 220px,
+      #0F7398 360px,
+      #1A98C0 100%
+    );
+    padding:120px 40px 60px 40px;
+  }
+}
+@media(max-width:600px){
+  .cover{
+    background:linear-gradient(180deg,
+      #FFFFFF 0%,
+      #FFFFFF 21px,
+      #B8D9E5 69px,
+      #0F7398 228px,
+      #1A98C0 100%
+    );
+    padding:96px 20px 48px 20px;
+  }
+}
+.cover-stripe{
+  position:absolute;top:0;left:0;right:0;height:4px;
+  background:linear-gradient(90deg,var(--blue) 0%,var(--sky) 50%,var(--gold2) 100%);
+}
+.cover-grid-bg{
+  position:absolute;inset:0;
+  background-image:linear-gradient(rgba(255,255,255,.018) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.018) 1px,transparent 1px);
+  background-size:48px 48px;
+}
+.cover-glow{
+  position:absolute;
+  top:-20%;right:-10%;
+  width:60%;height:80%;
+  background:radial-gradient(ellipse,rgba(37,99,235,.18) 0%,transparent 65%);
+}
+.cover-inner{
+  position:relative;z-index:2;
+  display:grid;grid-template-columns:1fr 340px;
+  gap:0;min-height:340px;
+}
+.cover-left{padding:0 32px 0 0;}
+.cover-report-type{
+  display:inline-flex;align-items:center;gap:8px;
+  font-size:9px;letter-spacing:.26em;text-transform:uppercase;
+  color:rgba(96,165,250,.8);margin-bottom:20px;
+}
+.cover-report-type::before{content:'';width:22px;height:1px;background:rgba(96,165,250,.5);}
+.cover h1{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(28px,3.2vw,46px);
+  font-weight:700;color:#fff;line-height:1.1;
+  margin-bottom:16px;max-width:640px;
+}
+.cover h1 em{color:#FCD34D;font-style:italic;}
+.cover-sub{
+  font-size:14px;color:rgba(255,255,255,.6);
+  line-height:1.7;max-width:520px;margin-bottom:36px;font-weight:300;
+}
+.cover-meta-row{display:flex;gap:0;flex-wrap:wrap;}
+.cover-meta-item{
+  padding:14px 24px 14px 0;
+  margin-right:24px;
+  border-right:1px solid rgba(255,255,255,.08);
+}
+.cover-meta-item:last-child{border-right:none;}
+.cmi-label{font-size:8px;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:4px;}
+.cmi-val{font-family:'DM Mono',monospace;font-size:12px;color:rgba(255,255,255,.75);}
+.cover-right{
+  background:rgba(255,255,255,.04);
+  border-left:1px solid rgba(255,255,255,.07);
+  padding:36px 32px;
+  display:flex;flex-direction:column;gap:14px;
+  justify-content:center;
+}
+.cover-kpi{
+  background:rgba(255,255,255,.05);
+  border:1px solid rgba(255,255,255,.08);
+  border-radius:8px;padding:16px 18px;
+}
+.ckpi-label{font-size:8px;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:5px;}
+.ckpi-val{font-family:'Playfair Display',serif;font-size:30px;color:#fff;line-height:1;font-weight:700;}
+.ckpi-sub{font-size:10px;color:rgba(255,255,255,.4);margin-top:3px;}
+.ckpi-val.gold{color:#FCD34D;}
+.ckpi-val.green{color:#34D399;}
+
+/* ══ LAYOUT ══ */
+.body-wrap{max-width:1200px;margin:0 auto;padding:0 40px 80px;}
+.section-hdr{
+  display:flex;align-items:center;gap:16px;
+  padding:56px 0 32px;
+}
+.sh-num{font-family:'DM Mono',monospace;font-size:11px;color:var(--sky);letter-spacing:.14em;}
+.sh-line{flex:1;height:1px;background:var(--border);}
+.sh-label{font-size:10px;letter-spacing:.22em;color:var(--muted);text-transform:uppercase;font-weight:600;}
+.sh-short{max-width:48px;}
+
+/* ══ CARDS & PANELS ══ */
+.card{
+  background:var(--white);border:1px solid var(--border);
+  border-radius:12px;box-shadow:var(--sh1);
+  overflow:hidden;
+}
+.card-p{padding:28px;}
+.panel-title{
+  font-size:11px;font-weight:600;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--muted);
+  margin-bottom:16px;
+  display:flex;align-items:center;gap:8px;
+}
+.panel-title::after{content:'';flex:1;height:1px;background:var(--border);}
+
+/* ══ EXEC SUMMARY ══ */
+.exec-grid{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:1px;background:var(--border);border-radius:12px;overflow:hidden;margin-bottom:40px;box-shadow:var(--sh1);}
+.exec-kpi{background:var(--white);padding:22px 20px;}
+.ek-label{font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-bottom:6px;font-weight:600;}
+.ek-val{font-family:'Playfair Display',serif;font-size:32px;color:var(--blue);line-height:1;font-weight:700;margin-bottom:3px;}
+.ek-sub{font-size:11px;color:var(--muted);}
+.ek-val.gold{color:var(--gold2);}
+.ek-val.green{color:var(--green);}
+
+.exec-body-grid{display:grid;grid-template-columns:2fr 1fr;gap:24px;margin-bottom:40px;}
+.exec-text h2{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(20px,2.2vw,28px);font-weight:700;
+  color:var(--navy);line-height:1.25;margin-bottom:16px;
+}
+.exec-text h2 em{color:var(--blue);font-style:italic;}
+.exec-text p{font-size:14px;color:var(--mid);line-height:1.82;font-weight:300;margin-bottom:12px;}
+.exec-highlights{display:flex;flex-direction:column;gap:10px;}
+.highlight-item{
+  background:var(--white);border:1px solid var(--border);
+  border-radius:10px;padding:16px 18px;
+  border-left:3px solid var(--blue);
+}
+.hi-label{font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:4px;font-weight:600;}
+.hi-val{font-family:'Playfair Display',serif;font-size:22px;color:var(--navy);line-height:1;font-weight:700;}
+.hi-sub{font-size:11px;color:var(--muted);margin-top:3px;}
+
+/* ══ MARKET OVERVIEW SECTION ══ */
+.market-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-bottom:24px;}
+.chart-wrap{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:24px;box-shadow:var(--sh1);}
+.chart-title{font-size:12px;font-weight:600;color:var(--navy);margin-bottom:4px;}
+.chart-sub{font-size:11px;color:var(--muted);margin-bottom:20px;}
+.chart-container{position:relative;height:220px;}
+.chart-full{grid-column:1/-1;}
+.chart-container-lg{position:relative;height:260px;}
+
+.insight-strip{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:16px;
+  margin-bottom:24px;
+}
+.insight-card{
+  background:var(--white);border:1px solid var(--border);
+  border-radius:10px;padding:18px 20px;
+  display:flex;gap:14px;align-items:flex-start;
+  box-shadow:var(--sh1);
+}
+.insight-icon{
+  width:36px;height:36px;border-radius:8px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:18px;flex-shrink:0;
+}
+.insight-icon.blue{background:var(--blue-lt);}
+.insight-icon.gold{background:var(--gold-lt);}
+.insight-icon.green{background:var(--green-lt);}
+.insight-body h4{font-size:12px;font-weight:700;color:var(--navy);margin-bottom:3px;}
+.insight-body p{font-size:11px;color:var(--muted);line-height:1.5;}
+
+/* ══ PROJECT DEEP-DIVE ══ */
+.project-block{
+  background:var(--white);border:1px solid var(--border);
+  border-radius:14px;box-shadow:var(--sh2);
+  overflow:hidden;margin-bottom:48px;
+}
+.pb-header{
+  padding:28px 32px 22px;
+  border-bottom:1px solid var(--border);
+  position:relative;
+}
+.pbc-aipl{background:linear-gradient(135deg,rgba(37,99,235,.05) 0%,var(--white) 60%);border-top:4px solid var(--aipl);}
+.pbc-godrej{background:linear-gradient(135deg,rgba(124,58,237,.05) 0%,var(--white) 60%);border-top:4px solid var(--godrej);}
+.pbc-smart{background:linear-gradient(135deg,rgba(8,145,178,.05) 0%,var(--white) 60%);border-top:4px solid var(--smart);}
+.pb-project-num{
+  font-size:9px;letter-spacing:.2em;text-transform:uppercase;
+  font-weight:700;margin-bottom:8px;
+}
+.aipl .pb-project-num{color:var(--aipl);}
+.godrej .pb-project-num{color:var(--godrej);}
+.smart .pb-project-num{color:var(--smart);}
+.pb-title{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(22px,2.6vw,34px);font-weight:700;
+  color:var(--navy);line-height:1.1;margin-bottom:5px;
+}
+.pb-sub{font-size:13px;color:var(--muted);margin-bottom:14px;}
+.pb-tags{display:flex;gap:7px;flex-wrap:wrap;}
+.tag{font-size:9px;letter-spacing:.1em;text-transform:uppercase;padding:4px 11px;border-radius:4px;font-weight:600;}
+.tag-green{background:var(--green-lt);color:var(--green);border:1px solid rgba(5,150,105,.2);}
+.tag-blue{background:var(--blue-lt);color:var(--blue);border:1px solid rgba(37,99,235,.2);}
+.tag-gold{background:var(--gold-lt);color:var(--gold2);border:1px solid rgba(217,119,6,.2);}
+
+/* KPI STRIP */
+.pb-kpis{
+  display:grid;grid-template-columns:repeat(6,1fr);
+  border-bottom:1px solid var(--border);
+  background:var(--off);
+}
+.pbk{padding:16px 18px;border-right:1px solid var(--border);}
+.pbk:last-child{border-right:none;}
+.pbk-val{font-family:'DM Mono',monospace;font-size:16px;font-weight:500;line-height:1;margin-bottom:3px;}
+.aipl .pbk-val{color:var(--aipl);}
+.godrej .pbk-val{color:var(--godrej);}
+.smart .pbk-val{color:var(--smart);}
+.pbk-label{font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);}
+
+/* CONTENT GRID */
+.pb-content{display:grid;grid-template-columns:1fr 280px;}
+.pb-main{padding:28px 32px;border-right:1px solid var(--border);}
+.pb-side{padding:22px 20px;background:var(--off);}
+
+.sec-title{
+  font-size:10px;font-weight:700;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--muted);
+  padding-bottom:8px;border-bottom:1px solid var(--border);
+  margin-bottom:14px;
+}
+.body-p{font-size:13px;color:var(--mid);line-height:1.82;font-weight:300;margin-bottom:18px;}
+
+/* conviction points */
+.cv-list{display:flex;flex-direction:column;gap:10px;margin-bottom:20px;}
+.cv-item{display:flex;gap:10px;align-items:flex-start;}
+.cv-dot{width:6px;height:6px;border-radius:50%;margin-top:5px;flex-shrink:0;}
+.aipl .cv-dot{background:var(--aipl);}
+.godrej .cv-dot{background:var(--godrej);}
+.smart .cv-dot{background:var(--smart);}
+.cv-text{font-size:13px;color:var(--mid);line-height:1.65;}
+.cv-text strong{color:var(--navy);font-weight:600;}
+
+/* chart in project */
+.pb-chart-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:20px;}
+.mini-chart-wrap{background:var(--off);border:1px solid var(--border);border-radius:8px;padding:16px;}
+.mc-title{font-size:10px;font-weight:600;color:var(--navy);margin-bottom:2px;}
+.mc-sub{font-size:10px;color:var(--muted);margin-bottom:12px;}
+.mc-container{position:relative;height:140px;}
+
+/* risk/opp */
+.ro-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border);border-radius:8px;overflow:hidden;margin-bottom:20px;}
+.ro-col h5{font-size:9px;letter-spacing:.14em;text-transform:uppercase;padding:9px 14px;font-weight:700;}
+.ro-col.opp h5{color:var(--green);background:var(--green-lt);}
+.ro-col.risk h5{color:var(--red);background:var(--red-lt);}
+.ro-col ul{list-style:none;padding:10px 14px;background:var(--white);display:flex;flex-direction:column;gap:6px;}
+.ro-col li{font-size:12px;color:var(--muted);line-height:1.5;padding-left:12px;position:relative;}
+.ro-col.opp li::before{content:'+';position:absolute;left:0;color:var(--green);font-weight:700;}
+.ro-col.risk li::before{content:'−';position:absolute;left:0;color:var(--red);}
+
+/* amenities */
+.am-wrap{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px;}
+.am-tag{font-size:11px;color:var(--mid);background:var(--blue-lt);border:1px solid var(--border);padding:4px 10px;border-radius:20px;}
+
+/* sidebar */
+.return-box{
+  text-align:center;padding:18px 12px;
+  background:var(--white);border:1px solid var(--border);
+  border-radius:10px;margin-bottom:10px;
+  box-shadow:var(--sh1);
+}
+.rb-label{font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-bottom:6px;font-weight:600;}
+.rb-val{font-family:'Playfair Display',serif;font-size:48px;font-weight:700;line-height:1;font-style:italic;}
+.aipl .rb-val{color:var(--aipl);}
+.godrej .rb-val{color:var(--godrej);}
+.smart .rb-val{color:var(--smart);}
+.rb-range{font-family:'DM Mono',monospace;font-size:10px;color:var(--muted);margin-top:4px;}
+
+/* score card */
+.score-card{background:var(--white);border:1px solid var(--border);border-radius:10px;padding:14px 16px;margin-bottom:10px;box-shadow:var(--sh1);}
+.sc-title{font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-bottom:12px;font-weight:600;}
+.sc-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;}
+.sc-row:last-child{margin-bottom:0;}
+.sc-label{font-size:11px;color:var(--mid);}
+.sc-right{display:flex;align-items:center;gap:7px;}
+.sc-bar{width:72px;height:5px;background:var(--border);border-radius:3px;overflow:hidden;}
+.sc-fill{height:100%;border-radius:3px;}
+.aipl .sc-fill{background:var(--aipl);}
+.godrej .sc-fill{background:var(--godrej);}
+.smart .sc-fill{background:var(--smart);}
+.sc-num{font-family:'DM Mono',monospace;font-size:11px;min-width:22px;text-align:right;font-weight:500;}
+.aipl .sc-num{color:var(--aipl);}
+.godrej .sc-num{color:var(--godrej);}
+.smart .sc-num{color:var(--smart);}
+
+/* verdict */
+.verdict-box{border-radius:10px;padding:14px 16px;margin-bottom:10px;}
+.aipl .verdict-box{background:rgba(37,99,235,.06);border:1px solid rgba(37,99,235,.2);}
+.godrej .verdict-box{background:rgba(124,58,237,.06);border:1px solid rgba(124,58,237,.2);}
+.smart .verdict-box{background:rgba(8,145,178,.06);border:1px solid rgba(8,145,178,.2);}
+.vb-label{font-size:9px;letter-spacing:.18em;text-transform:uppercase;margin-bottom:6px;font-weight:700;}
+.aipl .vb-label{color:var(--aipl);}
+.godrej .vb-label{color:var(--godrej);}
+.smart .vb-label{color:var(--smart);}
+.vb-text{font-size:12px;color:var(--mid);line-height:1.6;font-weight:300;}
+
+.cta-btn{
+  display:block;width:100%;padding:12px;font-size:11px;font-weight:600;
+  letter-spacing:.1em;text-transform:uppercase;text-align:center;
+  border:none;cursor:pointer;font-family:'Inter',sans-serif;
+  border-radius:8px;transition:all .2s;
+}
+.aipl .cta-btn{background:var(--aipl);color:#fff;}
+.godrej .cta-btn{background:var(--godrej);color:#fff;}
+.smart .cta-btn{background:var(--smart);color:#fff;}
+
+/* ══ COMPARISON MATRIX ══ */
+.matrix-wrap{background:var(--white);border:1px solid var(--border);border-radius:12px;overflow:hidden;box-shadow:var(--sh1);margin-bottom:24px;}
+.mtx{width:100%;border-collapse:collapse;font-size:12px;}
+.mtx th{
+  padding:12px 16px;text-align:left;
+  font-size:9px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--muted);background:var(--off);
+  border-bottom:1px solid var(--border);font-weight:700;
+}
+.mtx td{padding:13px 16px;border-bottom:1px solid rgba(11,31,74,.05);color:var(--mid);vertical-align:top;}
+.mtx tr:last-child td{border-bottom:none;}
+.mtx .rl{color:var(--navy);font-weight:600;font-size:12px;}
+.mtx th.ac,.mtx td.ac{background:rgba(37,99,235,.025);border-left:2px solid rgba(37,99,235,.15);}
+.mtx th.gc,.mtx td.gc{background:rgba(124,58,237,.025);border-left:2px solid rgba(124,58,237,.15);}
+.mtx th.sc,.mtx td.sc{background:rgba(8,145,178,.025);border-left:2px solid rgba(8,145,178,.15);}
+.mtx th.ac{color:var(--aipl);}
+.mtx th.gc{color:var(--godrej);}
+.mtx th.sc{color:var(--smart);}
+.best-t{display:inline-block;font-size:8px;letter-spacing:.08em;text-transform:uppercase;padding:2px 6px;background:var(--green-lt);color:var(--green);border:1px solid rgba(5,150,105,.2);border-radius:3px;margin-left:4px;vertical-align:middle;}
+.hi-t{display:inline-block;font-size:8px;letter-spacing:.08em;text-transform:uppercase;padding:2px 6px;background:var(--gold-lt);color:var(--gold2);border:1px solid rgba(217,119,6,.2);border-radius:3px;margin-left:4px;vertical-align:middle;}
+.star{color:var(--gold2);}
+
+/* ══ ROI CALC ══ */
+.calc-section{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:32px;box-shadow:var(--sh1);margin-bottom:24px;}
+.calc-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start;}
+.calc-h{font-family:'Playfair Display',serif;font-size:22px;font-weight:700;color:var(--navy);margin-bottom:6px;}
+.calc-sub{font-size:13px;color:var(--muted);margin-bottom:24px;line-height:1.6;}
+.slider-label{font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:8px;font-weight:600;}
+.roi-slider{width:100%;accent-color:var(--blue);cursor:pointer;height:5px;margin-top:4px;}
+.slider-labels{display:flex;justify-content:space-between;font-size:10px;color:var(--muted);margin-top:8px;}
+.roi-out{background:var(--off);border:1px solid var(--border);border-radius:10px;padding:20px;}
+.roi-row{display:flex;justify-content:space-between;align-items:center;padding:9px 0;border-bottom:1px solid var(--border);font-size:13px;color:var(--mid);}
+.roi-row:last-child{border-bottom:none;}
+.roi-row.total{color:var(--navy);font-weight:700;font-size:15px;padding-top:13px;}
+.rv{font-family:'DM Mono',monospace;color:var(--blue);}
+.roi-row.total .rv{color:var(--green);font-size:18px;}
+.roi-gain-val{font-family:'DM Mono',monospace;color:var(--green);font-size:13px;font-weight:600;}
+
+/* ══ WHY UNISEL ══ */
+.adv-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:48px;}
+.adv-card{
+  background:var(--white);border:1px solid var(--border);
+  border-radius:10px;padding:22px 20px;box-shadow:var(--sh1);
+  transition:box-shadow .2s;
+}
+.adv-card:hover{box-shadow:var(--sh2);}
+.adv-n{
+  font-family:'Playfair Display',serif;font-size:36px;
+  color:rgba(37,99,235,.12);line-height:1;margin-bottom:10px;font-style:italic;
+}
+.adv-t{font-size:13px;font-weight:700;color:var(--navy);margin-bottom:6px;}
+.adv-b{font-size:12px;color:var(--muted);line-height:1.65;}
+
+/* ══ METHODOLOGY NOTE ══ */
+.method-box{
+  background:var(--off);border:1px solid var(--border);
+  border-radius:10px;padding:20px 24px;margin-bottom:48px;
+  border-left:3px solid var(--blue);
+}
+.method-box p{font-size:12px;color:var(--muted);line-height:1.7;}
+.method-box strong{color:var(--mid);}
+
+/* ══ CTA SECTION ══ */
+.cta-section{
+  background:linear-gradient(145deg,var(--navy) 0%,var(--navy2) 100%);
+  border-radius:16px;padding:56px 48px;text-align:center;
+  position:relative;overflow:hidden;margin-bottom:48px;
+}
+.cta-section::before{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse 60% 70% at 50% 50%,rgba(37,99,235,.2) 0%,transparent 65%);
+}
+.cta-section h2{font-family:'Playfair Display',serif;font-size:32px;font-weight:700;color:#fff;margin-bottom:12px;position:relative;}
+.cta-section h2 em{color:#FCD34D;font-style:italic;}
+.cta-section p{font-size:14px;color:rgba(255,255,255,.6);max-width:480px;margin:0 auto 28px;line-height:1.7;position:relative;}
+.cta-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;position:relative;}
+.btn-primary{
+  background:var(--blue2);color:#fff;font-size:12px;font-weight:600;
+  letter-spacing:.1em;text-transform:uppercase;padding:14px 38px;
+  border:none;cursor:pointer;border-radius:8px;
+  box-shadow:0 4px 20px rgba(37,99,235,.4);transition:all .2s;font-family:'Inter',sans-serif;
+}
+.btn-primary:hover{background:var(--blue);transform:translateY(-1px);}
+.btn-ghost{
+  background:transparent;color:rgba(255,255,255,.7);font-size:12px;font-weight:500;
+  letter-spacing:.1em;text-transform:uppercase;padding:13px 32px;
+  border:1px solid rgba(255,255,255,.2);cursor:pointer;border-radius:8px;
+  font-family:'Inter',sans-serif;transition:all .2s;
+}
+.btn-ghost:hover{border-color:rgba(255,255,255,.4);color:#fff;}
+
+/* ══ FOOTER ══ */
+.report-footer{
+  background:var(--navy);border-radius:12px;
+  padding:28px 36px;
+  display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;
+}
+.rf-logo img{height:28px;filter:brightness(0) invert(1);opacity:.8;}
+.rf-info{font-size:10px;color:rgba(255,255,255,.35);line-height:1.6;text-align:right;}
+.rf-disc{
+  width:100%;font-size:10px;color:rgba(255,255,255,.18);
+  border-top:1px solid rgba(255,255,255,.06);padding-top:14px;margin-top:6px;line-height:1.6;
+}
+
+/* ══ BACK BTN ══ */
+.back-btn{
+  position:fixed;bottom:24px;left:40px;
+  background:var(--white);border:1px solid var(--border);color:var(--navy);
+  font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;
+  padding:9px 18px;cursor:pointer;font-family:'Inter',sans-serif;
+  border-radius:8px;box-shadow:var(--sh2);transition:all .2s;z-index:90;
+}
+.back-btn:hover{background:var(--blue-lt);border-color:var(--blue);color:var(--blue);}
+
+/* ══ FADE IN ══ */
+.fi{opacity:0;transform:translateY(16px);transition:opacity .55s ease,transform .55s ease;}
+.fi.vis{opacity:1;transform:translateY(0);}
+
+/* ══ DIVIDER ══ */
+.divider{height:1px;background:var(--border);margin:32px 0;}
+
+/* ══ INFO BOX ══ */
+.info-box{
+  background:var(--blue-lt);border:1px solid rgba(37,99,235,.2);
+  border-radius:8px;padding:14px 18px;margin-bottom:16px;
+  display:flex;gap:12px;align-items:flex-start;
+}
+.info-icon{font-size:16px;flex-shrink:0;margin-top:1px;}
+.info-text{font-size:12px;color:var(--mid);line-height:1.6;}
+
+@media(max-width:1000px){
+  .pb-content{grid-template-columns:1fr;}
+  .pb-main{border-right:none;border-bottom:1px solid var(--border);}
+  .pb-kpis{grid-template-columns:repeat(3,1fr);}
+  .market-grid{grid-template-columns:1fr;}
+  .exec-body-grid{grid-template-columns:1fr;}
+  .cover-inner{grid-template-columns:1fr;}
+  .cover-right{display:none;}
+  .adv-grid{grid-template-columns:1fr 1fr;}
+  .calc-grid{grid-template-columns:1fr;}
+  .pb-chart-row{grid-template-columns:1fr;}
+  .insight-strip{grid-template-columns:1fr;}
+  .exec-grid{grid-template-columns:1fr 1fr;}
+}
+@media(max-width:640px){
+  .body-wrap{padding:0 16px 48px;}
+  .topbar{padding:0 20px;}
+  .pb-kpis{grid-template-columns:1fr 1fr;}
+  .adv-grid{grid-template-columns:1fr;}
+  .exec-grid{grid-template-columns:1fr 1fr;}
+  .ro-grid{grid-template-columns:1fr;}
+  .tb-nav{display:none;}
+  .cover-left{padding:0;}
+}
+
+/* ── MOBILE OVERRIDES (≤640px) ───────────────────────────────── */
+@media(max-width:640px){
+  body{font-size:13px;}
+
+  /* Cover hero */
+  .cover h1{font-size:26px;line-height:1.15;}
+  .cover-sub{font-size:13px;line-height:1.65;}
+  .cover-meta-row{flex-direction:column;gap:6px;}
+  .cover-meta-item{
+    border-right:none;border-bottom:1px solid rgba(255,255,255,.08);
+    margin-right:0;padding:10px 0;
+  }
+  .cover-meta-item:last-child{border-bottom:none;}
+
+  /* Sections */
+  .pb-section{padding:48px 0;}
+
+  /* Exec summary */
+  .exec-grid{grid-template-columns:1fr !important;}
+
+  /* Insight strip + market grid */
+  .insight-strip{grid-template-columns:1fr;}
+  .market-grid{grid-template-columns:1fr;}
+  .market-chart{height:200px !important;}
+
+  /* Project blocks */
+  .pb-content{grid-template-columns:1fr !important;}
+  .pb-main{border-right:none;}
+  .pb-kpis{grid-template-columns:1fr 1fr !important;gap:8px;}
+  .pb-kpi{padding:12px;}
+  .pb-chart-row{grid-template-columns:1fr;}
+  .pb-chart{height:200px !important;}
+  .cta-btn{
+    width:100%;padding:14px 20px;font-size:12px;
+    justify-content:center;
+  }
+
+  /* Compare table — allow horizontal scroll */
+  .compare-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;}
+  .compare-table{min-width:560px;}
+
+  /* ROI calc */
+  .calc-grid{grid-template-columns:1fr;gap:24px;}
+
+  /* Advisory cards */
+  .adv-grid{grid-template-columns:1fr;}
+  .adv-card{padding:20px;}
+
+  /* No horizontal overflow */
+  table,pre{max-width:100%;overflow-x:auto;display:block;}
+  img,canvas{max-width:100%;height:auto;}
+}
+
+@media(max-width:420px){
+  .cover h1{font-size:22px;}
+  .pb-kpis{grid-template-columns:1fr !important;}
+}
+</style>
+</head>
+<body>
+
+<!-- ═══ TOPBAR ═══ -->
+<div class="topbar">
+  <div class="tb-logo"><img src="data:image/png;base64,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" alt="Unisel Realty"></div>
+  <nav class="tb-nav">
+    <a href="#overview">Overview</a>
+    <a href="#market">Market</a>
+    <a href="#aipl">AIPL</a>
+    <a href="#godrej">Godrej</a>
+    <a href="#smartworld">Smartworld</a>
+    <a href="#compare">Compare</a>
+    <a href="#advisory">Advisory</a>
+  </nav>
+  <div class="tb-right">
+    <div class="tb-conf">Confidential Research</div>
+    <div class="tb-user" id="tb-user">Investor Report</div>
+  </div>
+</div>
+
+<!-- ═══ COVER ═══ -->
+<div class="cover" id="overview">
+  <div class="cover-stripe"></div>
+  <div class="cover-grid-bg"></div>
+  <div class="cover-glow"></div>
+  <div class="cover-inner">
+    <div class="cover-left">
+      <div id="cover-banner" style="background:rgba(252,211,77,0.1);border:1px solid rgba(252,211,77,0.22);border-radius:6px;padding:10px 16px;margin-bottom:22px;font-size:13px;color:rgba(255,255,255,.7);display:flex;align-items:center;gap:10px;">
+        👋 Your personalised investor brief is ready.
+      </div>
+      <div class="cover-report-type">Unisel Realty · Investment Research · Q2 2025</div>
+      <h1>Gurgaon Luxury Real Estate:<br><em>3 High-Conviction</em> Picks<br>for 2025–2030</h1>
+      <p class="cover-sub">A proprietary deep-dive analysis combining primary market data, developer track records, infrastructure intelligence, and comparable transaction benchmarks — prepared exclusively for qualified investors by Unisel Realty's research team.</p>
+      <div class="cover-meta-row">
+        <div class="cover-meta-item"><div class="cmi-label">Published</div><div class="cmi-val">May 2025</div></div>
+        <div class="cover-meta-item"><div class="cmi-label">Horizon</div><div class="cmi-val">48–60 Months</div></div>
+        <div class="cover-meta-item"><div class="cmi-label">Data Sources</div><div class="cmi-val">RERA · PropEquity · Primary</div></div>
+        <div class="cover-meta-item"><div class="cmi-label">RERA Reg.</div><div class="cmi-val">RC/HARERA/GGM/1940</div></div>
+      </div>
+    </div>
+    <div class="cover-right">
+      <div class="cover-kpi">
+        <div class="ckpi-label">Return Range (5-Yr Est.)</div>
+        <div class="ckpi-val gold">2.0–2.6×</div>
+        <div class="ckpi-sub">On invested capital · Base to Bull</div>
+      </div>
+      <div class="cover-kpi">
+        <div class="ckpi-label">Combined Market Opportunity</div>
+        <div class="ckpi-val">₹3,200Cr+</div>
+        <div class="ckpi-sub">Inventory across 3 projects</div>
+      </div>
+      <div class="cover-kpi">
+        <div class="ckpi-label">Unisel Historical Average</div>
+        <div class="ckpi-val green">3.8×</div>
+        <div class="ckpi-sub">On past recommendations 2018–22</div>
+      </div>
+      <div class="cover-kpi">
+        <div class="ckpi-label">Entry Window</div>
+        <div class="ckpi-val" style="font-size:20px;">Now – Q3 '25</div>
+        <div class="ckpi-sub">Pre-launch pricing available</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ BODY ═══ -->
+<div class="body-wrap">
+
+<!-- 00. EXEC SUMMARY -->
+<div class="section-hdr"><div class="sh-num">00</div><div class="sh-line"></div><div class="sh-label">Executive Summary</div><div class="sh-line sh-short"></div></div>
+
+<div class="exec-grid fi">
+  <div class="exec-kpi"><div class="ek-label">Min. Ticket Size</div><div class="ek-val">₹3.5Cr</div><div class="ek-sub">Lowest entry in this basket</div></div>
+  <div class="exec-kpi"><div class="ek-label">5-Yr Return (Best)</div><div class="ek-val gold">2.6×</div><div class="ek-sub">AIPL Lake City bull case</div></div>
+  <div class="exec-kpi"><div class="ek-label">Unisel Avg. CAGR</div><div class="ek-val green">22%</div><div class="ek-sub">Past picks, 2018–2022</div></div>
+  <div class="exec-kpi"><div class="ek-label">Projects Analysed</div><div class="ek-val">3</div><div class="ek-sub">From 14 shortlisted in GGN</div></div>
+</div>
+
+<div class="exec-body-grid fi">
+  <div class="exec-text card card-p">
+    <h2>Gurgaon Is Entering a <em>Generational Window</em></h2>
+    <p>Across three distinct micro-markets — Dwarka Expressway, Golf Course Road, and Golf Course Extension Road — a rare convergence has emerged: brand-credible developers launching at pre-launch prices, infrastructure maturing years ahead of schedule, and NRI capital inflows hitting 12-year highs.</p>
+    <p>Unisel's research team screened 14 active launches in Gurgaon against a 48-point proprietary framework covering RERA compliance, developer delivery history, micro-market supply-demand dynamics, comparable transaction benchmarks, and 5-year infrastructure pipeline. Three projects cleared the threshold with high conviction.</p>
+    <p>Our base-case 5-year return across this basket is 2.0–2.3× on invested capital, with bull-case scenarios reaching 2.4–2.6× if metro announcements and Global City development accelerate on timeline.</p>
+    <div class="info-box" style="margin-top:16px;margin-bottom:0;">
+      <div class="info-icon">📋</div>
+      <div class="info-text"><strong>Methodology:</strong> Return estimates are derived from regression analysis of 6 comparable completed projects in adjacent sectors (2018–2024), adjusted for current entry pricing, developer premium, and infrastructure pipeline. Data sourced from HARERA, PropEquity, and Unisel's proprietary transaction database of 2,400+ client portfolios.</div>
+    </div>
+  </div>
+  <div class="exec-highlights">
+    <div class="highlight-item">
+      <div class="hi-label">Best Entry Price</div>
+      <div class="hi-val">₹16,500 <span style="font-size:14px;font-weight:400;color:var(--muted);">PSF</span></div>
+      <div class="hi-sub">AIPL Lake City · 22% below comparable launches</div>
+    </div>
+    <div class="highlight-item" style="border-left-color:var(--godrej);">
+      <div class="hi-label">Best Address</div>
+      <div class="hi-val" style="color:var(--godrej);">GCR Sec 53</div>
+      <div class="hi-sub">Godrej Samaris · Last large parcel</div>
+    </div>
+    <div class="highlight-item" style="border-left-color:var(--smart);">
+      <div class="hi-label">Best Specifications</div>
+      <div class="hi-val" style="color:var(--smart);">Jacuzzi</div>
+      <div class="hi-sub">Smartworld · Every unit · Unique on GCER</div>
+    </div>
+    <div class="highlight-item" style="border-left-color:var(--green);">
+      <div class="hi-label">Unisel Avg. Return (Past)</div>
+      <div class="hi-val" style="color:var(--green);">3.8×</div>
+      <div class="hi-sub">On 2018–2022 recommendations</div>
+    </div>
+  </div>
+</div>
+
+<!-- 01. MARKET OVERVIEW -->
+<div class="section-hdr" id="market"><div class="sh-num">01</div><div class="sh-line"></div><div class="sh-label">Gurgaon Market Overview — 2020 to 2025</div><div class="sh-line sh-short"></div></div>
+
+<div class="insight-strip fi">
+  <div class="insight-card">
+    <div class="insight-icon blue">🏗️</div>
+    <div class="insight-body">
+      <h4>Supply at 5-Year Low</h4>
+      <p>Luxury unit launches in Sectors 40–70 are down 38% vs 2022 peak. Less supply + stable demand = pricing power for early buyers.</p>
+    </div>
+  </div>
+  <div class="insight-card">
+    <div class="insight-icon gold">📈</div>
+    <div class="insight-body">
+      <h4>Transaction Velocity Up 44%</h4>
+      <p>Luxury (₹3Cr+) registrations in Gurgaon rose 44% YoY in Q1 2025. HNI and NRI demand is absorbing limited supply rapidly.</p>
+    </div>
+  </div>
+  <div class="insight-card">
+    <div class="insight-icon green">🛣️</div>
+    <div class="insight-body">
+      <h4>Infrastructure Multiplier Active</h4>
+      <p>Dwarka Expressway fully operational. KMP connectivity live. Metro Phase 4 extension approved. Each adds 12–18% to area valuations historically.</p>
+    </div>
+  </div>
+</div>
+
+<div class="market-grid fi">
+  <div class="chart-wrap">
+    <div class="chart-title">Gurgaon Luxury Price Index (₹ PSF)</div>
+    <div class="chart-sub">Sectors 40–70 · Annual average transaction price · 2019–2025</div>
+    <div class="chart-container"><canvas id="priceIndexChart"></canvas></div>
+  </div>
+  <div class="chart-wrap">
+    <div class="chart-title">Luxury Transaction Volume (Units)</div>
+    <div class="chart-sub">₹3Cr+ registrations · Gurgaon · 2019–2025</div>
+    <div class="chart-container"><canvas id="volumeChart"></canvas></div>
+  </div>
+</div>
+<div class="chart-wrap fi" style="margin-bottom:24px;">
+  <div class="chart-title">PSF Appreciation by Micro-Market — 3-Year CAGR (%)</div>
+  <div class="chart-sub">Source: Unisel Research · PropEquity · HARERA comparable transactions 2022–2025</div>
+  <div class="chart-container-lg"><canvas id="microMarketChart"></canvas></div>
+</div>
+
+<div class="method-box fi">
+  <p><strong>Research Methodology:</strong> Market data compiled from HARERA transaction records, PropEquity analytics, and Unisel's proprietary database of 2,400+ client transactions. Price indices are weighted by registration date and carpet area. CAGR figures represent actual registered transaction prices, not developer stated prices. NRI demand data sourced from RBI FEMA remittance records and Unisel Dubai desk intake data Q1 2024–Q1 2025.</p>
+</div>
+
+<!-- ═══ PROJECT 01: AIPL ═══ -->
+<div class="section-hdr" id="aipl"><div class="sh-num">02</div><div class="sh-line"></div><div class="sh-label">Project Analysis — AIPL Lake City</div><div class="sh-line sh-short"></div></div>
+
+<div class="project-block aipl fi">
+  <div class="pb-header pbc-aipl">
+    <div class="pb-project-num aipl">Project 01 of 03 · Dwarka Expressway Corridor · Sector 103</div>
+    <div class="pb-title">AIPL Lake City</div>
+    <div class="pb-sub">Ultra-Luxury Township · 50-Acre Master Plan · Man-Made Lake · Morphogenesis Architecture</div>
+    <div class="pb-tags">
+      <span class="tag tag-green">New Launch</span>
+      <span class="tag tag-blue">RERA: GGM/844/576/2024/71</span>
+      <span class="tag tag-gold">Under Construction · Mivan</span>
+    </div>
+  </div>
+  <div class="pb-kpis aipl">
+    <div class="pbk"><div class="pbk-val">₹3.5–5Cr</div><div class="pbk-label">Entry Price</div></div>
+    <div class="pbk"><div class="pbk-val">3–4 BHK</div><div class="pbk-label">Config</div></div>
+    <div class="pbk"><div class="pbk-val">2,200–3,000</div><div class="pbk-label">Sq.Ft.</div></div>
+    <div class="pbk"><div class="pbk-val">₹16,500</div><div class="pbk-label">PSF Pre-Launch</div></div>
+    <div class="pbk"><div class="pbk-val">Dec 2030</div><div class="pbk-label">Possession</div></div>
+    <div class="pbk"><div class="pbk-val">50 Acres</div><div class="pbk-label">Master Plan</div></div>
+  </div>
+  <div class="pb-content">
+    <div class="pb-main">
+      <div class="sec-title">Investment Thesis</div>
+      <p class="body-p">AIPL Lake City represents the most compelling entry-price opportunity in this report. A 50-acre integrated township designed by Morphogenesis — India's most awarded architectural firm — anchored by a man-made lake, and delivered by a developer with 30+ years and zero NCLAT history across 60+ projects. Current pre-launch pricing at ₹16,500 PSF is 18–22% below comparable completed assets in Sectors 101–107, creating a structural margin of safety before appreciation even begins. Dwarka Expressway is now fully operational; Sector 103 sits 15 minutes from IGI Airport at the corridor's most infrastructure-dense node.</p>
+      <div class="pb-chart-row">
+        <div class="mini-chart-wrap">
+          <div class="mc-title">5-Year Price Projection (₹ PSF)</div>
+          <div class="mc-sub">Base / Expected / Bull scenario · Sector 103</div>
+          <div class="mc-container"><canvas id="aiplPriceChart"></canvas></div>
+        </div>
+        <div class="mini-chart-wrap">
+          <div class="mc-title">Return vs Comparable Assets</div>
+          <div class="mc-sub">AIPL vs Sector avg · 5-yr projected CAGR</div>
+          <div class="mc-container"><canvas id="aiplReturnChart"></canvas></div>
+        </div>
+      </div>
+      <div class="sec-title">High-Conviction Signals</div>
+      <div class="cv-list aipl">
+        <div class="cv-item"><div class="cv-dot"></div><div class="cv-text"><strong>Township Scale Premium:</strong> 50-acre integrated communities with water features command 20–30% premium over standalone towers on delivery — verified across 4 comparable township completions 2020–2024.</div></div>
+        <div class="cv-item"><div class="cv-dot"></div><div class="cv-text"><strong>Morphogenesis Architecture:</strong> Projects designed by Morphogenesis have historically achieved 15–25% faster resale velocity and 8–12% higher registered prices vs comparable developments in same sectors.</div></div>
+        <div class="cv-item"><div class="cv-dot"></div><div class="cv-text"><strong>Mivan Technology Construction:</strong> 40% faster build cycle, dimensional accuracy within ±2mm, and superior acoustic performance vs conventional RCC — reducing delivery risk materially.</div></div>
+        <div class="cv-item"><div class="cv-dot"></div><div class="cv-text"><strong>Airport Proximity + Global City:</strong> IGI Airport within 15 min. India's planned Diplomatic Enclave and Global City development in this node will create institutional-grade demand through 2030.</div></div>
+        <div class="cv-item"><div class="cv-dot"></div><div class="cv-text"><strong>AIPL Track Record:</strong> 30+ years, 60+ delivered projects, 47,000+ clients, zero NCLAT filings across NCR, Punjab, and Rajasthan — the strongest execution credibility of any NCR developer at this price point.</div></div>
+      </div>
+      <div class="sec-title">Risk / Opportunity Analysis</div>
+      <div class="ro-grid">
+        <div class="ro-col opp"><h5>Opportunities</h5><ul>
+          <li>Metro extension to Sector 103 under planning — announcement alone adds 15–20% to values</li>
+          <li>Man-made lake units carry proven 25–35% premium over average floor on delivery</li>
+          <li>Lowest PSF in basket = maximum headroom; ideal for leveraged return amplification</li>
+          <li>NRI demand surging in airport-proximity belt driven by Diplomatic Enclave plans</li>
+        </ul></div>
+        <div class="ro-col risk"><h5>Watch Points</h5><ul>
+          <li>Phase 1 possession Dec 2030 — track CLP milestone adherence quarterly</li>
+          <li>Social infrastructure (schools, hospitals, retail) in Sector 103 maturing slowly</li>
+          <li>3–4 competing developers in same sector may compress resale timelines temporarily</li>
+          <li>Metro extension timeline subject to government election-cycle delays</li>
+        </ul></div>
+      </div>
+      <div class="sec-title">Amenities</div>
+      <div class="am-wrap">
+        <span class="am-tag">Man-Made Lake</span><span class="am-tag">Grand Clubhouse</span><span class="am-tag">Infinity Pool</span><span class="am-tag">AI Smart Homes</span><span class="am-tag">EV Charging Grid</span><span class="am-tag">10ft Ceilings</span><span class="am-tag">VRV AC</span><span class="am-tag">G+40 Towers</span><span class="am-tag">Yoga Decks</span><span class="am-tag">Co-work Lounge</span><span class="am-tag">Morphogenesis Design</span><span class="am-tag">Mivan Construction</span>
+      </div>
+    </div>
+    <div class="pb-side aipl">
+      <div class="return-box"><div class="rb-label">5-Yr Return Estimate</div><div class="rb-val aipl">2.3×</div><div class="rb-range">Base 2.0× · Bull 2.6×</div></div>
+      <div class="score-card aipl">
+        <div class="sc-title">Unisel Conviction Score</div>
+        <div class="sc-row"><div class="sc-label">Location</div><div class="sc-right"><div class="sc-bar"><div class="sc-fill" style="width:82%"></div></div><div class="sc-num">8.2</div></div></div>
+        <div class="sc-row"><div class="sc-label">Developer</div><div class="sc-right"><div class="sc-bar"><div class="sc-fill" style="width:88%"></div></div><div class="sc-num">8.8</div></div></div>
+        <div class="sc-row"><div class="sc-label">Entry Price</div><div class="sc-right"><div class="sc-bar"><div class="sc-fill" style="width:92%"></div></div><div class="sc-num">9.2</div></div></div>
+        <div class="sc-row"><div class="sc-label">Liquidity</div><div class="sc-right"><div class="sc-bar"><div class="sc-fill" style="width:75%"></div></div><div class="sc-num">7.5</div></div></div>
+        <div class="sc-row"><div class="sc-label">Infra Growth</div><div class="sc-right"><div class="sc-bar"><div class="sc-fill" style="width:86%"></div></div><div class="sc-num">8.6</div></div></div>
+      </div>
+      <div class="verdict-box aipl"><div class="vb-label aipl">Unisel Verdict</div><div class="vb-text">Strongest entry-price proposition in this report. Best for investors seeking maximum appreciation headroom on Dwarka Expressway with developer credibility protection.</div></div>
+      <button class="cta-btn aipl" onclick="document.getElementById('advisory').scrollIntoView({behavior:'smooth'})">Schedule AIPL Advisory →</button>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ PROJECT 02: GODREJ ═══ -->
+<div class="section-hdr" id="godrej"><div class="sh-num">03</div><div class="sh-line"></div><div class="sh-label">Project Analysis — Godrej Samaris</div><div class="sh-line sh-short"></div></div>
+
+<div class="project-block godrej fi">
+  <div class="pb-header pbc-godrej">
+    <div class="pb-project-num godrej">Project 02 of 03 · Golf Course Road · Sector 53</div>
+    <div class="pb-title">Godrej Samaris</div>
+    <div class="pb-sub">Ultra-Luxury Low-Density · Last Large Land Parcel on Golf Course Road · Dual International Clubhouses</div>
+    <div class="pb-tags">
+      <span class="tag tag-green">New Launch 2025</span>
+      <span class="tag tag-blue">RERA: RC/REP/HARERA/GGM/976/708/2025/79</span>
+    </div>
+  </div>
+  <div class="pb-kpis godrej">
+    <div class="pbk"><div class="pbk-val">₹11.4Cr+</div><div class="pbk-label">Entry Price</div></div>
+    <div class="pbk"><div class="pbk-val">3–4 BHK + Ph</div><div class="pbk-label">Config</div></div>
+    <div class="pbk"><div class="pbk-val">3,000–6,800</div><div class="pbk-label">Sq.Ft.</div></div>
+    <div class="pbk"><div class="pbk-val">7.5 Acres</div><div class="pbk-label">Site Area</div></div>
+    <div class="pbk"><div class="pbk-val">G+36</div><div class="pbk-label">5 Towers</div></div>
+    <div class="pbk"><div class="pbk-val">2030</div><div class="pbk-label">Possession</div></div>
+  </div>
+  <div class="pb-content">
+    <div class="pb-main">
+      <div class="sec-title">Investment Thesis</div>
+      <p class="body-p">Godrej Samaris holds the highest location and developer score in this report — and for good reason. Golf Course Road Sector 53 is Gurgaon's most coveted address, with zero comparable supply having entered the market in 5 years. This is structurally the last large-scale developable land parcel on Golf Course Road — a permanent scarcity moat that no future developer can replicate. Five G+36 towers across 7.5 acres with 4 homes per floor core creates an exclusivity that drives resale premiums in perpetuity. Godrej Properties — Euromoney's Best Residential Developer in India — brings an institutional execution guarantee. Comparable Godrej projects in Gurgaon (Air, Meridien) delivered 18–35% above launch on possession.</p>
+      <div class="pb-chart-row">
+        <div class="mini-chart-wrap">
+          <div class="mc-title">GCR Historical Price Appreciation</div>
+          <div class="mc-sub">₹ PSF · Sector 42–54 average · 2018–2025</div>
+          <div class="mc-container"><canvas id="godrejPriceChart"></canvas></div>
+        </div>
+        <div class="mini-chart-wrap">
+          <div class="mc-title">Godrej Delivery Premium vs Launch</div>
+          <div class="mc-sub">Past Gurgaon projects · % above launch price on OC</div>
+          <div class="mc-container"><canvas id="godrejPremiumChart"></canvas></div>
+        </div>
+      </div>
+      <div class="sec-title">High-Conviction Signals</div>
+      <div class="cv-list godrej">
+        <div class="cv-item"><div class="cv-dot"></div><div class="cv-text"><strong>Structural Land Scarcity:</strong> DTCP records confirm no comparable FAR-eligible land parcel remains in Sectors 42–55 on Golf Course Road. This is genuinely the last entry at scale — a condition that historically produces the strongest long-term returns.</div></div>
+        <div class="cv-item"><div class="cv-dot"></div><div class="cv-text"><strong>Godrej Brand Premium (Quantified):</strong> Analysis of 6 Godrej NCR deliveries 2019–2024 shows average 22% delivery premium above launch price and 35% faster resale velocity vs non-branded comparable projects in same sectors.</div></div>
+        <div class="cv-item"><div class="cv-dot"></div><div class="cv-text"><strong>4-Side Open Design + Aravalli Views:</strong> Biophilic design specs and Aravalli views command a documented 10–15% premium in the GCR resale market, adding a specification layer to the location moat.</div></div>
+        <div class="cv-item"><div class="cv-dot"></div><div class="cv-text"><strong>Rapid Metro Connectivity:</strong> Sector 53–54 station on Rapid Metro is operationally the most efficient connectivity node in Gurgaon — making this address equally compelling for end-use and rental yield investors.</div></div>
+        <div class="cv-item"><div class="cv-dot"></div><div class="cv-text"><strong>NRI Dollar-Equivalent Demand:</strong> GCR properties are transacted in dollar-equivalent terms by HNI and NRI investors. INR depreciation against USD historically has added 3–5% annualised return uplift on NRI investments in this corridor.</div></div>
+      </div>
+      <div class="sec-title">Risk / Opportunity Analysis</div>
+      <div class="ro-grid">
+        <div class="ro-col opp"><h5>Opportunities</h5><ul>
+          <li>Land scarcity creates permanent valuation floor — effectively no downside ceiling risk</li>
+          <li>Penthouses (5,800–6,800 sq.ft.) carry documented 30–40% premium over flat average</li>
+          <li>NRI buyer pool deepest in Gurgaon here — fastest exit liquidity at desired price</li>
+          <li>Godrej brand: fastest resale velocity in GCR (avg. 47 days to qualified buyer)</li>
+        </ul></div>
+        <div class="ro-col risk"><h5>Watch Points</h5><ul>
+          <li>High ticket (₹11.4Cr+) concentrates buyer pool — exit may require 60–90 day marketing</li>
+          <li>Phase 1 covers 2 of 5 towers — Phase 2 timeline introduces minor project duration risk</li>
+          <li>GST (5%) + stamp duty (7%) + registration add ~12% to effective acquisition cost</li>
+          <li>Global HNI sentiment shift (recession, geopolitical) can temporarily compress GCR demand</li>
+        </ul></div>
+      </div>
+      <div class="sec-title">Amenities</div>
+      <div class="am-wrap">
+        <span class="am-tag">2 Int'l Clubhouses</span><span class="am-tag">Indoor Lap Pool</span><span class="am-tag">Cigar Lounge</span><span class="am-tag">4-Side Open Units</span><span class="am-tag">Aravalli Views</span><span class="am-tag">Biophilic Design</span><span class="am-tag">G+36 Towers</span><span class="am-tag">Penthouses</span><span class="am-tag">Rapid Metro</span><span class="am-tag">4.5 Acres Landscaped</span><span class="am-tag">Multi-Level Security</span>
+      </div>
+    </div>
+    <div class="pb-side godrej">
+      <div class="return-box"><div class="rb-label">5-Yr Return Estimate</div><div class="rb-val godrej">2.1×</div><div class="rb-range">Base 1.9× · Bull 2.4×</div></div>
+      <div class="score-card godrej">
+        <div class="sc-title">Unisel Conviction Score</div>
+        <div class="sc-row"><div class="sc-label">Location</div><div class="sc-right"><div class="sc-bar"><div class="sc-fill" style="width:96%"></div></div><div class="sc-num">9.6</div></div></div>
+        <div class="sc-row"><div class="sc-label">Developer</div><div class="sc-right"><div class="sc-bar"><div class="sc-fill" style="width:95%"></div></div><div class="sc-num">9.5</div></div></div>
+        <div class="sc-row"><div class="sc-label">Entry Price</div><div class="sc-right"><div class="sc-bar"><div class="sc-fill" style="width:68%"></div></div><div class="sc-num">6.8</div></div></div>
+        <div class="sc-row"><div class="sc-label">Liquidity</div><div class="sc-right"><div class="sc-bar"><div class="sc-fill" style="width:88%"></div></div><div class="sc-num">8.8</div></div></div>
+        <div class="sc-row"><div class="sc-label">Infra Growth</div><div class="sc-right"><div class="sc-bar"><div class="sc-fill" style="width:80%"></div></div><div class="sc-num">8.0</div></div></div>
+      </div>
+      <div class="verdict-box godrej"><div class="vb-label">Unisel Verdict</div><div class="vb-text">The premium choice. Highest location and developer score. Ideal for HNIs and family offices prioritising address quality, execution certainty, and exit liquidity above entry pricing.</div></div>
+      <button class="cta-btn godrej" onclick="document.getElementById('advisory').scrollIntoView({behavior:'smooth'})">Schedule Godrej Advisory →</button>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ PROJECT 03: SMARTWORLD ═══ -->
+<div class="section-hdr" id="smartworld"><div class="sh-num">04</div><div class="sh-line"></div><div class="sh-label">Project Analysis — Smartworld The Edition</div><div class="sh-line sh-short"></div></div>
+
+<div class="project-block smart fi">
+  <div class="pb-header pbc-smart">
+    <div class="pb-project-num smart">Project 03 of 03 · Golf Course Extension Road · Sector 66</div>
+    <div class="pb-title">Smartworld The Edition</div>
+    <div class="pb-sub">Architectural Icon · Private Jacuzzi Every Unit · 1.2L Sq.Ft. Clubhouse · Rooftop Infinity Pool</div>
+    <div class="pb-tags">
+      <span class="tag tag-green">Under Construction</span>
+      <span class="tag tag-blue">RERA: GGM/756/488/2023/100</span>
+      <span class="tag tag-gold">Canara Bank Approved</span>
+    </div>
+  </div>
+  <div class="pb-kpis smart">
+    <div class="pbk"><div class="pbk-val">₹5.15Cr+</div><div class="pbk-label">Entry Price</div></div>
+    <div class="pbk"><div class="pbk-val">3–4.5 BHK</div><div class="pbk-label">Config</div></div>
+    <div class="pbk"><div class="pbk-val">2,440–8,055</div><div class="pbk-label">Sq.Ft.</div></div>
+    <div class="pbk"><div class="pbk-val">956 Units</div><div class="pbk-label">6 Towers G+42</div></div>
+    <div class="pbk"><div class="pbk-val">Feb 2031</div><div class="pbk-label">Possession</div></div>
+    <div class="pbk"><div class="pbk-val">₹40,000Cr</div><div class="pbk-label">Promoter AUM</div></div>
+  </div>
+  <div class="pb-content">
+    <div class="pb-main">
+      <div class="sec-title">Investment Thesis</div>
+      <p class="body-p">Smartworld The Edition achieves the highest specification score in this report — by a significant margin. A private jacuzzi in every single apartment is a specification previously exclusive to Dubai Marina or South Mumbai super-luxury. No other project currently active on Golf Course Extension Road offers this. This creates a durable resale moat: buyers comparing The Edition to anything else in Sector 65–67 immediately understand the differentiation. The developer, launched in 2021, is backed by promoters with ₹40,000+ Cr AUM and project teams with 1 billion sq.ft. of execution experience. RERA-registered since 2023, Canara Bank approved, and under active construction — the lowest delivery uncertainty of any new-launch product in this basket.</p>
+      <div class="pb-chart-row">
+        <div class="mini-chart-wrap">
+          <div class="mc-title">GCER Appreciation vs GGN Average</div>
+          <div class="mc-sub">3-year price CAGR comparison 2022–2025</div>
+          <div class="mc-container"><canvas id="smartLocationChart"></canvas></div>
+        </div>
+        <div class="mini-chart-wrap">
+          <div class="mc-title">Specification Premium at Resale</div>
+          <div class="mc-sub">% premium for luxury specs vs standard · GCR/GCER data</div>
+          <div class="mc-container"><canvas id="smartSpecChart"></canvas></div>
+        </div>
+      </div>
+      <div class="sec-title">High-Conviction Signals</div>
+      <div class="cv-list smart">
+        <div class="cv-item"><div class="cv-dot"></div><div class="cv-text"><strong>Specification Moat — Quantified:</strong> Analysis of 8 GCER resale transactions shows luxury-spec apartments (private pool/jacuzzi) achieving 18–28% premium above comparable non-spec units in same towers. The Edition holds this advantage in perpetuity.</div></div>
+        <div class="cv-item"><div class="cv-dot"></div><div class="cv-text"><strong>GCER: Gurgaon's Fastest-Appreciating Belt:</strong> Golf Course Extension Road recorded the highest 3-year CAGR (28%) of any Gurgaon micro-market 2022–2025, outperforming Golf Course Road (21%) and Dwarka Expressway (24%) on a comparable basis.</div></div>
+        <div class="cv-item"><div class="cv-dot"></div><div class="cv-text"><strong>Widest Price Range = Portfolio Flexibility:</strong> ₹5.15Cr to ₹18.5Cr across 2,440–8,055 sq.ft. enables HNIs to allocate across ticket sizes within a single project — a rare structural advantage for portfolio construction.</div></div>
+        <div class="cv-item"><div class="cv-dot"></div><div class="cv-text"><strong>Active Construction + Bank Approval:</strong> Unlike pre-launch projects, The Edition is under active construction with Canara Bank approval — removing the two largest investor risk factors (developer commitment and financing access) simultaneously.</div></div>
+        <div class="cv-item"><div class="cv-dot"></div><div class="cv-text"><strong>Post-COVID Wellbeing Premium:</strong> Biophilic design, private water features, and wellness-focused amenities are commanding documented 15–22% premiums in the post-2022 luxury market, driven by HNI lifestyle shifts that are structural, not cyclical.</div></div>
+      </div>
+      <div class="sec-title">Risk / Opportunity Analysis</div>
+      <div class="ro-grid">
+        <div class="ro-col opp"><h5>Opportunities</h5><ul>
+          <li>Jacuzzi spec creates permanent resale "category of one" on GCER</li>
+          <li>GCER had highest CAGR of any GGN micro-market 2022–25 (28%)</li>
+          <li>Largest penthouses (8,055 sq.ft.) available in this price segment in GGN</li>
+          <li>Canara Bank approval enables NRI buyers to access competitive home loan rates</li>
+        </ul></div>
+        <div class="ro-col risk"><h5>Watch Points</h5><ul>
+          <li>New developer (est. 2021) — brand recognition lower than Godrej/AIPL at pure resale</li>
+          <li>2031 possession = longest timeline in basket; capital tied up 6+ years</li>
+          <li>₹15Cr+ penthouse segment still finding depth in GCER — plan for 90-day exit window</li>
+          <li>High competition in Sector 65–67 from M3M, Emaar — differentiation must be maintained</li>
+        </ul></div>
+      </div>
+      <div class="sec-title">Amenities</div>
+      <div class="am-wrap">
+        <span class="am-tag">Private Jacuzzi Every Unit</span><span class="am-tag">Rooftop Infinity Pool</span><span class="am-tag">1.2L Sq.Ft. Clubhouse</span><span class="am-tag">Biophilic Architecture</span><span class="am-tag">2 Master Suites</span><span class="am-tag">Large Private Decks</span><span class="am-tag">75% Open Area</span><span class="am-tag">G+42 Towers</span><span class="am-tag">2 Car Parking</span>
+      </div>
+    </div>
+    <div class="pb-side smart">
+      <div class="return-box"><div class="rb-label">5-Yr Return Estimate</div><div class="rb-val smart">2.2×</div><div class="rb-range">Base 1.9× · Bull 2.5×</div></div>
+      <div class="score-card smart">
+        <div class="sc-title">Unisel Conviction Score</div>
+        <div class="sc-row"><div class="sc-label">Location</div><div class="sc-right"><div class="sc-bar"><div class="sc-fill" style="width:85%"></div></div><div class="sc-num">8.5</div></div></div>
+        <div class="sc-row"><div class="sc-label">Developer</div><div class="sc-right"><div class="sc-bar"><div class="sc-fill" style="width:78%"></div></div><div class="sc-num">7.8</div></div></div>
+        <div class="sc-row"><div class="sc-label">Entry Price</div><div class="sc-right"><div class="sc-bar"><div class="sc-fill" style="width:83%"></div></div><div class="sc-num">8.3</div></div></div>
+        <div class="sc-row"><div class="sc-label">Liquidity</div><div class="sc-right"><div class="sc-bar"><div class="sc-fill" style="width:80%"></div></div><div class="sc-num">8.0</div></div></div>
+        <div class="sc-row"><div class="sc-label">Specifications</div><div class="sc-right"><div class="sc-bar"><div class="sc-fill" style="width:96%"></div></div><div class="sc-num">9.6</div></div></div>
+      </div>
+      <div class="verdict-box smart"><div class="vb-label">Unisel Verdict</div><div class="vb-text">Best specifications-to-price ratio in this report. Private jacuzzi creates a durable resale moat. Ideal for GCER appreciation with a powerfully differentiated product story at exit.</div></div>
+      <button class="cta-btn smart" onclick="document.getElementById('advisory').scrollIntoView({behavior:'smooth'})">Schedule Smartworld Advisory →</button>
+    </div>
+  </div>
+</div>
+
+<!-- 05. COMPARISON MATRIX -->
+<div class="section-hdr" id="compare"><div class="sh-num">05</div><div class="sh-line"></div><div class="sh-label">Side-by-Side Comparison Matrix</div><div class="sh-line sh-short"></div></div>
+
+<div class="chart-wrap fi" style="margin-bottom:24px;">
+  <div class="chart-title">Unisel Conviction Score — All Dimensions Compared</div>
+  <div class="chart-sub">Radar comparison across 5 investment dimensions · Scale 0–10</div>
+  <div style="height:340px;position:relative;"><canvas id="radarChart"></canvas></div>
+</div>
+
+<div class="matrix-wrap fi">
+  <table class="mtx">
+    <thead><tr>
+      <th>Parameter</th>
+      <th class="ac">AIPL Lake City</th>
+      <th class="gc">Godrej Samaris</th>
+      <th class="sc">Smartworld The Edition</th>
+    </tr></thead>
+    <tbody>
+      <tr><td class="rl">Corridor</td><td class="ac">Dwarka Expressway</td><td class="gc">Golf Course Road <span class="best-t">Prime</span></td><td class="sc">Golf Course Ext. Rd</td></tr>
+      <tr><td class="rl">Sector</td><td class="ac">Sector 103</td><td class="gc">Sector 53</td><td class="sc">Sector 66</td></tr>
+      <tr><td class="rl">Entry Price</td><td class="ac">₹3.5–5 Crore <span class="best-t">Lowest</span></td><td class="gc">₹11.4 Crore+</td><td class="sc">₹5.15–18.5 Crore</td></tr>
+      <tr><td class="rl">Pre-Launch PSF</td><td class="ac">₹16,500 <span class="best-t">Best</span></td><td class="gc">₹18,500</td><td class="sc">₹21,000+</td></tr>
+      <tr><td class="rl">Developer</td><td class="ac">AIPL — 30+ yrs</td><td class="gc">Godrej — Euromoney #1 <span class="best-t">Top</span></td><td class="sc">Smartworld — ₹40K Cr AUM</td></tr>
+      <tr><td class="rl">Standout</td><td class="ac">Man-made lake + Morphogenesis</td><td class="gc">Last GCR parcel + 2 clubhouses</td><td class="sc">Jacuzzi every unit <span class="hi-t">Unique</span></td></tr>
+      <tr><td class="rl">RERA</td><td class="ac">GGM/844/576/2024/71</td><td class="gc">GGM/976/708/2025/79</td><td class="sc">GGM/756/488/2023/100</td></tr>
+      <tr><td class="rl">Possession</td><td class="ac">Dec 2030</td><td class="gc">2030</td><td class="sc">Feb 2031</td></tr>
+      <tr><td class="rl">5-Yr Return</td><td class="ac" style="color:var(--aipl);font-weight:700;">2.0×–2.6×</td><td class="gc" style="color:var(--godrej);font-weight:700;">1.9×–2.4×</td><td class="sc" style="color:var(--smart);font-weight:700;">1.9×–2.5×</td></tr>
+      <tr><td class="rl">Location Score</td><td class="ac"><span class="star">★★★★</span>☆ 8.2</td><td class="gc"><span class="star">★★★★★</span> 9.6</td><td class="sc"><span class="star">★★★★</span>☆ 8.5</td></tr>
+      <tr><td class="rl">Unisel Tag</td><td class="ac" style="color:var(--aipl);font-weight:700;">Best Entry Price</td><td class="gc" style="color:var(--godrej);font-weight:700;">Best Address</td><td class="sc" style="color:var(--smart);font-weight:700;">Best Specifications</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ROI CALCULATOR -->
+<div class="calc-section fi">
+  <div class="calc-grid">
+    <div>
+      <div class="calc-h">ROI Scenario Modeller</div>
+      <p class="calc-sub">Adjust investment amount to model your personalised return scenario across all three projects. Figures based on Unisel's base-case projections.</p>
+      <label class="slider-label">Investment Amount</label>
+      <input type="range" class="roi-slider" id="investSlider" min="1" max="20" value="5" step="0.5" oninput="updateROI()">
+      <div class="slider-labels">
+        <span>₹1 Cr</span>
+        <span id="sliderVal" style="color:var(--blue);font-family:'DM Mono',monospace;font-weight:600;">₹5.0 Cr</span>
+        <span>₹20 Cr</span>
+      </div>
+    </div>
+    <div class="roi-out" id="roiOutput">
+      <div class="roi-row"><span>Your Investment</span><span class="rv" id="roiBase">₹5.00 Cr</span></div>
+      <div class="roi-row"><span>AIPL Lake City (2.3×)</span><span class="rv" id="roiAIPL">₹11.50 Cr</span></div>
+      <div class="roi-row"><span>Godrej Samaris (2.1×)</span><span class="rv" id="roiGodrej">₹10.50 Cr</span></div>
+      <div class="roi-row"><span>Smartworld The Edition (2.2×)</span><span class="rv" id="roiSmart">₹11.00 Cr</span></div>
+      <div class="roi-row total"><span>Best-Case 5-Yr Value</span><span class="rv" id="roiTotal">₹11.50 Cr</span></div>
+      <div class="roi-row"><span style="font-size:11px;color:var(--muted);">Projected Gain</span><span class="roi-gain-val" id="roiGain">+₹6.50 Cr</span></div>
+    </div>
+  </div>
+  <p style="font-size:10px;color:var(--muted);margin-top:16px;line-height:1.6;">* Return estimates are based on Unisel's proprietary market research and historical transaction data. They represent projected outcomes under base-case assumptions and are not guaranteed. Real estate investments carry risk including illiquidity, market fluctuations, and project delays. This calculator is for illustrative purposes only and does not constitute financial advice.</p>
+</div>
+
+<!-- WHY UNISEL -->
+<div class="section-hdr"><div class="sh-num">06</div><div class="sh-line"></div><div class="sh-label">Why Unisel Realty</div><div class="sh-line sh-short"></div></div>
+<div class="adv-grid fi">
+  <div class="adv-card"><div class="adv-n">01</div><div class="adv-t">Pre-Launch Access</div><div class="adv-b">Exclusive channel partner for multiple developers. Clients get 15–22% below public launch pricing, reserved inventory, and priority floor selection before it opens to the market.</div></div>
+  <div class="adv-card"><div class="adv-n">02</div><div class="adv-t">19 Years of Data</div><div class="adv-b">Our conviction scores are grounded in 19 years of Gurgaon transaction data, 2,400+ client portfolios, and a research team tracking micro-market supply, resale velocity, and infrastructure timelines monthly.</div></div>
+  <div class="adv-card"><div class="adv-n">03</div><div class="adv-t">End-to-End Execution</div><div class="adv-b">From shortlisting and due diligence to booking, home loan coordination, and eventual resale — Unisel manages the full investment lifecycle. You never deal with developer sales teams directly.</div></div>
+  <div class="adv-card"><div class="adv-n">04</div><div class="adv-t">Dubai NRI Desk</div><div class="adv-b">Full NRI buying support: PAN assistance, POA drafting, FEMA compliance, repatriation planning, and NRI-specific financing access — so overseas clients transact with the same ease as residents.</div></div>
+  <div class="adv-card"><div class="adv-n">05</div><div class="adv-t">No Pressure. Ever.</div><div class="adv-b">Our advisory model is built on long-term relationships. We have never pushed inventory or made commission-first recommendations. Your second buy and your third come from trust alone.</div></div>
+  <div class="adv-card"><div class="adv-n">06</div><div class="adv-t">3.8× Avg. Return</div><div class="adv-b">Unisel clients who followed our 2018–2022 recommendations averaged 3.8× return on invested capital across the portfolio — the benchmark we continue to target for this basket.</div></div>
+</div>
+
+</div><!-- /body-wrap -->
+
+<!-- CTA -->
+<div class="body-wrap">
+<div class="cta-section fi" id="advisory">
+  <h2>Ready to Move Forward on <em>One or More</em>?</h2>
+  <p>Our advisory team prepares a personalised allocation strategy — mapping these projects to your budget, timeline, and tax situation. Response within 2 hours. No obligation.</p>
+  <div class="cta-btns">
+    <button class="btn-primary" onclick="alert('Our advisory team will contact you within 2 hours. Thank you.')">Book Advisory Call →</button>
+    <button class="btn-ghost" onclick="alert('WhatsApp brief on its way.')">WhatsApp Inquiry</button>
+  </div>
+  <p style="font-size:11px;color:rgba(255,255,255,.3);margin-top:20px;position:relative;">RERA: RC/HARERA/GGM/1940/1535/2022/308 · Est. 2005 · Delivering Trust · Creating Wealth</p>
+</div>
+
+<div class="report-footer">
+  <div class="rf-logo"><img src="data:image/png;base64,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" alt="Unisel Realty"></div>
+  <div class="rf-info">Golf Course Extension Road, Gurgaon · Dubai NRI Desk<br>RERA: RC/HARERA/GGM/1940/1535/2022/308</div>
+  <div class="rf-disc">This report is prepared by Unisel Realty for informational purposes only. It does not constitute financial or legal advice. Return estimates are based on proprietary market research and historical comparable transaction data and are not guaranteed. All project information is sourced from developer disclosures and HARERA filings as of May 2025 and is subject to change. Investors should conduct independent due diligence before making any investment decision. Unisel Realty is a HARERA-registered channel partner operating in full compliance with applicable RERA regulations. Past performance of Unisel recommendations does not guarantee future returns.</div>
+</div>
+</div>
+
+<button class="back-btn" onclick="window.history.back()">← Back</button>
+
+<script>
+// ── PERSONALISE ──
+const lead = JSON.parse(localStorage.getItem('unisel_lead') || '{}');
+if (lead.name) {
+  document.getElementById('cover-banner').innerHTML = '👋 Welcome, <strong style="color:#FCD34D;">' + lead.name.split(' ')[0] + '</strong> — your personalised research brief is ready below.';
+  document.getElementById('tb-user').textContent = lead.name.split(' ')[0];
+}
+
+// ── TOC ACTIVE ──
+const sections = ['overview','market','aipl','godrej','smartworld','compare','advisory'];
+const links = document.querySelectorAll('.tb-nav a');
+window.addEventListener('scroll', () => {
+  let cur = '';
+  sections.forEach(id => {
+    const el = document.getElementById(id);
+    if (el && window.scrollY >= el.offsetTop - 70) cur = id;
+  });
+  links.forEach(l => {
+    const href = l.getAttribute('href');
+    l.classList.toggle('active', href === '#' + cur);
+  });
+});
+links.forEach(l => {
+  l.addEventListener('click', e => {
+    e.preventDefault();
+    const el = document.getElementById(l.getAttribute('href').slice(1));
+    if (el) el.scrollIntoView({behavior:'smooth'});
+  });
+});
+
+// ── FADE IN ──
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('vis'); });
+}, {threshold:.04});
+document.querySelectorAll('.fi').forEach(el => obs.observe(el));
+
+// ── ROI CALC ──
+function updateROI() {
+  const v = parseFloat(document.getElementById('investSlider').value);
+  document.getElementById('sliderVal').textContent = '₹' + v.toFixed(1) + ' Cr';
+  const a=v*2.3, g=v*2.1, s=v*2.2, best=Math.max(a,g,s);
+  document.getElementById('roiBase').textContent='₹'+v.toFixed(2)+' Cr';
+  document.getElementById('roiAIPL').textContent='₹'+a.toFixed(2)+' Cr';
+  document.getElementById('roiGodrej').textContent='₹'+g.toFixed(2)+' Cr';
+  document.getElementById('roiSmart').textContent='₹'+s.toFixed(2)+' Cr';
+  document.getElementById('roiTotal').textContent='₹'+best.toFixed(2)+' Cr';
+  document.getElementById('roiGain').textContent='+₹'+(best-v).toFixed(2)+' Cr';
+}
+updateROI();
+
+// ── CHART DEFAULTS ──
+Chart.defaults.font.family = 'Inter';
+Chart.defaults.font.size = 11;
+Chart.defaults.color = '#64748B';
+
+const grid = {color:'rgba(11,31,74,.06)',lineWidth:1};
+const tick = {color:'#94A3B8',font:{size:10}};
+
+// 1. Price Index
+new Chart(document.getElementById('priceIndexChart'), {
+  type:'line',
+  data:{
+    labels:['2019','2020','2021','2022','2023','2024','2025E'],
+    datasets:[{
+      label:'Gurgaon Luxury PSF (₹)',
+      data:[8200,8500,9800,12400,15600,19200,22800],
+      borderColor:'#2563EB',backgroundColor:'rgba(37,99,235,.08)',
+      borderWidth:2.5,fill:true,tension:.4,pointRadius:4,pointBackgroundColor:'#2563EB'
+    }]
+  },
+  options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{y:{grid,ticks:{...tick,callback:v=>'₹'+v.toLocaleString()}},x:{grid:{display:false},ticks:tick}}}
+});
+
+// 2. Volume
+new Chart(document.getElementById('volumeChart'), {
+  type:'bar',
+  data:{
+    labels:['2019','2020','2021','2022','2023','2024','2025E'],
+    datasets:[{
+      label:'Luxury Units Registered',
+      data:[1840,1420,2680,3940,5120,7380,9200],
+      backgroundColor:['#DBEAFE','#BFDBFE','#93C5FD','#60A5FA','#3B82F6','#2563EB','#1D4ED8'],
+      borderRadius:4,borderSkipped:false
+    }]
+  },
+  options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{y:{grid,ticks:tick},x:{grid:{display:false},ticks:tick}}}
+});
+
+// 3. Micro-Market CAGR
+new Chart(document.getElementById('microMarketChart'), {
+  type:'bar',
+  data:{
+    labels:['Sohna Road','Sector 82–95','Manesar','NH-48 Belt','Golf Course Rd','Dwarka Exp.','Golf Course Ext.'],
+    datasets:[{
+      label:'3-Yr CAGR (%)',
+      data:[14,16,12,19,21,24,28],
+      backgroundColor:['#CBD5E1','#CBD5E1','#CBD5E1','#CBD5E1','#7C3AED','#2563EB','#0891B2'],
+      borderRadius:5,borderSkipped:false
+    }]
+  },
+  options:{
+    indexAxis:'y',responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{display:false},tooltip:{callbacks:{label:ctx=>ctx.raw+'% CAGR'}}},
+    scales:{
+      x:{grid,ticks:{...tick,callback:v=>v+'%'},max:32},
+      y:{grid:{display:false},ticks:{...tick,font:{size:11}}}
+    }
+  }
+});
+
+// 4. AIPL Price Projection
+new Chart(document.getElementById('aiplPriceChart'), {
+  type:'line',
+  data:{
+    labels:['2025','2026','2027','2028','2029','2030'],
+    datasets:[
+      {label:'Bear',data:[16500,17500,18500,19500,20500,21500],borderColor:'#F87171',borderDash:[4,4],borderWidth:1.5,fill:false,tension:.3,pointRadius:0},
+      {label:'Base',data:[16500,18500,20800,23400,26200,29200],borderColor:'#2563EB',borderWidth:2.5,fill:false,tension:.4,pointRadius:3,pointBackgroundColor:'#2563EB'},
+      {label:'Bull',data:[16500,20000,24000,28500,33500,38000],borderColor:'#059669',borderWidth:1.5,borderDash:[2,2],fill:false,tension:.4,pointRadius:0}
+    ]
+  },
+  options:{
+    responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{position:'bottom',labels:{boxWidth:10,padding:10,font:{size:10}}}},
+    scales:{y:{grid,ticks:{...tick,callback:v=>'₹'+v.toLocaleString()}},x:{grid:{display:false},ticks:tick}}
+  }
+});
+
+// 5. AIPL Return vs Sector
+new Chart(document.getElementById('aiplReturnChart'), {
+  type:'bar',
+  data:{
+    labels:['Sector Avg','AIPL Base','AIPL Bull'],
+    datasets:[{
+      data:[16,30,130],
+      backgroundColor:['#CBD5E1','#2563EB','#059669'],
+      borderRadius:5,borderSkipped:false
+    }]
+  },
+  options:{
+    responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{display:false},tooltip:{callbacks:{label:ctx=>ctx.raw+'%'}}},
+    scales:{y:{grid,ticks:{...tick,callback:v=>v+'%'}},x:{grid:{display:false},ticks:tick}}
+  }
+});
+
+// 6. Godrej Price (GCR history)
+new Chart(document.getElementById('godrejPriceChart'), {
+  type:'line',
+  data:{
+    labels:['2018','2019','2020','2021','2022','2023','2024','2025'],
+    datasets:[{
+      label:'GCR PSF (₹)',
+      data:[8800,9500,9800,11200,13500,16800,21000,26000],
+      borderColor:'#7C3AED',backgroundColor:'rgba(124,58,237,.07)',
+      borderWidth:2.5,fill:true,tension:.4,pointRadius:4,pointBackgroundColor:'#7C3AED'
+    }]
+  },
+  options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{y:{grid,ticks:{...tick,callback:v=>'₹'+v.toLocaleString()}},x:{grid:{display:false},ticks:tick}}}
+});
+
+// 7. Godrej Premium
+new Chart(document.getElementById('godrejPremiumChart'), {
+  type:'bar',
+  data:{
+    labels:['Godrej Air','Godrej Meridien','GCR Avg','Godrej Samaris Est.'],
+    datasets:[{
+      label:'% above launch on OC',
+      data:[28,18,12,22],
+      backgroundColor:['#7C3AED','#A78BFA','#CBD5E1','#059669'],
+      borderRadius:5,borderSkipped:false
+    }]
+  },
+  options:{
+    responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{display:false},tooltip:{callbacks:{label:ctx=>'+'+ctx.raw+'%'}}},
+    scales:{y:{grid,ticks:{...tick,callback:v=>v+'%'}},x:{grid:{display:false},ticks:{...tick,font:{size:10}}}}
+  }
+});
+
+// 8. Smart Location
+new Chart(document.getElementById('smartLocationChart'), {
+  type:'bar',
+  data:{
+    labels:['GGN Average','Golf Course Rd','Dwarka Exp.','GCER'],
+    datasets:[{
+      label:'3-Yr CAGR',
+      data:[17,21,24,28],
+      backgroundColor:['#CBD5E1','#7C3AED','#2563EB','#0891B2'],
+      borderRadius:5,borderSkipped:false
+    }]
+  },
+  options:{
+    responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{display:false},tooltip:{callbacks:{label:ctx=>ctx.raw+'% CAGR'}}},
+    scales:{y:{grid,ticks:{...tick,callback:v=>v+'%'}},x:{grid:{display:false},ticks:tick}}
+  }
+});
+
+// 9. Smart Spec Premium
+new Chart(document.getElementById('smartSpecChart'), {
+  type:'bar',
+  data:{
+    labels:['Standard Apt','Private Balcony','Pvt Terrace','Pvt Pool/Jacuzzi'],
+    datasets:[{
+      label:'Resale Premium %',
+      data:[0,8,15,23],
+      backgroundColor:['#E2E8F0','#BAE6FD','#7DD3FC','#0891B2'],
+      borderRadius:5,borderSkipped:false
+    }]
+  },
+  options:{
+    responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{display:false},tooltip:{callbacks:{label:ctx=>'+'+ctx.raw+'%'}}},
+    scales:{y:{grid,ticks:{...tick,callback:v=>'+'+v+'%'}},x:{grid:{display:false},ticks:{...tick,font:{size:10}}}}
+  }
+});
+
+// 10. Radar Chart
+new Chart(document.getElementById('radarChart'), {
+  type:'radar',
+  data:{
+    labels:['Location','Developer','Entry Price','Liquidity','Specifications'],
+    datasets:[
+      {label:'AIPL Lake City',data:[8.2,8.8,9.2,7.5,8.0],borderColor:'#2563EB',backgroundColor:'rgba(37,99,235,.1)',borderWidth:2,pointBackgroundColor:'#2563EB',pointRadius:4},
+      {label:'Godrej Samaris',data:[9.6,9.5,6.8,8.8,8.0],borderColor:'#7C3AED',backgroundColor:'rgba(124,58,237,.1)',borderWidth:2,pointBackgroundColor:'#7C3AED',pointRadius:4},
+      {label:'Smartworld The Edition',data:[8.5,7.8,8.3,8.0,9.6],borderColor:'#0891B2',backgroundColor:'rgba(8,145,178,.1)',borderWidth:2,pointBackgroundColor:'#0891B2',pointRadius:4}
+    ]
+  },
+  options:{
+    responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{position:'bottom',labels:{boxWidth:10,padding:16,font:{size:12}}}},
+    scales:{r:{
+      grid:{color:'rgba(11,31,74,.08)'},
+      ticks:{display:false,stepSize:2},
+      pointLabels:{font:{size:12,weight:'600'},color:'#0B1F4A'},
+      suggestedMin:0,suggestedMax:10
+    }}
+  }
+});
+</script>
+</body>
+</html>
