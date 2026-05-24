@@ -28,7 +28,7 @@ const Footer = ({ footerMenus }: FooterProps) => {
             </p>
           </div>
           <div className="flex items-center gap-6">
-            <Link href="https://www.x.com/uniselrealty" className="cursor-pointer" aria-label="Follow Unisel Realty on X">
+            <Link href="https://x.com/UniselR40194" className="cursor-pointer" aria-label="Follow Unisel Realty on X">
               <Icon icon="ph:x-logo-bold" width={24} height={24} className="text-white hover:text-primary duration-300" />
             </Link>
             <Link href="https://www.facebook.com/uniselrealty" className="cursor-pointer" aria-label="Follow Unisel Realty on Facebook">
@@ -36,6 +36,9 @@ const Footer = ({ footerMenus }: FooterProps) => {
             </Link>
             <Link href="https://www.instagram.com/uniselrealty" className="cursor-pointer" aria-label="Follow Unisel Realty on Instagram">
               <Icon icon="ph:instagram-logo-bold" width={24} height={24} className="text-white hover:text-primary duration-300" />
+            </Link>
+            <Link href="https://www.linkedin.com/company/uniselrealty/" className="cursor-pointer" aria-label="Follow Unisel Realty on LinkedIn">
+              <Icon icon="ph:linkedin-logo-bold" width={24} height={24} className="text-white hover:text-primary duration-300" />
             </Link>
           </div>
         </div>
