@@ -14,6 +14,7 @@ import type { Session } from 'next-auth'
 import { AnalyticsProvider } from '@/components/Analytics/AnalyticsProvider'
 import { DeferredAnalytics } from '@/components/Analytics/DeferredAnalytics'
 import PopupForm from '@/components/shared/PopupForm'
+import { SpeedInsights } from '@vercel/speed-insights/next'
 
 const font = Bricolage_Grotesque({
   subsets: ["latin"],
@@ -139,6 +140,7 @@ export default async function RootLayout({
               <Footer footerMenus={footerMenus} />
               <FloatingContact />
               <PopupForm />
+              <SpeedInsights />
             </ThemeProvider>
           </SessionProviderComp>
         </AnalyticsProvider>
