@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { Bricolage_Grotesque } from 'next/font/google'
+import { Inter } from 'next/font/google'
 import './globals.css'
 import Header from '@/components/Layout/Header'
 import Footer from '@/components/Layout/Footer'
@@ -15,7 +15,7 @@ import { AnalyticsProvider } from '@/components/Analytics/AnalyticsProvider'
 import { DeferredAnalytics } from '@/components/Analytics/DeferredAnalytics'
 import PopupForm from '@/components/shared/PopupForm'
 
-const font = Bricolage_Grotesque({
+const font = Inter({
   subsets: ["latin"],
   display: "optional",
   fallback: ["system-ui", "Segoe UI", "Arial", "sans-serif"],
