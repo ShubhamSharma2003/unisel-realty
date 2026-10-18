@@ -26,11 +26,11 @@ const Slide1 = ({ priority = false }: Slide1Props) => {
           <div className="container max-w-7xl mx-auto px-5 xl:px-8 w-full">
             <div className="flex flex-col gap-4 md:gap-5 text-white text-center max-w-2xl mx-auto">
 
-              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[3.25rem] font-bold leading-tight tracking-tight text-white drop-shadow-sm">
+              <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-[3.25rem] font-bold leading-tight tracking-tight text-white drop-shadow-sm">
                 Your Next Property{" "}
                 <span style={{ color: "#00AEEF" }}>Residential or Commercial</span>
                 {" "}Starts Here.
-              </h1>
+              </h2>
 
               <div className="flex flex-row items-center justify-center gap-3 pt-1">
                 <Link

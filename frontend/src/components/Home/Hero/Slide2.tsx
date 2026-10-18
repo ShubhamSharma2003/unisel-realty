@@ -12,7 +12,7 @@ const Slide2 = ({ priority = false }: Slide2Props) => {
         <HeroPicture
           desktopSrc="/images/hero/hero-desk-2.jpeg"
           mobileSrc="/images/hero/hero-mob-2.jpeg"
-          alt="Unisel Realty - Gurgaon's trusted real estate advisory since 2006"
+          alt="Unisel Realty - Gurgaon's trusted real estate advisory since 2005"
           desktopWidth={1600}
           desktopHeight={900}
           mobileWidth={900}
@@ -28,13 +28,17 @@ const Slide2 = ({ priority = false }: Slide2Props) => {
 
               <span className="inline-flex items-center justify-start">
                 <span className="text-xs sm:text-sm font-semibold tracking-[0.18em] uppercase text-white/70 border border-white/30 rounded-full px-4 py-1.5 backdrop-blur-sm bg-white/10">
-                  Est. 2006
+                  Est. 2005
                 </span>
               </span>
 
               <h1 className="text-[clamp(1.6rem,6vw,3.25rem)] md:text-[clamp(2.5rem,4vw,3.25rem)] font-bold leading-tight tracking-tight text-white drop-shadow-sm">
-                Not All Properties Are Investments.<br /> We Help You Pick the Right Ones.
+                Luxury Real Estate &amp; Investment Advisors in Gurgaon
               </h1>
+
+              <p className="text-base sm:text-lg md:text-xl font-semibold text-white/95 leading-snug">
+                Not All Properties Are Investments. We Help You Pick the Right Ones.
+              </p>
 
               <p className="text-sm sm:text-base md:text-lg text-white/85 leading-relaxed">
                 Gurgaon&apos;s most trusted advisors for luxury real estate &amp; high-return investments. Exclusive pre-launch access to DLF, Godrej and M3M. Dedicated NRI desk.

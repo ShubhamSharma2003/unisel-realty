@@ -87,7 +87,6 @@ const FeaturedProperty = async () => {
                       width={24}
                       height={24}
                       className="block dark:hidden"
-                      unoptimized
                     />
                     <Image
                       src="/images/hero/dark-sofa.svg"
@@ -95,7 +94,6 @@ const FeaturedProperty = async () => {
                       width={24}
                       height={24}
                       className="hidden dark:block"
-                      unoptimized
                     />
                   </div>
                   <h6>{property.configuration}</h6>
@@ -110,7 +108,6 @@ const FeaturedProperty = async () => {
                       width={24}
                       height={24}
                       className="block dark:hidden"
-                      unoptimized
                     />
                     <Image
                       src="/images/hero/dark-tube.svg"
@@ -118,7 +115,6 @@ const FeaturedProperty = async () => {
                       width={24}
                       height={24}
                       className="hidden dark:block"
-                      unoptimized
                     />
                   </div>
                   <h6>{property.structure}</h6>
@@ -133,7 +129,6 @@ const FeaturedProperty = async () => {
                       width={24}
                       height={24}
                       className="block dark:hidden"
-                      unoptimized
                     />
                     <Image
                       src="/images/hero/dark-parking.svg"
@@ -141,7 +136,6 @@ const FeaturedProperty = async () => {
                       width={24}
                       height={24}
                       className="hidden dark:block"
-                      unoptimized
                     />
                   </div>
                   <h6>{property.area} m<sup>2</sup></h6>
@@ -150,7 +144,7 @@ const FeaturedProperty = async () => {
             </div>
             <div className="flex items-center gap-10">
               <Link
-                href={`/residential/${property.slug}`}
+                href={`/properties/${property.slug}`}
                 className="py-2.5 px-6 bg-primary hover:bg-dark duration-300 rounded-full text-white text-sm"
               >
                 View Details

@@ -5,10 +5,16 @@ import { AppIcon as Icon } from "@/components/shared/AppIcon"
 
 import type { FooterMenu } from "@/types/footerMenu";
 import NewsletterForm from "./NewsletterForm";
+import { COMPANY, formattedAddress } from "@/lib/company";
 
 type FooterProps = {
   footerMenus: FooterMenu[];
 };
+
+// Derived from the COMPANY fact sheet -- never hardcode these.
+const directionsUrl = `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(
+  formattedAddress()
+)}&destination_place_id=${COMPANY.googlePlaceId}`;
 
 const Footer = ({ footerMenus }: FooterProps) => {
   return (
@@ -27,17 +33,17 @@ const Footer = ({ footerMenus }: FooterProps) => {
               By subscribing, you agree to receive our marketing emails. You can unsubscribe at any time.
             </p>
           </div>
-          <div className="flex items-center gap-6">
-            <Link href="https://x.com/UniselR40194" className="cursor-pointer" aria-label="Follow Unisel Realty on X">
+          <div className="flex items-center gap-3">
+            <Link href="https://x.com/UniselR40194" className="cursor-pointer w-11 h-11 flex items-center justify-center" aria-label="Follow Unisel Realty on X">
               <Icon icon="ph:x-logo-bold" width={24} height={24} className="text-white hover:text-primary duration-300" />
             </Link>
-            <Link href="https://www.facebook.com/uniselrealty" className="cursor-pointer" aria-label="Follow Unisel Realty on Facebook">
+            <Link href="https://www.facebook.com/uniselrealty" className="cursor-pointer w-11 h-11 flex items-center justify-center" aria-label="Follow Unisel Realty on Facebook">
               <Icon icon="ph:facebook-logo-bold" width={24} height={24} className="text-white hover:text-primary duration-300" />
             </Link>
-            <Link href="https://www.instagram.com/uniselrealty" className="cursor-pointer" aria-label="Follow Unisel Realty on Instagram">
+            <Link href="https://www.instagram.com/uniselrealty" className="cursor-pointer w-11 h-11 flex items-center justify-center" aria-label="Follow Unisel Realty on Instagram">
               <Icon icon="ph:instagram-logo-bold" width={24} height={24} className="text-white hover:text-primary duration-300" />
             </Link>
-            <Link href="https://www.linkedin.com/company/uniselrealty/" className="cursor-pointer" aria-label="Follow Unisel Realty on LinkedIn">
+            <Link href="https://www.linkedin.com/company/uniselrealty/" className="cursor-pointer w-11 h-11 flex items-center justify-center" aria-label="Follow Unisel Realty on LinkedIn">
               <Icon icon="ph:linkedin-logo-bold" width={24} height={24} className="text-white hover:text-primary duration-300" />
             </Link>
           </div>
@@ -64,18 +70,26 @@ const Footer = ({ footerMenus }: FooterProps) => {
                 <div>
                   <h5 className="text-white text-lg font-semibold mb-4">Our Office</h5>
                   <p className="text-white/60 text-sm leading-6">
-                    408, 4th floor, Adani Miracle Mile<br />
-                    Sector 60, Gurgaon
+                    {COMPANY.address.streetAddress}<br />
+                    {COMPANY.address.addressLocality}, {COMPANY.address.addressRegion} {COMPANY.address.postalCode}
                   </p>
+                  <Link
+                    href={directionsUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-white/60 text-sm hover:text-white duration-300 flex items-center gap-2 cursor-pointer min-h-11 mt-1"
+                  >
+                    <Icon icon="ph:map-pin" width={18} /> Get directions (Google Maps)
+                  </Link>
                 </div>
                 <div>
                   <h5 className="text-white text-lg font-semibold mb-4">Contact Info</h5>
-                  <div className="flex flex-col gap-2">
-                    <Link href="tel:+918010303303" className="text-white/60 text-sm hover:text-white duration-300 flex items-center gap-2 cursor-pointer">
-                      <Icon icon="ph:phone" width={18} /> +91 8010-303-303
+                  <div className="flex flex-col gap-1">
+                    <Link href={`tel:${COMPANY.telephoneHref}`} className="text-white/60 text-sm hover:text-white duration-300 flex items-center gap-2 cursor-pointer min-h-11">
+                      <Icon icon="ph:phone" width={18} /> {COMPANY.telephone}
                     </Link>
-                    <Link href="mailto:info@uniselrealty.com" className="text-white/60 text-sm hover:text-white duration-300 flex items-center gap-2 cursor-pointer">
-                      <Icon icon="ph:envelope" width={18} /> info@uniselrealty.com
+                    <Link href={`mailto:${COMPANY.email}`} className="text-white/60 text-sm hover:text-white duration-300 flex items-center gap-2 cursor-pointer min-h-11">
+                      <Icon icon="ph:envelope" width={18} /> {COMPANY.email}
                     </Link>
                   </div>
                 </div>
