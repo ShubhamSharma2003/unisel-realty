@@ -11,7 +11,7 @@ import { urlFor } from "@/lib/sanity.image";
 export const metadata: Metadata = {
     title: "About Us | Gurgaon's Trusted Luxury Real Estate Advisory Since 2005",
     description:
-        "Unisel Realty — 20+ years curating India's finest real estate. ₹2,400 Cr+ transacted, 3,800+ families housed, 4.9★ client rating. Pre-launch access to DLF, Godrej, M3M, Emaar. Gurgaon · Dubai NRI desk.",
+        "Unisel Realty — 20+ years curating India's finest real estate. $2B+ transacted, 10,000+ families housed, 4.6★ Google rating. Pre-launch access to DLF, Godrej, M3M, Emaar. Gurgaon · Dubai NRI desk.",
     keywords: [
         "about unisel realty",
         "gurgaon luxury real estate channel partner",
@@ -26,11 +26,11 @@ export const metadata: Metadata = {
     openGraph: {
         title: "About Unisel Realty | Gurgaon's Trusted Luxury Real Estate Advisory",
         description:
-            "20+ years of expertise in Gurgaon luxury real estate. ₹2,400 Cr+ transacted, 3,800+ families housed, 4.9★ rating.",
+            "20+ years of expertise in Gurgaon luxury real estate. $2B+ transacted, 10,000+ families housed, 4.6★ Google rating.",
         url: "https://www.uniselrealty.com/about",
         siteName: "Unisel Realty",
         images: [{ url: "/about/opengraph-image", width: 1200, height: 630, alt: "About Unisel Realty" }],
-        locale: "en_US",
+        locale: "en_IN",
         type: "website",
     },
     twitter: {
@@ -71,8 +71,8 @@ const aboutTiles = [
 
 const founderCreds = [
     { num: "20+", label: "Years in Luxury Real Estate" },
-    { num: "₹2,400 Cr", label: "Transactions Supervised" },
-    { num: "3,800+", label: "Families Served" },
+    { num: "$2B+", label: "Transactions Supervised" },
+    { num: "10,000+", label: "Families Served" },
     { num: "2", label: "Offices · Gurgaon & Dubai" },
 ];
 
@@ -491,7 +491,7 @@ const AboutPage = async () => {
                         The Unisel Difference
                     </p>
                     <h2 className="lg:text-52 text-40 font-medium dark:text-white leading-tight">
-                        Why 3,800+ Families Chose Us.
+                        Why 10,000+ Families Chose Us.
                     </h2>
                 </div>
 
@@ -528,10 +528,10 @@ const AboutPage = async () => {
                             </h2>
                         </div>
                         <div className="md:text-right">
-                            <p className="text-5xl font-medium text-primary leading-none">4.9</p>
+                            <p className="text-5xl font-medium text-primary leading-none">4.6</p>
                             <p className="text-lg text-primary tracking-[2px] mt-1">★★★★★</p>
                             <p className="text-xs tracking-[0.2em] uppercase text-dark/60 dark:text-white/60 mt-1">
-                                Avg. Client Rating · 400+ Reviews
+                                Google Rating · 42 Reviews
                             </p>
                         </div>
                     </div>

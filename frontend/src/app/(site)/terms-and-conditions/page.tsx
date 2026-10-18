@@ -1,5 +1,6 @@
 import { Metadata } from "next";
 import HeroSub from "@/components/shared/HeroSub";
+import { COMPANY, formattedAddress } from "@/lib/company";
 
 export const metadata: Metadata = {
     title: "Terms & Conditions - Gurgaon Real Estate",
@@ -12,7 +13,7 @@ export const metadata: Metadata = {
         url: "https://www.uniselrealty.com/terms-and-conditions",
         siteName: "Unisel Realty",
         images: [{ url: "/images/hero/og-image.jpg", width: 1200, height: 630, alt: "Unisel Realty Terms & Conditions" }],
-        locale: "en_US",
+        locale: "en_IN",
         type: "website",
     },
 };
@@ -54,10 +55,10 @@ const TermsAndConditionsPage = () => {
                         </p>
                         <div className="bg-black/[0.03] dark:bg-white/[0.04] border border-black/10 dark:border-white/10 rounded-2xl p-6 text-base text-black/70 dark:text-white/70 leading-7 space-y-1">
                             <p>RERA Reg. No.: RC/HARERA/GGM/1940/1535/2022/308</p>
-                            <p>408, 4th Floor, Adani Miracle Mile, Sector 60, Gurgaon, Haryana — 122003</p>
+                            <p>{formattedAddress()}</p>
                             <p>
                                 Phone:{" "}
-                                <a href="tel:+918010303303" className="text-primary underline underline-offset-2">+91 8010-303-303</a>
+                                <a href={`tel:${COMPANY.telephoneHref}`} className="text-primary underline underline-offset-2">{COMPANY.telephone}</a>
                                 {"  "}|{"  "}
                                 Email:{" "}
                                 <a href="mailto:info@uniselrealty.com" className="text-primary underline underline-offset-2">info@uniselrealty.com</a>
@@ -180,10 +181,10 @@ const TermsAndConditionsPage = () => {
                         <h2 className="text-xl font-semibold text-black dark:text-white mb-3">12. Contact for Legal Matters</h2>
                         <div className="bg-black/[0.03] dark:bg-white/[0.04] border border-black/10 dark:border-white/10 rounded-2xl p-6 text-base text-black/70 dark:text-white/70 leading-7 space-y-1">
                             <p className="font-medium text-black dark:text-white">Unisel Realty</p>
-                            <p>408, 4th Floor, Adani Miracle Mile, Sector 60, Gurgaon, Haryana — 122003</p>
+                            <p>{formattedAddress()}</p>
                             <p>
                                 Phone:{" "}
-                                <a href="tel:+918010303303" className="text-primary underline underline-offset-2">+91 8010-303-303</a>
+                                <a href={`tel:${COMPANY.telephoneHref}`} className="text-primary underline underline-offset-2">{COMPANY.telephone}</a>
                                 {"  "}|{"  "}
                                 Email:{" "}
                                 <a href="mailto:info@uniselrealty.com" className="text-primary underline underline-offset-2">info@uniselrealty.com</a>

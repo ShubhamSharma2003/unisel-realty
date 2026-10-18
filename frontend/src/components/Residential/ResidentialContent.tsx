@@ -596,7 +596,7 @@ const ResidentialContent = () => {
               Zero brokerage &middot; No obligation &middot; Response within 2 hours
             </p>
             <p className="text-white/40 text-xs mt-2">
-              408, 4th Floor, Adani Miracle Mile, Sector 60, Gurgaon 122102
+              408, 4th Floor, Adani Miracle Mile, Sector 60, Gurgaon 122011
             </p>
           </div>
         </Reveal>

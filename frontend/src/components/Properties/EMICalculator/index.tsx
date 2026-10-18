@@ -23,7 +23,7 @@ function AppreciationCalculator({ propertyRate }: CalculatorProps) {
   const basePrice = Number(propertyRate) || 5_000_000;
   const [currentValue, setCurrentValue] = useState(String(basePrice));
   const [years, setYears] = useState("5");
-  const [annualRate, setAnnualRate] = useState("20");
+  const [annualRate, setAnnualRate] = useState("9");
 
   const projection = useMemo(() => {
     const price = Number(currentValue) || 0;
@@ -143,7 +143,7 @@ function AppreciationCalculator({ propertyRate }: CalculatorProps) {
         )}
 
         <p className="text-xs text-dark/30 dark:text-white/30 leading-5">
-          * This calculator assumes a fixed annual appreciation rate compounded yearly.
+          * Illustrative scenario only. Assumes a fixed annual appreciation rate compounded yearly.
           Actual property appreciation varies based on market conditions, location, and other factors.
         </p>
       </div>

@@ -1,5 +1,6 @@
 import { Metadata } from "next";
 import HeroSub from "@/components/shared/HeroSub";
+import { COMPANY, formattedAddress } from "@/lib/company";
 
 export const metadata: Metadata = {
     title: "Privacy Policy - Gurgaon Real Estate",
@@ -12,7 +13,7 @@ export const metadata: Metadata = {
         url: "https://www.uniselrealty.com/privacy-policy",
         siteName: "Unisel Realty",
         images: [{ url: "/images/hero/og-image.jpg", width: 1200, height: 630, alt: "Unisel Realty Privacy Policy" }],
-        locale: "en_US",
+        locale: "en_IN",
         type: "website",
     },
 };
@@ -237,7 +238,7 @@ const PrivacyPolicyPage = () => {
                         <div className="bg-black/[0.03] dark:bg-white/[0.04] border border-black/10 dark:border-white/10 rounded-2xl p-6 text-base text-black/70 dark:text-white/70 leading-7 space-y-1">
                             <p className="font-medium text-black dark:text-white">Grievance Officer — Unisel Realty</p>
                             <p>Unisel Realty - Real Estate Agent &amp; Property Consultant, Gurgaon</p>
-                            <p>408, 4th Floor, Adani Miracle Mile, Sector 60, Gurgaon, Haryana — 122003</p>
+                            <p>{formattedAddress()}</p>
                             <p>
                                 Email:{" "}
                                 <a href="mailto:info@uniselrealty.com" className="text-primary underline underline-offset-2">
@@ -245,8 +246,8 @@ const PrivacyPolicyPage = () => {
                                 </a>
                                 {"  "}|{"  "}
                                 Phone:{" "}
-                                <a href="tel:+918010303303" className="text-primary underline underline-offset-2">
-                                    +91 8010-303-303
+                                <a href={`tel:${COMPANY.telephoneHref}`} className="text-primary underline underline-offset-2">
+                                    {COMPANY.telephone}
                                 </a>
                             </p>
                             <p>Response Time: 30 days from receipt</p>

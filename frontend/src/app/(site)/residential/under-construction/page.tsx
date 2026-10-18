@@ -1,9 +1,10 @@
 import HeroSub from "@/components/shared/HeroSub";
 import PropertiesListing from "@/components/Properties/PropertyList";
 import { Metadata } from "next";
+import { withEmptyListingRobots } from "@/lib/listingMetadata";
 import { breadcrumbSchema } from "@/lib/jsonld";
 
-export const metadata: Metadata = {
+const baseMetadata: Metadata = {
     title: "Under Construction Residential Projects in Gurgaon",
     description: "Explore under-construction residential projects in Gurgaon. Invest early in upcoming apartments and villas by top developers at pre-completion prices.",
     keywords: ["under construction projects gurgaon", "upcoming residential projects gurgaon", "new apartments gurgaon", "unisel realty"],
@@ -14,7 +15,7 @@ export const metadata: Metadata = {
         url: "https://www.uniselrealty.com/residential/under-construction",
         siteName: "Unisel Realty",
         images: [{ url: "/images/properties/og-image.jpg", width: 1200, height: 630, alt: "Under construction residential projects Gurgaon" }],
-        locale: "en_US",
+        locale: "en_IN",
         type: "website",
     },
     twitter: {
@@ -24,6 +25,10 @@ export const metadata: Metadata = {
         images: ["/images/properties/og-image.jpg"],
     },
 };
+
+// Deindex while this status has no inventory (see listingMetadata).
+export const generateMetadata = (): Promise<Metadata> =>
+    withEmptyListingRobots(baseMetadata, "residential", "under-construction");
 
 const UnderConstructionPage = () => {
     const breadcrumbs = breadcrumbSchema([

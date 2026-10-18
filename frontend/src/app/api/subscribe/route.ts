@@ -41,7 +41,7 @@ export async function POST(req: NextRequest) {
         <tr>
           <td style="background:#0f172a;padding:32px 40px;text-align:center">
             <p style="margin:0;font-size:20px;font-weight:700;color:#ffffff;letter-spacing:-0.3px">Unisel Realty</p>
-            <p style="margin:4px 0 0;font-size:12px;color:#94a3b8;letter-spacing:0.08em;text-transform:uppercase">Est. 2006 · Gurgaon</p>
+            <p style="margin:4px 0 0;font-size:12px;color:#94a3b8;letter-spacing:0.08em;text-transform:uppercase">Est. 2005 · Gurgaon</p>
           </td>
         </tr>
 

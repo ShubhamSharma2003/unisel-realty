@@ -79,7 +79,7 @@ export default async function Image() {
               marginTop: "8px",
             }}
           >
-            RERA Verified &bull; Direct Developer Pricing &bull; Est. 2006
+            RERA Verified &bull; Direct Developer Pricing &bull; Est. 2005
           </div>
         </div>
         <div

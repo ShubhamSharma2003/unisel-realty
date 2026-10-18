@@ -2,8 +2,11 @@ import HeroSub from "@/components/shared/HeroSub";
 import { Icon } from "@iconify/react";
 import Link from "next/link";
 import { Metadata } from "next";
+import { SITE_URL } from "@/lib/company";
+import { servicePageSchema, breadcrumbSchema } from "@/lib/jsonld";
 
 export const metadata: Metadata = {
+    alternates: { canonical: `${SITE_URL}/services/property-management-gurgaon` },
     title: "Property Management Services in Gurgaon",
     description: "Professional property management services in Gurgaon. Tenant sourcing, rent collection, maintenance, and legal compliance — we manage your property so you don't have to.",
     keywords: ["property management gurgaon", "rental property management", "tenant management gurgaon", "property managers gurgaon", "unisel realty"],
@@ -13,7 +16,7 @@ export const metadata: Metadata = {
         url: "https://www.uniselrealty.com/services/property-management-gurgaon",
         siteName: "Unisel Realty",
         images: [{ url: "/services/opengraph-image", width: 1200, height: 630, alt: "Property Management Gurgaon" }],
-        locale: "en_US",
+        locale: "en_IN",
         type: "website",
     },
     twitter: {
@@ -72,8 +75,31 @@ const stats = [
 ];
 
 export default function PropertyManagementPage() {
+    // This static route shadows services/[slug]/page.tsx (which emits
+    // Service + BreadcrumbList), so without this it ships no JSON-LD at all.
+    const schema = servicePageSchema({
+        title: "Property Management Services in Gurgaon",
+        slug: "property-management-gurgaon",
+        description:
+            "Professional property management services in Gurgaon. Tenant sourcing, rent collection, maintenance, and legal compliance — we manage your property so you don't have to.",
+        category: "Property Management",
+    });
+    const breadcrumbs = breadcrumbSchema([
+        { name: "Home", url: SITE_URL },
+        { name: "Services", url: `${SITE_URL}/services` },
+        { name: "Property Management Services in Gurgaon", url: `${SITE_URL}/services/property-management-gurgaon` },
+    ]);
+
     return (
         <>
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+            />
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbs) }}
+            />
             <HeroSub
                 title="Property Management in Gurgaon."
                 description="We manage your property end-to-end — so you earn without the effort."

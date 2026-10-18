@@ -6,7 +6,7 @@ import ValuationTool from "@/components/valuation/ValuationTool";
 export const metadata: Metadata = {
     title: "Property Valuation Gurgaon — Check Current Market Value",
     description:
-        "Find out what your property is worth in Gurgaon. Free instant valuation tool covering all sectors and localities — by Unisel Realty, experts since 2006.",
+        "Find out what your property is worth in Gurgaon. Free instant valuation tool covering all sectors and localities — by Unisel Realty, experts since 2005.",
     keywords: [
         "property valuation gurgaon",
         "property market value gurgaon",
@@ -22,13 +22,22 @@ export const metadata: Metadata = {
             "Find out what your property is worth in Gurgaon. Free instant valuation tool by Unisel Realty.",
         url: "https://www.uniselrealty.com/property-valuation",
         siteName: "Unisel Realty",
-        locale: "en_US",
+        images: [
+            {
+                url: "/images/properties/og-image.jpg",
+                width: 1200,
+                height: 630,
+                alt: "Gurgaon property valuation",
+            },
+        ],
+        locale: "en_IN",
         type: "website",
     },
     twitter: {
         card: "summary_large_image",
         title: "Property Valuation Gurgaon | Unisel Realty",
         description: "Free instant property valuation for all Gurgaon localities.",
+        images: ["/images/properties/og-image.jpg"],
     },
 };
 

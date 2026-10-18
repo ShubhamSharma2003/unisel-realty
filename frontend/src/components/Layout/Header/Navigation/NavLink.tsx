@@ -57,7 +57,7 @@ const NavLink: React.FC<NavLinkProps> = ({ item, onClick }) => {
           </Link>
           <button
             onClick={() => setOpen(!open)}
-            className='p-2 cursor-pointer text-white/40 hover:text-primary transition-colors duration-200 lg:hidden'
+            className='p-3 -m-1 cursor-pointer text-white/40 hover:text-primary transition-colors duration-200 lg:hidden min-w-11 min-h-11 flex items-center justify-center'
             aria-label={`Toggle ${item.label} submenu`}
           >
             <Icon
@@ -96,7 +96,7 @@ const NavLink: React.FC<NavLinkProps> = ({ item, onClick }) => {
                   href={child.href}
                   onClick={onClick}
                   className={clsx(
-                    'text-lg sm:text-xl font-medium text-white/30 hover:text-primary transition-colors duration-200 cursor-pointer',
+                    'block py-3 min-h-11 text-lg sm:text-xl font-medium text-white/30 hover:text-primary transition-colors duration-200 cursor-pointer',
                     { '!text-primary': child.href === path }
                   )}
                 >

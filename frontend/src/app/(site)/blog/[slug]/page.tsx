@@ -50,7 +50,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     }
 
     const coverImageUrl = post.coverImage
-        ? urlFor(post.coverImage).width(1200).height(630).fit("crop").url()
+        ? urlFor(post.coverImage).width(1200).height(630).fit("crop").format("jpg").quality(80).url()
         : null;
 
     return {

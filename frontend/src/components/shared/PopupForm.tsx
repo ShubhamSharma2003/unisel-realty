@@ -1,13 +1,65 @@
 'use client'
 
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect, useRef, useCallback } from 'react'
+import { usePathname } from 'next/navigation'
 import { AppIcon as Icon } from '@/components/shared/AppIcon'
 import Image from 'next/image'
 import Link from 'next/link'
 
 type Status = 'idle' | 'loading' | 'success' | 'error'
 
-const POPUP_DELAY_MS = 15000
+// How far down the page a visitor must scroll before the popup is eligible to fire.
+const SCROLL_TRIGGER_RATIO = 0.5
+
+// High-intent pages that already carry their own primary CTA/form. We never interrupt
+// a visitor's *first* look at one of these with the popup -- it can still fire there on
+// a later visit via scroll/exit-intent.
+const MONEY_PAGE_PATTERNS = [
+  /^\/contact\/?$/,
+  /^\/property-valuation\/?$/,
+  /^\/properties\/[^/]+\/?$/,
+]
+
+const DISMISSED_KEY = 'unisel_popup_dismissed'
+const MONEY_PAGES_SEEN_KEY = 'unisel_popup_money_pages_seen'
+
+function safeGetItem(key: string): string | null {
+  try {
+    return window.localStorage.getItem(key)
+  } catch {
+    return null
+  }
+}
+
+function safeSetItem(key: string, value: string): void {
+  try {
+    window.localStorage.setItem(key, value)
+  } catch {
+    // localStorage unavailable (private browsing, quota, etc.) -- fail silently.
+  }
+}
+
+function isPopupDismissed(): boolean {
+  return safeGetItem(DISMISSED_KEY) === 'true'
+}
+
+function isMoneyPage(pathname: string): boolean {
+  return MONEY_PAGE_PATTERNS.some((pattern) => pattern.test(pathname))
+}
+
+/** Returns true the first time this money-page pathname is seen, and records it. */
+function isFirstViewOfMoneyPage(pathname: string): boolean {
+  let seen: string[] = []
+  try {
+    const raw = safeGetItem(MONEY_PAGES_SEEN_KEY)
+    seen = raw ? (JSON.parse(raw) as string[]) : []
+  } catch {
+    seen = []
+  }
+  if (seen.includes(pathname)) return false
+  safeSetItem(MONEY_PAGES_SEEN_KEY, JSON.stringify([...seen, pathname]))
+  return true
+}
 
 const trustPoints = [
   {
@@ -17,7 +69,7 @@ const trustPoints = [
   },
   {
     icon: 'ph:chart-line-up',
-    title: '₹2,400 Cr+ Transacted',
+    title: '$2B+ Transacted',
     description: 'Investment advisory that puts your returns first',
   },
   {
@@ -39,6 +91,7 @@ const valuationBenefits = [
 ]
 
 export default function PopupForm() {
+  const pathname = usePathname()
   const [isOpen, setIsOpen] = useState(false)
   const [formData, setFormData] = useState({
     fullName: '',
@@ -49,16 +102,48 @@ export default function PopupForm() {
   const [errorMsg, setErrorMsg] = useState('')
   const formRef = useRef<HTMLFormElement>(null)
 
-  useEffect(() => {
-    const popupClosed = sessionStorage.getItem('popupFormClosed')
-    if (popupClosed) return
-
-    const timer = setTimeout(() => {
-      setIsOpen(true)
-    }, POPUP_DELAY_MS)
-
-    return () => clearTimeout(timer)
+  const handleClose = useCallback(() => {
+    setIsOpen(false)
+    safeSetItem(DISMISSED_KEY, 'true')
   }, [])
+
+  // Exit-intent (desktop) + ~50% scroll depth (any device) trigger, instead of a blanket
+  // timer. Skipped entirely if already dismissed, or on a visitor's first view of a
+  // money page (that page already has its own CTA/form front and centre).
+  useEffect(() => {
+    if (isOpen) return
+    if (isPopupDismissed()) return
+
+    if (isMoneyPage(pathname) && isFirstViewOfMoneyPage(pathname)) {
+      return
+    }
+
+    let triggered = false
+
+    const trigger = () => {
+      if (triggered) return
+      triggered = true
+      setIsOpen(true)
+    }
+
+    const handleMouseOut = (e: MouseEvent) => {
+      if (e.clientY <= 0) trigger()
+    }
+
+    const handleScroll = () => {
+      const scrollable = document.documentElement.scrollHeight - window.innerHeight
+      if (scrollable <= 0) return
+      if (window.scrollY / scrollable >= SCROLL_TRIGGER_RATIO) trigger()
+    }
+
+    document.addEventListener('mouseout', handleMouseOut)
+    window.addEventListener('scroll', handleScroll, { passive: true })
+
+    return () => {
+      document.removeEventListener('mouseout', handleMouseOut)
+      window.removeEventListener('scroll', handleScroll)
+    }
+  }, [pathname, isOpen])
 
   // Lock body scroll when popup is open
   useEffect(() => {
@@ -72,10 +157,15 @@ export default function PopupForm() {
     }
   }, [isOpen])
 
-  const handleClose = () => {
-    setIsOpen(false)
-    sessionStorage.setItem('popupFormClosed', 'true')
-  }
+  // Dismiss on Escape for keyboard users.
+  useEffect(() => {
+    if (!isOpen) return
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') handleClose()
+    }
+    document.addEventListener('keydown', handleKeyDown)
+    return () => document.removeEventListener('keydown', handleKeyDown)
+  }, [isOpen, handleClose])
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target
@@ -164,7 +254,7 @@ export default function PopupForm() {
                 <div className="space-y-2 mb-6">
                   <div className="flex items-center gap-2 text-xs text-white/90">
                     <Icon icon="ph:check-circle" width={16} height={16} className="text-primary flex-shrink-0" />
-                    <span>₹2,400 Cr+ transacted • 90% retention</span>
+                    <span>$2B+ transacted • 90% retention</span>
                   </div>
                   <div className="flex items-center gap-2 text-xs text-white/90">
                     <Icon icon="ph:check-circle" width={16} height={16} className="text-primary flex-shrink-0" />
@@ -228,10 +318,10 @@ export default function PopupForm() {
                 </h3>
                 <button
                   onClick={handleClose}
-                  className="text-dark/40 dark:text-white/40 hover:text-dark dark:hover:text-white transition flex-shrink-0 cursor-pointer"
+                  className="w-11 h-11 -mr-2 -mt-1 flex items-center justify-center text-dark/40 dark:text-white/40 hover:text-dark dark:hover:text-white transition flex-shrink-0 cursor-pointer"
                   aria-label="Close contact form"
                 >
-                  <Icon icon="tabler:x" width={20} height={20} />
+                  <Icon icon="tabler:x" width={22} height={22} />
                 </button>
               </div>
 
@@ -312,7 +402,7 @@ export default function PopupForm() {
                       onChange={handleInputChange}
                       placeholder="Your name"
                       required
-                      className="w-full bg-transparent text-dark dark:text-white placeholder:text-dark/40 dark:placeholder:text-white/40 border border-dark/10 dark:border-white/10 rounded-lg px-3 sm:px-4 md:px-5 py-2 sm:py-2.5 text-xs sm:text-sm focus-visible:outline-none focus-visible:border-primary hover:border-primary/40 duration-200"
+                      className="w-full bg-transparent text-dark dark:text-white placeholder:text-dark/40 dark:placeholder:text-white/40 border border-dark/10 dark:border-white/10 rounded-lg px-3 sm:px-4 md:px-5 py-3 text-base focus-visible:outline-none focus-visible:border-primary hover:border-primary/40 duration-200"
                     />
                   </div>
 
@@ -327,7 +417,7 @@ export default function PopupForm() {
                       onChange={handleInputChange}
                       placeholder="Your phone"
                       required
-                      className="w-full bg-transparent text-dark dark:text-white placeholder:text-dark/40 dark:placeholder:text-white/40 border border-dark/10 dark:border-white/10 rounded-lg px-3 sm:px-4 md:px-5 py-2 sm:py-2.5 text-xs sm:text-sm focus-visible:outline-none focus-visible:border-primary hover:border-primary/40 duration-200"
+                      className="w-full bg-transparent text-dark dark:text-white placeholder:text-dark/40 dark:placeholder:text-white/40 border border-dark/10 dark:border-white/10 rounded-lg px-3 sm:px-4 md:px-5 py-3 text-base focus-visible:outline-none focus-visible:border-primary hover:border-primary/40 duration-200"
                     />
                   </div>
 
@@ -342,7 +432,7 @@ export default function PopupForm() {
                       onChange={handleInputChange}
                       placeholder="Your email"
                       required
-                      className="w-full bg-transparent text-dark dark:text-white placeholder:text-dark/40 dark:placeholder:text-white/40 border border-dark/10 dark:border-white/10 rounded-lg px-3 sm:px-4 md:px-5 py-2 sm:py-2.5 text-xs sm:text-sm focus-visible:outline-none focus-visible:border-primary hover:border-primary/40 duration-200"
+                      className="w-full bg-transparent text-dark dark:text-white placeholder:text-dark/40 dark:placeholder:text-white/40 border border-dark/10 dark:border-white/10 rounded-lg px-3 sm:px-4 md:px-5 py-3 text-base focus-visible:outline-none focus-visible:border-primary hover:border-primary/40 duration-200"
                     />
                   </div>
 
@@ -363,7 +453,7 @@ export default function PopupForm() {
                   <button
                     type="submit"
                     disabled={status === 'loading'}
-                    className="w-full bg-primary hover:bg-primary/90 disabled:bg-primary/60 text-white font-medium py-2 sm:py-2.5 rounded-lg transition disabled:cursor-not-allowed mt-1 text-xs sm:text-sm"
+                    className="w-full min-h-11 flex items-center justify-center bg-primary hover:bg-primary/90 disabled:bg-primary/60 text-white font-medium py-2.5 rounded-lg transition disabled:cursor-not-allowed mt-1 text-sm"
                   >
                     {status === 'loading' ? 'Submitting...' : 'Connect Now'}
                   </button>

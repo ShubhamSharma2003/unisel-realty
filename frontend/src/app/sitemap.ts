@@ -1,6 +1,7 @@
 import type { MetadataRoute } from "next";
 import { sanityClient } from "@/lib/sanity.client";
 import { propertySlugsQuery, blogSlugsQuery } from "@/lib/sanity.queries";
+import { MICROMARKETS } from "@/app/(site)/location/[micromarket]/page";
 
 const SITE_URL = "https://www.uniselrealty.com";
 
@@ -40,6 +41,17 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { url: `${SITE_URL}/terms-and-conditions`, lastModified: STATIC_LASTMOD },
   ];
 
+  // Micromarket pages are live, linked in the nav, and were missing here.
+  // The /location hub replaced the old redirect to /residential.
+  const locationRoutes: MetadataRoute.Sitemap = [
+    { url: `${SITE_URL}/location`, lastModified: STATIC_LASTMOD },
+    ...Object.keys(MICROMARKETS).map(
+    (micromarket) => ({
+      url: `${SITE_URL}/location/${micromarket}`,
+      lastModified: STATIC_LASTMOD,
+    })),
+  ];
+
   const isValidSlug = (slug: string) => slug && !slug.includes("/");
 
   const propertyRoutes: MetadataRoute.Sitemap = properties
@@ -56,5 +68,5 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       lastModified: new Date(b._updatedAt),
     }));
 
-  return [...staticRoutes, ...propertyRoutes, ...blogRoutes];
+  return [...staticRoutes, ...locationRoutes, ...propertyRoutes, ...blogRoutes];
 }

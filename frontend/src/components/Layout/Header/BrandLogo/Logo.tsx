@@ -8,7 +8,6 @@ const Logo: React.FC = () => {
         alt='Unisel Realty Logo'
         width={150}
         height={68}
-        unoptimized={true}
         className='dark:hidden'
       />
       <Image
@@ -16,7 +15,6 @@ const Logo: React.FC = () => {
         alt='Unisel Realty Logo'
         width={150}
         height={68}
-        unoptimized={true}
         className='dark:block hidden'
       />
     </>

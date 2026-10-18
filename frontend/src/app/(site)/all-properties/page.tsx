@@ -10,7 +10,9 @@ export async function generateMetadata(): Promise<Metadata> {
     const siteUrl = 'https://www.uniselrealty.com';
     const siteName = 'Unisel Realty';
 
-    const title = `All Properties in Gurgaon`;
+    // Search/browse intent, kept distinct from /residential and /commercial,
+    // which target the "luxury apartments / commercial property" head terms.
+    const title = `Property Search: All Gurgaon Listings`;
     const description = `Browse all ${totalProperties} properties in Gurgaon — residential, commercial, pre-leased, and more. Find your perfect property with ${siteName}.`;
 
     return {
@@ -24,7 +26,7 @@ export async function generateMetadata(): Promise<Metadata> {
             url: `${siteUrl}/all-properties`,
             siteName,
             images: [{ url: "/images/properties/og-image.jpg", width: 1200, height: 630, alt: "Unisel Realty all properties Gurgaon" }],
-            locale: "en_US",
+            locale: "en_IN",
             type: "website",
         },
         twitter: {

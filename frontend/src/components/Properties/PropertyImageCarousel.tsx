@@ -79,6 +79,9 @@ export default function PropertyImageCarousel({
                   className="w-full object-cover select-none"
                   style={{ height: '540px' }}
                   priority={index === 0}
+                  fetchPriority={index === 0 ? 'high' : 'auto'}
+                  loading={index === 0 ? 'eager' : 'lazy'}
+                  sizes="(max-width: 1024px) 100vw, 66vw"
                   draggable={false}
                 />
               </div>

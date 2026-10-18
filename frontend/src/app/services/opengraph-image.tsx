@@ -79,7 +79,7 @@ export default async function Image() {
               marginTop: "8px",
             }}
           >
-            End-to-End Real Estate Advisory Since 2006
+            End-to-End Real Estate Advisory Since 2005
           </div>
         </div>
         <div

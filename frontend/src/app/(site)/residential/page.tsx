@@ -41,7 +41,7 @@ export async function generateMetadata(): Promise<Metadata> {
             url: `${siteUrl}/residential`,
             siteName,
             images: [{ url: "/residential/opengraph-image", width: 1200, height: 630, alt: "Unisel Realty luxury residential properties Gurgaon" }],
-            locale: "en_US",
+            locale: "en_IN",
             type: "website",
         },
         twitter: {

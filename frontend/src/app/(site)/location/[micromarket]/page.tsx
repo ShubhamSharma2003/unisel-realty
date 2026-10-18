@@ -4,7 +4,7 @@ import { Metadata } from "next";
 import { breadcrumbSchema, locationPageSchema } from "@/lib/jsonld";
 import { notFound } from "next/navigation";
 
-const MICROMARKETS: Record<string, { title: string; displayName: string; description: string }> = {
+export const MICROMARKETS: Record<string, { title: string; displayName: string; description: string }> = {
     "golf-course-road": {
         title: "Properties on Golf Course Road, Gurgaon",
         displayName: "Golf Course Road",
@@ -57,7 +57,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
             url: `https://www.uniselrealty.com/location/${micromarket}`,
             siteName: "Unisel Realty",
             images: [{ url: "/images/properties/og-image.jpg", width: 1200, height: 630, alt: info.title }],
-            locale: "en_US",
+            locale: "en_IN",
             type: "website",
         },
         twitter: {

@@ -7,6 +7,7 @@ import { useTheme } from 'next-themes'
 import { usePathname } from 'next/navigation'
 import Image from 'next/image'
 import type { NavLinks } from '@/types/navlink'
+import { COMPANY } from '@/lib/company'
 
 const Header: React.FC<{ navLinks: NavLinks[] }> = ({ navLinks }) => {
   const [sticky, setSticky] = useState(false)
@@ -60,9 +61,9 @@ const Header: React.FC<{ navLinks: NavLinks[] }> = ({ navLinks }) => {
               />
             </Link>
           </div>
-          <div className='flex items-center gap-2 sm:gap-6'>
+          <div className='flex items-center gap-1 sm:gap-6'>
             <button
-              className='hover:cursor-pointer'
+              className='hover:cursor-pointer p-1.5 -m-1.5 flex items-center justify-center'
               onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
               aria-label='Toggle color theme'
             >
@@ -85,7 +86,7 @@ const Header: React.FC<{ navLinks: NavLinks[] }> = ({ navLinks }) => {
               />
             </button>
             <div className={`hidden md:block`}>
-              <Link href='tel:+918010303303' className={`text-base text-inherit flex items-center gap-2 border-r pr-6 ${isHomepage
+              <Link href={`tel:${COMPANY.telephoneHref}`} className={`text-base text-inherit flex items-center gap-2 border-r pr-6 min-h-11 ${isHomepage
                 ? sticky
                   ? 'text-dark dark:text-white hover:text-primary border-dark dark:border-white'
                   : 'text-white hover:text-primary'
@@ -93,13 +94,27 @@ const Header: React.FC<{ navLinks: NavLinks[] }> = ({ navLinks }) => {
                 }`}
               >
                 <Icon icon={'ph:phone-bold'} width={24} height={24} />
-                +91 8010-303-303
+                {COMPANY.telephone}
               </Link>
             </div>
+            {/* Mobile click-to-call: the text link above is hidden below md, so surface a
+                tap-friendly phone icon here instead of burying the number in the off-canvas menu. */}
+            <Link
+              href={`tel:${COMPANY.telephoneHref}`}
+              aria-label={`Call Unisel Realty at ${COMPANY.telephone}`}
+              className={`md:hidden flex items-center justify-center w-11 h-11 rounded-full border ${isHomepage
+                ? sticky
+                  ? 'text-dark dark:text-white border-dark/20 dark:border-white/20 hover:text-primary'
+                  : 'text-white border-white/40 hover:text-primary'
+                : 'text-dark border-dark/20 hover:text-primary'
+                }`}
+            >
+              <Icon icon={'ph:phone-bold'} width={22} height={22} />
+            </Link>
             <div>
               <button
                 onClick={() => setNavbarOpen(!navbarOpen)}
-                className={`flex items-center gap-3 p-2 sm:px-5 sm:py-3 rounded-full font-semibold hover:cursor-pointer border ${isHomepage
+                className={`flex items-center gap-3 p-2 sm:px-5 sm:py-3 rounded-full font-semibold hover:cursor-pointer border min-h-11 min-w-11 justify-center ${isHomepage
                   ? sticky
                     ? 'text-white bg-dark dark:bg-white dark:text-dark dark:hover:text-white dark:hover:bg-dark hover:text-dark hover:bg-white border-dark dark:border-white'
                     : 'text-dark bg-white dark:text-dark hover:bg-transparent hover:text-white border-white'
@@ -132,7 +147,7 @@ const Header: React.FC<{ navLinks: NavLinks[] }> = ({ navLinks }) => {
               <button
                 onClick={() => setNavbarOpen(false)}
                 aria-label='Close mobile menu'
-                className='bg-white p-3 rounded-full hover:cursor-pointer'>
+                className='bg-white p-3 rounded-full hover:cursor-pointer min-w-11 min-h-11 flex items-center justify-center'>
                 <svg
                   xmlns='http://www.w3.org/2000/svg'
                   width='24'
@@ -162,11 +177,11 @@ const Header: React.FC<{ navLinks: NavLinks[] }> = ({ navLinks }) => {
             <p className='text-base sm:text-xm font-normal text-white/40'>
               Contact
             </p>
-            <Link href="mailto:info@uniselrealty.com" className='text-base sm:text-xm font-medium text-inherit hover:text-primary'>
-              info@uniselrealty.com
+            <Link href={`mailto:${COMPANY.email}`} className='text-base sm:text-xm font-medium text-inherit hover:text-primary min-h-11 flex items-center'>
+              {COMPANY.email}
             </Link>
-            <Link href="tel:+918010303303" className='text-base sm:text-xm font-medium text-inherit hover:text-primary'>
-              +91 8010-303-303
+            <Link href={`tel:${COMPANY.telephoneHref}`} className='text-base sm:text-xm font-medium text-inherit hover:text-primary min-h-11 flex items-center'>
+              {COMPANY.telephone}
             </Link>
           </div>
         </div>

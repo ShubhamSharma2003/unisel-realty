@@ -124,7 +124,7 @@ const ResidentialHero = () => {
         >
           Over 30 premium apartments and luxury flats across Golf Course Road, Golf
           Course Extension Road, and Dwarka Expressway — hand-picked by Unisel
-          Realty&apos;s team of 20+ advisors with 18 years of on-ground
+          Realty&apos;s team of 20+ advisors with 20 years of on-ground
           expertise in Gurgaon&apos;s high-end real estate market.
         </p>
       </div>

@@ -18,7 +18,7 @@ const pillars = [
         icon: "ph:chart-line-up",
         title: "Investment Advisory That Puts Your Returns First — Not Our Commission",
         description: "We are not paid to push inventory. We are paid to protect your capital. If a project has delayed possession history, a weak developer track record, or sits in an oversupplied micro-market — we will tell you, even if it costs us the deal. Our 90% client retention is built on exactly this.",
-        proof: "₹2,400 Cr+ transacted · 90% client retention · 18 years zero developer disputes",
+        proof: "$2B+ transacted · 90% client retention · 20 years zero developer disputes",
     },
     {
         icon: "ph:house-simple",
@@ -45,7 +45,7 @@ const WhyUs = () => {
                     </h2>
                 </div>
                 <p className="text-dark/50 dark:text-white/50 text-lg leading-7 md:max-w-sm">
-                    There are 400+ real estate agencies operating in Gurgaon today. Here is the specific difference 18 years of focused Gurgaon advisory delivers.
+                    There are 400+ real estate agencies operating in Gurgaon today. Here is the specific difference 20 years of focused Gurgaon advisory delivers.
                 </p>
             </div>
 
