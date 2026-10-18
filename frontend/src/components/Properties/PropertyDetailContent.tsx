@@ -10,7 +10,6 @@ import type { PropertyHomes } from "@/types/properyHomes";
 import EMICalculatorWrapper from "@/components/Properties/EMICalculator/EMICalculatorWrapper";
 import ContactForm from "@/components/shared/ContactForm";
 import PropertyImageCarousel from "@/components/Properties/PropertyImageCarousel";
-import { breadcrumbSchema } from "@/lib/jsonld";
 import ShareButton from "@/components/Properties/ShareButton";
 
 
@@ -78,18 +77,8 @@ const PropertyDetailContent = async ({ slug, property: propertyProp }: PropertyD
   const categoryLabel = property?.category === "commercial" ? "Commercial" : "Residential";
   const SITE_URL = "https://www.uniselrealty.com";
 
-  const breadcrumbItems = [
-    { name: "Home", url: SITE_URL },
-    { name: categoryLabel, url: `${SITE_URL}/${categorySlug}` },
-    { name: property.name, url: `${SITE_URL}/${categorySlug}/${property.slug}` },
-  ];
-
   return (
     <section className="!pt-44 pb-20 relative">
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema(breadcrumbItems)) }}
-      />
       <div className="container mx-auto max-w-8xl px-5 2xl:px-0">
         {/* Breadcrumb */}
         <nav aria-label="Breadcrumb" className="mb-6 flex items-center gap-2 text-sm text-dark/50 dark:text-white/50">
@@ -103,7 +92,7 @@ const PropertyDetailContent = async ({ slug, property: propertyProp }: PropertyD
           <div className="lg:col-span-8 col-span-12">
             <ShareButton
               title={property.name}
-              url={`${SITE_URL}/${categorySlug}/${property.slug}`}
+              url={`${SITE_URL}/properties/${property.slug}`}
             />
             <div className="flex items-start justify-between gap-4">
               <h1 className="lg:text-52 text-40 font-semibold text-dark dark:text-white">

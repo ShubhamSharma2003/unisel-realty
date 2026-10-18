@@ -7,9 +7,9 @@ import Link from "next/link";
 /* ── DATA ─────────────────────────────────────────────────────────────── */
 
 const STATS = [
-    { num: "₹900Cr+", label: "Transactions Facilitated" },
+    { num: "$2B+", label: "Transactions Facilitated" },
     { num: "19 Yrs", label: "Gurgaon Market Expertise" },
-    { num: "2,400+", label: "HNI & NRI Clients" },
+    { num: "10,000+", label: "HNI & NRI Clients" },
     { num: "3.8×", label: "Avg. Return on Past Picks" },
 ];
 
@@ -507,21 +507,31 @@ function Hero({ onCTA }: { onCTA: () => void }) {
 
 /* ── COUNTDOWN ─────────────────────────────────────────────────────────── */
 
+/**
+ * Real deadline for the current report window, as an ISO 8601 string.
+ * Set this to a genuine cut-off date; leave null and no countdown is shown.
+ * It must never be derived from the visitor's load time - that produces a
+ * timer that restarts for every visitor, which is a deceptive-urgency pattern.
+ */
+const OFFER_DEADLINE_ISO: string | null = null;
+
 function Countdown() {
-    const endDate = useMemo(() => {
-        const d = new Date();
-        d.setDate(d.getDate() + 4);
-        d.setHours(d.getHours() + 17);
-        d.setMinutes(d.getMinutes() + 42);
-        return d;
-    }, []);
+    const endDate = useMemo(
+        () => (OFFER_DEADLINE_ISO ? new Date(OFFER_DEADLINE_ISO) : null),
+        []
+    );
 
     const [time, setTime] = useState({ d: 0, h: 0, m: 0, s: 0 });
+    const [expired, setExpired] = useState(false);
 
     useEffect(() => {
+        if (!endDate) return;
         const tick = () => {
             const diff = endDate.getTime() - Date.now();
-            if (diff <= 0) return;
+            if (diff <= 0) {
+                setExpired(true);
+                return;
+            }
             setTime({
                 d: Math.floor(diff / 86400000),
                 h: Math.floor((diff % 86400000) / 3600000),
@@ -533,6 +543,8 @@ function Countdown() {
         const id = setInterval(tick, 1000);
         return () => clearInterval(id);
     }, [endDate]);
+
+    if (!endDate || expired) return null;
 
     const pad = (n: number) => String(n).padStart(2, "0");
     const units = [
