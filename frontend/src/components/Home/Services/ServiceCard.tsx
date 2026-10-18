@@ -3,6 +3,7 @@ import Link from "next/link";
 import { AppIcon as Icon } from "@/components/shared/AppIcon";
 import type { Service } from "@/types/service";
 import { urlFor } from "@/lib/sanity.image";
+import { resolveServiceHref } from "@/lib/micromarkets";
 
 type ServiceCardProps = {
   service: Service;
@@ -10,6 +11,7 @@ type ServiceCardProps = {
 };
 
 const ServiceCard = ({ service, size }: ServiceCardProps) => {
+  const href = resolveServiceHref(service.slug);
   const imageUrl = service.image
     ? urlFor(service.image)
         .width(size === "large" ? 680 : 320)
@@ -22,7 +24,7 @@ const ServiceCard = ({ service, size }: ServiceCardProps) => {
 
   return (
     <div className="relative rounded-2xl overflow-hidden group cursor-pointer">
-      <Link href={`/${service.slug}`}>
+      <Link href={href}>
         {imageUrl ? (
           <Image
             src={imageUrl}
@@ -36,7 +38,7 @@ const ServiceCard = ({ service, size }: ServiceCardProps) => {
         ) : null}
       </Link>
       <Link
-        href={`/${service.slug}`}
+        href={href}
         className="absolute w-full h-full bg-gradient-to-b from-black/0 to-black/80 top-0 flex flex-col justify-between pl-10 pb-10"
       >
         <div className="flex justify-end mt-6 mr-6">

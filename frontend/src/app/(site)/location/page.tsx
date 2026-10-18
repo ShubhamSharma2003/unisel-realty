@@ -3,7 +3,7 @@ import Link from "next/link";
 import { Metadata } from "next";
 import { breadcrumbSchema } from "@/lib/jsonld";
 import { SITE_URL } from "@/lib/company";
-import { MICROMARKETS } from "./[micromarket]/page";
+import { MICROMARKETS } from "@/lib/micromarkets";
 
 /**
  * Areas-we-serve hub. /location used to 308-redirect to /residential, which

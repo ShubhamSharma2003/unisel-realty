@@ -5,6 +5,7 @@ import Link from 'next/link';
 import type { Blog } from '@/types/blog';
 import { sanityClient } from '@/lib/sanity.client';
 import { blogCardsQuery, blogSectionQuery } from '@/lib/sanity.queries';
+import { normalizeInternalHref } from "@/lib/micromarkets";
 
 const BlogSmall = async () => {
     const section = await sanityClient.fetch(blogSectionQuery);
@@ -17,7 +18,7 @@ const BlogSmall = async () => {
         section?.subtitle ||
         "Stay ahead in the property market with expert advice and updates";
     const ctaText = section?.ctaText || "Read all articles";
-    const ctaLink = section?.ctaLink || "/blogs";
+    const ctaLink = normalizeInternalHref(section?.ctaLink || "/blog");
 
     return (
         <section>

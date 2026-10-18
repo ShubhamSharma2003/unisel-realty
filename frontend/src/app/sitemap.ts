@@ -1,7 +1,7 @@
 import type { MetadataRoute } from "next";
 import { sanityClient } from "@/lib/sanity.client";
 import { propertySlugsQuery, blogSlugsQuery } from "@/lib/sanity.queries";
-import { MICROMARKETS } from "@/app/(site)/location/[micromarket]/page";
+import { MICROMARKETS } from "@/lib/micromarkets";
 
 const SITE_URL = "https://www.uniselrealty.com";
 

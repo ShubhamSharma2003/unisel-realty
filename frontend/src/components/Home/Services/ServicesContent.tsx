@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { AppIcon as Icon } from "@/components/shared/AppIcon";
+import { normalizeInternalHref } from "@/lib/micromarkets";
 import Link from "next/link";
 import ServiceCard from "./ServiceCard";
 import type { Service, ServicesSection } from "@/types/service";
@@ -59,7 +60,7 @@ const ServicesContent = ({ section, services }: ServicesContentProps) => {
                 "Discover a diverse range of premium properties, from luxurious apartments to spacious villas, tailored to your needs"}
             </p>
             <Link
-              href={section?.ctaLink || "/properties"}
+              href={normalizeInternalHref(section?.ctaLink || "/residential")}
               className="py-4 px-8 bg-primary text-base leading-4 block w-fit text-white rounded-full font-semibold mt-8 hover:bg-dark duration-300"
             >
               {section?.ctaText || "View properties"}
