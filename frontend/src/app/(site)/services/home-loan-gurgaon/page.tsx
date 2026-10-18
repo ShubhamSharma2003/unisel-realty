@@ -2,8 +2,11 @@ import HeroSub from "@/components/shared/HeroSub";
 import { Icon } from "@iconify/react";
 import Link from "next/link";
 import { Metadata } from "next";
+import { SITE_URL } from "@/lib/company";
+import { servicePageSchema, breadcrumbSchema } from "@/lib/jsonld";
 
 export const metadata: Metadata = {
+    alternates: { canonical: `${SITE_URL}/services/home-loan-gurgaon` },
     title: "Home Loan Assistance in Gurgaon",
     description: "Get expert home loan guidance in Gurgaon. We connect you with 20+ leading banks and NBFCs, help with documentation, and get you the best interest rates.",
     keywords: ["home loan gurgaon", "housing loan gurgaon", "home loan assistance", "best home loan rates gurgaon", "unisel realty"],
@@ -13,7 +16,7 @@ export const metadata: Metadata = {
         url: "https://www.uniselrealty.com/services/home-loan-gurgaon",
         siteName: "Unisel Realty",
         images: [{ url: "/services/opengraph-image", width: 1200, height: 630, alt: "Home Loan Gurgaon" }],
-        locale: "en_US",
+        locale: "en_IN",
         type: "website",
     },
     twitter: {
@@ -74,8 +77,31 @@ const stats = [
 ];
 
 export default function HomeLoanPage() {
+    // This static route shadows services/[slug]/page.tsx (which emits
+    // Service + BreadcrumbList), so without this it ships no JSON-LD at all.
+    const schema = servicePageSchema({
+        title: "Home Loan Assistance in Gurgaon",
+        slug: "home-loan-gurgaon",
+        description:
+            "Get expert home loan guidance in Gurgaon. We connect you with 20+ leading banks and NBFCs, help with documentation, and get you the best interest rates.",
+        category: "Home Loan Advisory",
+    });
+    const breadcrumbs = breadcrumbSchema([
+        { name: "Home", url: SITE_URL },
+        { name: "Services", url: `${SITE_URL}/services` },
+        { name: "Home Loan Assistance in Gurgaon", url: `${SITE_URL}/services/home-loan-gurgaon` },
+    ]);
+
     return (
         <>
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+            />
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbs) }}
+            />
             <HeroSub
                 title="Home Loan Assistance in Gurgaon."
                 description="Best rates, faster approvals, and zero paperwork stress — we handle it all."

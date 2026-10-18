@@ -16,6 +16,12 @@ import BuilderPartners from '@/components/Home/BuilderPartners'
 import { FAQ_ITEMS } from '@/components/Home/FAQs'
 import { homepageSchema } from '@/lib/jsonld'
 import { getTestimonialSection, getGetInTouchSection } from '@/lib/sanity.services'
+import type { Metadata } from 'next'
+import { SITE_URL } from '@/lib/company'
+
+export const metadata: Metadata = {
+  alternates: { canonical: SITE_URL },
+}
 
 export default async function Home() {
   const schema = homepageSchema(FAQ_ITEMS)

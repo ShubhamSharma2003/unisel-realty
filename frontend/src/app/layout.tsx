@@ -8,9 +8,7 @@ import { getFooterMenus } from '@/lib/sanity.services'
 import { organizationSchema } from '@/lib/jsonld'
 import { ThemeProvider } from 'next-themes'
 import NextTopLoader from 'nextjs-toploader';
-import SessionProviderComp from '@/components/nextauth/SessionProvider'
 import { getNavLinks } from '@/lib/sanity.services'
-import type { Session } from 'next-auth'
 import { AnalyticsProvider } from '@/components/Analytics/AnalyticsProvider'
 import { DeferredAnalytics } from '@/components/Analytics/DeferredAnalytics'
 import PopupForm from '@/components/shared/PopupForm'
@@ -28,7 +26,7 @@ export const metadata: Metadata = {
     default: 'Unisel Realty — Luxury Real Estate & Investment Advisory, Gurgaon',
     template: '%s | Unisel Realty',
   },
-  description: "Gurgaon's trusted luxury real estate advisors. Exclusive pre-launch access to DLF, Godrej & M3M. NRI desk. $2B+ transacted. 10,000+ families served. Est. 2006.",
+  description: "Gurgaon's trusted luxury real estate advisors. Exclusive pre-launch access to DLF, Godrej & M3M. NRI desk. $2B+ transacted. 10,000+ families served. Est. 2005.",
   keywords: [
     'real estate gurgaon',
     'luxury real estate gurgaon',
@@ -48,21 +46,18 @@ export const metadata: Metadata = {
     'pre leased property gurgaon',
   ],
   authors: [{ name: 'Unisel Realty Pvt Ltd', url: 'https://www.uniselrealty.com' }],
-  alternates: {
-    canonical: 'https://www.uniselrealty.com',
-  },
   openGraph: {
     title: 'Unisel Realty — Luxury Real Estate & Investment Advisory, Gurgaon',
-    description: "Gurgaon's most trusted advisors for luxury real estate & high-return investments. Exclusive pre-launch access to DLF, Godrej and M3M. Dedicated NRI desk. Est. 2006.",
+    description: "Gurgaon's most trusted advisors for luxury real estate & high-return investments. Exclusive pre-launch access to DLF, Godrej and M3M. Dedicated NRI desk. Est. 2005.",
     url: 'https://www.uniselrealty.com',
     siteName: 'Unisel Realty',
-    locale: 'en_US',
+    locale: 'en_IN',
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Unisel Realty — Luxury Real Estate & Investment Advisory, Gurgaon',
-    description: "Gurgaon's most trusted advisors for luxury real estate & high-return investments. Exclusive pre-launch access to DLF, Godrej and M3M. Dedicated NRI desk. Est. 2006.",
+    description: "Gurgaon's most trusted advisors for luxury real estate & high-return investments. Exclusive pre-launch access to DLF, Godrej and M3M. Dedicated NRI desk. Est. 2005.",
   },
   icons: {
     icon: '/favicon.ico',
@@ -104,17 +99,17 @@ const schema = organizationSchema();
 
 export default async function RootLayout({
   children,
-  session,
 }: Readonly<{
   children: React.ReactNode
-  session: Session | null
 }>) {
   const navLinks = await getNavLinks()
   const footerMenus = await getFooterMenus()
 
   return (
-    <html lang='en'>
+    <html lang='en-IN'>
       <head>
+        <link rel="preconnect" href="https://cdn.sanity.io" crossOrigin="" />
+        <link rel="dns-prefetch" href="https://cdn.sanity.io" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -129,7 +124,6 @@ export default async function RootLayout({
           metaPixelId={process.env.NEXT_PUBLIC_META_PIXEL_ID}
         />
         <AnalyticsProvider>
-          <SessionProviderComp session={session}>
             <ThemeProvider
               attribute='class'
               enableSystem={true}
@@ -140,7 +134,6 @@ export default async function RootLayout({
               <FloatingContact />
               <PopupForm />
             </ThemeProvider>
-          </SessionProviderComp>
         </AnalyticsProvider>
       </body>
     </html>

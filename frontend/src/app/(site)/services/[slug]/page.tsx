@@ -29,7 +29,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const title = `${service.title} | ${siteName}`;
   const description = service.description ?? '';
   const imageUrl = service.image
-    ? urlFor(service.image).width(1200).height(630).url()
+    ? urlFor(service.image).width(1200).height(630).format("jpg").quality(80).url()
     : `${siteUrl}/services/opengraph-image`;
 
   return {
@@ -64,7 +64,7 @@ export default async function ServicePage({
   if (!service) notFound();
 
   const imageUrl = service.image
-    ? urlFor(service.image).width(1200).height(630).url()
+    ? urlFor(service.image).width(1200).height(630).format("jpg").quality(80).url()
     : null;
 
   const schema = servicePageSchema({

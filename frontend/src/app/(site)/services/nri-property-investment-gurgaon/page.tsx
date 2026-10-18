@@ -2,8 +2,11 @@ import HeroSub from "@/components/shared/HeroSub";
 import { Icon } from "@iconify/react";
 import Link from "next/link";
 import { Metadata } from "next";
+import { SITE_URL } from "@/lib/company";
+import { servicePageSchema, breadcrumbSchema } from "@/lib/jsonld";
 
 export const metadata: Metadata = {
+    alternates: { canonical: `${SITE_URL}/services/nri-property-investment-gurgaon` },
     title: "NRI Property Investment in Gurgaon",
     description: "NRI property investment services in Gurgaon. FEMA-compliant guidance, Power of Attorney, repatriation of funds, and end-to-end property management for NRIs.",
     keywords: ["NRI property investment gurgaon", "NRI real estate gurgaon", "NRI property buying india", "FEMA compliance property", "nri corner unisel realty"],
@@ -13,7 +16,7 @@ export const metadata: Metadata = {
         url: "https://www.uniselrealty.com/services/nri-property-investment-gurgaon",
         siteName: "Unisel Realty",
         images: [{ url: "/services/opengraph-image", width: 1200, height: 630, alt: "NRI Property Investment Gurgaon" }],
-        locale: "en_US",
+        locale: "en_IN",
         type: "website",
     },
     twitter: {
@@ -93,8 +96,31 @@ const faqs = [
 ];
 
 export default function NRICornerPage() {
+    // This static route shadows services/[slug]/page.tsx (which emits
+    // Service + BreadcrumbList), so without this it ships no JSON-LD at all.
+    const schema = servicePageSchema({
+        title: "NRI Property Investment in Gurgaon",
+        slug: "nri-property-investment-gurgaon",
+        description:
+            "NRI property investment services in Gurgaon. FEMA-compliant guidance, Power of Attorney, repatriation of funds, and end-to-end property management for NRIs.",
+        category: "NRI Real Estate Advisory",
+    });
+    const breadcrumbs = breadcrumbSchema([
+        { name: "Home", url: SITE_URL },
+        { name: "Services", url: `${SITE_URL}/services` },
+        { name: "NRI Property Investment in Gurgaon", url: `${SITE_URL}/services/nri-property-investment-gurgaon` },
+    ]);
+
     return (
         <>
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+            />
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbs) }}
+            />
             <HeroSub
                 title="NRI Property Investment in Gurgaon."
                 description="Invest in India's fastest-growing real estate market — from anywhere in the world."

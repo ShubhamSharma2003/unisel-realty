@@ -38,7 +38,7 @@ const servicesPageSchema = {
     "Property management, home loans, and NRI investment advisory services by Unisel Realty in Gurgaon.",
   isPartOf: { "@id": `${SITE_URL}/#website` },
   publisher: { "@id": `${SITE_URL}/#organization` },
-  inLanguage: "en-US",
+  inLanguage: "en-IN",
 };
 
 export default function ServicesPage() {
