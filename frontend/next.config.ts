@@ -32,8 +32,24 @@ const nextConfig: NextConfig = {
       { source: "/about-us", destination: "/about", permanent: true },
       // Old WordPress amenity filter pages
       { source: "/feature/:slug", destination: "/residential", permanent: true },
-      // Old WordPress /location index (no index page exists)
-      { source: "/location", destination: "/residential", permanent: true },
+      // Fix /contact-us -> /contact (old WordPress URL, was 404)
+      { source: "/contact-us", destination: "/contact", permanent: true },
+      // Property detail lives at /properties/:slug only. These used to be
+      // page-level permanentRedirect() calls, which streamed a 200 + meta
+      // refresh instead of a real 308. The negative lookahead keeps the
+      // status listing pages (new-launch, ready-to-move, ...) routable.
+      {
+        source:
+          "/residential/:slug((?!new-launch|ready-to-move|under-construction|near-possession|opengraph-image)[^/]+)",
+        destination: "/properties/:slug",
+        permanent: true,
+      },
+      {
+        source:
+          "/commercial/:slug((?!pre-leased|pre-leased-properties-gurgaon|new-launch|under-construction|near-possession|opengraph-image)[^/]+)",
+        destination: "/properties/:slug",
+        permanent: true,
+      },
       // Old WordPress blog slugs
       { source: "/haryana-allows-registration-of-independent-floors-as-commercial-units-in-licensed-colonies", destination: "/blog", permanent: true },
       { source: "/kherki-daula-toll-plaza-to-be-shifted-in-2-3-months-says-cm-khattar", destination: "/blog", permanent: true },

@@ -35,18 +35,33 @@ export async function generateMetadata({
     (img) => img && typeof img === "object" && "asset" in img
   );
   const imageUrl = firstImage
-    ? urlFor(firstImage).width(1200).height(630).url()
+    ? urlFor(firstImage).width(1200).height(630).format("jpg").quality(80).url()
     : `${siteUrl}/images/header/unisel-logo.png`;
 
-  const title = `${property.name} | ${siteName}`;
-  const description = `${property.name}${property.configuration ? ` — ${property.configuration}` : ""} at ${property.location}, Gurgaon.${property.area ? ` Area: ${property.area}.` : ""} Contact Unisel Realty for best deals.`;
+  // The root layout template already appends "| Unisel Realty"; including it
+  // here too produced "Name | Unisel Realty | Unisel Realty" on all 31 pages.
+  const title = `${property.name}, ${property.location}`;
+  const ogTitle = `${title} | ${siteName}`;
+
+  // Guard against "Gurgaon, Gurgaon" and a doubled full stop after "sq. ft."
+  const locality = /gurgaon|gurugram/i.test(property.location)
+    ? property.location
+    : `${property.location}, Gurgaon`;
+  const area = property.area?.replace(/[.\s]+$/, "");
+  const description = [
+    `${property.name}${property.configuration ? ` — ${property.configuration}` : ""} at ${locality}.`,
+    area ? `Area: ${area}.` : "",
+    "Speak to Unisel Realty's Gurgaon advisory team.",
+  ]
+    .filter(Boolean)
+    .join(" ");
 
   return {
     title,
     description,
     alternates: { canonical: `${siteUrl}/properties/${slug}` },
     openGraph: {
-      title,
+      title: ogTitle,
       description,
       url: `${siteUrl}/properties/${slug}`,
       siteName,
@@ -55,7 +70,7 @@ export async function generateMetadata({
     },
     twitter: {
       card: "summary_large_image",
-      title,
+      title: ogTitle,
       description,
       images: [imageUrl],
     },
@@ -91,7 +106,11 @@ export default async function PropertyDetailPage({
     structure: property.structure,
     area: property.area,
     category: property.category ?? "residential",
+    status: property.status,
     mainImageUrl,
+    // Real dimensions of the crop requested above (width(1600).height(1080)),
+    // not a guessed/default size.
+    ...(mainImageUrl ? { mainImageWidth: 1600, mainImageHeight: 1080 } : {}),
   });
 
   const breadcrumbs = breadcrumbSchema([

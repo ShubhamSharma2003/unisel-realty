@@ -19,7 +19,7 @@ export const metadata: Metadata = {
         alt: "404 page not found",
       },
     ],
-    locale: "en_US",
+    locale: "en_IN",
     type: "website",
   },
   twitter: {

@@ -1,9 +1,10 @@
 import HeroSub from "@/components/shared/HeroSub";
 import PropertiesListing from "@/components/Properties/PropertyList";
 import { Metadata } from "next";
+import { withEmptyListingRobots } from "@/lib/listingMetadata";
 import { breadcrumbSchema } from "@/lib/jsonld";
 
-export const metadata: Metadata = {
+const baseMetadata: Metadata = {
     title: "Near Possession Residential Properties in Gurgaon",
     description: "Discover near-possession residential properties in Gurgaon. Projects nearing completion — move in soon with minimal wait time.",
     keywords: ["near possession properties gurgaon", "nearing completion flats gurgaon", "almost ready apartments gurgaon", "unisel realty"],
@@ -14,7 +15,7 @@ export const metadata: Metadata = {
         url: "https://www.uniselrealty.com/residential/near-possession",
         siteName: "Unisel Realty",
         images: [{ url: "/images/properties/og-image.jpg", width: 1200, height: 630, alt: "Near possession properties Gurgaon" }],
-        locale: "en_US",
+        locale: "en_IN",
         type: "website",
     },
     twitter: {
@@ -24,6 +25,10 @@ export const metadata: Metadata = {
         images: ["/images/properties/og-image.jpg"],
     },
 };
+
+// Deindex while this status has no inventory (see listingMetadata).
+export const generateMetadata = (): Promise<Metadata> =>
+    withEmptyListingRobots(baseMetadata, "residential", "near-possession");
 
 const NearPossessionPage = () => {
     const breadcrumbs = breadcrumbSchema([

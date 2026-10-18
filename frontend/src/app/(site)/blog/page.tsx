@@ -19,7 +19,7 @@ export async function generateMetadata(): Promise<Metadata> {
             url: `${siteUrl}/blog`,
             siteName,
             images: [{ url: "/blog/opengraph-image", width: 1200, height: 630, alt: "Unisel Realty real estate blog" }],
-            locale: "en_US",
+            locale: "en_IN",
             type: "website",
         },
         twitter: {
