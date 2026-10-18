@@ -24,7 +24,7 @@ const pillars = [
         icon: "ph:house-simple",
         title: "Post-Purchase Property Management — So Your Asset Works While You Are Abroad",
         description: "For NRI investors, ownership does not end at registration. We coordinate possession walkthroughs, developer punch list resolution, rental listing, tenant screening, lease execution, and annual yield reporting. Your Gurgaon property performs — whether you are in Gurgaon or Geneva.",
-        proof: "80+ units under active management · Avg. 4.2% annual rental yield delivered",
+        proof: "500+ properties under active management · Avg. 4.2% annual rental yield delivered",
     },
 ];
 

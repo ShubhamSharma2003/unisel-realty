@@ -30,7 +30,7 @@ const services = [
         icon: "ph:house-simple",
         badge: "Post-Purchase Management",
         title: "Post-Purchase Property Management — For Residents & NRI Investors",
-        description: "80+ units under active management across Gurgaon. We handle possession walkthroughs, developer punch lists, tenant screening, lease agreements, and annual yield reporting. Your property performs whether you are in Gurgaon or Geneva.",
+        description: "500+ properties under active management across Gurgaon. We handle possession walkthroughs, developer punch lists, tenant screening, lease agreements, and annual yield reporting. Your property performs whether you are in Gurgaon or Geneva.",
         href: "/services/property-management-gurgaon",
         cta: "Learn About Property Management",
     },

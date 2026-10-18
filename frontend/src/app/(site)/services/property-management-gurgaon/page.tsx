@@ -68,7 +68,7 @@ const steps = [
 ];
 
 const stats = [
-    { value: "80+", label: "Units Under Management" },
+    { value: "500+", label: "Properties Under Management" },
     { value: "4.2%", label: "Avg. Annual Rental Yield" },
     { value: "20+", label: "Years of Expertise" },
     { value: "90%", label: "Client Retention" },

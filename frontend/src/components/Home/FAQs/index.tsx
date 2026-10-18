@@ -22,7 +22,7 @@ export const FAQ_ITEMS = [
     },
     {
         question: "How does Unisel Realty help NRI buyers manage property from abroad?",
-        answer: "We offer end-to-end post-purchase management — possession walkthrough, developer punch list resolution, interior coordination, rental listing on premium platforms, tenant screening, lease agreement execution, and annual yield reporting. 80+ units are currently under active management. NRI clients receive quarterly updates and have a single point of contact for all property matters.",
+        answer: "We offer end-to-end post-purchase management — possession walkthrough, developer punch list resolution, interior coordination, rental listing on premium platforms, tenant screening, lease agreement execution, and annual yield reporting. 500+ properties are currently under active management. NRI clients receive quarterly updates and have a single point of contact for all property matters.",
     },
     {
         question: "What is an SCO plot and is it a good investment in Gurgaon?",

@@ -29,6 +29,8 @@ export const COMPANY = {
   /** Clients served. */
   clientsServed: "10,000+ families",
   clientsServedShort: "10,000+",
+  /** Properties under active management. */
+  propertiesManaged: "500+",
 
   founder: {
     name: "Rohit Sharma",

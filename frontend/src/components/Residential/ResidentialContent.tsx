@@ -484,7 +484,7 @@ const ResidentialContent = () => {
         {/* ── The Unisel Advantage ── */}
         <Reveal className="mb-6">
           <h2 className="text-2xl sm:text-3xl font-bold text-dark dark:text-white leading-tight">
-            Why 1,500+ Clients Have Chosen Unisel Realty
+            Why 10,000+ Families Have Chosen Unisel Realty
           </h2>
         </Reveal>
 
