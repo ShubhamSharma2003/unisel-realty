@@ -5,9 +5,9 @@ import { Icon } from "@iconify/react/dist/iconify.js";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-    title: "Commercial Property in Gurgaon | SCO Plots, Offices & Pre-Leased",
+    title: "Commercial Property in Gurgaon: SCO Plots & Offices",
     description:
-        "Buy commercial property in Gurgaon with confidence. SCO plots, Grade-A offices, high-street retail and pre-leased assets across Golf Course Road, Golf Course Extension Road, Dwarka Expressway and SPR. RERA-registered advisory since 2006.",
+        "Buy commercial property in Gurgaon with confidence. SCO plots, Grade-A offices, high-street retail and pre-leased assets across Golf Course Road, Golf Course Extension Road, Dwarka Expressway and SPR. RERA-registered advisory since 2005.",
     keywords: [
         "commercial property in Gurgaon",
         "SCO plots Gurgaon",
@@ -24,11 +24,11 @@ export const metadata: Metadata = {
     openGraph: {
         title: "Commercial Property in Gurgaon | SCO, Offices, Pre-Leased | Unisel Realty",
         description:
-            "A working investor's guide to commercial real estate in Gurgaon — SCO plots, Grade-A offices, retail and pre-leased assets. ₹15,000 Cr+ transactions, 20+ years on the ground.",
+            "A working investor's guide to commercial real estate in Gurgaon — SCO plots, Grade-A offices, retail and pre-leased assets. $2B+ transactions, 20+ years on the ground.",
         url: "https://www.uniselrealty.com/commercial",
         siteName: "Unisel Realty",
         images: [{ url: "/commercial/opengraph-image", width: 1200, height: 630, alt: "Commercial properties Gurgaon" }],
-        locale: "en_US",
+        locale: "en_IN",
         type: "website",
     },
     twitter: {
@@ -42,7 +42,7 @@ export const metadata: Metadata = {
 
 const heroStats = [
     { num: "20+", label: "Years on the Ground" },
-    { num: "₹15,000 Cr+", label: "Transactions Advised" },
+    { num: "$2B+", label: "Transactions Advised" },
     { num: "10,000+", label: "Families & Investors Served" },
     { num: "90%", label: "Investor Retention" },
 ];
@@ -459,6 +459,16 @@ const CommercialPage = () => {
                             </div>
                         ))}
                     </div>
+                    <p className="mt-8 text-base text-dark/70 dark:text-white/70 max-w-3xl">
+                        Browse current{" "}
+                        <Link
+                            href="/commercial/pre-leased"
+                            className="text-primary underline underline-offset-4"
+                        >
+                            pre-leased commercial property in Gurgaon
+                        </Link>{" "}
+                        with tenant, lock-in and yield details for each asset.
+                    </p>
                 </div>
             </section>
 
@@ -654,7 +664,7 @@ const CommercialPage = () => {
                 <div className="container max-w-8xl mx-auto px-5 2xl:px-0 py-10">
                     <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 text-center">
                         <div>
-                            <p className="text-2xl md:text-3xl font-medium text-primary mb-1">2006</p>
+                            <p className="text-2xl md:text-3xl font-medium text-primary mb-1">2005</p>
                             <p className="text-xs text-dark/60 dark:text-white/60 tracking-[0.04em]">
                                 Established
                             </p>
@@ -766,7 +776,7 @@ const CommercialPage = () => {
                             Reviewed by Unisel Realty Advisory Team
                         </p>
                         <p className="text-xs text-dark/60 dark:text-white/60 mt-1 break-words">
-                            RERA Registered Advisory · Established 2006 · Gurugram &amp; Dubai · Last updated May 2026
+                            RERA Registered Advisory · Established 2005 · Gurugram &amp; Dubai · Last updated May 2026
                         </p>
                     </div>
                 </div>

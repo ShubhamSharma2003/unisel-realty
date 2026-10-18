@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { Metadata } from "next";
 import { contactPageSchema, breadcrumbSchema } from "@/lib/jsonld";
 import ContactForm from "@/components/shared/ContactForm";
+import { COMPANY, formattedAddress } from "@/lib/company";
 
 export const metadata: Metadata = {
     title: "Contact Us",
@@ -16,7 +17,7 @@ export const metadata: Metadata = {
         url: "https://www.uniselrealty.com/contact",
         siteName: "Unisel Realty",
         images: [{ url: "/contact/opengraph-image", width: 1200, height: 630, alt: "Contact Unisel Realty" }],
-        locale: "en_US",
+        locale: "en_IN",
         type: "website",
     },
     twitter: {
@@ -26,6 +27,12 @@ export const metadata: Metadata = {
         images: ["/contact/opengraph-image"],
     },
 };
+
+// Derived from the COMPANY fact sheet -- never hardcode these.
+const directionsUrl = `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(
+    formattedAddress()
+)}&destination_place_id=${COMPANY.googlePlaceId}`;
+const mapEmbedSrc = `https://maps.google.com/maps?q=${COMPANY.geo.latitude},${COMPANY.geo.longitude}&z=16&output=embed`;
 
 export default function ContactPage() {
     const schema = contactPageSchema();
@@ -56,7 +63,7 @@ export default function ContactPage() {
                         Tell Us What You Are Looking For.<br className='hidden sm:block' /> We&apos;ll Tell You Exactly What to Buy.
                     </h1>
                     <p className='text-xm font-normal tracking-tight text-black/50 dark:text-white/50 leading-6'>
-                        No generic listings. No cold calls. One focused conversation with a Gurgaon real estate advisor who has been in this market since 2006.
+                        No generic listings. No cold calls. One focused conversation with a Gurgaon real estate advisor who has been in this market since 2005.
                     </p>
                 </div>
             </div>
@@ -71,27 +78,58 @@ export default function ContactPage() {
                             </p>
                         </div>
                         <div className='absolute bottom-6 left-6 lg:bottom-12 lg:left-12 flex flex-col gap-4 text-white'>
-                            <Link href={'tel:+918010303303'} className='w-fit'>
-                                <div className='flex items-center gap-4 group w-fit'>
+                            <Link href={`tel:${COMPANY.telephoneHref}`} className='w-fit'>
+                                <div className='flex items-center gap-4 group w-fit min-h-11'>
                                     <Icon icon={'ph:phone'} width={32} height={32} />
-                                    <p className='text-sm xs:text-base mobile:text-xm font-normal group-hover:text-primary'>+91 8010-303-303</p>
+                                    <p className='text-sm xs:text-base mobile:text-xm font-normal group-hover:text-primary'>{COMPANY.telephone}</p>
                                 </div>
                             </Link>
-                            <Link href={'mailto:info@uniselrealty.com'} className='w-fit'>
-                                <div className='flex items-center gap-4 group w-fit'>
+                            <Link href={`mailto:${COMPANY.email}`} className='w-fit'>
+                                <div className='flex items-center gap-4 group w-fit min-h-11'>
                                     <Icon icon={'ph:envelope-simple'} width={32} height={32} />
-                                    <p className='text-sm xs:text-base mobile:text-xm font-normal group-hover:text-primary'>info@uniselrealty.com</p>
+                                    <p className='text-sm xs:text-base mobile:text-xm font-normal group-hover:text-primary'>{COMPANY.email}</p>
                                 </div>
                             </Link>
                             <div className='flex items-center gap-4'>
                                 <Icon icon={'ph:map-pin'} width={32} height={32} />
-                                <p className='text-sm xs:text-base mobile:text-xm font-normal'>408, 4th floor, Adani Miracle Mile<br />Sector 60, Gurgaon</p>
+                                <p className='text-sm xs:text-base mobile:text-xm font-normal'>
+                                    {COMPANY.address.streetAddress}<br />
+                                    {COMPANY.address.addressLocality}, {COMPANY.address.addressRegion} {COMPANY.address.postalCode}
+                                </p>
                             </div>
                         </div>
                     </div>
                     <div className='flex-1/2'>
                         <ContactForm variant="page" />
                     </div>
+                </div>
+            </div>
+
+            {/* Office location map */}
+            <div className='mt-14'>
+                <div className='flex items-center justify-between flex-wrap gap-4 mb-6'>
+                    <h2 className='text-2xl sm:text-3xl font-medium tracking-tight text-black dark:text-white'>
+                        Visit Our Office
+                    </h2>
+                    <a
+                        href={directionsUrl}
+                        target='_blank'
+                        rel='noopener noreferrer'
+                        className='inline-flex items-center gap-2 min-h-11 px-5 rounded-full border border-black/10 dark:border-white/10 text-sm font-medium text-black dark:text-white hover:border-primary hover:text-primary duration-200'
+                    >
+                        <Icon icon={'ph:map-pin'} width={18} height={18} />
+                        Get Directions
+                    </a>
+                </div>
+                <div className='rounded-2xl overflow-hidden border border-black/10 dark:border-white/10 w-full aspect-[16/9] sm:aspect-[21/9]'>
+                    <iframe
+                        src={mapEmbedSrc}
+                        title='Unisel Realty office location on Google Maps'
+                        loading='lazy'
+                        referrerPolicy='no-referrer-when-downgrade'
+                        className='w-full h-full border-0'
+                        allowFullScreen
+                    />
                 </div>
             </div>
         </div>

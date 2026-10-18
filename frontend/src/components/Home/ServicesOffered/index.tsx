@@ -53,7 +53,7 @@ const ServicesOffered = () => {
                         </h2>
                     </div>
                     <p className="text-dark/50 dark:text-white/50 text-lg leading-7 md:max-w-sm">
-                        We do not run a listing portal. Every service we offer is backed by 18 years of Gurgaon market knowledge and active developer relationships.
+                        We do not run a listing portal. Every service we offer is backed by 20 years of Gurgaon market knowledge and active developer relationships.
                     </p>
                 </div>
 

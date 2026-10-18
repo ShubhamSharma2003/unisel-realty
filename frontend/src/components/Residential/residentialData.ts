@@ -1,5 +1,5 @@
 export const HERO_STATS = [
-  { value: 2006, label: "FOUNDED", isYear: true },
+  { value: 2005, label: "FOUNDED", isYear: true },
   { value: 30, suffix: "+", label: "PROJECTS" },
   { value: 1500, suffix: "+", label: "CLIENTS SERVED" },
   { value: 8, label: "DEVELOPER PARTNERS" },

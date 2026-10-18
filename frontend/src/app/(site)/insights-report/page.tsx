@@ -5,7 +5,7 @@ import InsightsReportClient from "@/components/InsightsReport/InsightsReportClie
 export const metadata: Metadata = {
     title: "Gurgaon Investment Report — 3 Projects That Could Double Your Wealth",
     description:
-        "Exclusive investor intelligence on three pre-launch Gurgaon projects with 2× return profiles. Curated by Unisel Realty — 19 years, ₹900Cr+ transacted.",
+        "Exclusive investor intelligence on three pre-launch Gurgaon projects with 2× return profiles. Curated by Unisel Realty — 20+ years, $2B+ transacted.",
     keywords: [
         "gurgaon investment report",
         "gurgaon pre-launch projects",
@@ -22,13 +22,22 @@ export const metadata: Metadata = {
             "Pre-launch advisory window. Three projects across Dwarka Expressway and Golf Course Road. Detailed return modelling by Unisel Realty.",
         url: "https://www.uniselrealty.com/insights-report",
         siteName: "Unisel Realty",
-        locale: "en_US",
+        images: [
+            {
+                url: "/images/properties/og-image.jpg",
+                width: 1200,
+                height: 630,
+                alt: "Gurgaon investor insights report",
+            },
+        ],
+        locale: "en_IN",
         type: "article",
     },
     twitter: {
         card: "summary_large_image",
         title: "Gurgaon Investment Report | Unisel Realty",
         description: "3 pre-launch projects · 2× return profile · Free advisory brief.",
+        images: ["/images/properties/og-image.jpg"],
     },
 };
 
