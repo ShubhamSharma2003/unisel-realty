@@ -12,6 +12,7 @@ import { getNavLinks } from '@/lib/sanity.services'
 import { AnalyticsProvider } from '@/components/Analytics/AnalyticsProvider'
 import { DeferredAnalytics } from '@/components/Analytics/DeferredAnalytics'
 import PopupForm from '@/components/shared/PopupForm'
+import { SpeedInsights } from '@vercel/speed-insights/next'
 
 const font = Inter({
   subsets: ["latin"],
@@ -133,6 +134,7 @@ export default async function RootLayout({
               <Footer footerMenus={footerMenus} />
               <FloatingContact />
               <PopupForm />
+              <SpeedInsights />
             </ThemeProvider>
         </AnalyticsProvider>
       </body>
