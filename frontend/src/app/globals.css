@@ -109,6 +109,10 @@ section {
   @apply font-bold dark:text-white;
 }
 
+.blog-details a {
+  @apply text-primary underline underline-offset-2 hover:text-dark dark:text-skyblue dark:hover:text-white;
+}
+
 .blog-details ul {
   @apply list-none space-y-3 mb-10;
 }

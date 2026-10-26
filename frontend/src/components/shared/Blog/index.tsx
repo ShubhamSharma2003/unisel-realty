@@ -8,9 +8,9 @@ import { blogCardsQuery, blogSectionQuery } from '@/lib/sanity.queries';
 import { normalizeInternalHref } from "@/lib/micromarkets";
 
 const BlogSmall = async () => {
-    const section = await sanityClient.fetch(blogSectionQuery);
+    const section = await sanityClient.fetch(blogSectionQuery, {}, { next: { tags: ['blogs'] } });
     const limit = typeof section?.postLimit === "number" ? section.postLimit : 3;
-    const posts: Blog[] = await sanityClient.fetch(blogCardsQuery, { limit });
+    const posts: Blog[] = await sanityClient.fetch(blogCardsQuery, { limit }, { next: { tags: ['blogs'] } });
 
     const badge = section?.badge || "Blog";
     const title = section?.title || "Real estate insights";

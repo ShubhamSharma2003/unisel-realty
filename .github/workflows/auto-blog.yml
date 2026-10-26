@@ -1,0 +1,65 @@
+name: Auto blog
+
+on:
+  schedule:
+    # Tuesdays and Fridays at 09:00 IST
+    - cron: "30 3 * * 2,5"
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: "publish = goes live; draft = waits for review in Sanity Studio"
+        type: choice
+        options: [draft, publish]
+        default: draft
+      dry_run:
+        description: "Only generate a preview (downloadable artifact); write nothing to Sanity"
+        type: boolean
+        default: false
+
+concurrency:
+  group: auto-blog
+  cancel-in-progress: false
+
+jobs:
+  post:
+    runs-on: ubuntu-latest
+    # Research alone may take up to 30 minutes (see openai.mjs).
+    timeout-minutes: 50
+    defaults:
+      run:
+        working-directory: frontend
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: frontend/package-lock.json
+
+      - run: npm ci
+
+      - name: Research, write and publish a post
+        run: npm run blog:auto -- ${{ inputs.dry_run && '--dry-run' || '' }}
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          # Optional repository variable to change model, e.g. gpt-6.1-sol.
+          AUTO_BLOG_MODEL: ${{ vars.AUTO_BLOG_MODEL }}
+          SANITY_API_WRITE_TOKEN: ${{ secrets.SANITY_API_WRITE_TOKEN }}
+          SANITY_REVALIDATE_SECRET: ${{ secrets.SANITY_REVALIDATE_SECRET }}
+          # Public values, already shipped in the site's browser bundle.
+          NEXT_PUBLIC_SANITY_PROJECT_ID: uqxf8913
+          NEXT_PUBLIC_SANITY_DATASET: production
+          NEXT_PUBLIC_SANITY_API_VERSION: "2024-10-01"
+          # Manual runs use the chosen mode. Scheduled runs create drafts for
+          # review until the AUTO_BLOG_MODE repository variable is "publish".
+          PUBLISH_MODE: ${{ inputs.mode || vars.AUTO_BLOG_MODE || 'draft' }}
+
+      - name: Keep the brief, preview and cover
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: auto-blog-${{ github.run_id }}
+          path: frontend/auto-blog-output/
+          if-no-files-found: ignore
+          retention-days: 30

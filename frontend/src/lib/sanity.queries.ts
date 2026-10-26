@@ -49,6 +49,48 @@ export const blogListQuery = groq`
   }
 `;
 
+export const blogPostsByTagQuery = groq`
+  *[_type == "post" && lower(tag) == $category] | order(publishedAt desc) {
+    _id,
+    title,
+    "slug": slug.current,
+    excerpt,
+    coverImage,
+    "date": publishedAt,
+    tag,
+    detail
+  }
+`;
+
+export const blogTagsQuery = groq`
+  *[_type == "post" && defined(tag)].tag
+`;
+
+export const moreBlogPostsQuery = groq`
+  *[_type == "post" && slug.current != $slug] | order(publishedAt desc)[0...$limit] {
+    _id,
+    title,
+    "slug": slug.current,
+    excerpt,
+    coverImage,
+    "date": publishedAt,
+    tag,
+    detail
+  }
+`;
+
+/** Newest posts with the fields the RSS feed and news sitemap need. */
+export const recentNewsQuery = groq`
+  *[_type == "post" && defined(slug.current)] | order(publishedAt desc)[0...$limit] {
+    title,
+    "slug": slug.current,
+    excerpt,
+    "date": publishedAt,
+    "updatedAt": _updatedAt,
+    tag
+  }
+`;
+
 export const blogPostBySlugQuery = groq`
   *[_type == "post" && slug.current == $slug][0] {
     _id,
@@ -145,6 +187,27 @@ export const propertiesByCategoryQuery = groq`
 
 export const propertiesByCategoryAndStatusQuery = groq`
   *[_type == "property" && category == $category && status == $status] | order(_createdAt desc) {
+    _id,
+    _updatedAt,
+    name,
+    "slug": slug.current,
+    location,
+    micromarket,
+    rate,
+    priceLabel,
+    configuration,
+    structure,
+    area,
+    images,
+    category,
+    status,
+    reraApproved,
+    reraNumber
+  }
+`;
+
+export const propertiesBySlugsQuery = groq`
+  *[_type == "property" && slug.current in $slugs] {
     _id,
     name,
     "slug": slug.current,
@@ -384,8 +447,14 @@ export const heroBannersQuery = groq`
 export const blogSlugsQuery = groq`
   *[_type == "post" && defined(slug.current)]{
     "slug": slug.current,
-    _updatedAt
+    _updatedAt,
+    tag
   }
+`;
+
+/** When each listing's inventory last changed, for sitemap lastmod. */
+export const propertyFreshnessQuery = groq`
+  *[_type == "property"]{ category, status, micromarket, _updatedAt }
 `;
 
 export const featuredPropertyQuery = groq`

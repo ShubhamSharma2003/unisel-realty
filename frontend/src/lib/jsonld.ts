@@ -142,16 +142,46 @@ export const homepageSchema = (faqs: FaqItem[]) => ({
 
 // ─── Blog listing: CollectionPage ──────────────────────────────────────────────
 
-export const blogListingSchema = () => ({
+type BlogListingData = {
+  url: string;
+  name: string;
+  description: string;
+  posts: { title?: string; slug?: string }[];
+};
+
+export const blogListingSchema = ({ url, name, description, posts }: BlogListingData) => ({
   "@context": "https://schema.org",
   "@type": "CollectionPage",
-  "@id": `${SITE_URL}/blog`,
-  url: `${SITE_URL}/blog`,
-  name: "Real Estate Blog | Unisel Realty",
-  description: "Expert insights on Gurgaon luxury real estate, NRI property investment, and market trends from Unisel Realty's advisory team.",
+  "@id": url,
+  url,
+  name,
+  description,
   isPartOf: { "@id": `${SITE_URL}/#website` },
   publisher: { "@id": `${SITE_URL}/#organization` },
   inLanguage: "en-IN",
+  mainEntity: {
+    "@type": "ItemList",
+    numberOfItems: posts.length,
+    itemListElement: posts.map((post, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      url: `${SITE_URL}/blog/${post.slug}`,
+      name: post.title,
+    })),
+  },
+});
+
+// ─── Any page with visible Q&A: FAQPage ────────────────────────────────────────
+
+export const faqPageSchema = (faqs: FaqItem[], pageUrl: string) => ({
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "@id": `${pageUrl}#faq`,
+  mainEntity: faqs.map(({ question, answer }) => ({
+    "@type": "Question",
+    name: question,
+    acceptedAnswer: { "@type": "Answer", text: answer },
+  })),
 });
 
 // ─── Blog detail: Article ──────────────────────────────────────────────────────
@@ -169,17 +199,19 @@ type BlogData = {
 
 export const blogArticleSchema = (post: BlogData) => ({
   "@context": "https://schema.org",
-  "@type": "Article",
+  "@type": "NewsArticle",
   "@id": `${SITE_URL}/blog/${post.slug}#article`,
   headline: post.title,
   description: post.excerpt ?? "",
   url: `${SITE_URL}/blog/${post.slug}`,
   datePublished: post.date ?? "",
   dateModified: post.updatedAt ?? post.date ?? "",
-  author: {
-    "@type": "Person",
-    name: post.author ?? "Unisel Realty",
-  },
+  // Posts credited to the company point at the business entity; typing the
+  // company name as a Person was flagged as an E-E-A-T problem in the audit.
+  author:
+    !post.author || post.author === COMPANY.name
+      ? { "@id": `${SITE_URL}/#organization` }
+      : { "@type": "Person", name: post.author },
   publisher: { "@id": `${SITE_URL}/#organization` },
   isPartOf: { "@id": `${SITE_URL}/#website` },
   ...(post.coverImageUrl
@@ -259,7 +291,7 @@ export const propertyItemListSchema = (
  * confidently extracted (e.g. "Price on Request") this returns undefined and
  * the caller omits the Offer entirely instead of shipping an invalid value.
  */
-function parseInrPrice(rate: string | number | undefined): number | undefined {
+export function parseInrPrice(rate: string | number | undefined): number | undefined {
   if (rate === undefined || rate === null) return undefined;
   if (typeof rate === "number") return Number.isFinite(rate) ? rate : undefined;
   const lower = rate.toLowerCase();

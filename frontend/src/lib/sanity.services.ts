@@ -14,8 +14,14 @@ import {
   navLinksQuery,
   builderPartnersQuery,
   propertiesByMicromarketQuery,
+  propertiesBySlugsQuery,
   getInTouchSectionQuery,
+  blogListQuery,
+  blogPostsByTagQuery,
+  blogTagsQuery,
+  moreBlogPostsQuery,
 } from "./sanity.queries";
+import type { Blog } from "@/types/blog";
 import type { Service, ServicesSection } from "@/types/service";
 import type { PropertyHomes } from "@/types/properyHomes";
 import type { Testimonial, TestimonialSection, GetInTouchSection } from "@/types/testimonial";
@@ -48,6 +54,26 @@ export const getPropertyBySlug = async (slug: string) =>
 
 export const getPropertiesByMicromarket = async (micromarket: string) =>
   sanityClient.fetch<PropertyHomes[]>(propertiesByMicromarketQuery, { micromarket }, { next: { tags: ['properties'] } });
+
+export const getPropertiesBySlugs = async (slugs: string[]) =>
+  sanityClient.fetch<PropertyHomes[]>(propertiesBySlugsQuery, { slugs }, { next: { tags: ['properties'] } });
+
+/** New launches that can be advertised: RERA-approved only (RERA Act 2016, s.3). */
+export const getAdvertisableNewLaunches = async (category = "residential") =>
+  (await getPropertiesByCategoryAndStatus(category, "new-launch")).filter((p) => p.reraApproved === true);
+
+export const getBlogPosts = async () =>
+  sanityClient.fetch<Blog[]>(blogListQuery, {}, { next: { tags: ['blogs'] } });
+
+/** `tag` is matched case-insensitively. (The GROQ param can't be named `tag`: the client reserves it.) */
+export const getBlogPostsByTag = async (tag: string) =>
+  sanityClient.fetch<Blog[]>(blogPostsByTagQuery, { category: tag.toLowerCase() }, { next: { tags: ['blogs'] } });
+
+export const getBlogTags = async () =>
+  sanityClient.fetch<string[]>(blogTagsQuery, {}, { next: { tags: ['blogs'] } });
+
+export const getMoreBlogPosts = async (excludeSlug: string, limit = 3) =>
+  sanityClient.fetch<Blog[]>(moreBlogPostsQuery, { slug: excludeSlug, limit }, { next: { tags: ['blogs'] } });
 
 export const getTestimonialSection = async () =>
   sanityClient.fetch<TestimonialSection | null>(testimonialSectionQuery, {}, { next: { tags: ['testimonials'] } });

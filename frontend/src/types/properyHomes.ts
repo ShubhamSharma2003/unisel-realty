@@ -20,6 +20,7 @@ export type PropertyConfiguration = {
 
 export type PropertyHomes = {
   _id: string;
+  _updatedAt?: string;
   name: string;
   slug: string;
   location: string;
