@@ -9,7 +9,7 @@ import { randomUUID } from "node:crypto";
 import path from "node:path";
 import { format } from "date-fns";
 import { fetchHeadlines } from "./news.mjs";
-import { research, write, TAGS } from "./openai.mjs";
+import { research, write, writeRoundup, TAGS } from "./openai.mjs";
 import { articleToPortableText, countWords, normalizeUrl, stripMarkup, stripTracking, toHtml } from "./portable-text.mjs";
 import { renderCover } from "./cover.mjs";
 import * as sanity from "./sanity.mjs";
@@ -21,6 +21,8 @@ const AUTHOR = process.env.BLOG_AUTHOR || "Unisel Realty";
 const MIN_WORDS = 700;
 const MIN_SECTIONS = 3;
 const MIN_SOURCES = 2;
+const MIN_ROUNDUP_WORDS = 600;
+const MIN_ROUNDUP_PROJECTS = 3;
 
 const args = process.argv.slice(2);
 const dryRun = args.includes("--dry-run");
@@ -68,6 +70,47 @@ async function uniqueSlug(base) {
     const slug = n === 1 ? base : `${base}-${n}`;
     if (!(await sanity.query(sanity.slugTakenQuery, { slug }))) return slug;
   }
+}
+
+const SITE_HOST = new URL(SITE_URL).hostname.replace(/^www\./, "");
+
+/**
+ * A link to this site in any form the model writes ("/x", "x",
+ * "https://uniselrealty.com/x") as a path, or null for other sites.
+ */
+function toLocalPath(href) {
+  try {
+    const url = new URL(href, SITE_URL);
+    if (url.hostname.replace(/^www\./, "") !== SITE_HOST) return null;
+    return url.pathname.replace(/(.)\/+$/, "$1");
+  } catch {
+    return null;
+  }
+}
+
+/**
+ * Quiet-week fallback: one roundup per month of our own registered launches.
+ * The slug is fixed per month, so further quiet runs that month publish nothing.
+ */
+async function planRoundup({ today, internalLinks }) {
+  const slug = `new-launch-projects-gurgaon-${format(today, "MMMM-yyyy").toLowerCase()}`;
+  if (await sanity.query(sanity.slugTakenQuery, { slug })) {
+    console.log(`This month's launch roundup (/blog/${slug}) already exists; nothing to publish.`);
+    return null;
+  }
+  const projects = await sanity.query(sanity.newLaunchListingsQuery);
+  if (projects.length < MIN_ROUNDUP_PROJECTS) {
+    console.log(`Only ${projects.length} registered new launches listed; not enough for a roundup.`);
+    return null;
+  }
+  console.log(`Writing the ${format(today, "MMMM yyyy")} launch roundup from ${projects.length} listings`);
+  return {
+    kind: "roundup",
+    slug,
+    article: await writeRoundup({ projects, internalLinks, today }),
+    brief: `Monthly roundup of Unisel Realty's registered new launches:\n${projects.map((p) => `- ${p.name}`).join("\n")}`,
+    seenUrls: new Set(),
+  };
 }
 
 /** Meta descriptions over ~160 characters get truncated in results anyway. */
@@ -133,17 +176,6 @@ async function main() {
     sanity.query(sanity.builderPartnersQuery),
   ]);
   console.log(`${headlines.length} headlines from the last 7 days, ${recentPosts.length} existing posts`);
-  if (!headlines.length) {
-    console.log("No recent headlines; nothing to write.");
-    return;
-  }
-
-  const found = await research({ headlines, recentPosts, partners, today });
-  if (found.skip) {
-    console.log(`Skipped: ${found.skip}`);
-    return;
-  }
-  console.log(`\n--- research brief ---\n${found.brief}\n--- end brief ---\n`);
 
   const internalLinks = [
     ...STATIC_PAGES,
@@ -157,18 +189,36 @@ async function main() {
       .map((p) => ({ path: `/blog/${p.slug}`, label: `Earlier post: ${p.title}` })),
   ];
 
-  const article = await write({ brief: found.brief, internalLinks, today });
+  // Topics are limited to launches, project updates and major infrastructure.
+  // A run with no such story falls back to the monthly launch roundup.
+  const found = headlines.length
+    ? await research({ headlines, recentPosts, partners, today })
+    : { skip: "no recent headlines" };
+
+  let piece;
+  if (found.skip) {
+    console.log(`No qualifying news story: ${found.skip}`);
+    piece = await planRoundup({ today, internalLinks });
+    if (!piece) return;
+  } else {
+    console.log(`\n--- research brief ---\n${found.brief}\n--- end brief ---\n`);
+    piece = {
+      kind: "news",
+      article: await write({ brief: found.brief, internalLinks, today }),
+      brief: found.brief,
+      seenUrls: found.seenUrls,
+    };
+  }
+  const { article } = piece;
+  const isRoundup = piece.kind === "roundup";
 
   // Links survive only if they point at a real page on this site or at a
   // page the research step actually opened.
   const internalPaths = new Set(internalLinks.map((l) => l.path));
   const resolveHref = (href) => {
-    const local = href.startsWith(SITE_URL) ? href.slice(SITE_URL.length) || "/" : href;
-    if (local.startsWith("/")) {
-      const pathname = local.replace(/[?#].*$/, "").replace(/(.)\/+$/, "$1");
-      return internalPaths.has(pathname) ? pathname : null;
-    }
-    return /^https?:\/\//.test(href) && found.seenUrls.has(normalizeUrl(href)) ? stripTracking(href).toString() : null;
+    const local = toLocalPath(href);
+    if (local) return internalPaths.has(local) ? local : null;
+    return /^https?:\/\//.test(href) && piece.seenUrls.has(normalizeUrl(href)) ? stripTracking(href).toString() : null;
   };
 
   const sourceKeys = new Set();
@@ -187,28 +237,41 @@ async function main() {
     ].join(" "),
   );
   const problems = [
-    sources.length < MIN_SOURCES && `${sources.length} verifiable source(s), need ${MIN_SOURCES}`,
-    words < MIN_WORDS && `${words} words, need ${MIN_WORDS}`,
+    !isRoundup && sources.length < MIN_SOURCES && `${sources.length} verifiable source(s), need ${MIN_SOURCES}`,
+    words < (isRoundup ? MIN_ROUNDUP_WORDS : MIN_WORDS) && `${words} words, need ${isRoundup ? MIN_ROUNDUP_WORDS : MIN_WORDS}`,
     article.sections.length < MIN_SECTIONS && `${article.sections.length} sections, need ${MIN_SECTIONS}`,
   ].filter(Boolean);
   if (problems.length) throw new Error(`Quality check failed, not publishing: ${problems.join("; ")}`);
 
-  const tag = TAGS.find((t) => t.toLowerCase() === article.tag.trim().toLowerCase()) ?? "Market";
+  const tag = isRoundup ? "Launches" : TAGS.find((t) => t.toLowerCase() === article.tag.trim().toLowerCase()) ?? "Market";
   const micromarket = micromarkets.find((m) => m.slug === article.micromarket.trim());
   const dateLabel = format(today, "MMM d, yyyy");
+
+  // Added by code, not the model, so every article ends the same way. Linking
+  // the article's micromarket also steers the "related projects" box on the post.
+  const cta = micromarket
+    ? `**Considering ${micromarket.name}?** Our advisors can share current prices, floor plans and site-visit slots for projects there. [See projects on ${micromarket.name}](/location/${micromarket.slug}) or [talk to a Unisel Realty advisor](/contact).`
+    : `**Planning a purchase in Gurgaon?** Our advisors can share current prices, floor plans and site-visit slots for every registered launch. [See new launch projects](/residential/new-launch) or [talk to a Unisel Realty advisor](/contact).`;
 
   const { blocks, report } = articleToPortableText(article, {
     resolveHref,
     sources,
-    note: `Unisel Realty compiled this analysis from the public reports listed above, as available on ${dateLabel}. It is general information, not investment advice. Check RERA registration, approvals and current prices before you buy.`,
+    cta,
+    note: isRoundup
+      ? `Prices and details are from Unisel Realty's listings as of ${dateLabel} and can change. Confirm current prices and RERA details with our advisors before you book.`
+      : `Unisel Realty compiled this analysis from the public reports listed above, as available on ${dateLabel}. It is general information, not investment advice. Check RERA registration, approvals and current prices before you buy.`,
   });
   if (report.dropped.length) {
     console.warn(`warn: removed unverifiable link(s): ${[...new Set(report.dropped)].join(", ")}`);
   }
   if (report.duplicates) console.warn(`warn: removed ${report.duplicates} repeated paragraph(s)`);
+  const projectLinks = new Set(report.links.filter((href) => href.startsWith("/properties/"))).size;
+  if (isRoundup && projectLinks < MIN_ROUNDUP_PROJECTS) {
+    throw new Error(`Quality check failed, not publishing: roundup links ${projectLinks} projects, need ${MIN_ROUNDUP_PROJECTS}`);
+  }
 
   const title = stripMarkup(article.title).trim();
-  const slug = await uniqueSlug(slugify(article.slug || title));
+  const slug = isRoundup ? piece.slug : await uniqueSlug(slugify(article.slug || title));
   const cover = await renderCover({ title, tag, place: micromarket?.name ?? "Gurugram", date: dateLabel });
 
   const id = randomUUID();
@@ -229,7 +292,7 @@ async function main() {
   const outDir = path.join(outRoot, `${format(today, "yyyy-MM-dd-HHmm")}-${slug}`);
   await mkdir(outDir, { recursive: true });
   await Promise.all([
-    writeFile(path.join(outDir, "brief.md"), found.brief),
+    writeFile(path.join(outDir, "brief.md"), piece.brief),
     writeFile(path.join(outDir, "post.json"), JSON.stringify(doc, null, 2)),
     writeFile(path.join(outDir, "cover.png"), cover),
     writeFile(path.join(outDir, "preview.html"), previewPage(doc, "cover.png")),

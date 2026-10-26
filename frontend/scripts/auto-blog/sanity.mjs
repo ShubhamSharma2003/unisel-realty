@@ -77,6 +77,22 @@ export const propertiesQuery = `
   }
 `;
 
+/** Listings the monthly roundup may advertise: registered residential launches only. */
+export const newLaunchListingsQuery = `
+  *[_type == "property" && category == "residential" && status == "new-launch" && reraApproved == true
+    && defined(slug.current) && !(_id in path("drafts.**"))] | order(micromarket asc, name asc) {
+    name,
+    "slug": slug.current,
+    micromarket,
+    configuration,
+    rate,
+    priceLabel,
+    area,
+    structure,
+    reraNumber
+  }
+`;
+
 export const builderPartnersQuery = `
   *[_type == "builderPartner" && defined(name) && !(_id in path("drafts.**"))].name
 `;

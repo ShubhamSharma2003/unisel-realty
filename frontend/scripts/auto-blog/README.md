@@ -5,8 +5,15 @@ Publishes an original, sourced analysis of a recent Gurugram real estate news st
 ## What a run does
 
 1. **Find news.** Pulls the last 7 days of headlines from Google News RSS (`news.mjs`).
-2. **Research.** OpenAI's `gpt-6-luna` (Responses API with hosted web search, `openai.mjs`) picks the story most useful to buyers and investors. It skips celebrity, promotional and off-topic pieces and anything already on the blog. It also skips negative news about Unisel's builder partners: lawsuits, allegations, penalties, delays and complaints. The partner list is read from the `builderPartner` documents in Sanity on every run. It then reads the original reporting plus at least one independent source and writes a brief with a source URL for every fact. If nothing is worth an article it says so and the run ends without posting.
-3. **Write.** A second call turns the brief into a structured article: an explainer intro, 4–6 question-style H2 sections, FAQs, and a source list. Internal links come from a fixed list: micromarket pages, service pages, property pages and earlier posts.
+2. **Research.** OpenAI's `gpt-6-luna` (Responses API with hosted web search, `openai.mjs`) picks one story. It only covers three kinds, in this order of preference:
+   - new launches and upcoming projects;
+   - project and developer updates: possession, price revisions, sell-outs, project-specific RERA orders;
+   - major infrastructure: metro, expressways, big roads.
+
+   It skips everything else, including buses, traffic, civic news, citywide price reports, policy and events. It also skips anything already on the blog, and negative news about Unisel's builder partners (lawsuits, allegations, penalties, delays, complaints). The partner list is read from the `builderPartner` documents in Sanity on every run.
+
+   **Quiet weeks.** If no story qualifies, the bot writes the monthly roundup instead: "New Launch Projects in Gurgaon: {Month Year}". It's built only from Unisel's own RERA-registered listings, at `/blog/new-launch-projects-gurgaon-{month}-{year}`. It runs at most once a month, so later quiet runs in that month publish nothing. It then reads the original reporting plus at least one independent source and writes a brief with a source URL for every fact. If nothing is worth an article it says so and the run ends without posting.
+3. **Write.** A second call turns the brief into a structured article: an intro, 4–6 question-style H2 sections, FAQs and a source list. The tone is a confident advisor, who states uncertainty once where it matters. Internal links come from a fixed list: micromarket pages, service pages, property pages and earlier posts. The code, not the model, adds the same closing call to action to every article. It links the article's micromarket and `/contact`.
 4. **Check.** The script removes any link that is not a real page on this site or a page the web search actually returned. It stops without publishing if the article has fewer than 2 verifiable sources, under 700 words, or fewer than 3 sections.
 5. **Publish.** Renders a branded cover image, creates the `post` in Sanity, then calls `/api/revalidate` so `/blog`, the homepage and `sitemap.xml` update straight away.
 

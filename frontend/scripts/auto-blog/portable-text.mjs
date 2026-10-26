@@ -107,7 +107,7 @@ export function toHtml(blocks) {
   return html.join("\n");
 }
 
-export function articleToPortableText(article, { resolveHref, sources, note }) {
+export function articleToPortableText(article, { resolveHref, sources, note, cta }) {
   const report = { links: [], dropped: [], duplicates: 0 };
   const blocks = [];
 
@@ -149,9 +149,13 @@ export function articleToPortableText(article, { resolveHref, sources, note }) {
     }
   }
 
-  heading("Sources", "h2");
-  for (const source of sources) {
-    bullet(`[${source.publisher}: ${source.title}](${source.url})`);
+  if (cta) paragraph(cta);
+
+  if (sources.length) {
+    heading("Sources", "h2");
+    for (const source of sources) {
+      bullet(`[${source.publisher}: ${source.title}](${source.url})`);
+    }
   }
 
   blocks.push({ _type: "block", _key: key(), style: "normal", markDefs: [], children: [span(note, ["em"])] });
